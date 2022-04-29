@@ -1,10 +1,9 @@
 filetype plugin indent on
 syntax on
 set rnu nu
-set noshowmode
-set cursorline
+set noshowmode "no show INSERT, VISUAL, NORMAL
 set tgc
-set sts=2
+set sts=2 "fake tab
 set sw=2
 set noexpandtab
 set list          " Display unprintable characters f12 - switches
@@ -15,7 +14,7 @@ set signcolumn=yes
 
 " emmet only html/css
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,javascript EmmetInstall
 " emmet trigger key
 let g:user_emmet_leader_key='<TAB>'
 
@@ -37,11 +36,18 @@ call plug#end()
 
 let g:gruvbox_contrast_dark='hard'
 let g:airline_powerline_fonts=1
+"some text will be white
 autocmd VimEnter * hi Normal guibg=NONE
 colo gruvbox
 hi NonText guifg=#7c6f64 guibg=NONE
 hi VertSplit guibg=NONE
 hi signcolumn guibg=NONE
+hi CursorLineNr guibg=NONE
+" gitgutter
+hi GitGutterAdd guibg=NONE
+hi GitGutterChange guibg=NONE
+hi GitGutterDelete guibg=NONE
+hi GitGutterChangeDelete guibg=NONE
 let g:prettier#config#use_tabs='false'
 
 """ MAPS """
@@ -51,6 +57,7 @@ fu IsNextKey(key)
     return 1
   en
 endf
+
 ino  { {}<LEFT>
 ino <expr> } IsNextKey("}") ? '<RIGHT>' : "}"
 ino ( ()<LEFT>
@@ -62,6 +69,7 @@ ino <expr> > IsNextKey(">") ? '<RIGHT>' : ">"
 ino <expr> ' IsNextKey("'") ? '<RIGHT>' : "''\<LEFT>"
 ino <expr> " IsNextKey('"') ? '<RIGHT>' : '""<LEFT>'
 ino <expr> ` IsNextKey("`") ? '<RIGHT>' : '``<LEFT>'
+
 fu CheckWrap()
   let l:open = getline(".")[col(".")-2]
   let l:close = getline(".")[col(".")-1]
@@ -83,11 +91,12 @@ fu CheckWrap()
     return 1
   en
 endf
+
 ino <expr> <BS> CheckWrap() ? '<RIGHT><BS><BS>' : '<BS>'
 imap <C-H> <BS>
 ino <expr> <CR> CheckWrap() ? '<CR><C-O>O' : '<CR>'
 "toggle search highlight
-no <C-f> :set hlsearch!<CR>
+no <C-f> :set hls!<CR>
 "exit
 map <S-q> :qa!<CR>
 map <C-s> :w<CR>
@@ -99,4 +108,4 @@ fu IndentAll()
 endf
 nno <expr> == IndentAll()
 "nerdtree
-map <C-1> :NERDTree<CR>
+nmap <Space> :NERDTreeToggle<CR>

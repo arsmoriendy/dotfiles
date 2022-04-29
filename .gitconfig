@@ -1,0 +1,16 @@
+[user]
+	name = arsmoriendy
+	email = nugrahasteven@gmail.com
+[core]
+	editor = nvim
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[alias]
+	l = log --graph --oneline
+	ll = log --graph
+	s = status
+	nm = commit --allow-empty-message -m ''

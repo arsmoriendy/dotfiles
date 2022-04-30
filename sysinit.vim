@@ -110,3 +110,6 @@ nno <expr> == IndentAll()
 "nerdtree
 nmap <Space> :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1
+"revert to save
+map <C-M-u> :earlier 1f<CR>
+map <C-M-r> :later 1f<CR>

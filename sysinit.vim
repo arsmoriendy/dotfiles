@@ -109,3 +109,4 @@ endf
 nno <expr> == IndentAll()
 "nerdtree
 nmap <Space> :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden = 1

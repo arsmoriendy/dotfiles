@@ -36,6 +36,7 @@ call plug#end()
 
 let g:gruvbox_contrast_dark='hard'
 let g:airline_powerline_fonts=1
+let g:coc_config_home = '/etc/xdg/nvim/coc-settings.json'
 "some text will be white
 autocmd VimEnter * hi Normal guibg=NONE
 colo gruvbox
@@ -96,7 +97,17 @@ ino <expr> <BS> CheckWrap() ? '<RIGHT><BS><BS>' : '<BS>'
 imap <C-H> <BS>
 ino <expr> <CR> CheckWrap() ? '<CR><C-O>O' : '<CR>'
 "toggle search highlight
-no <C-f> :set hls!<CR>
+fu ToHls()
+  set hls!
+  if (&hls)
+    echohl DiffAdd | echo "Search highlight ON" | echohl None
+  else
+    echohl DiffDelete | echo "Search highlight OFF" | echohl None
+  en
+endf
+no <expr> <C-f> ToHls()
+"reload config
+nmap <C-_> :so /etc/xdg/nvim/sysinit.vim<CR>
 "exit
 map <S-q> :qa!<CR>
 map <C-s> :w<CR>
@@ -108,7 +119,7 @@ fu IndentAll()
 endf
 nno <expr> == IndentAll()
 "nerdtree
-nmap <Space> :NERDTreeToggle<CR>
+nmap <silent> <Space> :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1
 "revert to save
 map <C-M-u> :earlier 1f<CR>

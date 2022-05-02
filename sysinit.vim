@@ -12,15 +12,10 @@ set gcr=a:blinkon100,i:ver25
 set updatetime=100
 set signcolumn=yes
 
-" emmet only html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
-" emmet trigger key
-let g:user_emmet_leader_key='<TAB>'
-
 call plug#begin('/etc/xdg/nvim/plugged')
 Plug 'psliwka/vim-smoothie'
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdcommenter'
@@ -33,11 +28,24 @@ Plug 'prettier/vim-prettier', {
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
+" emmet only html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,javascript EmmetInstall
+" emmet trigger key
+let g:user_emmet_leader_key='<C-z>'
 let g:gruvbox_contrast_dark='hard'
 let g:airline_powerline_fonts=1
 let g:prettier#config#use_tabs='false'
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
 autocmd CursorHold * silent call CocActionAsync('highlight')
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'*',
+                \ 'Untracked' :'⬤',
+                \ 'Dirty'     :'!',
+                \ 'Ignored'   :'ᐞ',
+                \ }
+
 """ COLORSCHEME """
 colo gruvbox
 autocmd VimEnter *  hi Normal guibg=NONE
@@ -129,11 +137,16 @@ endf
 nno <expr> == IndentAll()
 "nerdtree
 nmap <silent> <Space> :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden = 1
 "revert to save
 map <C-M-u> :earlier 1f<CR>
 map <C-M-r> :later 1f<CR>
 "Coc
 ino <silent><expr> <C-Space> coc#refresh()
+ino <expr> <TAB> pumvisible() ? '<C-y>' : '<C-g>u<TAB>'
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"navigate vim windows
+nno <C-h> <C-w>h
+nno <C-j> <C-w>j
+nno <C-k> <C-w>k
+nno <C-l> <C-w>l

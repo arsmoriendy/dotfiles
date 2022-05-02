@@ -1,7 +1,7 @@
 {
   "diagnostic.errorSign": "✘",
   "diagnostic.infoSign": "𝒾",
-  "diagnostic.hintSign": "ﯦ",
+  "diagnostic.hintSign": " ",
   "suggest.maxCompleteItemCount": 10,
   "dialog.maxHeight": 3,
   "colors.filetypes": ["*"]

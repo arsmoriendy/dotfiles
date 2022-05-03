@@ -11,6 +11,28 @@ set lcs=trail:•,tab:▷\ ,
 set gcr=a:blinkon100,i:ver25
 set updatetime=100
 set signcolumn=yes
+set tabline=%!MyTabLine()
+
+fu MyTabLine()
+  let s = '%#airline_warning_to_airline_error#%#airline_c_red#'
+  hi TabLineSel guibg=#a89984 guifg=#282828
+  hi TabLineSelPL guibg=#a89984 guifg=#3c3836
+  hi TabLineSelPL2 guibg=#3c3836 guifg=#a89984
+
+  for i in range(tabpagenr('$'))
+    let BufName = bufname(tabpagebuflist(i + 1)[tabpagewinnr(i + 1) - 1])
+    let BufSymbol = WebDevIconsGetFileTypeSymbol(BufName)
+    let TabLabel = (i + 1) . '-' . BufSymbol . ' ' . BufName
+
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSelPL#%#TabLineSel# ' .TabLabel.' %#TabLineSelPL2# '
+    el
+      let s .= '%#TabLine#' .  ' '.TabLabel.' '
+    en
+  endfo
+
+  return s
+endf
 
 call plug#begin('/etc/xdg/nvim/plugged')
 Plug 'psliwka/vim-smoothie'
@@ -31,22 +53,21 @@ call plug#end()
 " emmet only html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
-" emmet trigger key
-let g:user_emmet_leader_key='<C-z>'
 let g:gruvbox_contrast_dark='hard'
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 let g:prettier#config#use_tabs='false'
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'*',
-                \ 'Untracked' :'⬤',
-                \ 'Dirty'     :'!',
-                \ 'Ignored'   :'ᐞ',
-                \ }
+      \ 'Modified'  :'*',
+      \ 'Untracked' :'⬤',
+      \ 'Dirty'     :'!',
+      \ 'Ignored'   :'ᐞ',
+      \ }
 
-""" COLORSCHEME """
+"==================== COLOR-SCHEME ===================="
 colo gruvbox
 autocmd VimEnter *  hi Normal guibg=NONE
 hi NonText guifg=#7c6f64 guibg=NONE
@@ -67,7 +88,7 @@ hi GitGutterChange guibg=NONE
 hi GitGutterDelete guibg=NONE
 hi GitGutterChangeDelete guibg=NONE
 
-""" MAPS """
+"==================== KEY-MAPS ===================="
 "auto close
 fu IsNextKey(key)
   if getline(".")[col(".")-1] == a:key
@@ -150,3 +171,6 @@ nno <C-h> <C-w>h
 nno <C-j> <C-w>j
 nno <C-k> <C-w>k
 nno <C-l> <C-w>l
+"navigate tabs
+nm <silent> <TAB> :tabn<CR>
+nm <silent> <S-TAB> :tabp<CR>

@@ -2,7 +2,5 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.infoSign": "i",
   "diagnostic.hintSign": " ",
-  "suggest.maxCompleteItemCount": 10,
-  "dialog.maxHeight": 3,
   "colors.filetypes": ["*"]
 }

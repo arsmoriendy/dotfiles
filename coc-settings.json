@@ -1,6 +1,5 @@
 {
-  "diagnostic.errorSign": "✘",
-  "diagnostic.infoSign": "i",
-  "diagnostic.hintSign": " ",
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.signPriority": 0,
   "colors.filetypes": ["*"]
 }

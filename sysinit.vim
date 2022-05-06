@@ -7,25 +7,25 @@ set sts=2 "fake tab
 set sw=2
 set noexpandtab
 set list          " Display unprintable characters f12 - switches
-set lcs=trail:•,tab:▷\ ,
+set listchars=trail:•,tab:│\ ,
 set gcr=a:blinkon100,i:ver25
 set updatetime=100
 set signcolumn=yes
+set ignorecase smartcase
 set tabline=%!MyTabLine()
 
 fu MyTabLine()
   let s = '%#airline_warning_to_airline_error#%#airline_c_red#'
-  hi TabLineSel guibg=#a89984 guifg=#282828
-  hi TabLineSelPL guibg=#a89984 guifg=#3c3836
+  hi TabLineSel guibg=#a89984 guifg=#3c3836
   hi TabLineSelPL2 guibg=#3c3836 guifg=#a89984
 
   for i in range(tabpagenr('$'))
-    let BufName = bufname(tabpagebuflist(i + 1)[tabpagewinnr(i + 1) - 1])
+    let BufName = fnamemodify(bufname(tabpagebuflist(i + 1)[tabpagewinnr(i + 1) - 1]), ":t")
     let BufSymbol = WebDevIconsGetFileTypeSymbol(BufName)
     let TabLabel = (i + 1) . '-' . BufSymbol . ' ' . BufName
 
     if i + 1 == tabpagenr()
-      let s .= '%#TabLineSelPL#%#TabLineSel# ' .TabLabel.' %#TabLineSelPL2# '
+      let s .= '%#TabLineSel# ' .TabLabel.' %#TabLineSelPL2# '
     el
       let s .= '%#TabLine#' .  ' '.TabLabel.' '
     en
@@ -55,21 +55,28 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
 let g:gruvbox_contrast_dark='hard'
 let g:airline_powerline_fonts = 1
+" prettier
 let g:prettier#config#use_tabs='false'
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeMinimalMenu = 1
+let g:NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Modified'  :'*',
-      \ 'Untracked' :'⬤',
+      \ 'Untracked' :'u',
       \ 'Dirty'     :'!',
       \ 'Ignored'   :'ᐞ',
       \ }
 
 "==================== COLOR-SCHEME ===================="
 colo gruvbox
-autocmd VimEnter *  hi Normal guibg=NONE
+hi Normal guibg=NONE
 hi NonText guifg=#7c6f64 guibg=NONE
 hi VertSplit guibg=NONE
 hi signcolumn guibg=NONE
@@ -87,6 +94,16 @@ hi GitGutterAdd guibg=NONE
 hi GitGutterChange guibg=NONE
 hi GitGutterDelete guibg=NONE
 hi GitGutterChangeDelete guibg=NONE
+" airline
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  for mode in keys(a:palette)
+    if string(mode) =~# "'normal'\\|'visual'\\|'replace'\\|'insert'"
+      let a:palette[mode].airline_a[0] = "#3c383c"
+      let a:palette[mode].airline_z[0] = "#3c383c"
+    endif
+  endfor
+endfunction
 
 "==================== KEY-MAPS ===================="
 "auto close
@@ -147,7 +164,7 @@ no <expr> <C-f> ToHls()
 nmap <C-_> :so /etc/xdg/nvim/sysinit.vim<CR>
 "exit
 nmap <S-q> :qa!<CR>
-nmap <C-w>q :q!<CR>
+nmap <C-w><C-q> :q!<CR>
 map <C-s> :w<CR>
 "delete
 imap <C-l> <DEL>
@@ -167,10 +184,10 @@ ino <expr> <TAB> pumvisible() ? '<C-y>' : '<C-g>u<TAB>'
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "navigate vim windows
-nno <C-h> <C-w>h
-nno <C-j> <C-w>j
-nno <C-k> <C-w>k
-nno <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 "navigate tabs
 nm <silent> <TAB> :tabn<CR>
 nm <silent> <S-TAB> :tabp<CR>

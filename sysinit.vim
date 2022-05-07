@@ -67,6 +67,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeCascadeOpenSingleChildDir = 1
+let g:NERDTreeMirror = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Modified'  :'*',
       \ 'Untracked' :'u',

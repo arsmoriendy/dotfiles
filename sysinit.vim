@@ -8,7 +8,7 @@ set sw=2
 set noexpandtab
 set list          " Display unprintable characters f12 - switches
 set listchars=trail:•,tab:│\ ,
-set gcr=a:blinkon100,i:ver25
+set gcr=i:ver100,a:blinkon100
 set updatetime=100
 set signcolumn=yes
 set ignorecase smartcase

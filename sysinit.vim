@@ -45,14 +45,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', {
       \ 'do': 'npm install --frozen-lockfile --production',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
+" vim-javascript
+autocmd FileType javascript call VimInitJS()
+function VimInitJS()
+  let g:javascript_plugin_jsdoc = 1
+  let g:javascript_plugin_ngdoc = 1
+endfunction
 " emmet only html/css
 let g:user_emmet_install_global = 0
+let g:user_emmet_expandabbr_key = '<S-Tab>'
 autocmd FileType html,css,javascript EmmetInstall
+" gruvbox
 let g:gruvbox_contrast_dark='hard'
 let g:airline_powerline_fonts = 1
 " prettier
@@ -68,6 +77,7 @@ let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeMirror = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Modified'  :'*',
       \ 'Untracked' :'u',

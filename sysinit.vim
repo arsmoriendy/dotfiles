@@ -34,6 +34,7 @@ fu MyTabLine()
   return s
 endf
 
+"https://github.com/junegunn/vim-plug
 call plug#begin('/etc/xdg/nvim/plugged')
 Plug 'psliwka/vim-smoothie'
 Plug 'preservim/nerdtree'

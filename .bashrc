@@ -1,5 +1,21 @@
+### DETERMINE PACKAGE MANAGER ###
+declare -A osInfo;
+osInfo[/etc/fedora-release]=dnf
+osInfo[/etc/arch-release]=pacman
+osInfo[/etc/gentoo-release]=emerge
+osInfo[/etc/SuSE-release]=zypp
+osInfo[/etc/debian_version]=apt-get
+osInfo[/etc/alpine-release]=apk
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        PACK_MAN=${osInfo[$f]}
+    fi
+done
+
 ### ALIAS ###
-alias p='sudo dnf'
+alias p="sudo ${PACK_MAN}"
 alias la='ls -AlhF'
 
 ### GIT AUTO COMPLETE AND PROMPT###

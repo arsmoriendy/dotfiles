@@ -5,3 +5,8 @@
 	ll = log --graph
 	s = status
 	nm = commit --allow-empty-message -m ''
+[user]
+	email = nugrahasteven@gmail.com
+	name = arsmoriendy
+[diff]
+	tool = nvimdiff3

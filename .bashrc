@@ -1,6 +1,5 @@
 ### ALIAS ###
-alias p='sudo apt'
-alias e='explorer.exe'
+alias p='sudo dnf'
 alias la='ls -AlhF'
 
 ### GIT AUTO COMPLETE AND PROMPT###
@@ -24,3 +23,8 @@ __prompt_command() {
 
   PS1+='>>> \[\e[0m\]'
 }
+
+### AUTO START TMUX ###
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ "$TERM" =~ alacritty ]]; then
+  exec tmux
+fi

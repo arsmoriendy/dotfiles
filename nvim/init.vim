@@ -35,9 +35,9 @@ fu MyTabLine()
 endf
 
 "https://github.com/junegunn/vim-plug
-call plug#begin('/etc/xdg/nvim/plugged')
-Plug 'psliwka/vim-smoothie'
+call plug#begin('~/.config/nvim/plugged')
 Plug 'preservim/nerdtree'
+Plug 'lambdalisue/suda.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
@@ -71,6 +71,7 @@ let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
 autocmd CursorHold * silent call CocActionAsync('highlight')
+"NERDTee
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMinimalUI = 1
@@ -85,6 +86,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Dirty'     :'!',
       \ 'Ignored'   :'ᐞ',
       \ }
+"suda.vim
+let g:suda_smart_edit = 1
 
 "==================== COLOR-SCHEME ===================="
 colo gruvbox
@@ -173,10 +176,11 @@ fu ToHls()
 endf
 no <expr> <C-f> ToHls()
 "reload config
-nmap <C-_> :so /etc/xdg/nvim/sysinit.vim<CR>
+nmap <C-_> :so ~/.config/nvim/init.vim<CR>
 "exit
 nmap <S-q> :qa!<CR>
 nmap <C-w><C-q> :q!<CR>
+"save
 map <C-s> :w<CR>
 "delete
 imap <C-l> <DEL>

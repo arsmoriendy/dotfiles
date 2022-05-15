@@ -15,20 +15,26 @@ set ignorecase smartcase
 set tabline=%!MyTabLine()
 
 fu MyTabLine()
-  let s = '%#airline_warning_to_airline_error#%#airline_c_red#'
+  let s = ''
   hi TabLineSel guibg=#a89984 guifg=#3c3836
   hi TabLineSelPL2 guibg=#3c3836 guifg=#a89984
 
   for i in range(tabpagenr('$'))
     let BufName = fnamemodify(bufname(tabpagebuflist(i + 1)[tabpagewinnr(i + 1) - 1]), ":t")
     let BufSymbol = WebDevIconsGetFileTypeSymbol(BufName)
-    let TabLabel = (i + 1) . '-' . BufSymbol . ' ' . BufName
+    let TabLabel = BufSymbol . ' ' . BufName
 
     if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel# ' .TabLabel.' %#TabLineSelPL2# '
-    el
+      let s .= '%#TabLineSel#'
+      if tabpagenr() == 1
+	let s .= ' '
+      else
+	let s .= ' '
+      endif
+      let s .=  TabLabel.' %#TabLineSelPL2# '
+    else
       let s .= '%#TabLine#' .  ' '.TabLabel.' '
-    en
+    endif
   endfo
 
   return s

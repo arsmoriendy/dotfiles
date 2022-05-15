@@ -44,3 +44,6 @@ __prompt_command() {
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ "$TERM" =~ alacritty ]]; then
   exec tmux
 fi
+
+### ENVIRONMENT VARIABLES ###
+export EDITOR=nvim

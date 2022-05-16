@@ -1,0 +1,20 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = nvim
+[alias]
+	l = log --graph --oneline
+	ll = log --graph
+	s = status
+	nm = commit --allow-empty-message -m ''
+[user]
+	email = nugrahasteven@gmail.com
+	name = arsmoriendy
+[diff]
+	tool = nvimdiff3
+[merge]
+	tool = nvimdiff3

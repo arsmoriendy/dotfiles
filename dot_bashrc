@@ -30,6 +30,7 @@ done
 ### ALIAS ###
 alias p="sudo ${PACK_MAN}"
 alias la='ls -AlhF'
+alias che="chezmoi"
 
 ### GIT AUTO COMPLETE AND PROMPT###
 . ~/.config/git-completion.bash
@@ -54,8 +55,8 @@ __prompt_command() {
 }
 
 ### AUTO START TMUX ###
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ "$TERM" =~ alacritty ]]; then
-  exec tmux
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  command tmux new-session -A -s main
 fi
 
 ### ENVIRONMENT VARIABLES ###

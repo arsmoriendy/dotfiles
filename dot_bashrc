@@ -29,7 +29,8 @@ done
 
 ### ALIAS ###
 alias p="sudo ${PACK_MAN}"
-alias la='ls -AlhF'
+alias ls="exa"
+alias la="exa -alFH --icons"
 alias che="chezmoi"
 
 ### GIT AUTO COMPLETE AND PROMPT###

@@ -37,21 +37,44 @@ alias che="chezmoi"
 . ~/.config/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 
+### COLORS ###
+NORMAL="\[\e[0;00m\]"
+
+BLACK="\[\e[1;30m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+YELLOW="\[\e[1;33m\]"
+BLUE="\[\e[1;34m\]"
+MAGENTA="\[\e[1;35m\]"
+CYAN="\[\e[1;36m\]"
+WHITE="\[\e[1;37m\]"
+
+B_BLACK="\[\e[90m\]"
+B_RED="\[\e[91m\]"
+B_GREEN="\[\e[92m\]"
+B_YELLOW="\[\e[93m\]"
+B_BLUE="\[\e[94m\]"
+B_MAGENTA="\[\e[95m\]"
+B_CYAN="\[\e[96m\]"
+B_WHITE="\[\e[97m\]"
+
 ### PROMPT ###
 PROMPT_COMMAND=__prompt_command
 __prompt_command() {
   local EXIT="$?"
 
-  PS1='┎\[\e[34m\][\w] \[\e[33m\]$(__git_ps1 "[%s] ")\[\e[35m\][\T]\[\e[0m\]'
-  PS1+='\n┖'
+  local PS1L="$B_RED┎[$B_YELLOW\w$B_CYAN$(__git_ps1 " %s")$B_RED]"
+  local PS1R="$RED[$YELLOW$(whoami)$CYAN@$BLUE$(cat /proc/sys/kernel/hostname) $MAGENTA$(date +%T)$RED]$NORMAL"
+  PS1=$(printf "%*s\r%s" "$(($COLUMNS + (12*7)))" "$PS1R" "$PS1L")
+  PS1+="\n$B_RED┖"
 
   if [ $EXIT != 0 ]; then
-    PS1+='\[\e[1;31m\]'
+    PS1+="$RED"
   else
-    PS1+='\[\e[1;32m\]'
+    PS1+="$GREEN"
   fi
 
-  PS1+='>>> \[\e[0m\]'
+  PS1+=">>> $NORMAL"
 }
 
 ### AUTO START TMUX ###

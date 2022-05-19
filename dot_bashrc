@@ -38,6 +38,7 @@ alias p="sudo ${PACK_MAN}"
 alias ls="exa"
 alias la="exa -alFH --icons"
 alias che="chezmoi"
+alias sudo="sudo -v; sudo " #restart sudo timeout; then runs sudo with alias compatibility
 
 ### GIT AUTO COMPLETE AND PROMPT###
 . ~/.config/git-completion.bash
@@ -96,7 +97,8 @@ __prompt_command() {
 }
 
 ### AUTO START TMUX ###
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if [ -n "$PS1" ] && [ -z "$TMUX" ];
+then
   command tmux new-session -A -s main
 fi
 

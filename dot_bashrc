@@ -71,7 +71,7 @@ __prompt_command() {
   local EXIT="$?"
 
   local PS1L="$RED┎[$YELLOW\w$CYAN$(__git_ps1 " %s")$RED]"
-  local PS1R="$RED[$YELLOW$(whoami)$CYAN $DISTRO_ICON$BLUE$DISTRO $MAGENTA$(date +%T)$RED]"
+  local PS1R="$RED[$YELLOW$(whoami)$CYAN $DISTRO_ICON $BLUE$DISTRO $MAGENTA$(date +%T)$RED]"
 
   local LINE="$RED"
   local i=0

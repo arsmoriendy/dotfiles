@@ -16,20 +16,20 @@ DISTRO=$(cat /etc/os-release | grep ^ID | cut -d= -f2)
 
 case $DISTRO in
   fedora)
-    PACK_MAN=dnf
-    DISTRO_ICON=
+    PACK_MAN="dnf"
+    DISTRO_ICON=""
     ;;
   arch)
-    PACK_MAN=pacman
-    DISTRO_ICON=
+    PACK_MAN="pacman --color always"
+    DISTRO_ICON=""
     ;;
   gentoo)
-    PACK_MAN=emerge
-    DISTRO_ICON=
+    PACK_MAN="emerge"
+    DISTRO_ICON=""
     ;;
   ubuntu)
-    PACK_MAN=apt
-    DISTRO_ICON=
+    PACK_MAN="apt"
+    DISTRO_ICON=""
     ;;
 esac
 

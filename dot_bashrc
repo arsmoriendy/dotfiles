@@ -64,10 +64,22 @@ PROMPT_COMMAND=__prompt_command
 __prompt_command() {
   local EXIT="$?"
 
-  local PS1L="$B_RED┎[$B_YELLOW\w$B_CYAN$(__git_ps1 " %s")$B_RED]"
+  local PS1L="$RED┎[$YELLOW\w$CYAN$(__git_ps1 " %s")$RED]"
   local PS1R="$RED[$YELLOW$(whoami)$CYAN@$BLUE$(cat /proc/sys/kernel/hostname) $MAGENTA$(date +%T)$RED]$NORMAL"
-  PS1=$(printf "%*s\r%s" "$(($COLUMNS + (12*7)))" "$PS1R" "$PS1L")
-  PS1+="\n$B_RED┖"
+
+  local COL_PS1R_DIFF=$(($COLUMNS + (12*7)))
+
+  local LINE="$RED"
+  local i=0
+  local n=$(($COL_PS1R_DIFF - ${#PS1R}))
+  while [ $i -lt $n ]
+  do
+    ((i++))
+    LINE+="─"
+  done
+
+  PS1=$(printf "%*s\r%s" "$(($COL_PS1R_DIFF + (12*7)))" "$LINE$PS1R" "$PS1L")
+  PS1+="\n$RED┖"
 
   if [ $EXIT != 0 ]; then
     PS1+="$RED"

@@ -11,21 +11,27 @@ then
   export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
-### DETERMINE PACKAGE MANAGER ###
-declare -A osInfo;
-osInfo[/etc/fedora-release]=dnf
-osInfo[/etc/arch-release]=pacman
-osInfo[/etc/gentoo-release]=emerge
-osInfo[/etc/SuSE-release]=zypp
-osInfo[/etc/debian_version]=apt-get
-osInfo[/etc/alpine-release]=apk
+### DISTRO INFO ###
+DISTRO=$(cat /etc/os-release | grep ^ID | cut -d= -f2)
 
-for f in ${!osInfo[@]}
-do
-    if [[ -f $f ]];then
-        PACK_MAN=${osInfo[$f]}
-    fi
-done
+case $DISTRO in
+  fedora)
+    PACK_MAN=dnf
+    DISTRO_ICON=
+    ;;
+  arch)
+    PACK_MAN=pacman
+    DISTRO_ICON=
+    ;;
+  gentoo)
+    PACK_MAN=emerge
+    DISTRO_ICON=
+    ;;
+  ubuntu)
+    PACK_MAN=apt
+    DISTRO_ICON=
+    ;;
+esac
 
 ### ALIAS ###
 alias p="sudo ${PACK_MAN}"
@@ -65,20 +71,19 @@ __prompt_command() {
   local EXIT="$?"
 
   local PS1L="$RED┎[$YELLOW\w$CYAN$(__git_ps1 " %s")$RED]"
-  local PS1R="$RED[$YELLOW$(whoami)$CYAN@$BLUE$(cat /proc/sys/kernel/hostname) $MAGENTA$(date +%T)$RED]$NORMAL"
-
-  local COL_PS1R_DIFF=$(($COLUMNS + (12*7)))
+  local PS1R="$RED[$YELLOW$(whoami)$CYAN $DISTRO_ICON$BLUE$DISTRO $MAGENTA$(date +%T)$RED]"
 
   local LINE="$RED"
   local i=0
-  local n=$(($COL_PS1R_DIFF - ${#PS1R}))
+  local c=6 # the number of color codes used in $PS1R
+  local n=$(($COLUMNS + (12*$c) - ${#PS1R}))
   while [ $i -lt $n ]
   do
     ((i++))
     LINE+="─"
   done
 
-  PS1=$(printf "%*s\r%s" "$(($COL_PS1R_DIFF + (12*7)))" "$LINE$PS1R" "$PS1L")
+  PS1=$(printf "%s\r%s" "$LINE$PS1R" "$PS1L")
   PS1+="\n$RED┖"
 
   if [ $EXIT != 0 ]; then

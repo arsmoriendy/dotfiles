@@ -1,7 +1,7 @@
 # .bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
+if [[ -f /etc/bashrc ]]; then
   . /etc/bashrc
 fi
 
@@ -57,50 +57,48 @@ MAGENTA="\[\e[1;35m\]"
 CYAN="\[\e[1;36m\]"
 WHITE="\[\e[1;37m\]"
 
-B_BLACK="\[\e[90m\]"
-B_RED="\[\e[91m\]"
-B_GREEN="\[\e[92m\]"
-B_YELLOW="\[\e[93m\]"
-B_BLUE="\[\e[94m\]"
-B_MAGENTA="\[\e[95m\]"
-B_CYAN="\[\e[96m\]"
-B_WHITE="\[\e[97m\]"
+B_BLACK="\[\e[1;90m\]"
+B_RED="\[\e[1;91m\]"
+B_GREEN="\[\e[1;92m\]"
+B_YELLOW="\[\e[1;93m\]"
+B_BLUE="\[\e[1;94m\]"
+B_MAGENTA="\[\e[1;95m\]"
+B_CYAN="\[\e[1;96m\]"
+B_WHITE="\[\e[1;97m\]"
 
 ### PROMPT ###
 PROMPT_COMMAND=__prompt_command
 __prompt_command() {
-  local EXIT="$?"
+  if [[ $? != 0 ]]; then
+    EXIT="$RED"
+  else
+    EXIT="$GREEN"
+  fi
 
-  local PS1L="$RED┎[$YELLOW\w$CYAN$(__git_ps1 " %s")$RED]"
-  local PS1R="$RED[$YELLOW$(whoami)$CYAN $DISTRO_ICON $BLUE$DISTRO $MAGENTA$(date +%T)$RED]"
+  local PS1L="$RED┌[$YELLOW\w$RED]$(__git_ps1 "─[$CYAN %s$RED]")"
+  local PS1R="[$YELLOW$(whoami)$CYAN@$BLUE$(hostname) $B_CYAN$DISTRO_ICON $MAGENTA$(date +%T)$RED]"
 
   local LINE="$RED"
   local i=0
   local c=6 # the number of color codes used in $PS1R
   local n=$(($COLUMNS + (12*$c) - ${#PS1R}))
-  while [ $i -lt $n ]
+  while [[ $i -lt $n ]]
   do
     ((i++))
     LINE+="─"
   done
 
   PS1=$(printf "%s\r%s" "$LINE$PS1R" "$PS1L")
-  PS1+="\n$RED┖"
 
-  if [ $EXIT != 0 ]; then
-    PS1+="$RED"
-  else
-    PS1+="$GREEN"
-  fi
-
-  PS1+=">>> $NORMAL"
+  PS1+="\n$RED└$EXIT>>> $NORMAL"
 }
 
 ### AUTO START TMUX ###
-if [ -n "$PS1" ] && [ -z "$TMUX" ];
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ ! "$(tmux ls)" =~ ^[main*attached] ]];
 then
   command tmux new-session -A -s main
 fi
 
 ### ENVIRONMENT VARIABLES ###
 export EDITOR=nvim
+[[ $TERM =~ kitty ]] && export TERM=xterm-256color

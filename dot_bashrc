@@ -73,7 +73,7 @@ __prompt_command() {
   fi
 
   local PS1L="$RED┌[$YELLOW\w$RED]$(__git_ps1 "─[$CYAN  %s$RED ]")"
-  local PS1R="[$YELLOW$(whoami)$CYAN@$BLUE$(hostnamectl | awk -F ":" NR==2'{print $2}') $B_CYAN$DISTRO_ICON $MAGENTA$(date +%T)$RED]"
+  local PS1R="[$YELLOW$(whoami)$CYAN@$BLUE$(hostnamectl | awk -F ": " NR==2'{print $2}') $B_CYAN$DISTRO_ICON $MAGENTA$(date +%T)$RED]"
 
   local LINE="$RED"
   local i=0

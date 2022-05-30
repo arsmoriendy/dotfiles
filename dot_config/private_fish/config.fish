@@ -45,7 +45,7 @@ function fish_prompt
   set -U fish_prompt_pwd_dir_length 0
 
   set -f LEFT (set_color -o red)"┌"\[(set_color -o yellow)(prompt_pwd)(set_color -o red)\]$GIT
-  set -f RIGHT \[(set_color -o yellow)(whoami)(set_color -o cyan)@(set_color -o blue)(hostnamectl | awk -F ":" NR==2'{print $2}')(set_color -o brcyan)" $DISTRO_ICON "(set_color -o magenta)(date +%T)(set_color -o red)\]"┐"
+  set -f RIGHT \[(set_color -o yellow)(whoami)(set_color -o cyan)@(set_color -o blue)(hostnamectl | awk -F ": " NR==2'{print $2}')(set_color -o brcyan)" $DISTRO_ICON "(set_color -o magenta)(date +%T)(set_color -o red)\]"┐"
 
   set -f LINE (set_color -o red)
   set -f i (math (string length -V $LEFT) + (string length -V $RIGHT))

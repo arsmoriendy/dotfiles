@@ -10,7 +10,7 @@ set list          " Display unprintable characters f12 - switches
 set listchars=trail:•,tab:│\ ,
 set gcr=i:ver100,a:blinkon100
 set updatetime=100
-set signcolumn=yes
+set cursorline
 set ignorecase smartcase
 set tabline=%!MyTabLine()
 
@@ -56,6 +56,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', {
       \ 'do': 'npm install --frozen-lockfile --production',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+Plug 'dag/vim-fish'
 call plug#end()
 
 " vim-javascript
@@ -101,7 +102,7 @@ hi Normal guibg=NONE
 hi NonText guifg=#7c6f64 guibg=NONE
 hi VertSplit guibg=NONE
 hi signcolumn guibg=NONE
-hi CursorLineNr guibg=NONE
+hi CursorLineSign guibg=#3c3836
 " Gruvbox
 hi GruvboxRedSign guibg=NONE
 hi GruvboxGreenSign guibg=NONE
@@ -110,18 +111,13 @@ hi GruvboxBlueSign guibg=NONE
 hi GruvboxPurpleSign guibg=NONE
 hi GruvboxAquaSign guibg=NONE
 hi GruvboxOrangeSign guibg=NONE
-" gitgutter
-hi GitGutterAdd guibg=NONE
-hi GitGutterChange guibg=NONE
-hi GitGutterDelete guibg=NONE
-hi GitGutterChangeDelete guibg=NONE
 " airline
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
   for mode in keys(a:palette)
     if string(mode) =~# "'normal'\\|'visual'\\|'replace'\\|'insert'"
-      let a:palette[mode].airline_a[0] = "#3c383c"
-      let a:palette[mode].airline_z[0] = "#3c383c"
+      let a:palette[mode].airline_a[0] = "#3c3836"
+      let a:palette[mode].airline_z[0] = "#3c3836"
     endif
   endfor
 endfunction

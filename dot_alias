@@ -1,0 +1,8 @@
+### ALIAS ###
+alias p="sudo $PACK_MAN"
+alias ls="exa"
+alias la="exa -alFH --icons"
+alias lam="la -s modified --time-style long-iso"
+alias che="chezmoi"
+alias sudo="sudo"
+alias bat="bat --theme gruvbox-dark -f"

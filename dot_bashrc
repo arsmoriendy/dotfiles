@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
-  . /etc/bashrc
+  source /etc/bashrc
 fi
 
 # User specific environment
@@ -33,16 +33,13 @@ case $DISTRO in
     ;;
 esac
 
-### ALIAS ###
-alias p="sudo ${PACK_MAN}"
-alias ls="exa"
-alias la="exa -alFH --icons"
-alias che="chezmoi"
-alias sudo="sudo -v; sudo " #restart sudo timeout; then runs sudo with alias compatibility
+### ALIASES ###
+source ~/.alias
+[[ $DISTRO = fedora ]] && alias 7z="7za"
 
 ### GIT AUTO COMPLETE AND PROMPT###
-. ~/.config/git-completion.bash
-. ~/.config/git-prompt.sh
+source ~/.config/git-completion.bash
+source ~/.config/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 ### COLORS ###
@@ -75,7 +72,7 @@ __prompt_command() {
     EXIT="$GREEN"
   fi
 
-  local PS1L="$RED┌[$YELLOW\w$RED]$(__git_ps1 "─[$CYAN %s$RED]")"
+  local PS1L="$RED┌[$YELLOW\w$RED]$(__git_ps1 "─[$CYAN  %s$RED ]")"
   local PS1R="[$YELLOW$(whoami)$CYAN@$BLUE$(hostname) $B_CYAN$DISTRO_ICON $MAGENTA$(date +%T)$RED]"
 
   local LINE="$RED"
@@ -100,5 +97,5 @@ then
 fi
 
 ### ENVIRONMENT VARIABLES ###
-export EDITOR=nvim
 [[ $TERM =~ kitty ]] && export TERM=xterm-256color
+export EDITOR=nvim

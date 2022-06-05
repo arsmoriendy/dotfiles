@@ -6,6 +6,7 @@ end
 # User specific environment
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
+fish_add_path ~/.cargo/bin
 
 set -xU DISTRO (cat /etc/os-release | grep ^ID | cut -d= -f2)
 
@@ -30,43 +31,47 @@ source ~/.alias
 
 ### PROMPT ###
 function fish_prompt
-  if [ $status -ne 0 ]
-    set EXIT (set_color -o red)
-  else
-    set EXIT (set_color -o green)
-  end
-
   if [ (fish_git_prompt) ]
-    set -f GIT ─"["(set_color -o cyan)"  "(string sub -s 3 -e -1 (fish_git_prompt))(set_color -o red)"]"
+    set -f GIT ─"["(set_color --bold cyan)"  "(string sub -s 3 -e -1 (fish_git_prompt))(set_color --bold red)"]"
   else
     set -f GIT ""
   end
 
   set -U fish_prompt_pwd_dir_length 0
 
-  set -f LEFT (set_color -o red)"┌"\[(set_color -o yellow)(prompt_pwd)(set_color -o red)\]$GIT
-  set -f RIGHT \[(set_color -o yellow)(whoami)(set_color -o cyan)@(set_color -o blue)(hostnamectl | awk -F ": " NR==2'{print $2}')(set_color -o brcyan)" $DISTRO_ICON "(set_color -o magenta)(date +%T)(set_color -o red)\]"┐"
+  set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT
+  set -f RIGHT \[(set_color --bold yellow)(whoami)(set_color --bold cyan)@(set_color --bold blue)(hostnamectl | awk -F ": " NR==2'{print $2}')(set_color --bold brcyan)" $DISTRO_ICON "(set_color --bold magenta)(date +%T)(set_color --bold red)\]"┐"
 
-  set -f LINE (set_color -o red)
+  set -f LINE (set_color --bold red)
   set -f i (math (string length -V $LEFT) + (string length -V $RIGHT))
   while [ $i -lt $COLUMNS ]
-    set -f i (math $i + 1)
-    set -f LINE "$LINE─"
+    set i (math $i + 1)
+    set LINE "$LINE─"
   end
 
   echo -e "$LEFT$LINE$RIGHT"
+  echo -e "└"(fish_default_mode_prompt; set_color --bold red)"─[ "
 
-  echo -e "└$EXIT>>> "
 end
 
 function fish_right_prompt
   if [ $status -ne 0 ]
-    set -f EXIT (set_color -o red)""
+    set EXIT (set_color --bold red)""
   else
-    set -f EXIT (set_color -o green)""
+    set EXIT (set_color --bold green)""
   end
 
-  echo -e (set_color -o red)"[$EXIT $CMD_DURATION"(set_color -o red)"]┘"
+  if [ $CMD_DURATION -gt 3600000 ]
+    set PARSED_CMD_DURATION (math -s1 $CMD_DURATION / 3600000)"h"
+  else if [ $CMD_DURATION -gt 60000 ]
+    set PARSED_CMD_DURATION (math -s1 $CMD_DURATION / 60000)"m"
+  else if [ $CMD_DURATION -gt 1000 ]
+    set PARSED_CMD_DURATION (math -s1 $CMD_DURATION / 1000)"s"
+  else
+    set PARSED_CMD_DURATION $CMD_DURATION"ms"
+  end
+
+  echo -e (set_color --bold red)"]─[$EXIT $PARSED_CMD_DURATION"(set_color --bold red)"]┘"
 end
 
 ### AUTO START TMUX ###
@@ -76,6 +81,7 @@ end
 
 ### ENVIRONMENT VARIABLES ###
 [ (string match -r "kitty" $TERM) ]; and set -x TERM xterm-256color
+set -xU TERMINAL kitty #$TERMINAL used for i3-sensible-terminal
 set -xU EDITOR nvim
 
 ### GREETING ###
@@ -88,26 +94,44 @@ function fish_greeting
     end
   end
 
-  fish -c 'curl -s "wttr.in?format=%l|%C%c|%t+/+%f|%w|%M%m|%T" > $HOME/.config/wttr_info' &
-
-  while [ -e (cat $HOME/.config/wttr_info) ]
-    sleep 0.5
-  end
-
   function neo_print -d "Takes 2 args and prints it in centered neofetch format"
     set -f halfcol (math floor $COLUMNS / 2)
-    printf (set_color -o cyan)"%*s"(set_color -o yellow)"%-*s\n" $halfcol "$argv[1]: " $halfcol " $argv[2]"
+    printf (set_color --bold cyan)"%*s"(set_color --bold yellow)"%-*s\n" $halfcol "$argv[1]: " $halfcol " $argv[2]"
   end
 
   function get_wttr -d "Fetch data from .config/wttr_info"
     cat $HOME/.config/wttr_info | awk -F "|" '{print $'"$argv[1]"'}'
   end
 
-  neo_print "Day, Date" (date "+%A, %B %d %Y")
-  neo_print "Time" (date "+%T %p")
-  neo_print "Location" (get_wttr 1)
-  neo_print "Weather" (get_wttr 2)
-  neo_print "Actual Temperature / Feels Like" (get_wttr 3)
-  neo_print "Wind" (get_wttr 4)
-  neo_print "Moon Day / Phase" (get_wttr 5)
+  if [ -e $HOME/.config/wttr_info -a -s $HOME/.config/wttr_info ]
+    neo_print "Day, Date" (date "+%A, %B %d %Y")
+    neo_print "Time" (date "+%T %p")
+    neo_print "Location" (get_wttr 1)
+    neo_print "Weather" (get_wttr 2)
+    neo_print "Actual Temperature / Feels Like" (get_wttr 3)
+    neo_print "Wind" (get_wttr 4)
+    neo_print "Moon Day / Phase" (get_wttr 5)
+  end
+
+  fish -c 'curl -s "wttr.in?format=%l|%C%c|%t+/+%f|%w|%M%m|%T" 1> $HOME/.config/wttr_info' &
 end
+
+# VI bindings
+fish_vi_key_bindings
+function fish_mode_prompt; end
+function fish_default_mode_prompt
+  switch $fish_bind_mode
+    case default
+      echo -ne (set_color --bold red)"[N]"
+    case insert
+      echo -ne (set_color --bold red)"["(set_color --bold green)I(set_color --bold red)"]"
+    case replace_one
+      echo -ne (set_color --bold red)"["(set_color --bold green)R(set_color --bold red)"]"
+    case visual
+      echo -ne (set_color --bold red)"["(set_color --bold brmagenta)V(set_color --bold red)"]"
+    case '*'
+      echo -ne (set_color --bold red)"[?]"
+  end
+  set_color normal
+end
+bind --mode insert \cc 'set fish_bind_mode default; commandline -f repaint'

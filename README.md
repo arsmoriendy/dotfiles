@@ -1,4 +1,5 @@
 # DOTFILES
+gruvbox themed configs
 ## Configs for
 - i3
 - picom

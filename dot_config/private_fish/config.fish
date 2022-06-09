@@ -75,7 +75,7 @@ function fish_right_prompt
 end
 
 ### AUTO START TMUX ###
-if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux ls)) ]
+if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux ls)) ]; and [ ! (string match '/dev/tty*' (tty) ) ]
   command tmux new-session -A -s main
 end
 
@@ -88,7 +88,7 @@ set -xU EDITOR nvim
 function fish_greeting
 
   if type -q figlet; and type -q lolcat
-    figlet -c -w $COLUMNS (whoami) -f THIS | lolcat -r
+    figlet -c -w $COLUMNS (whoami) -f smslant | lolcat -r
     for i in (seq 1 $COLUMNS)
       echo -n ─
     end
@@ -135,3 +135,8 @@ function fish_default_mode_prompt
   set_color normal
 end
 bind --mode insert \cc 'set fish_bind_mode default; commandline -f repaint'
+
+# auto startx
+if [ (tty) = "/dev/tty1" ]
+  startx
+end

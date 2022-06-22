@@ -77,7 +77,6 @@ let g:prettier#config#use_tabs='false'
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
-autocmd CursorHold * silent call CocActionAsync('highlight')
 "NERDTee
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeQuitOnOpen = 1

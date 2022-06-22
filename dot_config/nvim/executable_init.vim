@@ -2,22 +2,22 @@ filetype plugin indent on
 syntax on
 set rnu nu
 set noshowmode "no show INSERT, VISUAL, NORMAL
-set tgc
-set sts=2 "fake tab
-set sw=2
+set termguicolors
+set softtabstop=2
+set shiftwidth=2
 set noexpandtab
 set list          " Display unprintable characters f12 - switches
 set listchars=trail:•,tab:│\ ,
-set gcr=i:ver100,a:blinkon100
+set guicursor=i:ver100,a:blinkon100
 set updatetime=100
 set cursorline
 set ignorecase smartcase
 set tabline=%!MyTabLine()
 
-fu MyTabLine()
+function MyTabLine()
   let s = ''
-  hi TabLineSel guibg=#a89984 guifg=#3c3836
-  hi TabLineSelPL2 guibg=#3c3836 guifg=#a89984
+  highlight TabLineSel guibg=#a89984 guifg=#3c3836
+  highlight TabLineSelPL2 guibg=#3c3836 guifg=#a89984
 
   for i in range(tabpagenr('$'))
     let BufName = fnamemodify(bufname(tabpagebuflist(i + 1)[tabpagewinnr(i + 1) - 1]), ":t")
@@ -35,10 +35,10 @@ fu MyTabLine()
     else
       let s .= '%#TabLine#' .  ' '.TabLabel.' '
     endif
-  endfo
+  endfor
 
   return s
-endf
+endfunction
 
 "https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
@@ -97,20 +97,20 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:suda_smart_edit = 1
 
 "==================== COLOR-SCHEME ===================="
-colo gruvbox
-hi Normal guibg=NONE
-hi NonText guifg=#7c6f64 guibg=NONE
-hi VertSplit guibg=NONE
-hi signcolumn guibg=NONE
-hi CursorLineSign guibg=#3c3836
+colorscheme gruvbox
+highlight Normal guibg=NONE
+highlight NonText guifg=#7c6f64 guibg=NONE
+highlight VertSplit guibg=NONE
+highlight signcolumn guibg=NONE
+highlight CursorLineSign guibg=#3c3836
 " Gruvbox
-hi GruvboxRedSign guibg=NONE
-hi GruvboxGreenSign guibg=NONE
-hi GruvboxYellowSign guibg=NONE
-hi GruvboxBlueSign guibg=NONE
-hi GruvboxPurpleSign guibg=NONE
-hi GruvboxAquaSign guibg=NONE
-hi GruvboxOrangeSign guibg=NONE
+highlight GruvboxRedSign guibg=NONE
+highlight GruvboxGreenSign guibg=NONE
+highlight GruvboxYellowSign guibg=NONE
+highlight GruvboxBlueSign guibg=NONE
+highlight GruvboxPurpleSign guibg=NONE
+highlight GruvboxAquaSign guibg=NONE
+highlight GruvboxOrangeSign guibg=NONE
 " airline
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
@@ -124,25 +124,25 @@ endfunction
 
 "==================== KEY-MAPS ===================="
 "auto close
-fu IsNextKey(key)
+function IsNextKey(key)
   if getline(".")[col(".")-1] == a:key
     return 1
-  en
-endf
+  endif
+endfunction
 
-ino  { {}<LEFT>
-ino <expr> } IsNextKey("}") ? '<RIGHT>' : "}"
-ino ( ()<LEFT>
-ino <expr> ) IsNextKey(")") ? '<RIGHT>' : ")"
-ino [ []<LEFT>
-ino <expr> ] IsNextKey("]") ? '<RIGHT>' : "]"
-ino < <><LEFT>
-ino <expr> > IsNextKey(">") ? '<RIGHT>' : ">"
-ino <expr> ' IsNextKey("'") ? '<RIGHT>' : "''\<LEFT>"
-ino <expr> " IsNextKey('"') ? '<RIGHT>' : '""<LEFT>'
-ino <expr> ` IsNextKey("`") ? '<RIGHT>' : '``<LEFT>'
+inoremap  { {}<LEFT>
+inoremap <expr> } IsNextKey("}") ? '<RIGHT>' : "}"
+inoremap ( ()<LEFT>
+inoremap <expr> ) IsNextKey(")") ? '<RIGHT>' : ")"
+inoremap [ []<LEFT>
+inoremap <expr> ] IsNextKey("]") ? '<RIGHT>' : "]"
+inoremap < <><LEFT>
+inoremap <expr> > IsNextKey(">") ? '<RIGHT>' : ">"
+inoremap <expr> ' IsNextKey("'") ? '<RIGHT>' : "''\<LEFT>"
+inoremap <expr> " IsNextKey('"') ? '<RIGHT>' : '""<LEFT>'
+inoremap <expr> ` IsNextKey("`") ? '<RIGHT>' : '``<LEFT>'
 
-fu CheckWrap()
+function CheckWrap()
   let l:open = getline(".")[col(".")-2]
   let l:close = getline(".")[col(".")-1]
   if (l:open == "{" && l:close == "}")
@@ -161,22 +161,22 @@ fu CheckWrap()
     return 1
   elseif (l:open == "`" && l:close == "`")
     return 1
-  en
-endf
+  endif
+endfunction
 
-ino <expr> <BS> CheckWrap() ? '<RIGHT><BS><BS>' : '<BS>'
+inoremap <expr> <BS> CheckWrap() ? '<RIGHT><BS><BS>' : '<BS>'
 imap <C-H> <BS>
-ino <expr> <CR> CheckWrap() ? '<CR><C-O>O' : '<CR>'
+inoremap <expr> <CR> CheckWrap() ? '<CR><C-O>O' : '<CR>'
 "toggle search highlight
-fu ToHls()
+function ToHls()
   set hls!
   if (&hls)
     echohl DiffAdd | echo "Search highlight ON" | echohl None
   else
     echohl DiffDelete | echo "Search highlight OFF" | echohl None
   en
-endf
-no <expr> <C-f> ToHls()
+endfunction
+noremap <expr> <C-f> ToHls()
 "reload config
 nmap <C-_> :so ~/.config/nvim/init.vim<CR>
 "exit
@@ -187,18 +187,18 @@ map <C-s> :w<CR>
 "delete
 imap <C-l> <DEL>
 "indent all lines
-fu IndentAll()
+function IndentAll()
   return "gg=G" . line(".") . "G"
-endf
-nno <expr> == IndentAll()
+endfunction
+nnoremap <expr> == IndentAll()
 "nerdtree
 nmap <silent> <Space> :NERDTreeToggle<CR>
 "revert to save
 map <C-M-u> :earlier 1f<CR>
 map <C-M-r> :later 1f<CR>
 "Coc
-ino <silent><expr> <C-Space> coc#refresh()
-ino <expr> <TAB> pumvisible() ? '<C-y>' : '<C-g>u<TAB>'
+inoremap <silent><expr> <C-Space> coc#refresh()
+inoremap <expr> <TAB> pumvisible() ? '<C-y>' : '<C-g>u<TAB>'
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "navigate vim windows
@@ -207,5 +207,5 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 "navigate tabs
-nm <silent> <TAB> :tabn<CR>
-nm <silent> <S-TAB> :tabp<CR>
+nmap <silent> <TAB> :tabn<CR>
+nmap <silent> <S-TAB> :tabp<CR>

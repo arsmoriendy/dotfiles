@@ -1,11 +1,14 @@
 filetype plugin indent on
 syntax on
-set rnu nu
+set relativenumber number
 set noshowmode "no show INSERT, VISUAL, NORMAL
 set termguicolors
+"number of spaces in <TAB> while editing
 set softtabstop=2
+"number of spaces in <TAB> in autotab
 set shiftwidth=2
-set noexpandtab
+"replace <TAB> with spaces during editing
+set expandtab
 set list          " Display unprintable characters f12 - switches
 set listchars=trail:•,tab:│\ ,
 set guicursor=i:ver100,a:blinkon100
@@ -13,6 +16,9 @@ set updatetime=100
 set cursorline
 set ignorecase smartcase
 set tabline=%!MyTabLine()
+
+"show help in tab instead
+cabbrev h tab help
 
 function MyTabLine()
   let s = ''
@@ -27,9 +33,9 @@ function MyTabLine()
     if i + 1 == tabpagenr()
       let s .= '%#TabLineSel#'
       if tabpagenr() == 1
-	let s .= ' '
+        let s .= ' '
       else
-	let s .= ' '
+        let s .= ' '
       endif
       let s .=  TabLabel.' %#TabLineSelPL2# '
     else
@@ -173,11 +179,11 @@ function ToHls()
     echohl DiffAdd | echo "Search highlight ON" | echohl None
   else
     echohl DiffDelete | echo "Search highlight OFF" | echohl None
-  en
+  endif
 endfunction
 noremap <expr> <C-f> ToHls()
 "reload config
-nmap <C-_> :so ~/.config/nvim/init.vim<CR>
+nmap <F5> :so ~/.config/nvim/init.vim<CR>
 "exit
 nmap <S-q> :qa!<CR>
 nmap <C-w><C-q> :q!<CR>

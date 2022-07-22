@@ -77,6 +77,8 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym Mod1+Tab focus next
+bindsym Mod1+Shift+Tab focus prev
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -95,6 +97,10 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# scratchpad
+bindsym $mod+m move scratchpad
+bindsym $mod+Shift+m scratchpad show
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -162,9 +168,19 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+asciitilde move container to workspace $wsleft
 
+# switch workspaces back and forth
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # asign to workspaces
-assign [window_role="browser"] $ws2
 assign [window_role="PictureInPicture"] $wsleft
+assign [title="Mozilla Firefox (Private Browsing)"] $ws3
+## browser
+assign [window_role="browser"] $ws2
+## gaming
+assign [class="Lutris"] $ws4
+assign [class="Steam"] $ws4
+assign [class="epicgameslauncher.exe"] $ws4
 
 # asign workspace
 for_window [workspace=$ws2] layout tabbed
@@ -236,7 +252,7 @@ gaps inner 7
 gaps top 33
 
 exec picom --experimental-backends
-exec feh --bg-fill ~/Pictures/unsplash/index.jpg
+exec feh --bg-fill ~/.config/i3/wallpaper.jpg
 exec polybar -r left
 exec polybar -r top
 exec xrandr --output HDMI-A-1 --mode 1366x768 --pos 0x0 --output HDMI-A-0 --mode 1920x1080 --pos 1366x-312

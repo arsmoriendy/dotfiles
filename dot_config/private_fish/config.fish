@@ -32,7 +32,7 @@ source ~/.alias
 ### PROMPT ###
 function fish_prompt
   if [ (fish_git_prompt) ]
-    set -f GIT ─"["(set_color --bold cyan)"  "(string sub -s 3 -e -1 (fish_git_prompt))(set_color --bold red)"]"
+    set -f GIT ─"["(set_color --bold cyan)"  "(string sub -s 3 -e -1 (fish_git_prompt))(set_color --bold red)" ]"
   else
     set -f GIT ""
   end

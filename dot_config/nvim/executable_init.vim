@@ -63,6 +63,7 @@ Plug 'prettier/vim-prettier', {
       \ 'do': 'npm install --frozen-lockfile --production',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'dag/vim-fish'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " vim-javascript
@@ -82,6 +83,7 @@ let g:airline_powerline_fonts = 1
 let g:prettier#config#use_tabs='false'
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+let g:prettier#quickfix_enabled = 0
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-css', 'coc-highlight']
 "NERDTee
 let g:NERDTreeShowHidden = 1

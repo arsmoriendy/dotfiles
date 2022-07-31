@@ -1,0 +1,56 @@
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+
+* {
+  border-color: #fe8019;
+  background: hsla(0,0,0.16,0.8);
+  background-color: transparent;
+  normal-background: transparent;
+  alternate-normal-background: transparent;
+}
+
+window {
+  border: 0;
+  padding: 0;
+  width: 30%;
+}
+
+inputbar {
+  children: [ entry, textbox-entry-suffix ];
+  background-color: @background;
+  padding: 10;
+}
+
+entry {
+  font: "CaskaydiaCove Nerd Font Mono 18";
+  placeholder: "Search";
+  placeholder-color: @gruvbox-dark-gray;
+  cursor: text;
+  vertical-align: 0.5;
+}
+
+textbox-entry-suffix {
+  font: "CaskaydiaCove Nerd Font Mono 25";
+  str: "";
+  text-color: inherit;
+  expand: false;
+  vertical-align: 0.5;
+}
+
+listview {
+  border: 0;
+  lines: 10;
+  scrollbar: false;
+}
+
+element {
+  children: [ element-icon, element-text ];
+  padding: 5;
+}
+
+element-icon {
+  size: 30;
+}
+
+element-text {
+  vertical-align: 0.5;
+}

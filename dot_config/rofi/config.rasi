@@ -52,7 +52,7 @@ configuration {
 /*	drun-reload-desktop-cache: false;*/
 /*	normalize-match: false;*/
 /*	steal-focus: false;*/
-/*	application-fallback-icon: ;*/
+        application-fallback-icon: "~/.config/rofi/fallback-icon.svg";
 /*	pid: "/run/user/1000/rofi.pid";*/
 /*	display-window: ;*/
 /*	display-windowcd: ;*/

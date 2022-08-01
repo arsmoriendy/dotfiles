@@ -1,5 +1,6 @@
 ### ALIAS ###
 alias p="sudo $PACK_MAN"
+alias sctl="sudo systemctl"
 alias ls="exa --icons"
 alias la="exa -alFH --icons"
 alias lam="la -s modified --time-style long-iso --icons"

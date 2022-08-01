@@ -20,8 +20,8 @@ configuration{
 }
 
 window {
-  width: 100px;
-  height: 318px;
+  width: 76px;
+  height: 360px;
   border: 0;
   padding: 0;
   location: east;
@@ -41,5 +41,5 @@ listview {
 
 element {
   children: [ element-text ];
-  padding: 40px;
+  padding: 23px 29px;
 }

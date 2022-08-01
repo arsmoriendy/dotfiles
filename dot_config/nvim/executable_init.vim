@@ -16,6 +16,8 @@ set updatetime=100
 set cursorline
 set ignorecase smartcase
 set tabline=%!MyTabLine()
+"read file on change and apply to buffer
+set autoread
 
 "show help in tab instead
 cabbrev h tab help

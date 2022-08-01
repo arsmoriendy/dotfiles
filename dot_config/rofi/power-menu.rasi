@@ -2,18 +2,15 @@ configuration{
   kb-select-1: "1";
   kb-select-2: "2";
   kb-select-3: "3";
-  kb-select-4: "4";
-  kb-select-5: "5";
-  kb-select-6: "6";
   kb-row-up: "Up,Control+p,ISO_Left_Tab,k";
   kb-row-down: "Down,Control+n,j";
-  kb-cancel: "Escape,Control+c,Control+bracketleft,Super+p,q";
+  kb-cancel: "Escape,Control+c,Super+Escape,q";
+  font: "CaskaydiaCove Nerd Font 16";
 }
 
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
 
 * {
-  border-color: #fe8019;
   background: hsla(0,0,0.16,0.8);
   background-color: transparent;
   normal-background: transparent;
@@ -23,7 +20,10 @@ configuration{
 }
 
 window {
+  width: 100px;
+  height: 318px;
   border: 0;
+  padding: 0;
   location: east;
   x-offset: -1%;
 }
@@ -32,17 +32,14 @@ mainbox {
   children: [ listview ];
 }
 
-inputbar {
-  children: [ entry ];
-}
-
 listview {
   border: 0;
+  padding: 0;
+  spacing: 0;
   scrollbar: false;
-  lines: 6;
 }
 
 element {
-  orientation: vertical;
   children: [ element-text ];
+  padding: 40px;
 }

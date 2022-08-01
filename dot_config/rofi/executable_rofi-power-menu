@@ -28,14 +28,14 @@ texts[reboot]="reboot"
 texts[shutdown]="shut down"
 
 declare -A icons
-icons[lockscreen]="\uf023"
-icons[switchuser]="\uf518"
-icons[logout]="\uf842"
-icons[suspend]="\uf9b1"
-icons[hibernate]="\uf7c9"
-icons[reboot]="\ufc07"
-icons[shutdown]="\uf011"
-icons[cancel]="\u00d7"
+icons[lockscreen]=""
+icons[switchuser]=""
+icons[logout]=""
+icons[suspend]=""
+icons[hibernate]=""
+icons[reboot]=""
+icons[shutdown]=""
+icons[cancel]=""
 
 declare -A actions
 actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
@@ -47,7 +47,7 @@ actions[reboot]="systemctl reboot"
 actions[shutdown]="systemctl poweroff"
 
 # By default, ask for confirmation for actions that are irreversible
-confirmations=(reboot shutdown logout)
+confirmations=()
 
 # By default, no dry run
 dryrun=false
@@ -67,7 +67,7 @@ function check_valid {
 }
 
 # Parse command-line options
-parsed=$(getopt --options=h --longoptions=help,dry-run,confirm:,choices:,choose:,symbols,no-symbols --name "$0" -- "$@")
+parsed=$(getopt --options=h --longoptions=help,dry-run,confirm:,choices:,choose:,symbols,symbols-only,no-symbols --name "$0" -- "$@")
 if [ $? -ne 0 ]; then
     echo 'Terminating...' >&2
     exit 1
@@ -133,6 +133,10 @@ while true; do
             showsymbols=true
             shift 1
             ;;
+        "--symbols-only")
+            showsymbols=only
+            shift 1
+            ;;
         "--no-symbols")
             showsymbols=false
             shift 1
@@ -157,6 +161,9 @@ function write_message {
     if [ "$showsymbols" = "true" ]
     then
         echo -n "\u200e$icon \u2068$text\u2069"
+    elif [ "$showsymbols" = "only" ] 
+    then
+        echo -n "$icon"
     else
         echo -n "$text"
     fi

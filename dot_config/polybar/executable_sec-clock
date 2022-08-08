@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+SEC=$(timedatectl | awk -F: '/Universal time/ {print $4}' | awk '{print $1}')
+if [[ $SEC > 54 ]]
+then echo ""
+elif [[ $SEC > 49 ]]
+then echo ""
+elif [[ $SEC > 44 ]]
+then echo ""
+elif [[ $SEC > 39 ]]
+then echo ""
+elif [[ $SEC > 34 ]]
+then echo ""
+elif [[ $SEC > 29 ]]
+then echo ""
+elif [[ $SEC > 24 ]]
+then echo ""
+elif [[ $SEC > 19 ]]
+then echo ""
+elif [[ $SEC > 14 ]]
+then echo ""
+elif [[ $SEC > 9 ]]
+then echo ""
+elif [[ $SEC > 4 ]]
+then echo ""
+else echo ""
+fi

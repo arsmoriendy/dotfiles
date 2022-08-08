@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+BATTERIES=$(ls /sys/class/power_supply | grep BAT)
+
+for BATTERY in $BATTERIES
+do
+  CAPACITY=$(cat /sys/class/power_supply/$BATTERY/energy_now)
+  DRAIN=$(cat /sys/class/power_supply/$BATTERY/power_now)
+  STATUS=$(cat /sys/class/power_supply/$BATTERY/status)
+
+  FULL_CAPACITY=$(($FULL_CAPACITY + $CAPACITY))
+  FULL_DRAIN=$(($FULL_DRAIN + $DRAIN))
+  if [[ $STATUS = "Charging" ]]
+  then
+  FULL_STATUS=Charging
+  fi
+done
+
+if [[ $FULL_STATUS != "Charging" && $FULL_DRAIN != 0 ]]
+then
+  REMAINING=$(($FULL_CAPACITY/$FULL_DRAIN))
+  echo "羽 "$REMAINING"hr"
+else
+  echo ""
+fi

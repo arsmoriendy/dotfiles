@@ -252,16 +252,10 @@ for_window [class=".*"] border pixel 3
 
 # Gaps
 gaps inner 7
-gaps top 33
+gaps top 34
 
 exec picom --experimental-backends
 exec feh --bg-fill ~/.config/i3/wallpaper.jpg
-exec polybar -r left
-exec polybar -r top
-exec xrandr --output HDMI-A-1 --mode 1366x768 --pos 0x0 --output HDMI-A-0 --mode 1920x1080 --pos 1366x-312
-workspace $wsleft output HDMI-A-1
-exec xset r rate 200
-exec xinput set-prop 11 304 -0.7
+exec ~/.config/polybar/exec.sh
 exec firefox
 exec kitty
-exec --no-startup-id i3-msg 'workspace 11:left; exec kitty fish -C bpytop'

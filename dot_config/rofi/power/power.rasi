@@ -11,7 +11,7 @@ configuration{
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
 
 * {
-  background: hsla(0,0,0.16,0.8);
+  background: #504945CC;
   background-color: transparent;
   normal-background: transparent;
   alternate-normal-background: transparent;

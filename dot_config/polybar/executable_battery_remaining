@@ -21,5 +21,5 @@ then
   REMAINING=$(($FULL_CAPACITY/$FULL_DRAIN))
   echo "羽 "$REMAINING"hr"
 else
-  echo ""
+  echo "ﮣ AC"
 fi

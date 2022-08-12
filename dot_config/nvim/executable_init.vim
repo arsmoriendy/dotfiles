@@ -208,8 +208,7 @@ map <C-M-r> :later 1f<CR>
 "Coc
 let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <C-Space> coc#refresh()
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
-inoremap <silent><expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "navigate vim windows

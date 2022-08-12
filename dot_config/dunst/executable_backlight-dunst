@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+BRIGHTNESS=$(xbacklight -get | awk -F. '{print $1}')
+
+if [[ $1 = "-inc" ]]
+then
+  POST_VAL=$(($BRIGHTNESS+$2))
+else
+  POST_VAL=$(($BRIGHTNESS-$2))
+fi
+
+dunstify "BRIGHTNESS:" -h int:value:$POST_VAL -h string:x-dunst-stack-tag:system-progress -h string:category:device -a xbacklight -i display-brightness-symbolic
+
+xbacklight $1 $2

@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+get () {
+    VOLUME=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F: '{print $3}' | awk -F/ '{print $2}' | awk '{print $1}' | awk -F% '{print $1}')
+
+    if [[ $VOLUME -gt 66 ]]
+    then
+      VOLUME_ICON="audio-volume-high-symbolic"
+    elif [[ $VOLUME -gt 33 ]]
+    then
+      VOLUME_ICON="audio-volume-medium-symbolic"
+    else
+      VOLUME_ICON="audio-volume-low-symbolic"
+    fi
+
+    if [[ $(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}') = yes ]]
+    then
+      MUTE="Muted"
+      MUTE_ICON="audio-volume-muted-symbolic"
+    else
+      MUTE="Unmuted"
+      MUTE_ICON=$VOLUME_ICON
+    fi
+}
+
+case $1 in
+  +*% | -*% )
+    pactl set-sink-volume @DEFAULT_SINK@ $1
+    get
+    dunstify "VOLUME:" -h int:value:$VOLUME -h string:x-dunst-stack-tag:pactl-source -h string:category:device -a pactl -i $VOLUME_ICON
+    ;;
+  mute )
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    get
+    dunstify $MUTE -h string:x-dunst-stack-tag:pactl-source -h string:category:device -a pactl -i $MUTE_ICON
+    ;;
+  mutemic )
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    if [[ $(pactl get-source-mute @DEFAULT_SOURCE@) = "Mute: yes" ]]
+    then
+      MIC_MUTE="Muted"
+      MIC_MUTE_ICON="microphone-sensitivity-muted-symbolic"
+    else
+      MIC_MUTE="Unmuted"
+      MIC_MUTE_ICON="microphone-sensitivity-high-symbolic"
+    fi
+    dunstify "$MIC_MUTE" -h string:x-dunst-stack-tag:pact-sink -h string:category:device -a pactl -i $MIC_MUTE_ICON
+    ;;
+  *)
+    echo invalid input
+    ;;
+esac
+

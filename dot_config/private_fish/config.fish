@@ -26,7 +26,16 @@ switch $DISTRO
 end
 
 ### ALIAS ###
-source ~/.alias
+abbr -a p "sudo $PACK_MAN"
+abbr -a sctl "sudo systemctl"
+abbr -a ls "exa --icons"
+abbr -a la "exa -alFH --icons"
+abbr -a lam "exa -alFH -s modified --time-style long-iso --icons"
+abbr -a che "chezmoi"
+abbr -a bat "bat --theme gruvbox-dark -f"
+abbr -a ip "ip -c=always"
+abbr -a snaproot "sudo btrfs subvolume snapshot / /.btrfs-snapshots/@_$(date -Iseconds)"
+abbr -a subdel "sudo btrfs subvolume delete"
 [ $DISTRO = "fedora" ]; and alias 7z=7za
 
 ### PROMPT ###

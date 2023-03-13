@@ -17,6 +17,7 @@ set cursorline
 set ignorecase smartcase
 "read file on change and apply to buffer
 set autoread
+set nowrap
 
 "-- COMMANDS --"
 " show help
@@ -68,6 +69,8 @@ imap <silent> <C-S-Tab> <ESC>:tabprevious<CR>
 nmap <silent> <Enter> :lua vim.diagnostic.open_float()<CR>
 nmap <silent> <Tab> :lua vim.diagnostic.goto_next()<CR>
 nmap <silent> <S-Tab> :lua vim.diagnostic.goto_prev()<CR>
+" disable jumping
+nmap <C-o> <Enter>
 
 "-- LOAD LUA CONFIGS --"
 source ~/.config/nvim/lua/init.lua

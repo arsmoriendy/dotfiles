@@ -18,6 +18,7 @@ set ignorecase smartcase
 "read file on change and apply to buffer
 set autoread
 set nowrap
+set showtabline=1
 
 "-- COMMANDS --"
 " show help

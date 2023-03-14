@@ -117,8 +117,8 @@ return require("packer").startup(function(use)
           mode = "tabs",
           separator_style = "slant",
           middle_mouse_command = "bdelete! %d",
+          always_show_bufferline = false,
         },
-        -- overrides default custom filter to none
         highlights = {
           fill = {bg = "#282828", fg = "#a89984"},
           background = {bg = "#504945", fg = "#ebdbb2"},
@@ -127,7 +127,7 @@ return require("packer").startup(function(use)
           separator = {bg = "#504945", fg = "#3c3836"},
           separator_visible = {bg = "#504945", fg = "#282828"},
           separator_selected = {bg = "none", fg = "#282828"},
-        }
+        },
       })
     end,
     requires = "nvim-tree/nvim-web-devicons"
@@ -175,17 +175,16 @@ return require("packer").startup(function(use)
   use({
     "nvim-tree/nvim-tree.lua",
     config = function()
-      local nvim_tree = require("nvim-tree")
       vim.keymap.set("n", "<SPACE>", ":NvimTreeToggle<CR>", {silent = true})
       -- on VimEnter, if file is directory, open nvim-tree and cd into directory
       vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function(data)
         if vim.fn.isdirectory(data.file) == 1 then
           vim.cmd.cd(data.file)
-          nvim_tree.open()
+          require("nvim-tree.api").tree.open()
         end
       end})
       -- setup
-      nvim_tree.setup({
+      require("nvim-tree").setup({
         disable_netrw = true, -- disable netrw (vim's built-in manager; as recomended by nvim-tree documentation)
         hijack_netrw = true,
         hijack_cursor = true,
@@ -339,6 +338,10 @@ return require("packer").startup(function(use)
         require("scrollbar.handlers.search").setup({}) -- need table argument
         require("scrollbar.handlers.gitsigns").setup()
         require("scrollbar").setup({
+          excluded_filetypes = {
+            -- disable scrollbar for alpha (blank startup plugin)
+            "alpha",
+          },
           handle = {
             highlight = "Visual"
           }
@@ -367,9 +370,9 @@ return require("packer").startup(function(use)
       config = function()
         -- highlights
         vim.cmd([[
-          highlight AlphaLogo guifg=#504945
-          highlight AlphaText guifg=#665C54
-          highlight AlphaTextBold guifg=#665C54 gui=bold
+        highlight AlphaLogo guifg=#504945
+        highlight AlphaText guifg=#665C54
+        highlight AlphaTextBold guifg=#665C54 gui=bold
         ]])
 
         -- header
@@ -465,6 +468,7 @@ return require("packer").startup(function(use)
             subheader,
             {type = "padding", val = 2},
             buttonGroup,
+            {type = "padding", val = 10},
           }
         }
 

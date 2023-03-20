@@ -233,7 +233,8 @@ return require("packer").startup(function(use)
     "neovim/nvim-lspconfig",
     requires = {
       "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
-      "williamboman/mason-lspconfig.nvim" -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
+      "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
+      "SmiteshP/nvim-navic", -- winbar (integrate with "barbecue.nvim")
     },
     config = function()
       -- dependency ordering matters
@@ -246,6 +247,11 @@ return require("packer").startup(function(use)
         function (server_name) -- default handler
           require("lspconfig")[server_name].setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            on_attach = function (client, bufnr)
+              if client.server_capabilities.documentSymbolProvider then
+                require("nvim-navic").attach(client, bufnr)
+              end
+            end,
           })
         end
       })
@@ -333,6 +339,22 @@ return require("packer").startup(function(use)
           },
         })
       end
+    })
+
+    -- barbecue.nvim (winbar)
+    use({
+      "utilyre/barbecue.nvim",
+      requires = {
+        "SmiteshP/nvim-navic",
+        "nvim-tree/nvim-web-devicons",
+      },
+      after = "gruvbox.nvim",
+      config = function ()
+        require("barbecue").setup({
+          attach_navic = false,
+          show_dirname = false,
+        })
+      end,
     })
 
     -- nvim-scrollbar

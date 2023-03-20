@@ -244,7 +244,9 @@ return require("packer").startup(function(use)
       -- automatic server setup (:h mason-lspconfig-automatic-server-setup)
       require("mason-lspconfig").setup_handlers({
         function (server_name) -- default handler
-          require("lspconfig")[server_name].setup({})
+          require("lspconfig")[server_name].setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+          })
         end
       })
       -- specific server configurations (ensure it's installed)
@@ -286,6 +288,7 @@ return require("packer").startup(function(use)
     "hrsh7th/nvim-cmp",
     requires = {
       "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
+      "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer"
     },
@@ -322,7 +325,8 @@ return require("packer").startup(function(use)
           sources = {
             {name = "luasnip"},
             {name = "path"},
-            {name = "buffer"}
+            {name = "buffer"},
+            {name = "nvim_lsp"},
           },
           experimental = {
             ghost_text = true

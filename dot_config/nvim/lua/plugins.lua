@@ -89,7 +89,11 @@ return require("packer").startup(function(use)
             -- search highlight indicator
             {
               function() return vim.o.hlsearch and "" or  "" end
-            }
+            },
+            -- snippet indicator
+            {
+              function () return require("luasnip").in_snippet() and "" or "" end
+            },
           },
           lualine_c = {
             {

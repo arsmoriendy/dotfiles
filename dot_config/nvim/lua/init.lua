@@ -21,7 +21,8 @@ local luasnip = require("luasnip")
 
 -- jump forwards in snippets / tab
 vim.keymap.set({"i", "s"}, "<Tab>", function()
-  if luasnip.jumpable() then
+  require('lualine').refresh()
+  if luasnip.locally_jumpable() then
     return "<Plug>luasnip-jump-next"
   else
     return "<Tab>"

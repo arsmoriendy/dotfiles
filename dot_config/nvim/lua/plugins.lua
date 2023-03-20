@@ -317,7 +317,6 @@ return require("packer").startup(function(use)
             ["<PageDown>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
             ["<C-up>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
             ["<PageUp>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
-            ["<Right>"] = cmp.mapping({i = cmp_map_function(function() cmp.confirm({select = true}) end)}),
             ["<CR>"] = cmp.mapping({i = cmp_map_function(function() cmp.confirm({select = true}) end)}),
             ["<C-x>"] = cmp.mapping({i = cmp_map_function(cmp.abort)}),
             ["<C-c>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),

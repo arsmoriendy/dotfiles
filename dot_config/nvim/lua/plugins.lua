@@ -394,6 +394,13 @@ return require("packer").startup(function(use)
         map("n", "gN", gitsigns.prev_hunk)
         map("n", "gp", gitsigns.preview_hunk)
         map("n", "gd", gitsigns.diffthis)
+        map("n", "gs", gitsigns.stage_hunk)
+        -- stage selected
+        map("x", "gs", [[<ESC>:lua require("gitsigns").stage_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
+        map("n", "gr", gitsigns.reset_hunk)
+        -- reset hunk
+        map("x", "gr", [[<ESC>:lua require("gitsigns").reset_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
+        map("n", "gR", gitsigns.reset_buffer)
       end
     })
 

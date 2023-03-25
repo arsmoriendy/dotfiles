@@ -276,6 +276,10 @@ return require("packer").startup(function(use)
           }
         }
       })
+      lspconfig["emmet_ls"].setup({
+        -- add php for emmet
+        filetypes = {"html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php"},
+      })
     end
   })
 

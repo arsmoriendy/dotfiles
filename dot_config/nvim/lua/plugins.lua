@@ -244,276 +244,279 @@ return require("packer").startup(function(use)
       })
       -- automatic server setup (:h mason-lspconfig-automatic-server-setup)
       require("mason-lspconfig").setup_handlers({
-        function (server_name) -- default handler
-          require("lspconfig")[server_name].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            on_attach = function (client, bufnr)
-              if client.server_capabilities.documentSymbolProvider then
-                require("nvim-navic").attach(client, bufnr)
-              end
-            end,
-          })
+        function (server_name)
+          -- specific server configs
+          local configs = {
+            lua_ls = {
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {'vim'},
+                  },
+                  workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false,
+                  },
+                  -- Do not send telemetry data containing a randomized but unique identifier
+                  telemetry = {
+                    enable = false,
+                  },
+                }
+              }
+            },
+            emmet_ls = {
+              -- add php for emmet
+              filetypes = {"html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php"},
+            },
+          };
+          -- current config
+          local config = configs[server_name] or {};
+          -- append default configs
+          config.capabilities = require("cmp_nvim_lsp").default_capabilities();
+          config.on_attach = function (client, bufnr)
+            if client.server_capabilities.documentSymbolProvider then
+              require("nvim-navic").attach(client, bufnr)
+            end
+          end;
+          require("lspconfig")[server_name].setup(config);
+      end
+    })
+  end
+})
+
+-- LuaSnip
+use({
+  "L3MON4D3/LuaSnip",
+  requires = {"rafamadriz/friendly-snippets"},
+  config = function()
+    -- atuo load snippets from friendly-snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
+  end
+})
+
+-- nvim-cmp
+use({
+  "hrsh7th/nvim-cmp",
+  requires = {
+    "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
+    "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer"
+  },
+  config = function()
+    local cmp = require("cmp")
+    -- function biolerplate -> function(fallback)
+      local cmp_map_function = function(action)
+        return function(fallback)
+          if cmp.visible() then action() else fallback() end
         end
-      })
-      -- specific server configurations (ensure it's installed)
-      local lspconfig = require("lspconfig")
-      -- lua_ls
-      lspconfig["lua_ls"].setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {'vim'},
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
-            },
-          }
-        }
-      })
-      lspconfig["emmet_ls"].setup({
-        -- add php for emmet
-        filetypes = {"html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php"},
+      end
+
+      cmp.setup({
+        mapping = {
+          ["<C-n>"] = cmp.mapping({i = cmp_map_function(cmp.select_next_item)}),
+          ["<Down>"] = cmp.mapping({i = cmp_map_function(cmp.select_next_item)}),
+          ["<C-p>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
+          ["<Up>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
+          ["<C-down>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
+          ["<PageDown>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
+          ["<C-up>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
+          ["<PageUp>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
+          ["<CR>"] = cmp.mapping({i = cmp_map_function(function() cmp.confirm({select = true}) end)}),
+          ["<C-x>"] = cmp.mapping({i = cmp_map_function(cmp.abort)}),
+          ["<C-c>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),
+          ["<Esc>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end
+        },
+        sources = {
+          {name = "luasnip"},
+          {name = "path"},
+          {name = "buffer"},
+          {name = "nvim_lsp"},
+        },
+        experimental = {
+          ghost_text = true
+        },
       })
     end
   })
 
-  -- LuaSnip
+  -- barbecue.nvim (winbar)
   use({
-    "L3MON4D3/LuaSnip",
-    requires = {"rafamadriz/friendly-snippets"},
-    config = function()
-      -- atuo load snippets from friendly-snippets
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end
-  })
-
-  -- nvim-cmp
-  use({
-    "hrsh7th/nvim-cmp",
+    "utilyre/barbecue.nvim",
     requires = {
-      "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
-      "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer"
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    after = "gruvbox.nvim",
+    config = function ()
+      require("barbecue").setup({
+        attach_navic = false,
+        show_dirname = false,
+      })
+    end,
+  })
+
+  -- nvim-scrollbar
+  use({
+    "petertriho/nvim-scrollbar",
+    requires = {
+      "kevinhwang91/nvim-hlslens", -- search handler
+      "lewis6991/gitsigns.nvim" -- git signs handler
     },
     config = function()
-      local cmp = require("cmp")
-      -- function biolerplate -> function(fallback)
-        local cmp_map_function = function(action)
-          return function(fallback)
-            if cmp.visible() then action() else fallback() end
-          end
-        end
-
-        cmp.setup({
-          mapping = {
-            ["<C-n>"] = cmp.mapping({i = cmp_map_function(cmp.select_next_item)}),
-            ["<Down>"] = cmp.mapping({i = cmp_map_function(cmp.select_next_item)}),
-            ["<C-p>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
-            ["<Up>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
-            ["<C-down>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
-            ["<PageDown>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
-            ["<C-up>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
-            ["<PageUp>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
-            ["<CR>"] = cmp.mapping({i = cmp_map_function(function() cmp.confirm({select = true}) end)}),
-            ["<C-x>"] = cmp.mapping({i = cmp_map_function(cmp.abort)}),
-            ["<C-c>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),
-            ["<Esc>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),
-          },
-          snippet = {
-            expand = function(args)
-              require("luasnip").lsp_expand(args.body)
-            end
-          },
-          sources = {
-            {name = "luasnip"},
-            {name = "path"},
-            {name = "buffer"},
-            {name = "nvim_lsp"},
-          },
-          experimental = {
-            ghost_text = true
-          },
-        })
-      end
-    })
-
-    -- barbecue.nvim (winbar)
-    use({
-      "utilyre/barbecue.nvim",
-      requires = {
-        "SmiteshP/nvim-navic",
-        "nvim-tree/nvim-web-devicons",
-      },
-      after = "gruvbox.nvim",
-      config = function ()
-        require("barbecue").setup({
-          attach_navic = false,
-          show_dirname = false,
-        })
-      end,
-    })
-
-    -- nvim-scrollbar
-    use({
-      "petertriho/nvim-scrollbar",
-      requires = {
-        "kevinhwang91/nvim-hlslens", -- search handler
-        "lewis6991/gitsigns.nvim" -- git signs handler
-      },
-      config = function()
-        require("scrollbar.handlers.search").setup({}) -- need table argument
-        require("scrollbar.handlers.gitsigns").setup()
-        require("scrollbar").setup({
-          excluded_filetypes = {
-            -- disable scrollbar for alpha (blank startup plugin)
-            "alpha",
-          },
-          handle = {
-            highlight = "Visual"
-          }
-        })
-      end
-    })
-
-    -- gitsigns.nvim
-    use({
-      "lewis6991/gitsigns.nvim",
-      config = function()
-        local gitsigns = require("gitsigns")
-        gitsigns.setup()
-        -- mappings
-        local map = vim.keymap.set
-        map("n", "gn", gitsigns.next_hunk)
-        map("n", "gN", gitsigns.prev_hunk)
-        map("n", "gp", gitsigns.preview_hunk)
-        map("n", "gd", gitsigns.diffthis)
-        map("n", "gs", gitsigns.stage_hunk)
-        -- stage selected
-        map("x", "gs", [[<ESC>:lua require("gitsigns").stage_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
-        map("n", "gr", gitsigns.reset_hunk)
-        -- reset hunk
-        map("x", "gr", [[<ESC>:lua require("gitsigns").reset_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
-        map("n", "gR", gitsigns.reset_buffer)
-      end
-    })
-
-    -- aplha-nvim (startup/dashboard plugin)
-    use({
-      "goolord/alpha-nvim",
-      config = function()
-        -- highlights
-        vim.cmd([[
-        highlight AlphaLogo guifg=#504945
-        highlight AlphaText guifg=#665C54
-        highlight AlphaTextBold guifg=#665C54 gui=bold
-        ]])
-
-        -- header
-        local header = {
-          type = "text",
-          val = {
-            [[     ▗▛                                            ▜▖     ]],
-            [[    ▟▛                                              ▜▙    ]],
-            [[   ▟▛               ▗▟█████▄▄▄▄█████▙▖               ▜▙   ]],
-            [[  ▟█              ▗▟██████████████████▙▖              █▙  ]],
-            [[ ▐██             ▟██████████████████████▙             ██▌ ]],
-            [[  ██▙          ▗▟████████████████████████▙▖          ▟██  ]],
-            [[  ▐███▙▂▂   ▂▂▟████████████████████████████▙▂▂   ▂▂▟███▌  ]],
-            [[    ▜████████████████████████████████████████████████▛    ]],
-            [[      ▀▀▀▀██████████████████████████████████████▀▀▀▀      ]],
-            [[              ▀▀▀▀▀██   ▝▜██████▛▘   ██▀▀▀▀▀              ]],
-            [[                    ▜▙    ██████    ▟▛                    ]],
-            [[                     ▜██▆▆██████▆▆██▛                     ]],
-            [[                      ▜████████████▛                      ]],
-            [[                       ▜██████████▛                       ]],
-            [[                        ▜████████▛                        ]],
-            [[                        ██████████                        ]],
-            [[                         ▜█▅██▅█▛                         ]],
-          },
-          opts = {
-            position = "center",
-            hl = "AlphaLogo",
-          },
+      require("scrollbar.handlers.search").setup({}) -- need table argument
+      require("scrollbar.handlers.gitsigns").setup()
+      require("scrollbar").setup({
+        excluded_filetypes = {
+          -- disable scrollbar for alpha (blank startup plugin)
+          "alpha",
+        },
+        handle = {
+          highlight = "Visual"
         }
-        -- subheader
-        local subheader = {
-          type = "text",
-          val = function()
-            -- neovim version
-            local nvim_version_table = vim.version()
-            local nvim_version =
-            "v" ..
-            nvim_version_table.major ..
-            "." ..
-            nvim_version_table.minor ..
-            "." ..
-            nvim_version_table.patch
+      })
+    end
+  })
 
-            return {
-              "╰─────────[ NeoVim " .. nvim_version .. " ]─────────╯",
-            }
-          end,
-          opts = {
-            position = "center",
-            hl = {
-              {{"AlphaText", 1, -1}, {"AlphaTextBold", 39, 45}},
-            },
-          },
-        }
-        -- button
-        local button = function (icon, val, action, shortcut)
+  -- gitsigns.nvim
+  use({
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      local gitsigns = require("gitsigns")
+      gitsigns.setup()
+      -- mappings
+      local map = vim.keymap.set
+      map("n", "gn", gitsigns.next_hunk)
+      map("n", "gN", gitsigns.prev_hunk)
+      map("n", "gp", gitsigns.preview_hunk)
+      map("n", "gd", gitsigns.diffthis)
+      map("n", "gs", gitsigns.stage_hunk)
+      -- stage selected
+      map("x", "gs", [[<ESC>:lua require("gitsigns").stage_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
+      map("n", "gr", gitsigns.reset_hunk)
+      -- reset hunk
+      map("x", "gr", [[<ESC>:lua require("gitsigns").reset_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
+      map("n", "gR", gitsigns.reset_buffer)
+    end
+  })
+
+  -- aplha-nvim (startup/dashboard plugin)
+  use({
+    "goolord/alpha-nvim",
+    config = function()
+      -- highlights
+      vim.cmd([[
+      highlight AlphaLogo guifg=#504945
+      highlight AlphaText guifg=#665C54
+      highlight AlphaTextBold guifg=#665C54 gui=bold
+      ]])
+
+      -- header
+      local header = {
+        type = "text",
+        val = {
+          [[     ▗▛                                            ▜▖     ]],
+          [[    ▟▛                                              ▜▙    ]],
+          [[   ▟▛               ▗▟█████▄▄▄▄█████▙▖               ▜▙   ]],
+          [[  ▟█              ▗▟██████████████████▙▖              █▙  ]],
+          [[ ▐██             ▟██████████████████████▙             ██▌ ]],
+          [[  ██▙          ▗▟████████████████████████▙▖          ▟██  ]],
+          [[  ▐███▙▂▂   ▂▂▟████████████████████████████▙▂▂   ▂▂▟███▌  ]],
+          [[    ▜████████████████████████████████████████████████▛    ]],
+          [[      ▀▀▀▀██████████████████████████████████████▀▀▀▀      ]],
+          [[              ▀▀▀▀▀██   ▝▜██████▛▘   ██▀▀▀▀▀              ]],
+          [[                    ▜▙    ██████    ▟▛                    ]],
+          [[                     ▜██▆▆██████▆▆██▛                     ]],
+          [[                      ▜████████████▛                      ]],
+          [[                       ▜██████████▛                       ]],
+          [[                        ▜████████▛                        ]],
+          [[                        ██████████                        ]],
+          [[                         ▜█▅██▅█▛                         ]],
+        },
+        opts = {
+          position = "center",
+          hl = "AlphaLogo",
+        },
+      }
+      -- subheader
+      local subheader = {
+        type = "text",
+        val = function()
+          -- neovim version
+          local nvim_version_table = vim.version()
+          local nvim_version =
+          "v" ..
+          nvim_version_table.major ..
+          "." ..
+          nvim_version_table.minor ..
+          "." ..
+          nvim_version_table.patch
+
           return {
-            type = "button",
-            val = icon .. " " .. val,
-            on_press = function() vim.api.nvim_input(action) end,
-            opts = {
-              position = "center",
-              width = 35,
-              cursor = 4,
-              hl = {{"AlphaTextBold", 0, 3}, {"AlphaText", 4, -1}},
-              shortcut = "[" .. shortcut .. "]",
-              align_shortcut = "right",
-              hl_shortcut = "AlphaTextBold",
-              keymap = {"n", shortcut, action, {silent = true}},
-            }
+            "╰─────────[ NeoVim " .. nvim_version .. " ]─────────╯",
           }
-        end
-        -- button group
-        local buttonGroup = {
-          type = "group",
-          val = {
-            button("", "New File", ":enew <CR>", "i"),
-            button("", "Plugin Status", ":PackerStatus <CR>", "s"),
-            button("", "Compile Plugins", ":PackerCompile <CR>", "c"),
-            button("", "Update Plugins", ":PackerSync <CR>", "u"),
-            button("", "Quit", ":q <CR>", "q"),
+        end,
+        opts = {
+          position = "center",
+          hl = {
+            {{"AlphaText", 1, -1}, {"AlphaTextBold", 39, 45}},
           },
+        },
+      }
+      -- button
+      local button = function (icon, val, action, shortcut)
+        return {
+          type = "button",
+          val = icon .. " " .. val,
+          on_press = function() vim.api.nvim_input(action) end,
           opts = {
-            spacing = 1,
+            position = "center",
+            width = 35,
+            cursor = 4,
+            hl = {{"AlphaTextBold", 0, 3}, {"AlphaText", 4, -1}},
+            shortcut = "[" .. shortcut .. "]",
+            align_shortcut = "right",
+            hl_shortcut = "AlphaTextBold",
+            keymap = {"n", shortcut, action, {silent = true}},
           }
         }
-
-        local theme = {
-          layout = {
-            {type = "padding", val = 10},
-            header,
-            {type = "padding", val = 2},
-            subheader,
-            {type = "padding", val = 2},
-            buttonGroup,
-            {type = "padding", val = 10},
-          }
-        }
-
-        require("alpha").setup(theme)
       end
-    })
-  end)
+      -- button group
+      local buttonGroup = {
+        type = "group",
+        val = {
+          button("", "New File", ":enew <CR>", "i"),
+          button("", "Plugin Status", ":PackerStatus <CR>", "s"),
+          button("", "Compile Plugins", ":PackerCompile <CR>", "c"),
+          button("", "Update Plugins", ":PackerSync <CR>", "u"),
+          button("", "Quit", ":q <CR>", "q"),
+        },
+        opts = {
+          spacing = 1,
+        }
+      }
+
+      local theme = {
+        layout = {
+          {type = "padding", val = 10},
+          header,
+          {type = "padding", val = 2},
+          subheader,
+          {type = "padding", val = 2},
+          buttonGroup,
+          {type = "padding", val = 10},
+        }
+      }
+
+      require("alpha").setup(theme)
+    end
+  })
+end)
 

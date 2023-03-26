@@ -11,11 +11,8 @@ vim.diagnostic.config({
 Consists of logical and multi-mode mappings,
 singular mode and non-logical keymaps will be stored in init.vim ]]
 
--- toggle search highlight
-vim.keymap.set({"n", "i"}, "<C-f>", function()
-  vim.o.hlsearch = not(vim.o.hlsearch)
-  require('lualine').refresh()
-end)
+-- turn off search highlight until next search action (i.e. new search, next search, prev search)
+vim.keymap.set({"n", "i", "x"}, "<C-f>", vim.cmd.nohlsearch)
 
 local luasnip = require("luasnip")
 

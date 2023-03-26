@@ -86,10 +86,6 @@ return require("packer").startup(function(use)
                 return symbol[vim.fn.mode()] or ""
               end
             },
-            -- search highlight indicator
-            {
-              function() return vim.o.hlsearch and "" or  "" end
-            },
             -- snippet indicator
             {
               function () return require("luasnip").in_snippet() and "" or "" end

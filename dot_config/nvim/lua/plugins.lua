@@ -193,9 +193,6 @@ return require("packer").startup(function(use)
             quit_on_open = true,
           },
         },
-        view = {
-          hide_root_folder = true,
-        },
         tab = {
           sync = {
             open = true,
@@ -207,6 +204,7 @@ return require("packer").startup(function(use)
           update_root = true,
         },
         renderer = {
+          root_folder_label = false,
           indent_markers = {
             enable = true,
           }

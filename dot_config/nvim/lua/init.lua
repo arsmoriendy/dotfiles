@@ -26,8 +26,9 @@ kms({"n", "i", "x"}, "<PageUp>", vim.cmd.tabprevious)
 kms({"n", "i", "x"}, "<C-M-u>", "<CMD>earlier 1f<CR>")
 kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
 -- ]]
-local luasnip = require("luasnip")
 
+-- [[ luasnip
+local luasnip = require("luasnip")
 -- jump forwards in snippets / tab
 kms({"i", "s"}, "<Tab>", function()
   require('lualine').refresh()
@@ -37,13 +38,13 @@ kms({"i", "s"}, "<Tab>", function()
     return "<Tab>"
   end
 end, {silent = true, expr = true})
-
 -- jump backwards in snippets
 kms({"i", "s"}, "<S-Tab>", function()
   if luasnip.jumpable() then
     luasnip.jump(-1)
   end
 end)
+-- ]]
 
 
 --[[ FUNCTIONS ]]

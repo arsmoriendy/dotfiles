@@ -1,4 +1,4 @@
---[[ PLUGINS (via packer) ]]
+--[[ PLUGINS ]]
 require("plugins")
 
 --[[ COMMANDS ]]
@@ -47,21 +47,4 @@ end)
 
 
 --[[ FUNCTIONS ]]
-refresh_and_compile_plugins = function()
-  vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
-  require("packer").compile()
-end
 
-toggle_plugin_debugging = function()
-  if (plugin_debbuging) then
-    vim.keymap.del("n", "<F8>")
-    vim.cmd("echohl DiffDelete | echo 'Debug pugins mode DISABLED!' | echohl None")
-  else
-    vim.keymap.set("n", "<F8>", refresh_and_compile_plugins)
-    vim.cmd("echohl DiffAdd | echo 'Debug pugins mode ENABLED!' | echohl None")
-
-    refresh_and_compile_plugins()
-  end
-  -- toggle plugin_debbuging variable
-  plugin_debbuging = not(plugin_debbuging)
-end

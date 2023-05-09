@@ -1,13 +1,45 @@
--- PLUGINS --
-return require("packer").startup(function(use)
-  -- packer.nvim
-  use("wbthomason/packer.nvim")
+-- [[ automatically download lazy vim (package manager)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+else
+  vim.keymap.set({"n"}, "<Leader>l", "<Cmd>Lazy<CR>")
+end
+vim.opt.rtp:prepend(lazypath)
+-- ]]
 
-  -- nvim-treesitter
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    opt =  false,
-    run = ":TSUpdate",
+require("lazy").setup({
+  {
+    "ellisonleao/gruvbox.nvim", -- colorscheme
+    lazy = true,
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        contrast = "hard",
+        transparent_mode = true,
+        overrides = {
+          -- borders
+          VertSplit = {bg = "None"},
+        }
+      })
+      vim.cmd([[
+      colorscheme gruvbox
+      highlight! link NormalFloat Pmenu
+      highlight! FloatBorder guifg=#7C6F64 guibg=#504945
+      highlight! link FloatTitle NormalFloat
+      ]])
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter", -- basic syntax logic
     config = function()
       require("nvim-treesitter.configs").setup({
         auto_install = true,
@@ -24,42 +56,26 @@ return require("packer").startup(function(use)
         end
       })
     end
-  })
+  },
 
-  -- gruvbox.nvim
-  use({
-    "ellisonleao/gruvbox.nvim",
-    config = function()
-      require("gruvbox").setup({
-        contrast = "hard",
-        transparent_mode = true,
-        overrides = {
-          -- borders
-          VertSplit = {bg = "None"}
-        }
-      })
-      vim.cmd("colorscheme gruvbox")
-    end
-  })
-
-  -- indent-blankline.nvim
-  use({
-    "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim", -- indent lines
+    dependencies = "ellisonleao/gruvbox.nvim",
     config = function()
       require("indent_blankline").setup({
         show_foldtext = false,
         show_current_context = true,
         show_current_context_start = true,
         char = "▎", -- use left aligned line
+        context_char = "▎",
         use_treesitter = true
       })
-      vim.cmd.highlight({"IndentBlanklineContextStart", "guisp=#fb4934 gui=underline"})
+      vim.cmd.highlight({"IndentBlanklineContextStart", "gui=underline guisp=#fb4934"})
     end
-  })
+  },
 
-  -- lualine.nvim
-  use({
-    "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim", -- statusline
     config = function()
       require("lualine").setup({
         options = {
@@ -105,12 +121,12 @@ return require("packer").startup(function(use)
         }
       })
     end,
-    requires = "nvim-tree/nvim-web-devicons"
-  })
+    dependencies = "nvim-tree/nvim-web-devicons"
+  },
 
-  -- bufferline.nvim
-  use({
-    "akinsho/bufferline.nvim",
+  {
+    "akinsho/bufferline.nvim", -- tabline
+    dependencies = {"nvim-tree/nvim-web-devicons", "ellisonleao/gruvbox.nvim"},
     config = function()
       require("bufferline").setup({
         options = {
@@ -118,24 +134,25 @@ return require("packer").startup(function(use)
           separator_style = "slant",
           middle_mouse_command = "bdelete! %d",
           always_show_bufferline = false,
+          show_close_icon = false,
+          themeable = false,
         },
         highlights = {
           fill = {bg = "#282828", fg = "#a89984"},
           background = {bg = "#504945", fg = "#ebdbb2"},
           tab = {bg = "#504945", fg = "#a89984"},
           close_button = {bg = "#504945", fg = "#ebdbb2"},
-          separator = {bg = "#504945", fg = "#3c3836"},
-          separator_visible = {bg = "#504945", fg = "#282828"},
+          separator = {bg = "#504945", fg = "#282828"},
           separator_selected = {bg = "none", fg = "#282828"},
+          duplicate = {bg = "#504945"},
+          modified = {bg = "#504945"},
         },
       })
     end,
-    requires = "nvim-tree/nvim-web-devicons"
-  })
+  },
 
-  -- nvim-colorizer
-  use({
-    "NvChad/nvim-colorizer.lua",
+  {
+    "NvChad/nvim-colorizer.lua", -- color indicator
     config = function()
       require("colorizer").setup({
         user_default_options = {
@@ -144,36 +161,40 @@ return require("packer").startup(function(use)
         }
       })
     end
-  })
+  },
 
-  -- ccc.nvim
-  use({
-    "uga-rosa/ccc.nvim",
+  {
+    "uga-rosa/ccc.nvim", -- color picker
     config = function()
-      -- sets CccPick background color
-      vim.cmd("highlight! link CccFloatNormal Normal")
-    end,
-  })
+      require("ccc").setup({
+        point_char = "⠶",
+        point_color = "#7C6F64",
+        win_opts = {
+          border = "single",
+          title = "Color Picker",
+        }
+      })
+    end
+  },
 
-  -- twilight.nvim
-  use({
-    "folke/twilight.nvim",
+  {
+    "folke/twilight.nvim", -- focus on scope
     config = function()
       require("twilight").setup()
     end,
-  })
+  },
 
-  -- Comment.nvim
-  use({
-    "numToStr/Comment.nvim",
+  {
+    "numToStr/Comment.nvim", -- commenting helper
     config = function()
       require("Comment").setup()
+      local ft = require("Comment.ft")
+      ft.kdl = {"// %s"}
     end
-  })
+  },
 
-  -- nvim-tree
-  use({
-    "nvim-tree/nvim-tree.lua",
+  {
+    "nvim-tree/nvim-tree.lua", -- file explorer
     config = function()
       vim.keymap.set("n", "<SPACE>", ":NvimTreeToggle<CR>", {silent = true})
       -- on VimEnter, if file is directory, open nvim-tree and cd into directory
@@ -183,6 +204,8 @@ return require("packer").startup(function(use)
           require("nvim-tree.api").tree.open()
         end
       end})
+      -- highlights
+      vim.cmd.highlight({"NvimTreeIndentMarker", "guifg=#504945"})
       -- setup
       require("nvim-tree").setup({
         disable_netrw = true, -- disable netrw (vim's built-in manager; as recomended by nvim-tree documentation)
@@ -211,21 +234,19 @@ return require("packer").startup(function(use)
         },
       })
     end,
-    requires = "nvim-tree/nvim-web-devicons",
-  })
+    dependencies = "nvim-tree/nvim-web-devicons",
+  },
 
-  -- nvim-autopairs
-  use({
-    "windwp/nvim-autopairs",
+  {
+    "windwp/nvim-autopairs", -- auto pairing
     config = function()
       require("nvim-autopairs").setup()
     end
-  })
+  },
 
-  -- nvim-lspconfig (LSP configs)
-  use({
-    "neovim/nvim-lspconfig",
-    requires = {
+  {
+    "neovim/nvim-lspconfig", -- LSP
+    dependencies = {
       "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
       "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
       "SmiteshP/nvim-navic", -- winbar (integrate with "barbecue.nvim")
@@ -233,10 +254,8 @@ return require("packer").startup(function(use)
     config = function()
       -- dependency ordering matters
       require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = {"lua_ls"}
-      })
-      -- automatic server setup (:h mason-lspconfig-automatic-server-setup)
+      require("mason-lspconfig").setup({})
+      -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
       require("mason-lspconfig").setup_handlers({
         function (server_name)
           -- specific server configs
@@ -268,40 +287,55 @@ return require("packer").startup(function(use)
           -- current config
           local config = configs[server_name] or {};
           -- append default configs
-          config.capabilities = require("cmp_nvim_lsp").default_capabilities();
-          config.on_attach = function (client, bufnr)
+          config.capabilities = require("cmp_nvim_lsp").default_capabilities(); -- cmp lsp capabilities
+          config.on_attach = function (client, bufnr) -- attach nvim-navic if possible
             if client.server_capabilities.documentSymbolProvider then
               require("nvim-navic").attach(client, bufnr)
             end
           end;
           require("lspconfig")[server_name].setup(config);
-      end
-    })
-  end
-})
+        end
+      })
 
--- LuaSnip
-use({
-  "L3MON4D3/LuaSnip",
-  requires = {"rafamadriz/friendly-snippets"},
-  config = function()
-    -- atuo load snippets from friendly-snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
-  end
-})
-
--- nvim-cmp
-use({
-  "hrsh7th/nvim-cmp",
-  requires = {
-    "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
-    "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer"
+      -- summon ui mapping
+      vim.keymap.set({"n"}, "<Leader>m", "<Cmd>Mason<CR>")
+    end
   },
-  config = function()
-    local cmp = require("cmp")
-    -- function biolerplate -> function(fallback)
+
+  {
+    "utilyre/barbecue.nvim", -- winbar (top scope path indicator)
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+      "ellisonleao/gruvbox.nvim",
+    },
+    config = function ()
+      require("barbecue").setup({
+        show_dirname = false,
+        attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
+      })
+    end,
+  },
+
+  {
+    "L3MON4D3/LuaSnip", -- snippet engine
+    dependencies = {"rafamadriz/friendly-snippets"},
+    config = function()
+      -- atuo load snippets from friendly-snippets
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end
+  },
+
+  {
+    "hrsh7th/nvim-cmp", -- dropdown completion
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
+      "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer"
+    },
+    config = function()
+      local cmp = require("cmp")
       local cmp_map_function = function(action)
         return function(fallback)
           if cmp.visible() then action() else fallback() end
@@ -315,9 +349,8 @@ use({
           ["<C-p>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
           ["<Up>"] = cmp.mapping({i = cmp_map_function(cmp.select_prev_item)}),
           ["<C-down>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
-          ["<PageDown>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(1) end)}),
           ["<C-up>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
-          ["<PageUp>"] = cmp.mapping({i = cmp_map_function(function() cmp.scroll_docs(-1) end)}),
+          ["<C-d>"] = cmp.mapping({i = cmp.complete}),
           ["<CR>"] = cmp.mapping({i = cmp_map_function(function() cmp.confirm({select = true}) end)}),
           ["<C-x>"] = cmp.mapping({i = cmp_map_function(cmp.abort)}),
           ["<C-c>"] = cmp.mapping({i = cmp_map_function(function() cmp.abort() vim.cmd("stopinsert") end)}),
@@ -339,49 +372,33 @@ use({
         },
       })
     end
-  })
+  },
 
-  -- barbecue.nvim (winbar)
-  use({
-    "utilyre/barbecue.nvim",
-    requires = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    after = "gruvbox.nvim",
-    config = function ()
-      require("barbecue").setup({
-        attach_navic = false,
-        show_dirname = false,
-      })
-    end,
-  })
-
-  -- nvim-scrollbar
-  use({
-    "petertriho/nvim-scrollbar",
-    requires = {
+  {
+    "petertriho/nvim-scrollbar", -- scrollbar
+    dependencies = {
       "kevinhwang91/nvim-hlslens", -- search handler
       "lewis6991/gitsigns.nvim" -- git signs handler
     },
     config = function()
-      require("scrollbar.handlers.search").setup({}) -- need table argument
+      require("scrollbar.handlers.search").setup({}) -- need table parameter
       require("scrollbar.handlers.gitsigns").setup()
       require("scrollbar").setup({
+        hide_if_all_visible = false,
         excluded_filetypes = {
           -- disable scrollbar for alpha (blank startup plugin)
           "alpha",
+          "ccc-ui",
         },
         handle = {
           highlight = "Visual"
         }
       })
     end
-  })
+  },
 
-  -- gitsigns.nvim
-  use({
-    "lewis6991/gitsigns.nvim",
+  {
+    "lewis6991/gitsigns.nvim", -- git signs (next to number column) and git mappings
     config = function()
       local gitsigns = require("gitsigns")
       gitsigns.setup()
@@ -394,22 +411,23 @@ use({
       map("n", "gs", gitsigns.stage_hunk)
       -- stage selected
       map("x", "gs", [[<ESC>:lua require("gitsigns").stage_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
-      map("n", "gr", gitsigns.reset_hunk)
       -- reset hunk
+      map("n", "gr", gitsigns.reset_hunk)
       map("x", "gr", [[<ESC>:lua require("gitsigns").reset_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
       map("n", "gR", gitsigns.reset_buffer)
     end
-  })
+  },
 
-  -- aplha-nvim (startup/dashboard plugin)
-  use({
-    "goolord/alpha-nvim",
+  {
+    "goolord/alpha-nvim", -- startup splash screen
     config = function()
       -- highlights
       vim.cmd([[
       highlight AlphaLogo guifg=#504945
       highlight AlphaText guifg=#665C54
+      highlight AlphaTextItalic guifg=#665C54 gui=italic
       highlight AlphaTextBold guifg=#665C54 gui=bold
+      highlight AlphaTextBoldItalic guifg=#665C54 gui=bold,italic
       ]])
 
       -- header
@@ -454,28 +472,30 @@ use({
           nvim_version_table.patch
 
           return {
-            "╰─────────[ NeoVim " .. nvim_version .. " ]─────────╯",
+            "╰ NeoVim " .. nvim_version .. " ╯",
           }
         end,
         opts = {
           position = "center",
           hl = {
-            {{"AlphaText", 1, -1}, {"AlphaTextBold", 39, 45}},
+            {{"AlphaText", 0, -1}, {"AlphaTextBold", 39, 45}},
           },
         },
       }
       -- button
-      local button = function (icon, val, action, shortcut)
+      local button = function (val, action)
+        local shortcut = string.lower(string.sub(val, 1, 1))
+        local shortcut_string = "[" .. shortcut .. "]"
+
         return {
           type = "button",
-          val = icon .. " " .. val,
+          val = val,
           on_press = function() vim.api.nvim_input(action) end,
           opts = {
             position = "center",
             width = 35,
-            cursor = 4,
-            hl = {{"AlphaTextBold", 0, 3}, {"AlphaText", 4, -1}},
-            shortcut = "[" .. shortcut .. "]",
+            hl ={{"AlphaTextBold", 0, 1}, {"AlphaTextItalic", 1, -1}},
+            shortcut = shortcut_string,
             align_shortcut = "right",
             hl_shortcut = "AlphaTextBold",
             keymap = {"n", shortcut, action, {silent = true}},
@@ -486,11 +506,11 @@ use({
       local buttonGroup = {
         type = "group",
         val = {
-          button("", "New File", ":enew <CR>", "i"),
-          button("", "Plugin Status", ":PackerStatus <CR>", "s"),
-          button("", "Compile Plugins", ":PackerCompile <CR>", "c"),
-          button("", "Update Plugins", ":PackerSync <CR>", "u"),
-          button("", "Quit", ":q <CR>", "q"),
+          button("New File", ":enew <CR>"),
+          button("Plugins Profile", ":Lazy profile<CR>"),
+          button("Check Plugins", ":Lazy check<CR>"),
+          button("Sync Plugins", ":Lazy sync<CR>"),
+          button("Quit", ":q <CR>"),
         },
         opts = {
           spacing = 1,
@@ -511,6 +531,88 @@ use({
 
       require("alpha").setup(theme)
     end
-  })
-end)
+  },
+
+  {
+    "rcarriga/nvim-notify", -- notification
+    dependencies = {
+      "mrded/nvim-lsp-notify",
+    },
+    config = function ()
+      require("notify").setup({
+        background_colour = "#00000000",
+        fps = 60,
+      })
+      require("lsp-notify").setup({
+        notify = require("notify")
+      })
+    end,
+  },
+
+  {
+    "stevearc/dressing.nvim", -- vim.ui.select vim.ui.input
+    config = function ()
+      require("dressing").setup({
+        input = {
+          -- When true, <Esc> will close the modal
+          insert_only = false,
+
+          -- These are passed to nvim_open_win
+          anchor = "NW",
+          border = "single",
+
+          win_options = {
+            -- Window transparency (0-100)
+            winblend = 0,
+          },
+
+          -- Set to `false` to disable
+          mappings = {
+            n = {
+              ["q"] = "Close",
+            },
+          },
+        },
+        select = {
+          -- Options for built-in selector
+          builtin = {
+            -- These are passed to nvim_open_win
+            border = "single",
+
+            win_options = {
+              -- Window transparency (0-100)
+              winblend = 0,
+            },
+
+            -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+            -- the min_ and max_ options can be a list of mixed types.
+            -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
+            max_height = 0.8,
+
+            mappings = {
+              ["q"] = "Close",
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "ellisonleao/glow.nvim", -- markdown viewer
+    cmd = "Glow",
+    config = function ()
+      require("glow").setup({
+        border = "single",
+      })
+      vim.keymap.set("n", "<Leader>g", "<CMD>Glow<CR>")
+    end,
+  }
+
+  --[[ {
+    "mhartington/formatter.nvim", -- code formatter
+    dependencies = {"williamboman/mason.nvim"},
+  }, ]]
+
+})
 

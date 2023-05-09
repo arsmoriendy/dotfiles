@@ -21,6 +21,9 @@ set nowrap
 set showtabline=1
 set timeout!
 
+"-- VARIABLES --"
+let mapleader = "\\"
+
 "-- COMMANDS --"
 " show help
 cabbrev h help

@@ -10,10 +10,22 @@ vim.diagnostic.config({
 --[[ KEYMAPS
 Consists of logical and multi-mode mappings,
 singular mode and non-logical keymaps will be stored in init.vim ]]
+local kms = vim.keymap.set
 
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)
 vim.keymap.set({"n", "i", "x"}, "<C-f>", vim.cmd.nohlsearch)
 
+-- tab navigation [[
+kms({"n", "i", "x"}, "<C-Tab>", vim.cmd.tabnext)
+kms({"n", "i", "x"}, "<C-S-Tab>", vim.cmd.tabprevious)
+kms({"n", "i", "x"}, "<PageDown>", vim.cmd.tabnext)
+kms({"n", "i", "x"}, "<PageUp>", vim.cmd.tabprevious)
+-- ]]
+
+-- navigate saves [[
+kms({"n", "i", "x"}, "<C-M-u>", "<CMD>earlier 1f<CR>")
+kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
+-- ]]
 local luasnip = require("luasnip")
 
 -- jump forwards in snippets / tab

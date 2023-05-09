@@ -55,21 +55,13 @@ function IndentAll()
   return "gg=G" . line(".") . "G"
 endfunction
 nnoremap <expr> == IndentAll()
-"revert to save
-map <C-M-u> :earlier 1f<CR>
-imap <C-M-u> <ESC>:earlier 1f<CR>
-map <C-M-r> :later 1f<CR>
-imap <C-M-r> <ESC>:later 1f<CR>
-"navigate vim windows
-map <M-h> <C-w>h
-map <M-j> <C-w>j
-map <M-k> <C-w>k
-map <M-l> <C-w>l
-"navigate tabs
-map <silent> <C-Tab> :tabnext<CR>
-imap <silent> <C-Tab> <ESC>:tabnext<CR>
-map <silent> <C-S-Tab> :tabprevious<CR>
-imap <silent> <C-S-Tab> <ESC>:tabprevious<CR>
+" "navigate vim windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" close vim windows
+map <C-q> <C-w>q
 " diagnostics
 nmap <silent> <Enter> :lua vim.diagnostic.open_float()<CR>
 nmap <silent> <Tab> :lua vim.diagnostic.goto_next()<CR>

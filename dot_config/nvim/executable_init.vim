@@ -29,10 +29,6 @@ let mapleader = "\\"
 cabbrev h help
 " show help in tab instead
 cabbrev th tab help
-" packer
-cabbrev pc PackerCompile
-cabbrev ps PackerSync
-cabbrev p PackerStatus
 " twilight
 cabbrev tw Twilight
 " HIGHLIGHTS

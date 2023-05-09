@@ -19,6 +19,7 @@ set ignorecase smartcase
 set autoread
 set nowrap
 set showtabline=1
+set timeout!
 
 "-- COMMANDS --"
 " show help

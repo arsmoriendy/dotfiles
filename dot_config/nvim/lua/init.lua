@@ -7,9 +7,9 @@ vim.diagnostic.config({
   update_in_insert = true
 })
 
---[[ KEYMAPS
-Consists of logical and multi-mode mappings,
-singular mode and non-logical keymaps will be stored in init.vim ]]
+--[[ KEYMAPS ]]
+-- Consists of logical and multi-mode mappings,
+-- singular mode and non-logical keymaps will be stored in init.vim
 local kms = vim.keymap.set
 
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)

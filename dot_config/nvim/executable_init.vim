@@ -73,3 +73,4 @@ nmap <Leader>r :lua vim.lsp.buf.rename()<CR>
 
 "-- LOAD LUA CONFIGS --"
 source ~/.config/nvim/lua/init.lua
+

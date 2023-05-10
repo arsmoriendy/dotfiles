@@ -45,6 +45,12 @@ bindsym XF86AudioMicMute exec --no-startup-id ~/.config/dunst/pactl_dunst mutemi
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/dunst/backlight-dunst -inc 5
+bindsym Control+XF86MonBrightnessUp exec --no-startup-id ~/.config/dunst/backlight-dunst -inc 1
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/dunst/backlight-dunst -dec 5
+bindsym Control+XF86MonBrightnessDown exec --no-startup-id ~/.config/dunst/backlight-dunst -dec 1
+
 # Bind i3lock
 bindsym Control+mod1+l exec --no-startup-id i3lock -i ~/.config/i3/lock-wallpaper.png
 

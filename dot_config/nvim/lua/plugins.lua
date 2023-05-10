@@ -181,6 +181,7 @@ require("lazy").setup({
 
   {
     "uga-rosa/ccc.nvim", -- color picker
+    cmd = "Ccc",
     config = function()
       require("ccc").setup({
         point_char = "⠶",
@@ -195,6 +196,7 @@ require("lazy").setup({
 
   {
     "folke/twilight.nvim", -- focus on scope
+    cmd = "Twilight",
     config = function()
       require("twilight").setup()
     end,

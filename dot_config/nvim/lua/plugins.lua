@@ -15,6 +15,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- ]]
 
+-- [[ lazy options
+local lazy_options = {
+  checker = {
+    -- automatically check for plugin updates
+    enabled = true,
+    concurrency = 1, ---@type number? set to 1 to check for updates very slowly
+    notify = true, -- get a notification when new updates are found
+  },
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = true, -- get a notification when changes are found
+  },
+}
+-- ]]
+
 require("lazy").setup({
   {
     "ellisonleao/gruvbox.nvim", -- colorscheme
@@ -614,5 +630,7 @@ require("lazy").setup({
     dependencies = {"williamboman/mason.nvim"},
   }, ]]
 
-})
+},
+lazy_options
+)
 

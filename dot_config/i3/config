@@ -255,7 +255,7 @@ for_window [class=".*"] border pixel 3
 gaps inner 7
 gaps top 33
 
-exec picom --experimental-backends
+exec picom
 exec feh --bg-fill ~/.config/i3/wallpaper.jpg
 exec polybar -r left
 exec polybar -r top

@@ -553,16 +553,10 @@ require("lazy").setup({
 
   {
     "rcarriga/nvim-notify", -- notification
-    dependencies = {
-      "mrded/nvim-lsp-notify",
-    },
     config = function ()
       require("notify").setup({
         background_colour = "#00000000",
         fps = 60,
-      })
-      require("lsp-notify").setup({
-        notify = require("notify")
       })
     end,
   },

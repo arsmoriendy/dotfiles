@@ -385,9 +385,9 @@ require("lazy").setup({
           {name = "buffer"},
           {name = "nvim_lsp"},
         },
-        experimental = {
+        --[[ experimental = {
           ghost_text = true
-        },
+        }, ]]
       })
     end
   },

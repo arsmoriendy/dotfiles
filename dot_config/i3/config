@@ -263,6 +263,7 @@ gaps top 33
 exec picom
 exec feh --bg-fill ~/.config/i3/wallpaper.jpg
 exec ~/.config/polybar/exec.sh
+exec dunst
 exec xset r rate 200
 exec xinput set-prop 11 304 -0.7
 exec firefox

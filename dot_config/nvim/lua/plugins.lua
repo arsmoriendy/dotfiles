@@ -43,14 +43,14 @@ require("lazy").setup({
         overrides = {
           -- borders
           VertSplit = {bg = "None"},
+          -- [[ float
+          NormalFloat = {bg = "#504945", fg = "#EBDBB2",},
+          FloatTitle = {bg = "#504945", fg = "#EBDBB2",},
+          FloatBorder = {bg = "#504945", fg = "#7C6F64",},
+          -- ]]
         }
       })
-      vim.cmd([[
-      colorscheme gruvbox
-      highlight! link NormalFloat Pmenu
-      highlight! FloatBorder guifg=#7C6F64 guibg=#504945
-      highlight! link FloatTitle NormalFloat
-      ]])
+      vim.cmd("colorscheme gruvbox")
     end,
   },
 

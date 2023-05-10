@@ -556,7 +556,6 @@ require("lazy").setup({
     config = function ()
       require("notify").setup({
         background_colour = "#00000000",
-        fps = 60,
       })
     end,
   },

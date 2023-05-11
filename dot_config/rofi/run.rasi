@@ -1,56 +1,94 @@
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-
-* {
-  border-color: #fe8019;
-  background: hsla(0,0,0.16,0.8);
-  background-color: transparent;
-  normal-background: transparent;
-  alternate-normal-background: transparent;
+configuration {
+  modi: [drun, run, windowcd, filebrowser];
+  display-drun: " Apps";
+  display-run: " Commands";
+  display-windowcd: " Windows";
+  display-filebrowser: " Files";
 }
 
+@theme "~/.config/rofi/common.rasi"
+
 window {
-  border: 0;
-  padding: 0;
-  width: 30%;
+  width: 800px;
+}
+
+mainbox {
+  padding: 7px;
+  background-color: @bg0;
+  children: [inputbar, childbox];
 }
 
 inputbar {
   children: [ entry, textbox-entry-suffix ];
-  background-color: @background;
-  padding: 10;
+  padding: 7;
+  background-color: @bg1;
+  margin: 0 0 7 0;
 }
 
 entry {
   font: "CaskaydiaCove Nerd Font Mono 18";
   placeholder: "Search";
-  placeholder-color: @gruvbox-dark-gray;
   cursor: text;
   vertical-align: 0.5;
+  text-color: @fg4;
 }
 
 textbox-entry-suffix {
   font: "CaskaydiaCove Nerd Font Mono 25";
   str: "";
-  text-color: inherit;
   expand: false;
   vertical-align: 0.5;
+  text-color: @fg4;
+}
+
+childbox {
+  orientation: horizontal;
+  children: [mode-switcher, listview];
+}
+
+mode-switcher {
+  orientation: vertical;
+  width: 175px;
+}
+
+button {
+  background-color: @bg1;
+  text-color: @fg4;
+  border: 0 3 0 0;
+  border-color: @accent;
+  padding: 7;
+}
+
+button selected {
+  text-color: @accent;
+  border: 3 0 3 3;
 }
 
 listview {
-  border: 0;
+  border: 3 3 3 0;
+  border-color: @accent;
+  background-color: @bg1;
   lines: 10;
-  scrollbar: false;
+  padding: 7px;
 }
 
 element {
   children: [ element-icon, element-text ];
-  padding: 5;
+  padding: 7;
+  spacing: 7;
+  text-color: @fg4;
 }
 
 element-icon {
-  size: 30;
+  size: 25;
 }
 
 element-text {
   vertical-align: 0.5;
+  text-color: inherit;
+}
+
+element selected {
+  background-color: @accent;
+  text-color: @bg1;
 }

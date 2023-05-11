@@ -1,0 +1,13 @@
+* {
+  spacing: 0;
+
+  background-color: transparent;
+  orange: #fe8019;
+
+  bg0: #282828CC;
+  bg1: #3c3836;
+  bg2: #504945;
+  fg4: #a89984;
+  accent: @orange;
+}
+

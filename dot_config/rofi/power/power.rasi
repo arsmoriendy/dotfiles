@@ -2,22 +2,13 @@ configuration{
   kb-select-1: "1";
   kb-select-2: "2";
   kb-select-3: "3";
-  kb-row-up: "Up,Control+p,ISO_Left_Tab,k";
+  kb-row-up: "Up,Control+p,k";
   kb-row-down: "Down,Control+n,j";
   kb-cancel: "Escape,Control+c,Super+Escape,q";
   font: "CaskaydiaCove Nerd Font 16";
 }
 
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-
-* {
-  background: hsla(0,0,0.16,0.8);
-  background-color: transparent;
-  normal-background: transparent;
-  alternate-normal-background: transparent;
-  selected-normal-background: #fe8019;
-  selected-normal-foreground: @background;
-}
+@theme "~/.config/rofi/common.rasi"
 
 window {
   width: 76px;
@@ -37,9 +28,20 @@ listview {
   padding: 0;
   spacing: 0;
   scrollbar: false;
+  background-color: @bg0;
 }
 
 element {
   children: [ element-text ];
   padding: 23px 29px;
+  text-color: @fg4;
+}
+
+element-text {
+  text-color: inherit;
+}
+
+element selected {
+  background-color: @accent;
+  text-color: @bg0;
 }

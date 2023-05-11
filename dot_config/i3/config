@@ -200,6 +200,7 @@ for_window [class="firefox" instance="Places"] floating enable
 for_window [class="firefox" window_role="About"] floating enable
 for_window [class="Gcolor*"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="Spotify"] floating enable resize set 1280 720
 for_window [class="kitty" floating] resize set 990 540
 
 # reload the configuration file

@@ -567,7 +567,7 @@ require("lazy").setup({
           button("New File", ":enew <CR>"),
           button("Plugins Profile", ":Lazy profile<CR>"),
           button("Check Plugins", ":Lazy check<CR>"),
-          button("Sync Plugins", ":Lazy sync<CR>"),
+          button("Update Plugins", ":Lazy update<CR>"),
           button("Quit", ":q <CR>"),
         },
         opts = {

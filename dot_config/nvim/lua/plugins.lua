@@ -502,23 +502,38 @@ require("lazy").setup({
         val = function()
           -- neovim version
           local nvim_version_table = vim.version()
-          local nvim_version =
-          "v" ..
-          nvim_version_table.major ..
-          "." ..
-          nvim_version_table.minor ..
-          "." ..
-          nvim_version_table.patch
+          -- if version is under 15
+          -- convert version decimal to hex for 1 digit numbers
+          -- else replace with "X" as placeholder
+          local parsed_major = nvim_version_table.major <= 15
+          and string.upper(string.format("%x ", nvim_version_table.major))
+          or " X"
+          local parsed_minor = nvim_version_table.minor <= 15
+          and string.upper(string.format("%x ", nvim_version_table.minor))
+          or " X"
+          local parsed_patch = nvim_version_table.patch <= 15
+          and string.upper(string.format("%x ", nvim_version_table.patch))
+          or " X"
+
+          local lazy_stats = require("lazy").stats()
+
+          -- redraw alpha when lazy has finished calculating startuptime
+          vim.api.nvim_create_autocmd("User", {
+            pattern = "LazyVimStarted",
+            command = "AlphaRedraw",
+          })
 
           return {
-            "╰ NeoVim " .. nvim_version .. " ╯",
+            "NEOVIM INFORMATION        + + + + +",
+            "------------------------- + N E O +",
+            string.format("%-28s", " v" .. nvim_version_table.major .. "." .. nvim_version_table.minor .. "." .. nvim_version_table.patch) .. "+ V I M +",
+            string.format("%-29s", "󰒲 " .. lazy_stats.count .. " plugins installed") .. "+ " .. parsed_major .. parsed_minor .. parsed_patch .. "+",
+            string.format("%-29s", "󰀠 " .. string.format("%.2f", lazy_stats.startuptime) .. "ms startuptime") .. "+ + + + +",
           }
         end,
         opts = {
           position = "center",
-          hl = {
-            {{"AlphaText", 0, -1}, {"AlphaTextBold", 39, 45}},
-          },
+          hl = "AlphaTextBold",
         },
       }
       -- button
@@ -558,17 +573,29 @@ require("lazy").setup({
 
       local theme = {
         layout = {
-          {type = "padding", val = 10},
+          {type = "padding", val = 8},
           header,
           {type = "padding", val = 2},
           subheader,
           {type = "padding", val = 2},
+          {
+            type = "text",
+            val = {
+              "ACTIONS",
+              "-----------------------------------"
+            },
+            opts = {
+              position = "center",
+              hl = "AlphaTextBold",
+            },
+          },
           buttonGroup,
           {type = "padding", val = 10},
         }
       }
 
       require("alpha").setup(theme)
+
     end
   },
 

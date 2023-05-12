@@ -99,7 +99,8 @@ require("lazy").setup({
           component_separators = {left = "╲", right = "╱"},
           disabled_filetypes = {
             statusline = {
-              "alpha",
+              "alpha", -- dashboard
+              "NvimTree", -- file browser
             },
           },
         },

@@ -497,6 +497,7 @@ require("lazy").setup({
           hl = "AlphaLogo",
         },
       }
+
       -- subheader
       local subheader = {
         type = "text",
@@ -537,7 +538,8 @@ require("lazy").setup({
           hl = "AlphaTextBold",
         },
       }
-      -- button
+
+      -- button factory
       local button = function (val, action)
         local shortcut = string.lower(string.sub(val, 1, 1))
         local shortcut_string = "[" .. shortcut .. "]"
@@ -549,7 +551,7 @@ require("lazy").setup({
           opts = {
             position = "center",
             width = 35,
-            hl ={{"AlphaTextBold", 0, 1}, {"AlphaTextItalic", 1, -1}},
+            hl = {{"AlphaTextBold", 0, 1}, {"AlphaTextItalic", 1, -1}},
             shortcut = shortcut_string,
             align_shortcut = "right",
             hl_shortcut = "AlphaTextBold",
@@ -557,6 +559,7 @@ require("lazy").setup({
           }
         }
       end
+
       -- button group
       local buttonGroup = {
         type = "group",

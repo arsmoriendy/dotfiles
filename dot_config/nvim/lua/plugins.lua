@@ -551,7 +551,7 @@ require("lazy").setup({
           opts = {
             position = "center",
             width = 35,
-            hl = {{"AlphaTextBold", 0, 1}, {"AlphaTextItalic", 1, -1}},
+            hl = "AlphaTextBold",
             shortcut = shortcut_string,
             align_shortcut = "right",
             hl_shortcut = "AlphaTextBold",

@@ -48,6 +48,11 @@ require("lazy").setup({
           FloatTitle = {bg = "#504945", fg = "#EBDBB2",},
           FloatBorder = {bg = "#504945", fg = "#7C6F64",},
           -- ]]
+          -- [[ winbar
+          WinBar = {bg = "None", fg = "#a89984",},
+          NavicText = {fg = "#a89984",},
+          NavicSeparator = {fg = "#a89984",},
+          -- ]]
         }
       })
       vim.cmd("colorscheme gruvbox")
@@ -91,7 +96,22 @@ require("lazy").setup({
   },
 
   {
+    "SmiteshP/nvim-navic", -- location in current file specifier
+    config = function ()
+      require("nvim-navic").setup({
+        separator = "  ",
+        click = true,
+        highlight = true,
+      })
+    end,
+  },
+
+  {
     "nvim-lualine/lualine.nvim", -- statusline
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "SmiteshP/nvim-navic"
+    },
     config = function()
       require("lualine").setup({
         options = {
@@ -140,10 +160,25 @@ require("lazy").setup({
               }
             }
           }
+        },
+        winbar = {
+          lualine_c = {
+            {
+              function()
+                local navic_location = require("nvim-navic").get_location()
+                local filename = vim.fn.expand("%:t")
+                local filetype_icon, filetype_icon_color = require'nvim-web-devicons'.get_icon(filename)
+
+                return "%#" .. filetype_icon_color .. "#" .. filetype_icon .. " %#NavicText#" .. filename .. "%#NavicSeparator#  " .. navic_location
+              end,
+              cond = function()
+                return require("nvim-navic").is_available()
+              end,
+            },
+          },
         }
       })
     end,
-    dependencies = "nvim-tree/nvim-web-devicons"
   },
 
   {
@@ -273,7 +308,7 @@ require("lazy").setup({
     dependencies = {
       "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
       "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
-      "SmiteshP/nvim-navic", -- winbar (integrate with "barbecue.nvim")
+      "SmiteshP/nvim-navic", -- winbar
     },
     config = function()
       -- dependency ordering matters
@@ -324,21 +359,6 @@ require("lazy").setup({
       -- summon ui mapping
       vim.keymap.set({"n"}, "<Leader>m", "<Cmd>Mason<CR>")
     end
-  },
-
-  {
-    "utilyre/barbecue.nvim", -- winbar (top scope path indicator)
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-      "ellisonleao/gruvbox.nvim",
-    },
-    config = function ()
-      require("barbecue").setup({
-        show_dirname = false,
-        attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
-      })
-    end,
   },
 
   {

@@ -117,12 +117,6 @@ require("lazy").setup({
         options = {
           section_separators = {left = "", right = ""},
           component_separators = {left = "╲", right = "╱"},
-          disabled_filetypes = {
-            statusline = {
-              "alpha", -- dashboard
-              "NvimTree", -- file browser
-            },
-          },
         },
         -- statusline
         sections = {

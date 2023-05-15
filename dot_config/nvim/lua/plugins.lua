@@ -124,6 +124,7 @@ require("lazy").setup({
             },
           },
         },
+        -- statusline
         sections = {
           lualine_a = {
             -- vim logo
@@ -161,6 +162,7 @@ require("lazy").setup({
             }
           }
         },
+        -- winbar
         winbar = {
           lualine_c = {
             {
@@ -176,33 +178,27 @@ require("lazy").setup({
               end,
             },
           },
-        }
-      })
-    end,
-  },
-
-  {
-    "akinsho/bufferline.nvim", -- tabline
-    dependencies = {"nvim-tree/nvim-web-devicons", "ellisonleao/gruvbox.nvim"},
-    config = function()
-      require("bufferline").setup({
-        options = {
-          mode = "tabs",
-          separator_style = "slant",
-          middle_mouse_command = "bdelete! %d",
-          always_show_bufferline = false,
-          show_close_icon = false,
-          themeable = false,
         },
-        highlights = {
-          fill = {bg = "#282828", fg = "#a89984"},
-          background = {bg = "#504945", fg = "#ebdbb2"},
-          tab = {bg = "#504945", fg = "#a89984"},
-          close_button = {bg = "#504945", fg = "#ebdbb2"},
-          separator = {bg = "#504945", fg = "#282828"},
-          separator_selected = {bg = "none", fg = "#282828"},
-          duplicate = {bg = "#504945"},
-          modified = {bg = "#504945"},
+        -- tabline
+        tabline = {
+          lualine_a = {
+            {
+              "tabs",
+              max_length = vim.o.columns,
+              mode = 1,
+              fmt = function(name, context)
+                local buflist = vim.fn.tabpagebuflist(context.tabnr)
+                local winnr = vim.fn.tabpagewinnr(context.tabnr)
+                local bufnr = buflist[winnr]
+
+                local is_modified = vim.fn.getbufvar(bufnr, '&modified')
+
+                local filetype_icon = require("nvim-web-devicons").get_icon(name)
+
+                return (filetype_icon or "") .. " " .. name .. (is_modified == 1 and " ●" or "")
+              end,
+            }
+          }
         },
       })
     end,

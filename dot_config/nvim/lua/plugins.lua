@@ -51,7 +51,7 @@ require("lazy").setup({
           -- [[ winbar
           WinBar = {bg = "None", fg = "#a89984",},
           NavicText = {fg = "#a89984",},
-          NavicSeparator = {fg = "#a89984",},
+          NavicSeparator = {fg = "#7C6F64",},
           -- ]]
         }
       })

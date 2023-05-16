@@ -683,6 +683,7 @@ require("lazy").setup({
 
   {
     "stevearc/dressing.nvim", -- vim.ui.select vim.ui.input
+    event = "VeryLazy",
     config = function ()
       require("dressing").setup({
         input = {

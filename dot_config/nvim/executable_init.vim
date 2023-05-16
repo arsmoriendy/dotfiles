@@ -57,8 +57,6 @@ map <C-q> <C-w>q
 nmap <silent> <Enter> :lua vim.diagnostic.open_float()<CR>
 nmap <silent> <Tab> :lua vim.diagnostic.goto_next()<CR>
 nmap <silent> <S-Tab> :lua vim.diagnostic.goto_prev()<CR>
-" disable jumping
-nmap <C-o> <Enter>
 " rename variable on cursor with lsp support
 nmap <Leader>r :lua vim.lsp.buf.rename()<CR>
 

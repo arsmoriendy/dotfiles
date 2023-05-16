@@ -29,9 +29,6 @@ let mapleader = "\\"
 cabbrev h help
 " show help in tab instead
 cabbrev th tab help
-" HIGHLIGHTS
-highlight VertSplit guibg=None
-highlight Pmenu guibg=None
 
 "-- KEYMAPS --"
 "reload config

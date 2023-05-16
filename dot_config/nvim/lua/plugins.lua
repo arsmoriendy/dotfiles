@@ -756,7 +756,40 @@ require("lazy").setup({
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
       require("ufo").setup()
     end
-  }
+  },
+
+  {
+    "nvim-telescope/telescope.nvim", -- telescope
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      require("telescope").setup({
+        defaults = {
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+        }
+      })
+      -- highlights
+      vim.cmd([[
+      highlight! link TelescopeNormal NormalFloat
+      highlight! link TelescopeBorder FloatBorder
+      highlight! link TelescopeResultsBorder TelescopeBorder
+      highlight! link TelescopePreviewBorder TelescopeBorder
+      highlight! link TelescopePromptBorder TelescopeBorder
+      highlight! link TelescopeTitle FloatTitle
+      highlight! link TelescopeResultsDiffUntracked GruvboxFg4
+      highlight! link TelescopePromptCounter GruvboxFg4
+      highlight! link TelescopePreviewHyphen GruvboxFg4
+      ]])
+      -- keymaps [[
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<C-p>", builtin.find_files)
+      vim.keymap.set("n", "<Leader>h", builtin.help_tags)
+      vim.keymap.set("n", "<Leader>p", builtin.builtin)
+      -- ]]
+    end,
+  },
 
   --[[ {
     "mhartington/formatter.nvim", -- code formatter

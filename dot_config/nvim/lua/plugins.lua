@@ -670,7 +670,7 @@ require("lazy").setup({
 
       vim.keymap.set("n", "<Leader>ns", function ()
         nvim_notify.toggle_notification_supress()
-        require("lualine").refresh({scope={"statusline"}})
+        require("lualine").refresh({place = {"statusline"}})
       end)
       -- ]]
 

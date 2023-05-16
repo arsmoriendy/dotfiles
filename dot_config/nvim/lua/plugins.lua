@@ -379,7 +379,7 @@ require("lazy").setup({
       local luasnip = require("luasnip")
       -- jump forwards in snippets / tab
       vim.keymap.set({"i", "s"}, "<Tab>", function()
-        require('lualine').refresh()
+        require("lualine").refresh({place = {"statusline"}})
         if luasnip.locally_jumpable() then
           return "<Plug>luasnip-jump-next"
         else

@@ -110,7 +110,8 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim", -- statusline
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "SmiteshP/nvim-navic"
+      "SmiteshP/nvim-navic",
+      "rcarriga/nvim-notify",
     },
     config = function()
       require("lualine").setup({
@@ -142,6 +143,24 @@ require("lazy").setup({
             -- snippet indicator
             {
               function () return require("luasnip").in_snippet() and "" or "" end
+            },
+            -- notification indicator
+            {
+              function ()
+                local nvim_notify = require("notify")
+                if nvim_notify.notification_is_supressed then
+                  local indicator = ""
+                  if #nvim_notify.supressed_notifications ~= 0 then
+                    indicator = indicator .. " " .. #nvim_notify.supressed_notifications
+                  end
+                  return indicator
+                end
+                return "󰂚"
+              end,
+              on_click = function()
+                require("notify").toggle_notification_supress()
+                require("lualine").refresh({place = {"statusline"}})
+              end
             },
           },
           lualine_c = {

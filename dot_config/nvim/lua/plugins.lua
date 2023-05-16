@@ -44,9 +44,9 @@ require("lazy").setup({
           -- borders
           VertSplit = {bg = "None"},
           -- [[ float
-          NormalFloat = {bg = "#504945", fg = "#EBDBB2",},
-          FloatTitle = {bg = "#504945", fg = "#EBDBB2",},
-          FloatBorder = {bg = "#504945", fg = "#7C6F64",},
+          NormalFloat = {bg = "#3C3836", fg = "#EBDBB2",},
+          FloatTitle = {bg = "#3C3836", fg = "#EBDBB2",},
+          FloatBorder = {bg = "#3C3836", fg = "#7C6F64",},
           -- ]]
           -- [[ winbar
           WinBar = {bg = "None", fg = "#a89984",},

@@ -182,7 +182,7 @@ require("lazy").setup({
               function()
                 local navic_location = require("nvim-navic").get_location()
                 local filename = vim.fn.expand("%:t")
-                local filetype_icon, filetype_icon_color = require'nvim-web-devicons'.get_icon(filename)
+                local filetype_icon, filetype_icon_color = require("nvim-web-devicons").get_icon(filename)
 
                 return "%#" .. filetype_icon_color .. "#" .. filetype_icon .. " %#NavicText#" .. filename .. "%#NavicSeparator#  " .. navic_location
               end,
@@ -204,7 +204,7 @@ require("lazy").setup({
                 local winnr = vim.fn.tabpagewinnr(context.tabnr)
                 local bufnr = buflist[winnr]
 
-                local is_modified = vim.fn.getbufvar(bufnr, '&modified')
+                local is_modified = vim.fn.getbufvar(bufnr, "&modified")
 
                 local filetype_icon = require("nvim-web-devicons").get_icon(name)
 
@@ -333,7 +333,7 @@ require("lazy").setup({
                 Lua = {
                   diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    globals = {'vim'},
+                    globals = {"vim"},
                   },
                   workspace = {
                     -- Make the server aware of Neovim runtime files
@@ -752,8 +752,8 @@ require("lazy").setup({
     config = function ()
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
       require("ufo").setup()
     end
   },

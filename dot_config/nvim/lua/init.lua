@@ -27,3 +27,7 @@ kms({"n", "i", "x"}, "<C-M-u>", "<CMD>earlier 1f<CR>")
 kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
 -- ]]
 
+-- folds [[
+kms({"n"}, "<Leader>f", "za") -- toggle fold
+-- ]]
+

@@ -22,6 +22,13 @@ kms({"n", "i", "x"}, "<PageDown>", vim.cmd.tabnext)
 kms({"n", "i", "x"}, "<PageUp>", vim.cmd.tabprevious)
 -- ]]
 
+-- window resize [[
+kms("n", "<C-w>h", "<CMD>vertical resize -5<CR>")
+kms("n", "<C-w>j", "<CMD>resize +5<CR>")
+kms("n", "<C-w>k", "<CMD>resize -5<CR>")
+kms("n", "<C-w>l", "<CMD>vertical resize +5<CR>")
+-- ]]
+
 -- navigate saves [[
 kms({"n", "i", "x"}, "<C-M-u>", "<CMD>earlier 1f<CR>")
 kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")

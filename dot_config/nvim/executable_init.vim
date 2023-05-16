@@ -47,10 +47,10 @@ function IndentAll()
 endfunction
 nnoremap <expr> == IndentAll()
 " "navigate vim windows
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 " close vim windows
 map <C-q> <C-w>q
 " diagnostics

@@ -8,8 +8,7 @@ vim.diagnostic.config({
 })
 
 --[[ KEYMAPS ]]
--- Consists of logical and multi-mode mappings that are not dependent on plugins,
--- singular mode and non-logical keymaps will be stored in init.vim
+-- Consists of mappings that are not dependent on plugins
 -- plugin dependent maps are stored in plugins.lua
 local kms = vim.keymap.set
 

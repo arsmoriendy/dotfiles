@@ -770,8 +770,9 @@ require("lazy").setup({
     config = function()
       require("telescope").setup({
         defaults = {
-          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-        }
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+          prompt_prefix = " ",
+        },
       })
       require("telescope").load_extension("notify")
       require("telescope").load_extension("fzf")

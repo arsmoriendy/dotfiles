@@ -790,7 +790,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<C-p>", builtin.find_files)
       vim.keymap.set("n", "<Leader>h", builtin.help_tags)
       vim.keymap.set("n", "<Leader>nh", require("telescope").extensions.notify.notify)
-      vim.keymap.set("n", "<Leader>p", builtin.builtin)
+      vim.keymap.set("n", "<Leader>p", function() builtin.builtin({include_extensions = true,}) end)
       -- ]]
     end,
   },

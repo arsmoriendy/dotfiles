@@ -764,6 +764,7 @@ require("lazy").setup({
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
       "rcarriga/nvim-notify",
     },
     config = function()
@@ -773,6 +774,7 @@ require("lazy").setup({
         }
       })
       require("telescope").load_extension("notify")
+      require("telescope").load_extension("fzf")
       -- highlights
       vim.cmd([[
       highlight! link TelescopeNormal NormalFloat
@@ -793,6 +795,11 @@ require("lazy").setup({
       vim.keymap.set("n", "<Leader>p", function() builtin.builtin({include_extensions = true,}) end)
       -- ]]
     end,
+  },
+
+  {
+    "nvim-telescope/telescope-fzf-native.nvim", -- telescope
+    build = "make",
   },
 
   --[[ {

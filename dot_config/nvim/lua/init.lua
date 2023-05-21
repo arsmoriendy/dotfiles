@@ -1,13 +1,38 @@
---[[ PLUGINS ]]
+-- [[ load plugins
 require("plugins")
+-- ]]
 
---[[ COMMANDS ]]
 -- diagnostic config
 vim.diagnostic.config({
   update_in_insert = true
 })
 
---[[ KEYMAPS ]]
+-- [[ auto(load/make) views on normal buffers
+local autoview_augroup = vim.api.nvim_create_augroup("autoview", {clear = true})
+local normal_buftype = ""
+
+-- mkview autocmd on window leave
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  group = autoview_augroup,
+  callback = function ()
+    if (vim.o.buftype == normal_buftype) then
+      vim.cmd("mkview")
+    end
+  end
+})
+
+-- loadview autocmd on window enter
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = autoview_augroup,
+  callback = function ()
+    if (vim.o.buftype == normal_buftype) then
+      vim.cmd("silent! loadview")
+    end
+  end
+})
+-- ]]
+
+-- [[ KEYMAPS
 -- Consists of mappings that are not dependent on plugins
 -- plugin dependent maps are stored in plugins.lua
 local kms = vim.keymap.set
@@ -36,5 +61,6 @@ kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
 
 -- folds [[
 kms({"n"}, "<Leader>f", "za") -- toggle fold
+-- ]]
 -- ]]
 

@@ -61,5 +61,7 @@ nmap <silent> <S-Tab> :lua vim.diagnostic.goto_prev()<CR>
 nmap <Leader>r :lua vim.lsp.buf.rename()<CR>
 
 "-- LOAD LUA CONFIGS --"
-source ~/.config/nvim/lua/init.lua
+lua << EOF
+vim.cmd.source(vim.fn.stdpath("config") .. "/lua/init.lua")
+EOF
 

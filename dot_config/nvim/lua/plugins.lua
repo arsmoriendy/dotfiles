@@ -774,6 +774,11 @@ require("lazy").setup({
           borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           prompt_prefix = " ",
         },
+        pickers = {
+          man_pages = {
+            sections = { "ALL" },
+          },
+        },
       })
       require("telescope").load_extension("notify")
       require("telescope").load_extension("fzf")

@@ -25,7 +25,7 @@ switch $DISTRO
     set -xU DISTRO_ICON ""
 end
 
-### ALIAS ###
+### ABBREVIATIONS ###
 abbr -a p "sudo $PACK_MAN"
 abbr -a sctl "sudo systemctl"
 abbr -a ls "exa --icons"

@@ -1,11 +1,40 @@
--- [[ load plugins
-require("plugins")
+-- OPTIONS [[
+-- vanilla vim options (set only)
+local opt = vim.opt
+opt.number = true
+opt.relativenumber = true
+opt.termguicolors = true
+opt.expandtab = true
+opt.list = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.showmode = false
+opt.wrap = false
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.listchars:append("trail:•")
 -- ]]
 
--- diagnostic config
+-- VARIABLES [[
+-- vanilla vim variables
+vim.g.mapleader = "\\"
+-- ]]
+
+-- COMMANDS [[
+-- vanilla vim ex-commands
+
+-- command abbreviations [[
+vim.cmd.cabbrev("h help")
+vim.cmd.cabbrev("th tab help")
+-- ]]
+
+-- ]]
+
+-- LUA APIS [[
 vim.diagnostic.config({
   update_in_insert = true
 })
+-- ]]
 
 -- [[ auto(load/make) views on normal buffers
 local autoview_augroup = vim.api.nvim_create_augroup("autoview", {clear = true})
@@ -32,7 +61,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 -- ]]
 
--- [[ KEYMAPS
+-- KEYMAPS [[
 -- Consists of mappings that are not dependent on plugins
 -- plugin dependent maps are stored in plugins.lua
 local kms = vim.keymap.set
@@ -59,8 +88,47 @@ kms({"n", "i", "x"}, "<C-M-u>", "<CMD>earlier 1f<CR>")
 kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
 -- ]]
 
--- folds [[
 kms({"n"}, "<Leader>f", "za") -- toggle fold
+
+-- reload config
+kms("n", "<F5>", ":source ~/.config/nvim/init.vim<CR>")
+
+-- exit
+kms("n", "<S-q>", ":qa!<CR>")
+-- kms("n", "<C-w><C-q>", ":q!<CR>")
+
+-- save
+kms({"n", "v", "o", "i"}, "<C-s>", "<CMD>w<CR>")
+
+-- delete
+kms("i", "<C-l>", "<DEL>")
+
+-- "indent all lines
+-- function IndentAll()
+--   return "gg=G" . line(".") . "G"
+-- endfunction
+-- nnoremap <expr> == IndentAll()
+
+-- windows [[
+  -- navigate windows [[
+  kms("n", "<C-h>", "<C-w>h", {remap = false})
+  kms("n", "<C-j>", "<C-w>j", {remap = false})
+  kms("n", "<C-k>", "<C-w>k", {remap = false})
+  kms("n", "<C-l>", "<C-w>l", {remap = false})
+  -- ]]
+-- close window
+kms({"n", "v", "o"}, "<C-q>", "<C-w>q")
 -- ]]
+
+-- diagnostics [[
+kms("n", "<Enter>", ":lua vim.diagnostic.open_float()<CR>", {silent = true})
+kms("n", "<Tab>", ":lua vim.diagnostic.goto_next()<CR>", {silent = true})
+kms("n", "<S-Tab>", ":lua vim.diagnostic.goto_prev()<CR>", {silent = true})
 -- ]]
+
+-- rename variable on cursor with lsp support
+kms("n", "<Leader>r", ":lua vim.lsp.buf.rename()<CR>")
+-- ]]
+
+require("plugins") -- load plugins
 

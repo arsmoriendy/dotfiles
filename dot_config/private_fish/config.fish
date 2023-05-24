@@ -8,21 +8,21 @@ fish_add_path ~/.local/bin
 fish_add_path ~/bin
 fish_add_path ~/.cargo/bin
 
-set -xU DISTRO (cat /etc/os-release | grep ^ID | cut -d= -f2)
+set -x DISTRO (cat /etc/os-release | grep ^ID | cut -d= -f2)
 
 switch $DISTRO
   case fedora
-    set -xU PACK_MAN "dnf"
-    set -xU DISTRO_ICON ""
+    set -x PACK_MAN "dnf"
+    set -x DISTRO_ICON ""
   case arch
-    set -xU PACK_MAN "pacman --color always"
-    set -xU DISTRO_ICON ""
+    set -x PACK_MAN "pacman --color always"
+    set -x DISTRO_ICON ""
   case gentoo
-    set -xU PACK_MAN "emerge"
-    set -xU DISTRO_ICON ""
+    set -x PACK_MAN "emerge"
+    set -x DISTRO_ICON ""
   case ubuntu
-    set -xU PACK_MAN "apt"
-    set -xU DISTRO_ICON ""
+    set -x PACK_MAN "apt"
+    set -x DISTRO_ICON ""
 end
 
 ### ABBREVIATIONS ###
@@ -89,8 +89,8 @@ if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux 
 end
 
 ### ENVIRONMENT VARIABLES ###
-set -xU TERMINAL kitty #$TERMINAL used for i3-sensible-terminal
-set -xU EDITOR nvim
+set -x TERMINAL kitty #$TERMINAL used for i3-sensible-terminal
+set -x EDITOR nvim
 
 ### GREETING ###
 function fish_greeting

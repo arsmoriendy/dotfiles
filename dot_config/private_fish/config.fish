@@ -89,7 +89,7 @@ if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux 
 end
 
 ### ENVIRONMENT VARIABLES ###
-set -x TERMINAL kitty #$TERMINAL used for i3-sensible-terminal
+set -x TERMINAL kitty # used for i3-sensible-terminal
 set -x EDITOR nvim
 
 ### GREETING ###

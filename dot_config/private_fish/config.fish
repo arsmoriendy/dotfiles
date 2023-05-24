@@ -91,6 +91,7 @@ end
 ### ENVIRONMENT VARIABLES ###
 set -x TERMINAL kitty # used for i3-sensible-terminal
 set -x EDITOR nvim
+set -x MANPAGER "nvim +Man!"
 
 ### GREETING ###
 function fish_greeting

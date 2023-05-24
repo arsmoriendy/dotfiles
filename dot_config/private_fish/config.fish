@@ -59,7 +59,7 @@ function fish_prompt
   end
 
   echo -e "$LEFT$LINE$RIGHT"
-  echo -e "└"(fish_default_mode_prompt; set_color --bold red)"─[ "
+  echo -e "└"(fish_default_mode_prompt; set_color --bold red)"─[ "(set_color normal)
 
 end
 
@@ -81,6 +81,7 @@ function fish_right_prompt
   end
 
   echo -e (set_color --bold red)"]─[$EXIT $PARSED_CMD_DURATION"(set_color --bold red)"]┘"
+  echo -e (set_color normal)
 end
 
 ### AUTO START TMUX ###

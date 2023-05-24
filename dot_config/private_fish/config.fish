@@ -89,7 +89,6 @@ if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux 
 end
 
 ### ENVIRONMENT VARIABLES ###
-[ (string match -r "kitty" $TERM) ]; and set -x TERM xterm-256color
 set -xU TERMINAL kitty #$TERMINAL used for i3-sensible-terminal
 set -xU EDITOR nvim
 

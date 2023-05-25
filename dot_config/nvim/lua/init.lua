@@ -97,8 +97,11 @@ kms("n", "<F5>", ":source ~/.config/nvim/init.vim<CR>")
 kms("n", "<S-q>", ":qa!<CR>")
 -- kms("n", "<C-w><C-q>", ":q!<CR>")
 
--- save
-kms({"n", "v", "o", "i"}, "<C-s>", "<CMD>w<CR>")
+-- save / write file [[
+kms({"n", "v", "o"}, "<C-s>", ":w<CR>")
+-- separate insert mode mapping for going back to normal mode after saving
+kms({"i"}, "<C-s>", "<ESC>:w<CR>")
+-- ]]
 
 -- delete
 kms("i", "<C-l>", "<DEL>")

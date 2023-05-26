@@ -775,6 +775,9 @@ require("lazy").setup({
           prompt_prefix = " ",
         },
         pickers = {
+          find_files = {
+            hidden = true,
+          },
           man_pages = {
             sections = { "ALL" },
           },

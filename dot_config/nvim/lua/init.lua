@@ -3,15 +3,19 @@
 local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
+opt.showmode = false
 opt.termguicolors = true
 opt.expandtab = true
 opt.list = true
+opt.cursorline = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.showmode = false
 opt.wrap = false
+opt.timeout = false
+opt.autoread = true
 opt.softtabstop = 2
 opt.shiftwidth = 2
+opt.updatetime = 100
 opt.listchars:append("trail:•")
 -- ]]
 

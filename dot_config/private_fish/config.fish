@@ -15,7 +15,7 @@ switch $DISTRO
     set -x PACK_MAN "dnf"
     set -x DISTRO_ICON ""
   case arch
-    set -x PACK_MAN "pacman --color always"
+    set -x PACK_MAN "pacman"
     set -x DISTRO_ICON ""
   case gentoo
     set -x PACK_MAN "emerge"

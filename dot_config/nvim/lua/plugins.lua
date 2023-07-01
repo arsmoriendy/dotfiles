@@ -354,6 +354,11 @@ require("lazy").setup({
               -- add php for emmet
               filetypes = {"html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php"},
             },
+            intelephense = {
+              telemetry = {
+                enabled = false,
+              },
+            },
           };
           -- current config
           local config = configs[server_name] or {};

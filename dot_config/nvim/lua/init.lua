@@ -29,10 +29,10 @@ vim.g.omni_sql_no_default_maps = 1
 -- COMMANDS [[
 -- vanilla vim ex-commands
 
--- command abbreviations [[
-vim.cmd.cabbrev("h help")
-vim.cmd.cabbrev("th tab help")
--- ]]
+  -- command abbreviations [[
+  vim.cmd.cabbrev("h help")
+  vim.cmd.cabbrev("th tab help")
+  -- ]]
 
 -- ]]
 
@@ -42,29 +42,32 @@ vim.diagnostic.config({
 })
 -- ]]
 
--- [[ auto(load/make) views on normal buffers
-local autoview_augroup = vim.api.nvim_create_augroup("autoview", {clear = true})
-local normal_buftype = ""
+-- AUTO GROUP/CMDS -- [[
 
--- mkview autocmd on window leave
-vim.api.nvim_create_autocmd("BufWinLeave", {
-  group = autoview_augroup,
-  callback = function ()
-    if (vim.o.buftype == normal_buftype) then
-      vim.cmd("mkview")
-    end
-  end
-})
+  -- [[ auto(load/make) views on normal buffer types
+  local autoview_augroup = vim.api.nvim_create_augroup("autoview", {clear = true})
 
--- loadview autocmd on window enter
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = autoview_augroup,
-  callback = function ()
-    if (vim.o.buftype == normal_buftype) then
-      vim.cmd("silent! loadview")
+  -- mkview autocmd on window leave
+  vim.api.nvim_create_autocmd("BufWinLeave", {
+    group = autoview_augroup,
+    callback = function ()
+      if (vim.o.buftype == "") then
+        vim.cmd("mkview")
+      end
     end
-  end
-})
+  })
+
+  -- loadview autocmd on window enter
+  vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = autoview_augroup,
+    callback = function ()
+      if (vim.o.buftype == "") then
+        vim.cmd("silent! loadview")
+      end
+    end
+  })
+  -- ]]
+
 -- ]]
 
 -- KEYMAPS [[
@@ -97,16 +100,16 @@ kms({"n", "i", "x"}, "<C-M-r>", "<CMD>later 1f<CR>")
 kms({"n"}, "<Leader>f", "za") -- toggle fold
 
 -- reload config
-kms("n", "<F5>", ":source ~/.config/nvim/init.vim<CR>")
+kms("n", "<F5>", "<CMD>source ~/.config/nvim/init.vim<CR>")
 
 -- exit
-kms("n", "<S-q>", ":qa!<CR>")
--- kms("n", "<C-w><C-q>", ":q!<CR>")
+kms("n", "<S-q>", "<CMD>qa!<CR>")
+-- kms("n", "<C-w><C-q>", "<CMD>q!<CR>")
 
 -- save / write file [[
-kms({"n", "v", "o"}, "<C-s>", ":w<CR>")
+kms({"n", "v", "o"}, "<C-s>", "<CMD>w<CR>")
 -- separate insert mode mapping for going back to normal mode after saving
-kms({"i"}, "<C-s>", "<ESC>:w<CR>")
+kms({"i"}, "<C-s>", "<ESC><CMD>w<CR>")
 -- ]]
 
 -- delete
@@ -130,13 +133,13 @@ kms({"n", "v", "o"}, "<C-q>", "<C-w>q")
 -- ]]
 
 -- diagnostics [[
-kms("n", "<Enter>", ":lua vim.diagnostic.open_float()<CR>", {silent = true})
-kms("n", "<Tab>", ":lua vim.diagnostic.goto_next()<CR>", {silent = true})
-kms("n", "<S-Tab>", ":lua vim.diagnostic.goto_prev()<CR>", {silent = true})
+kms("n", "<Enter>", "<CMD>lua vim.diagnostic.open_float()<CR>", {silent = true})
+kms("n", "<Tab>", "<CMD>lua vim.diagnostic.goto_next()<CR>", {silent = true})
+kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", {silent = true})
 -- ]]
 
 -- rename variable on cursor with lsp support
-kms("n", "<Leader>r", ":lua vim.lsp.buf.rename()<CR>")
+kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>")
 -- ]]
 
 require("plugins") -- load plugins

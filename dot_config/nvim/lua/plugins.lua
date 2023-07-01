@@ -67,6 +67,9 @@ require("lazy").setup({
         highlight = {
           enable = true
         },
+        indent = {
+          enable = true,
+        },
         -- disable if file size > max_filesize
         disable = function(_, buf)
           local max_filesize = 1048576 -- 1 MiB

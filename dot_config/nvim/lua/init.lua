@@ -22,6 +22,8 @@ opt.listchars:append("trail:•")
 -- VARIABLES [[
 -- vanilla vim variables
 vim.g.mapleader = "\\"
+-- disable <C-C> maps on sql files
+vim.g.omni_sql_no_default_maps = 1
 -- ]]
 
 -- COMMANDS [[

@@ -7,11 +7,12 @@
     "gruvboxMaterial.italicKeywords": true,
     "gruvboxMaterial.lightContrast": "hard",
     "gruvboxMaterial.lightPalette": "original",
-    "window.titleBarStyle": "custom",
+    "window.restoreWindows": "none",
+    "workbench.startupEditor": "readme",
+    "window.menuBarVisibility": "toggle",
     "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono'",
     "editor.fontLigatures": true,
     "editor.fontVariations": true,
     "gitlens.telemetry.enabled": false,
-    "intelephense.telemetry.enabled": false,
-    "window.zoomLevel": 2
+    "intelephense.telemetry.enabled": false
 }

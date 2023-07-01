@@ -1,0 +1,17 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.darkPalette": "original",
+    "gruvboxMaterial.italicKeywords": true,
+    "gruvboxMaterial.lightContrast": "hard",
+    "gruvboxMaterial.lightPalette": "original",
+    "window.titleBarStyle": "custom",
+    "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono'",
+    "editor.fontLigatures": true,
+    "editor.fontVariations": true,
+    "gitlens.telemetry.enabled": false,
+    "intelephense.telemetry.enabled": false,
+    "window.zoomLevel": 2
+}

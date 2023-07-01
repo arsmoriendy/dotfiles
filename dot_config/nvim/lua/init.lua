@@ -144,6 +144,25 @@ kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>")
 -- format buffer with lsp support
 kms("n", "<Leader>i", "<CMD>lua vim.lsp.buf.format()<CR>")
 -- ]]
+
+-- FUNCTIONS [[
+
+-- table to string
+-- https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
+-- @param o table to be stringified
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ \n'
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ',\n'
+      end
+      return s .. '} '
+   else
+      return "'" .. tostring(o) .. "'"
+   end
+end
+
 -- ]]
 
 require("plugins") -- load plugins

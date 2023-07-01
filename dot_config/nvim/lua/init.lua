@@ -140,6 +140,10 @@ kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", {silent = true})
 
 -- rename variable on cursor with lsp support
 kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>")
+
+-- format buffer with lsp support
+kms("n", "<Leader>i", "<CMD>lua vim.lsp.buf.format()<CR>")
+-- ]]
 -- ]]
 
 require("plugins") -- load plugins

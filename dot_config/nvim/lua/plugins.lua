@@ -75,19 +75,27 @@ require("lazy").setup(
     {
       "lukas-reineke/indent-blankline.nvim", -- indent lines
       dependencies = "ellisonleao/gruvbox.nvim",
+      main = "ibl",
       config = function()
-        require("indent_blankline").setup({
-          show_foldtext = false,
-          show_current_context = true,
-          show_current_context_start = true,
-          char = "▎", -- use left aligned line
-          context_char = "▎",
-          use_treesitter = true
-        })
-        local temp_table = vim.g.indent_blankline_filetype_exclude
-        table.insert(temp_table, "norg")
-        vim.g.indent_blankline_filetype_exclude = temp_table
         vim.cmd.highlight({ "IndentBlanklineContextStart", "gui=underline guisp=#fb4934" })
+        require("ibl").setup({
+          exclude = {
+            filetypes = {
+              -- defaults
+              'lspinfo',
+              "packer",
+              "checkhealth",
+              "help",
+              "man",
+              "gitcommit",
+              "TelescopePrompt",
+              "TelescopeResults",
+              "''",
+              -- custom
+              "norg",
+            }
+          },
+        })
       end
     },
 
@@ -181,8 +189,8 @@ require("lazy").setup(
                   local filetype_icon, filetype_icon_color = require("nvim-web-devicons").get_icon(filename)
 
                   return "%#" ..
-                    filetype_icon_color ..
-                    "#" .. filetype_icon .. " %#NavicText#" .. filename .. "%#NavicSeparator#  " .. navic_location
+                      filetype_icon_color ..
+                      "#" .. filetype_icon .. " %#NavicText#" .. filename .. "%#NavicSeparator#  " .. navic_location
                 end,
                 cond = function()
                   return require("nvim-navic").is_available()
@@ -548,14 +556,14 @@ require("lazy").setup(
             -- convert version decimal to hex for 1 digit numbers
             -- else replace with "X" as placeholder
             local parsed_major = nvim_version_table.major <= 15
-            and string.upper(string.format("%x ", nvim_version_table.major))
-            or " X"
+                and string.upper(string.format("%x ", nvim_version_table.major))
+                or " X"
             local parsed_minor = nvim_version_table.minor <= 15
-            and string.upper(string.format("%x ", nvim_version_table.minor))
-            or " X"
+                and string.upper(string.format("%x ", nvim_version_table.minor))
+                or " X"
             local parsed_patch = nvim_version_table.patch <= 15
-            and string.upper(string.format("%x ", nvim_version_table.patch))
-            or " X"
+                and string.upper(string.format("%x ", nvim_version_table.patch))
+                or " X"
 
             local lazy_stats = require("lazy").stats()
 
@@ -572,9 +580,9 @@ require("lazy").setup(
                 " v" .. nvim_version_table.major .. "." .. nvim_version_table.minor .. "." .. nvim_version_table
                 .patch) .. "+ V I M +",
               string.format("%-29s", "󰒲 " .. lazy_stats.count .. " plugins installed") ..
-                "+ " .. parsed_major .. parsed_minor .. parsed_patch .. "+",
+              "+ " .. parsed_major .. parsed_minor .. parsed_patch .. "+",
               string.format("%-29s", "󰀠 " .. string.format("%.2f", lazy_stats.startuptime) .. "ms startuptime") ..
-                "+ + + + +",
+              "+ + + + +",
             }
           end,
           opts = {
@@ -716,7 +724,7 @@ require("lazy").setup(
               },
             },
 
-            override = function (conf)
+            override = function(conf)
               conf.border = "single";
               return conf
             end,
@@ -738,7 +746,7 @@ require("lazy").setup(
                 ["q"] = "Close",
               },
 
-              override = function (conf)
+              override = function(conf)
                 conf.border = "single";
                 return conf
               end,
@@ -798,9 +806,6 @@ require("lazy").setup(
             prompt_prefix = " ",
           },
           pickers = {
-            find_files = {
-              hidden = true,
-            },
             man_pages = {
               sections = { "ALL" },
             },
@@ -810,16 +815,16 @@ require("lazy").setup(
         require("telescope").load_extension("fzf")
         -- highlights
         vim.cmd([[
-      highlight! link TelescopeNormal NormalFloat
-      highlight! link TelescopeBorder FloatBorder
-      highlight! link TelescopeResultsBorder TelescopeBorder
-      highlight! link TelescopePreviewBorder TelescopeBorder
-      highlight! link TelescopePromptBorder TelescopeBorder
-      highlight! link TelescopeTitle FloatTitle
-      highlight! link TelescopeResultsDiffUntracked GruvboxFg4
-      highlight! link TelescopePromptCounter GruvboxFg4
-      highlight! link TelescopePreviewHyphen GruvboxFg4
-      ]])
+        highlight! link TelescopeNormal NormalFloat
+        highlight! link TelescopeBorder FloatBorder
+        highlight! link TelescopeResultsBorder TelescopeBorder
+        highlight! link TelescopePreviewBorder TelescopeBorder
+        highlight! link TelescopePromptBorder TelescopeBorder
+        highlight! link TelescopeTitle FloatTitle
+        highlight! link TelescopeResultsDiffUntracked GruvboxFg4
+        highlight! link TelescopePromptCounter GruvboxFg4
+        highlight! link TelescopePreviewHyphen GruvboxFg4
+        ]])
         -- keymaps [[
         local builtin = require("telescope.builtin")
         vim.keymap.set("n", "<C-p>", builtin.find_files)
@@ -864,4 +869,3 @@ require("lazy").setup(
   },
   lazy_options
 )
-

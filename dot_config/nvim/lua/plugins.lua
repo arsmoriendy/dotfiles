@@ -77,8 +77,13 @@ require("lazy").setup(
       dependencies = "ellisonleao/gruvbox.nvim",
       main = "ibl",
       config = function()
-        vim.cmd.highlight({ "IndentBlanklineContextStart", "gui=underline guisp=#fb4934" })
+        vim.cmd.highlight({ "IblScope", "guifg=#fb4934" })
         require("ibl").setup({
+          scope = {
+            highlight = {
+              "IblScope"
+            }
+          },
           exclude = {
             filetypes = {
               -- defaults

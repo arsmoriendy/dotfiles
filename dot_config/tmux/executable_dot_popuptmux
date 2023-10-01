@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ];then
+    tmux detach-client
+else
+    tmux display-popup -b "double" -S "fg=#fe8019" -E "tmux attach -t popup || tmux new -s popup"
+fi

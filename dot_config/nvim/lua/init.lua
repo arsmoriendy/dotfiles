@@ -138,11 +138,20 @@ kms("n", "<Tab>", "<CMD>lua vim.diagnostic.goto_next()<CR>", {silent = true})
 kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", {silent = true})
 -- ]]
 
--- rename variable on cursor with lsp support
+-- lsp rename
 kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>")
 
--- format buffer with lsp support
+-- lsp format
 kms("n", "<Leader>i", "<CMD>lua vim.lsp.buf.format()<CR>")
+
+-- lsp hover
+kms("n", "<Leader>h", "<CMD>lua vim.lsp.buf.hover()<CR>")
+
+-- lsp go to definition
+kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>");
+--
+-- lsp action
+kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>");
 -- ]]
 
 -- FUNCTIONS [[

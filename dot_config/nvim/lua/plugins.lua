@@ -383,6 +383,8 @@ require("lazy").setup(
           end
         })
 
+        require("lspconfig").dartls.setup({})
+
         -- summon ui mapping
         vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>")
       end

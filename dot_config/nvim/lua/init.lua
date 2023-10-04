@@ -145,7 +145,7 @@ kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>")
 kms("n", "<Leader>i", "<CMD>lua vim.lsp.buf.format()<CR>")
 
 -- lsp hover
-kms("n", "<Leader>h", "<CMD>lua vim.lsp.buf.hover()<CR>")
+kms("n", "<Leader>k", "<CMD>lua vim.lsp.buf.hover()<CR>")
 
 -- lsp go to definition
 kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>");

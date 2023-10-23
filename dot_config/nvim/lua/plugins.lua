@@ -383,7 +383,12 @@ require("lazy").setup(
           end
         })
 
-        require("lspconfig").dartls.setup({})
+        require("lspconfig").dartls.setup({
+          root_dir = function()
+            return vim.fn.getcwd()
+          end
+        })
+        require("lspconfig").glslls.setup({})
 
         -- summon ui mapping
         vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>")

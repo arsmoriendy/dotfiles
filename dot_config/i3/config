@@ -272,5 +272,5 @@ exec ~/.config/polybar/exec.sh
 exec xset r rate 200
 exec xinput set-prop 11 304 -0.7
 exec firefox
-exec kitty
+exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id i3-msg 'workspace 11:left; exec kitty fish -C bpytop'

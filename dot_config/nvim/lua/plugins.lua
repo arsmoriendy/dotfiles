@@ -59,6 +59,7 @@ require("lazy").setup(
           },
           indent = {
             enable = true,
+            disable = { "dart" },
           },
           -- disable if file size > max_filesize
           disable = function(_, buf)

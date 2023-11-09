@@ -9,6 +9,11 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- set TERM environment variable
+-- download wezterm's terminfo file from https://github.com/wez/wezterm/termwiz/data/wezterm
+-- and copy to terminfo directory (usually /usr/share/terminfo/w/)
+config.term = "wezterm"
+
 config.color_scheme = "GruvboxDarkHard"
 
 config.window_background_opacity = 0.9
@@ -157,4 +162,3 @@ config.keys = {
 
 -- and finally, return the configuration to wezterm
 return config
-

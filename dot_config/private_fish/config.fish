@@ -36,7 +36,6 @@ abbr -a bat "bat --theme gruvbox-dark -f"
 abbr -a ip "ip -c=always"
 abbr -a snaproot "sudo btrfs subvolume snapshot / /.btrfs-snapshots/@_$(date -Iseconds)"
 abbr -a subdel "sudo btrfs subvolume delete"
-[ $DISTRO = "fedora" ]; and alias 7z=7za
 
 ### PROMPT ###
 function fish_prompt
@@ -95,36 +94,7 @@ set -x EDITOR nvim
 set -x MANPAGER "nvim +Man!"
 
 ### GREETING ###
-function fish_greeting
-
-  if type -q figlet; and type -q lolcat
-    figlet -c -w $COLUMNS (whoami) -f smslant | lolcat -r
-    for i in (seq 1 $COLUMNS)
-      echo -n ─
-    end
-  end
-
-  function neo_print -d "Takes 2 args and prints it in centered neofetch format"
-    set -f halfcol (math floor $COLUMNS / 2)
-    printf (set_color --bold cyan)"%*s"(set_color --bold yellow)"%-*s\n" $halfcol "$argv[1]: " $halfcol " $argv[2]"
-  end
-
-  function get_wttr -d "Fetch data from .config/wttr_info"
-    cat $HOME/.config/wttr_info | awk -F "|" '{print $'"$argv[1]"'}'
-  end
-
-  if [ -e $HOME/.config/wttr_info -a -s $HOME/.config/wttr_info ]
-    neo_print "Day, Date" (date "+%A, %B %d %Y")
-    neo_print "Time" (date "+%T %p")
-    neo_print "Location" (get_wttr 1)
-    neo_print "Weather" (get_wttr 2)
-    neo_print "Actual Temperature / Feels Like" (get_wttr 3)
-    neo_print "Wind" (get_wttr 4)
-    neo_print "Moon Day / Phase" (get_wttr 5)
-  end
-
-  fish -c 'curl -s "wttr.in?format=%l|%C%c|%t+/+%f|%w|%M%m|%T" 1> $HOME/.config/wttr_info' &
-end
+set -x fish_greeting
 
 # VI bindings
 fish_vi_key_bindings

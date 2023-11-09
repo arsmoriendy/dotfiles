@@ -252,6 +252,10 @@ bindsym $mod+r mode "resize"
 bindsym $mod+b exec firefox
 bindsym $mod+Shift+b exec firefox --private-window
 
+# move focused workspace between monitors
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+
 # Title
 title_align center
 

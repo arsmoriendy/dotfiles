@@ -1,0 +1,16 @@
+map f navigate next
+map b navigate previous
+map <C--> zoom out
+map <C-s> zoom out
+map <C-+> zoom in
+map <C-w> zoom in
+map <C-b> adjust_window best-fit
+map <C-W> adjust_window width
+
+# invert (<C-r> to invert invert)
+set recolor
+set recolor-lightcolor \#282828
+set recolor-keephue
+set default-bg \#1D2021
+set selection-clipboard clipboard
+

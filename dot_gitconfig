@@ -9,6 +9,6 @@
 	email = nugrahasteven@gmail.com
 	name = arsmoriendy
 [diff]
-	tool = nvimdiff3
+	tool = nvimdiff
 [merge]
-	tool = nvimdiff3
+	tool = nvimdiff

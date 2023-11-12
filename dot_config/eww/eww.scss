@@ -30,8 +30,6 @@ scale, scale * {
 }
 
 scale {
-  $padding: 7px;
-  padding: 0 $padding 0 $padding;
   $bg: $bg3;
   $bgh: $bg5;
   $bgs: $orange;
@@ -95,12 +93,15 @@ scale.volumeScale {
   }
 }
 
-label.label {
-  min-width: 40px;
+.labelWithScale {
+  $padding: 7px;
+  padding: 0 $padding 0 $padding;
 }
 
-button.workspace {
-  padding: 0px 7px 0px 7px;
+.workspace {
+  label {
+    min-width: 40px;
+  }
 
   &.true {
     background-color: $fg1;

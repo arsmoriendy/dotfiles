@@ -44,27 +44,31 @@
     :onhoverlost  "eww update reveal_volume_scale=false"
   (box
       :space-evenly false
-    (revealer
-        :transition "slideright"
-        :reveal reveal_volume_scale
-        :duration "500ms"
-      (scale
-          :value volume_poll
-          :min 0
-          :max 101
-          :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
-          :width 200
-          :class "volumeScale ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
-        )
-      )
+      :class "labelWithScale"
     (label
         :text {volume_poll >= 66 ? "󰕾" : volume_poll >= 33 ? "󰖀" : "󰕿"}
         :class "volumeIcon ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
       ) ;; volume icon
-    (label
-        :text volume_poll
-        :class "label"
-      ) ;; volume text
+    (revealer
+        :transition "slideright"
+        :reveal reveal_volume_scale
+        :duration "500ms"
+      (box
+          :space-evenly false
+        (label
+            :text volume_poll
+            :style "min-width: 40px"
+          ) ;; volume text
+        (scale
+            :value volume_poll
+            :min 0
+            :max 101
+            :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+            :width 200
+            :class "volumeScale ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
+          )
+        )
+      )
     )
   )
 )

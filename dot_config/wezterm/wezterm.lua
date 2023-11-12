@@ -31,7 +31,7 @@ config.colors = {
   }
 }
 
-config.font = wezterm.font("CaskaydiaCove Nerd Font")
+config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
 config.font_size = 11
 
 config.window_close_confirmation = "NeverPrompt"

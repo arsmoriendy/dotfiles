@@ -74,10 +74,10 @@
     :onscroll "i3-msg -t command workspace $(test {} == 'up' && echo 'prev' || echo 'next') 1>/dev/null"
   (box
     (for ws in i3_workspaces_poll
-      (button
+      (eventbox
           :onclick "i3-msg -t command workspace number ${ws['num']} 1>/dev/null"
           :class "workspace ${ws['focused']}"
-          "${ws['name']}"
+        (label :text "${ws['name']}")
         )
       )
     )

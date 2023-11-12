@@ -53,10 +53,6 @@ scale {
   }
 }
 
-button {
-  all: unset;
-}
-
 scale.volumeScale {
   &.low {
     $bgs: $red;

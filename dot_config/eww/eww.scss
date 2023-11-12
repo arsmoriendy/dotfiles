@@ -1,0 +1,131 @@
+// monochrome
+$bg0      : #1D2021;
+$fg0      : #FBF1C7;
+$bg1      : #32302F;
+$fg1      : #FBF1C7;
+$bg2      : #3C3836;
+$fg2      : #EBDBB2;
+$bg3      : #504945;
+$fg3      : #D5C4A1;
+$bg4      : #665C54;
+$fg4      : #BDAE93;
+$bg5      : #7C6F64;
+$fg5      : #A89984;
+
+// colors
+$red      : #FB4934;
+$green    : #B8BB26;
+$yellow   : #FABD2F;
+$blue     : #83A598;
+$purple   : #D3869B;
+$aqua     : #8EC07C;
+$orange   : #FE8019;
+
+scale, scale * {
+  all: unset;
+}
+
+scale {
+  $padding: 7px;
+  padding: 0 $padding 0 $padding;
+  $bg: $bg3;
+  $bgh: $bg5;
+  $bgs: $orange;
+
+  contents {
+    background-color: $bg;
+
+    highlight {
+      background-color: $bgh;
+    }
+
+    slider {
+      background-color: $bgs;
+      min-width: 10px;
+      min-height: 10px;
+      margin: -3px;
+      border-radius: 100%;
+    }
+  }
+}
+
+button {
+  all: unset;
+}
+
+scale.volumeScale {
+  &.low {
+    $bgs: $red;
+
+    contents {
+      slider {
+        background-color: $bgs;
+      }
+    }
+  }
+
+  &.medium {
+    $bgh: $yellow;
+    $bgs: $orange;
+
+    contents {
+      highlight {
+        background-color: $bgh;
+      }
+
+      slider {
+        background-color: $bgs;
+      }
+    }
+  }
+
+  &.high {
+    $bgh: $green;
+    $bgs: $aqua;
+
+    contents {
+      highlight {
+        background-color: $bgh;
+      }
+
+      slider {
+        background-color: $bgs;
+      }
+    }
+  }
+}
+
+label.label {
+  min-width: 40px;
+}
+
+button.workspace {
+  padding: 0px 7px 0px 7px;
+
+  &.true {
+    background-color: $fg1;
+    color: $bg0;
+  }
+}
+
+.bar {
+  background-color: transparent;
+}
+
+.barRow {
+  background-color: $bg0;
+  color: $fg0;
+  margin: 7px;
+}
+
+.volumeIcon.low {
+  color: $red;
+}
+
+.volumeIcon.medium {
+  color: $orange;
+}
+
+.volumeIcon.high {
+  color: $aqua;
+}

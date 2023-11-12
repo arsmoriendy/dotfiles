@@ -1,0 +1,109 @@
+(defwindow bar
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore true
+  :geometry (geometry
+    :width "100%"
+    :height "40px"
+  )
+(centerbox
+    :class "barRow"
+  (left_center_box)
+  (center_center_box)
+  (right_center_box)
+  )
+)
+
+(defwidget left_center_box []
+(box
+    :space-evenly false
+    :halign "start"
+  (i3_workspaces_widget)
+  )
+)
+
+(defwidget center_center_box []
+(box
+    :space-evenly false
+    :halign "center"
+  (time_widget)
+  )
+)
+
+(defwidget right_center_box []
+(box
+    :space-evenly false
+    :halign "end"
+  (volume_widget)
+  )
+)
+
+(defwidget volume_widget []
+(eventbox
+    :onhover  "eww update reveal_volume_scale=true"
+    :onhoverlost  "eww update reveal_volume_scale=false"
+  (box
+      :space-evenly false
+    (revealer
+        :transition "slideright"
+        :reveal reveal_volume_scale
+        :duration "500ms"
+      (scale
+          :value volume_poll
+          :min 0
+          :max 101
+          :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+          :width 200
+          :class "volumeScale ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
+        )
+      )
+    (label
+        :text {volume_poll >= 66 ? "󰕾" : volume_poll >= 33 ? "󰖀" : "󰕿"}
+        :class "volumeIcon ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
+      ) ;; volume icon
+    (label
+        :text volume_poll
+        :class "label"
+      ) ;; volume text
+    )
+  )
+)
+
+(defwidget i3_workspaces_widget []
+(eventbox
+    :onscroll "i3-msg -t command workspace $(test {} == 'up' && echo 'prev' || echo 'next') 1>/dev/null"
+  (box
+    (for ws in i3_workspaces_poll
+      (button
+          :onclick "i3-msg -t command workspace number ${ws['num']} 1>/dev/null"
+          :class "workspace ${ws['focused']}"
+          "${ws['name']}"
+        )
+      )
+    )
+  )
+)
+
+(defwidget time_widget []
+(label :text time_poll)
+)
+
+(defvar reveal_bar false)
+(defvar reveal_volume_scale false)
+
+(defpoll volume_poll
+  :interval "100ms"
+  :initial 0
+  "pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}'"
+)
+
+(defpoll i3_workspaces_poll
+  :interval "100ms"
+  :initial "[]"
+  "i3-msg -t get_workspaces"
+)
+
+(defpoll time_poll
+  :interval "1s"
+  "date +%H:%M"
+)

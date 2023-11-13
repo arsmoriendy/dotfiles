@@ -89,7 +89,7 @@
 )
 
 (defwidget time_widget []
-(label :text time_poll)
+(label :text {formattime(EWW_TIME, "%H:%M")})
 )
 
 (defvar reveal_bar false)
@@ -105,9 +105,4 @@
   :interval "100ms"
   :initial "[]"
   "i3-msg -t get_workspaces"
-)
-
-(defpoll time_poll
-  :interval "1s"
-  "date +%H:%M"
 )

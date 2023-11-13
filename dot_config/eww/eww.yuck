@@ -26,7 +26,7 @@
 (box
     :space-evenly false
     :halign "center"
-  (time_widget)
+  (datetime_widget)
   )
 )
 
@@ -88,8 +88,8 @@
   )
 )
 
-(defwidget time_widget []
-(label :text {formattime(EWW_TIME, "%H:%M")})
+(defwidget datetime_widget []
+(label :text {formattime(EWW_TIME, "%H:%M | %b %-d")})
 )
 
 (defvar reveal_bar false)

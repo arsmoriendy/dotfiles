@@ -50,14 +50,14 @@
         :class "volumeIcon ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"
       ) ;; volume icon
     (revealer
-        :transition "slideright"
+        :transition "slideleft"
         :reveal reveal_volume_scale
         :duration "500ms"
       (box
           :space-evenly false
         (label
             :text volume_poll
-            :style "min-width: 40px"
+            :style "margin-left: 7px"
           ) ;; volume text
         (scale
             :value volume_poll

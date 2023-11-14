@@ -53,7 +53,7 @@ scale {
   }
 }
 
-scale.volumeScale {
+.volumeScale {
   &.low {
     $bgs: $red;
 
@@ -129,16 +129,4 @@ scale.volumeScale {
     $padding: 7px;
     padding: 0 $padding 0 $padding;
   }
-}
-
-.volumeIcon.low {
-  color: $red;
-}
-
-.volumeIcon.medium {
-  color: $orange;
-}
-
-.volumeIcon.high {
-  color: $aqua;
 }

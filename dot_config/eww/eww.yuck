@@ -7,7 +7,7 @@
     :height "40px"
   )
 (centerbox
-    :class "barRow"
+    :class "barMainCenterBox"
   (left_center_box)
   (center_center_box)
   (right_center_box)
@@ -17,6 +17,7 @@
 (defwidget left_center_box []
 (box
     :space-evenly false
+    :spacing 7
     :halign "start"
   (i3_workspaces_widget)
   )
@@ -25,6 +26,7 @@
 (defwidget center_center_box []
 (box
     :space-evenly false
+    :spacing 7
     :halign "center"
   (datetime_widget)
   )
@@ -33,6 +35,7 @@
 (defwidget right_center_box []
 (box
     :space-evenly false
+    :spacing 7
     :halign "end"
   (disk_widget :mount_point "/")
   (volume_widget)
@@ -45,7 +48,6 @@
     :onhoverlost  "eww update reveal_volume_scale=false"
   (box
       :space-evenly false
-      :class "labelWithScale"
     (label
         :text {volume_poll >= 66 ? "󰕾" : volume_poll >= 33 ? "󰖀" : "󰕿"}
         :class "volumeIcon ${volume_poll >= 66 ? "high" : volume_poll >= 33 ? "medium" : "low"}"

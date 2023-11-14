@@ -99,11 +99,6 @@ scale.volumeScale {
   background-color: $bg5;
 }
 
-.labelWithScale {
-  $padding: 7px;
-  padding: 0 $padding 0 $padding;
-}
-
 .workspace {
   label {
     min-width: 40px;
@@ -119,10 +114,15 @@ scale.volumeScale {
   background-color: transparent;
 }
 
-.barRow {
+.barMainCenterBox {
   background-color: $bg0;
   color: $fg0;
   margin: 7px;
+
+  &>box {
+    $padding: 7px;
+    padding: 0 $padding 0 $padding;
+  }
 }
 
 .volumeIcon.low {

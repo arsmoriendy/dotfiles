@@ -111,7 +111,6 @@
   )
 )
 
-(defvar reveal_bar false)
 (defvar reveal_volume_scale false)
 
 (defpoll volume_poll

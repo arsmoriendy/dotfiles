@@ -39,6 +39,8 @@
     :halign "end"
   (cpu_widget)
   (bar_separator)
+  (ram_widget)
+  (bar_separator)
   (disk_widget :mount_point "/")
   (bar_separator)
   (volume_widget)
@@ -125,6 +127,18 @@
   (label :text "")
   (label
       :text "${replace(EWW_CPU["avg"], "\\..*", "")}%"
+    )
+  )
+)
+
+(defwidget ram_widget []
+(box
+    :space-evenly false
+    :spacing 7
+    :tooltip "RAM (% used)"
+  (label :text "")
+  (label
+      :text "${replace(EWW_RAM["used_mem_perc"], "\\..*", "")}%"
     )
   )
 )

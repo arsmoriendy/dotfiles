@@ -37,6 +37,7 @@
     :space-evenly false
     :spacing 7
     :halign "end"
+  (cpu_widget)
   (disk_widget :mount_point "/")
   (volume_widget)
   )
@@ -106,7 +107,23 @@
       :width 14
       :thickness 3.5
       :value {replace(EWW_DISK[mount_point]["used_perc"], "\\..*", "")}
-      :class "diskProgress"
+      :class "barCircularProgress"
+    )
+  )
+)
+
+(defwidget cpu_widget []
+(box
+    :space-evenly false
+    :spacing 7
+    :tooltip "${replace(EWW_CPU["avg"], "\\..*", "")}% used"
+  (label :text "")
+  (circular-progress
+      :start-at 75
+      :width 14
+      :thickness 3.5
+      :value {replace(EWW_CPU["avg"], "\\..*", "")}
+      :class "barCircularProgress"
     )
   )
 )

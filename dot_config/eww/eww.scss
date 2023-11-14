@@ -99,6 +99,13 @@ scale.volumeScale {
   background-color: $bg5;
 }
 
+.barSeparator {
+  $margin: 5px;
+  margin: $margin 0 $margin 0;
+  border-left: 1px solid $fg4;
+  opacity: 0.5;
+}
+
 .workspace {
   label {
     min-width: 40px;

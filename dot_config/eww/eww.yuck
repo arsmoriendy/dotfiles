@@ -38,7 +38,9 @@
     :spacing 7
     :halign "end"
   (cpu_widget)
+  (bar_separator)
   (disk_widget :mount_point "/")
+  (bar_separator)
   (volume_widget)
   )
 )
@@ -93,7 +95,13 @@
 )
 
 (defwidget datetime_widget []
-(label :text {formattime(EWW_TIME, "%H:%M | %b %-d")})
+(box
+    :space-evenly false
+    :spacing 7
+  (label :text {formattime(EWW_TIME, "%H:%M")})
+  (bar_separator)
+  (label :text {formattime(EWW_TIME, "%b %-d")})
+  )
 )
 
 (defwidget disk_widget [mount_point]
@@ -126,6 +134,10 @@
       :class "barCircularProgress"
     )
   )
+)
+
+(defwidget bar_separator []
+(box :class "barSeparator")
 )
 
 (defvar reveal_volume_scale false)

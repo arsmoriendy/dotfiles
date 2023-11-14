@@ -34,6 +34,7 @@
 (box
     :space-evenly false
     :halign "end"
+  (disk_widget :mount_point "/")
   (volume_widget)
   )
 )
@@ -90,6 +91,22 @@
 
 (defwidget datetime_widget []
 (label :text {formattime(EWW_TIME, "%H:%M | %b %-d")})
+)
+
+(defwidget disk_widget [mount_point]
+(box
+    :space-evenly false
+    :spacing 7
+    :tooltip "${replace(EWW_DISK[mount_point]["used_perc"], "\\..*", "")}% used"
+  (label :text mount_point)
+  (circular-progress
+      :start-at 75
+      :width 14
+      :thickness 3.5
+      :value {replace(EWW_DISK[mount_point]["used_perc"], "\\..*", "")}
+      :class "diskProgress"
+    )
+  )
 )
 
 (defvar reveal_bar false)

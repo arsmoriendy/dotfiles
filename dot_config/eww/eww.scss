@@ -95,6 +95,10 @@ scale.volumeScale {
   }
 }
 
+.diskProgress {
+  background-color: $bg5;
+}
+
 .labelWithScale {
   $padding: 7px;
   padding: 0 $padding 0 $padding;

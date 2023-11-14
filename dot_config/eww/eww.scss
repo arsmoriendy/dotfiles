@@ -107,13 +107,12 @@ scale.volumeScale {
 }
 
 .workspace {
-  label {
-    min-width: 40px;
-  }
+  $padding: 7px;
+  padding: 0 $padding 0 $padding;
+  color: $bg5;
 
   &.true {
-    background-color: $fg1;
-    color: $bg0;
+    color: $fg0;
   }
 }
 

@@ -83,11 +83,15 @@
 (eventbox
     :onscroll "i3-msg -t command workspace $(test {} == 'up' && echo 'prev' || echo 'next') 1>/dev/null"
   (box
+      :space-evenly false
+      :spacing 7
     (for ws in i3_workspaces_poll
       (eventbox
           :onclick "i3-msg -t command workspace number ${ws['num']} 1>/dev/null"
-          :class "workspace ${ws['focused']}"
-        (label :text "${ws['name']}")
+        (label
+            :text "${ws['name']}"
+            :class "workspace ${ws['focused']}"
+          )
         )
       )
     )

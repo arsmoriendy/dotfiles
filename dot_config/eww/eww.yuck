@@ -101,7 +101,7 @@
     :space-evenly false
     :spacing 7
     :tooltip "PART ${mount_point}: ${replace(EWW_DISK[mount_point]["used_perc"], "\\..*", "")}% used"
-  (label :text mount_point)
+  (label :text "󰋊")
   (circular-progress
       :start-at 75
       :width 14

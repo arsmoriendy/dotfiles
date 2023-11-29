@@ -34,7 +34,7 @@ abbr -a lam "exa -alFH -s modified --time-style long-iso --icons"
 abbr -a che "chezmoi"
 abbr -a bat "bat --theme gruvbox-dark -f"
 abbr -a ip "ip -c=always"
-abbr -a snaproot "sudo btrfs subvolume snapshot / /.btrfs-snapshots/@_$(date -Iseconds)"
+abbr -a snaproot "sudo btrfs subvolume snapshot -r / /.btrfs-snapshots/@_$(date -Iseconds)"
 abbr -a subdel "sudo btrfs subvolume delete"
 
 ### PROMPT ###

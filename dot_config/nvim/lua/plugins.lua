@@ -882,6 +882,11 @@ require("lazy").setup(
         })
       end,
     },
+
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+    },
   },
   lazy_options
 )

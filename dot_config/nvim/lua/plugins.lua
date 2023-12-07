@@ -886,9 +886,6 @@ require("lazy").setup(
     {
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-      opts = {
-        comments_only = true,
-      }
     },
   },
   lazy_options

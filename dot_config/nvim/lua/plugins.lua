@@ -101,6 +101,9 @@ require("lazy").setup(
               "norg",
             }
           },
+          indent = {
+            tab_char = "▎"
+          },
         })
       end
     },

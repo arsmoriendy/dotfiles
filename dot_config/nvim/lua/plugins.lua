@@ -676,6 +676,7 @@ require("lazy").setup(
         local nvim_notify = require("notify")
         nvim_notify.setup({
           background_colour = "#00000000",
+          max_width = 50,
         })
         vim.notify = nvim_notify -- implement
 

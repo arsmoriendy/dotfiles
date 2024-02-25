@@ -434,31 +434,24 @@ require("lazy").setup(
       },
       config = function()
         local cmp = require("cmp")
-        local cmp_map_function = function(action)
-          return function(fallback)
-            if cmp.visible() then action() else fallback() end
-          end
-        end
 
         cmp.setup({
           mapping = {
-            ["<C-n>"] = cmp.mapping({ i = cmp_map_function(cmp.select_next_item) }),
-            ["<Down>"] = cmp.mapping({ i = cmp_map_function(cmp.select_next_item) }),
-            ["<C-p>"] = cmp.mapping({ i = cmp_map_function(cmp.select_prev_item) }),
-            ["<Up>"] = cmp.mapping({ i = cmp_map_function(cmp.select_prev_item) }),
-            ["<C-down>"] = cmp.mapping({ i = cmp_map_function(function() cmp.scroll_docs(1) end) }),
-            ["<C-up>"] = cmp.mapping({ i = cmp_map_function(function() cmp.scroll_docs(-1) end) }),
-            ["<C-d>"] = cmp.mapping({ i = cmp.complete }),
-            ["<CR>"] = cmp.mapping({ i = cmp_map_function(function() cmp.confirm({ select = true }) end) }),
-            ["<C-x>"] = cmp.mapping({ i = cmp_map_function(cmp.abort) }),
-            ["<C-c>"] = cmp.mapping({ i = cmp_map_function(function()
-              cmp.abort()
-              vim.cmd("stopinsert")
-            end) }),
-            ["<Esc>"] = cmp.mapping({ i = cmp_map_function(function()
-              cmp.abort()
-              vim.cmd("stopinsert")
-            end) }),
+            ["<C-x>"] = cmp.mapping(cmp.mapping.abort()),
+            ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+            ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item()),
+            ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+            ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+            ["<C-down>"] = cmp.mapping(cmp.mapping.scroll_docs(1)),
+            ["<C-up>"] = cmp.mapping(cmp.mapping.scroll_docs(-1)),
+            ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true })),
+            ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({
+              config = {
+                sources = {
+                  { name = "nvim_lsp" }
+                }
+              }
+            })),
           },
           snippet = {
             expand = function(args)

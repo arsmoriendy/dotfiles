@@ -1,3 +1,5 @@
+local lib = require("lib")
+
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -35,7 +37,6 @@ config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
 config.font_size = 11
 
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "None"
 
 config.underline_thickness = 2
 
@@ -159,6 +160,18 @@ config.keys = {
   --  ]]
 }
 -- ]]
+
+
+if (lib.isUnix()) then
+  -- [[ unix only config
+  config.window_decorations = "None"
+  -- ]]
+else
+  -- [[ windows only config
+  -- use git's included bash.exe as a default shell
+  config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe" }
+  -- ]]
+end
 
 -- and finally, return the configuration to wezterm
 return config

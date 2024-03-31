@@ -1,0 +1,21 @@
+# Read `man 5 sway-bar` for more information about this section.
+
+bar {
+    id "waybar"
+
+    swaybar_command waybar
+
+    modifier $mod
+    mode hide
+
+    # colors {
+    #     statusline $f_text
+    #     background $f_bgrd
+    #
+    #     # <class>             <border>  <background>  <text>
+    #     focused_workspace     $border   $primry       $f_bgrd
+    #     active_workspace      $border   $u_bgrd       $u_text
+    #     inactive_workspace    $border   $u_bgrd       $u_text
+    #     urgent_workspace      $accent   $accent       $f_bgrd
+    # }
+}

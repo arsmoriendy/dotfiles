@@ -1,0 +1,7 @@
+# configuration for specific apps
+
+# firefox
+for_window [app_id="firefox" floating] border csd
+
+# spotify
+for_window [class="Spotify"] floating enable

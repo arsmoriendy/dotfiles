@@ -13,9 +13,12 @@
   "modules-center": [
     "sway/window"
   ],
-  "modules-right": [],
+  "modules-right": [
+    "clock"
+  ],
   // Modules configuration
   "include": [
-    "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc"
+    "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc",
+    "~/.config/waybar/moduleconfigs/clock_cfg.jsonc"
   ]
 }

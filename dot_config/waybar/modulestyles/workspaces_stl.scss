@@ -1,11 +1,11 @@
 #workspaces {
-  margin: 3px;
+  margin: $spacing;
   border: 1px solid $border;
 }
 
 #workspaces button {
   border-radius: 0;
-  padding: 3px;
+  padding: $spacing;
   min-height: 1.5em;
   min-width: 1.5em;
   transition-property: background-color, color;

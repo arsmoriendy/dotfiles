@@ -1,0 +1,33 @@
+(defvar reveal_volume_scale false)
+
+(deflisten volume_poll
+  :initial 0
+  "pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}'"
+)
+(deflisten mute_poll
+  :initial "no"
+  "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'"
+)
+
+;; vertical volume widget
+(defwidget v_volume_wgt []
+  (box
+    :orientation "vertical"
+    :space-evenly false
+    :style "padding: 10px;"
+    (label
+      :text "${volume_poll}%"
+      :style "min-width: 3em"
+    )
+    (scale
+      :value volume_poll
+      :min 0
+      :max 151
+      :orientation "vertical"
+      :flipped true
+      :height 200
+      :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}% && eww update volume_poll={}"
+      :class "${mute_poll == "yes" ? "disabled": ""}"
+    )
+  )
+)

@@ -1,6 +1,6 @@
 #workspaces {
   margin: 3px;
-  border: 1px solid @border;
+  border: 1px solid $border;
 }
 
 #workspaces button {
@@ -13,15 +13,15 @@
 }
 
 #workspaces button:hover {
-  background-color: @u_bgrd;
+  background-color: $u_bgrd;
 }
 
 #workspaces button.focused {
-  background-color: @primry;
-  color: @f_bgrd;
+  background-color: $primry;
+  color: $f_bgrd;
 }
 
 #workspaces button.urgent {
-  background-color: @accent;
-  color: @f_bgrd;
+  background-color: $accent;
+  color: $f_bgrd;
 }

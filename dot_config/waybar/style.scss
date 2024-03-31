@@ -1,0 +1,18 @@
+@import "./colors.scss";
+
+* {
+  all: unset;
+  font-family: "CaskaydiaCove Nerd Font Propo"
+}
+
+window#waybar {
+  background-color: $f_bgrd;
+  color: $f_text;
+  border-top: 1px solid $border;
+}
+
+// Widget styles {
+@import "./modulestyles/workspaces_stl.scss";
+@import "./modulestyles/scratchpad_stl.scss";
+@import "./modulestyles/mode_stl.scss";
+// Widget styles }

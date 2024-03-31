@@ -8,12 +8,6 @@
   set $down j
   set $up k
   set $right l
-  # Your preferred terminal emulator
-  set $term wezterm
-  # Your preferred application launcher
-  # Note: pass the final command to swaymsg so that the resulting window can be opened
-  # on the original workspace that the command was run on.
-  # set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Variables }
 
 ### Idle configuration
@@ -34,9 +28,11 @@
   exec wl-paste --type image --watch cliphist store
 # Clipboard }
 
-# Polkit {
+# Polkit
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# Polkit}
+
+# eww
+exec "eww daemon"
 
 # Focus options {
   focus_wrapping workspace

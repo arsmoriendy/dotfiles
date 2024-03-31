@@ -1,9 +1,6 @@
 # Tip: wev(1) is a good tool for discovering keys
 
 # Basics {
-  # Start a terminal
-  bindsym $mod+Return exec $term
-
   # Kill focused window
   bindsym $mod+q kill
 
@@ -148,3 +145,46 @@
 
 # Media controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+
+# app launcher {
+  mode "run" {
+    # exit
+    bindsym Escape mode "default"; exec "eww close launcher"
+    bindsym $mod+d mode "default"; exec "eww close launcher"
+  }
+
+  bindsym --no-repeat $mod+d mode "run"; exec \
+    "eww open launcher --screen C24F390"
+# app launcher }
+
+# volume slider {
+  mode "volume" {
+    # exit
+    set $exitcmd "eww close volume_win"
+    bindsym Escape mode "default"; exec $exitcmd
+    bindsym q mode "default"; exec $exitcmd
+    bindsym $mod+g mode "default"; exec $exitcmd
+    bindsym --whole-window --border button1 mode "default" ; exec $exitcmd
+    bindsym --whole-window --border button2 mode "default" ; exec $exitcmd
+
+    # volume down
+    set $voldncmd "pactl set-sink-volume @DEFAULT_SINK@ -10% && eww update volume_poll=$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}')"
+    bindsym j exec $voldncmd
+    bindsym down exec $voldncmd
+    bindsym Shift+j exec $voldncmd
+    bindsym Shift+down exec $voldncmd
+
+    # volume up
+    set $volupcmd "pactl set-sink-volume @DEFAULT_SINK@ +10% && eww update volume_poll=$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}')"
+    bindsym k exec $volupcmd
+    bindsym up exec $volupcmd
+    bindsym Shift+k exec $volupcmd
+    bindsym Shift+up exec $volupcmd
+
+    # toggle mute
+    bindsym m exec "pactl set-sink-mute @DEFAULT_SINK@ toggle && eww update mute_poll=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
+  }
+
+  bindsym --no-repeat $mod+g mode "volume"; exec \
+    "eww open volume_win --screen C24F390"
+# volume slider }

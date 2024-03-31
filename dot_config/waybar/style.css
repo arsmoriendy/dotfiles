@@ -1,0 +1,25 @@
+/* colors (match with sway config) */
+@define-color f_text #FBF1C7;
+@define-color u_text #bcb6a0;
+@define-color f_bgrd #181a1b;
+@define-color u_bgrd #0c0d0e;
+@define-color e_bgrd #9e0005;
+@define-color accent #FABD2F;
+@define-color border #363130;
+@define-color primry #8EC07C;
+@define-color second #B8BB26;
+
+* {
+  all: unset;
+  font-family: "CaskaydiaCove Nerd Font Propo"
+}
+
+window#waybar {
+  background-color: @f_bgrd;
+  color: @f_text;
+  border-top: 1px solid @border;
+}
+
+@import "./modulestyles/workspaces_stl.css";
+@import "./modulestyles/scratchpad_stl.css";
+@import "./modulestyles/mode_stl.css";

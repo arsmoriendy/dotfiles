@@ -1,0 +1,27 @@
+#workspaces {
+  margin: 3px;
+  border: 1px solid @border;
+}
+
+#workspaces button {
+  border-radius: 0;
+  padding: 3px;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  transition-property: background-color, color;
+  transition-duration: .3s;
+}
+
+#workspaces button:hover {
+  background-color: @u_bgrd;
+}
+
+#workspaces button.focused {
+  background-color: @primry;
+  color: @f_bgrd;
+}
+
+#workspaces button.urgent {
+  background-color: @accent;
+  color: @f_bgrd;
+}

@@ -1,0 +1,21 @@
+// -*- mode: jsonc -*-
+{
+  "position": "bottom",
+  "ipc": true, // for "hide" mode to work
+  "id": "waybar",
+  "reload_style_on_change": true, // turn off after debugging
+  // Choose the order of the modules
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/scratchpad"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [],
+  // Modules configuration
+  "include": [
+    "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc"
+  ]
+}

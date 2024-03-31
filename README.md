@@ -2,6 +2,7 @@
 Gruvbox themed rice
 ## Dependencies
 ### Arch/Pacman:
+#### Runtime Dependencies
 - sway (^1.9)
 - pulseaudio (^17.0-3)
 - waybar (^0.10.0)
@@ -9,6 +10,8 @@ Gruvbox themed rice
 - polkit-gnome
 - wl-clipboard (^2.2.1)
 - ttf-cascadia-code-nerd
-
-Optional dependencies:
+##### Optional dependencies:
 - swaybg (^1.2.0)
+#### Compile/Config Time Dependencies
+Only needed for configuration
+- dart-sass (^1.70.0)

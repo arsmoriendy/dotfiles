@@ -1,2 +1,3 @@
 set $term "wezterm" # prefered terminal
 set $ewwoutput "0x103D" # eww screen output
+set $browser "firefox"

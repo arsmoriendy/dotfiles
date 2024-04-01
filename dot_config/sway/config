@@ -39,7 +39,10 @@ exec "eww daemon"
   focus_follows_mouse no
 # Focus options }
 
+# xwayland indicator
 for_window [shell="xwayland"] title_format "[XWayland] %title"
+
+smart_borders on
 
 # Includes {
   # sytem wide

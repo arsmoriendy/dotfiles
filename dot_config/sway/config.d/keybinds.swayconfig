@@ -7,7 +7,7 @@
   # start things
   bindsym $mod+Return exec $term
   bindsym $mod+b exec $browser
-  bindsym $mod+e exec $filenamager
+  bindsym $mod+e exec $filemanager
 
   # Drag floating windows by holding down $mod and left mouse button.
   # Resize them with right mouse button + $mod.

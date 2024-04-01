@@ -154,7 +154,7 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
   }
 
   bindsym --no-repeat $mod+d mode "run"; exec \
-    "eww open launcher --screen C24F390"
+    "eww open launcher --screen $ewwoutput"
 # app launcher }
 
 # volume slider {
@@ -186,5 +186,5 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
   }
 
   bindsym --no-repeat $mod+g mode "volume"; exec \
-    "eww open volume_win --screen C24F390"
+    "eww open volume_win --screen $ewwoutput"
 # volume slider }

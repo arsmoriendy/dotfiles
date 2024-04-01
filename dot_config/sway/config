@@ -47,8 +47,8 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 
   # load colors first, precedence matters
   include ~/.config/sway/config.d/colors.swayconfig
-  include ~/.config/sway/config.d/*
+  include ~/.config/sway/config.d/*.swayconfig
 
   # sytem specific
-  include ~/.config/sway/system-specific/*
+  include ~/.config/sway/system-specific/*.swayconfig
 # Includes }

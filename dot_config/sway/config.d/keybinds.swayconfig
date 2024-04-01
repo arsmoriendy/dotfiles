@@ -4,6 +4,9 @@
   # Kill focused window
   bindsym $mod+q kill
 
+  # start a terminal
+  bindsym $mod+Return exec $term
+
   # Start your launcher
   # bindsym $mod+d exec $menu
 

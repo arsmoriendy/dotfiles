@@ -14,4 +14,5 @@ Gruvbox themed rice
 - swaybg (^1.2.0)
 #### Compile/Config Time Dependencies
 Only needed for configuration
-- dart-sass (^1.70.0)
+- dart-sass (^1.70.0) - waybar, eww gtk css styling
+- wev (1.0.0-13) - sway keybinds

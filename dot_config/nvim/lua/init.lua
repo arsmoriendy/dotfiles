@@ -40,6 +40,13 @@ vim.g.omni_sql_no_default_maps = 1
 vim.diagnostic.config({
   update_in_insert = true
 })
+
+-- recognize "*.swayconfig" files as swayconfig files
+vim.filetype.add({
+  extension = {
+    swayconfig = "swayconfig"
+  }
+})
 -- ]]
 
 -- AUTO GROUP/CMDS -- [[

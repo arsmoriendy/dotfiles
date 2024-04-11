@@ -1,8 +1,4 @@
 #!/usr/bin/fish
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 # User specific environment
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
@@ -28,9 +24,9 @@ end
 ### ABBREVIATIONS ###
 abbr -a p "sudo $PACK_MAN"
 abbr -a sctl "sudo systemctl"
-abbr -a ls "exa --icons"
-abbr -a la "exa -alFH --icons"
-abbr -a lam "exa -alFH -s modified --time-style long-iso --icons"
+abbr -a ls "eza --icons"
+abbr -a la "eza -alH --icons"
+abbr -a lam "eza -alH -s modified --time-style long-iso --icons"
 abbr -a che "chezmoi"
 abbr -a bat "bat --theme gruvbox-dark -f"
 abbr -a ip "ip -c=always"
@@ -83,11 +79,6 @@ function fish_right_prompt
   echo -e (set_color normal)
 end
 
-### AUTO START TMUX ###
-if [ -n $PS1 ]; and [ -z $TMUX ]; and [ ! (string match 'main*(attached)' (tmux ls)) ]; and [ ! (string match '/dev/tty*' (tty) ) ]
-  command tmux new-session -A -s main
-end
-
 ### ENVIRONMENT VARIABLES ###
 set -x TERMINAL kitty # used for i3-sensible-terminal
 set -x EDITOR nvim
@@ -115,8 +106,3 @@ function fish_default_mode_prompt
   set_color normal
 end
 bind --mode insert \cc 'set fish_bind_mode default; commandline -f repaint'
-
-# auto startx
-if [ (tty) = "/dev/tty1" ]
-  startx
-end

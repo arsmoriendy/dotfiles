@@ -12,6 +12,7 @@ Gruvbox themed rice
 - ttf-cascadia-code-nerd
 ##### Optional dependencies:
 - swaybg (^1.2.0)
+- brightnessctl (^0.5.0) - for devices that need brightness control
 #### Compile/Config Time Dependencies
 Only needed for configuration
 - dart-sass (^1.70.0) - waybar, eww gtk css styling

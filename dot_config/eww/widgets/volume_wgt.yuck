@@ -29,5 +29,9 @@
       :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}% && eww update volume_poll={}"
       :class "${mute_poll == "yes" ? "disabled": ""}"
     )
+    (label
+      :text "󰓃"
+      :style "font-size: 1.5em"
+    )
   )
 )

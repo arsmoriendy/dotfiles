@@ -21,5 +21,9 @@
       :height 200
       :onchange "brightnessctl set {}% && eww update b_poll={}"
     )
+    (label
+      :text "󰃞"
+      :style "font-size: 1.5em"
+    )
   )
 )

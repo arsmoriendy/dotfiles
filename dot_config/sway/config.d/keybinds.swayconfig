@@ -198,3 +198,5 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
   bindsym --no-repeat $mod+g mode "volume"; exec $opnvolwincmd
 # volume slider }
+
+bindsym XF86AudioMicMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"

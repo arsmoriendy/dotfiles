@@ -162,6 +162,7 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 # volume slider {
   bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -10%"
   bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +10%"
+  bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
   mode "volume" {
     # exit
@@ -189,7 +190,9 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
     bindsym XF86AudioRaiseVolume exec $volupcmd
 
     # toggle mute
-    bindsym m exec "pactl set-sink-mute @DEFAULT_SINK@ toggle && eww update mute_poll=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
+    set $volmutcmd "pactl set-sink-mute @DEFAULT_SINK@ toggle && eww update mute_poll=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
+    bindsym m exec $volmutcmd
+    bindsym XF86AudioMute exec $volmutcmd
   }
 
   bindsym --no-repeat $mod+g mode "volume"; exec \

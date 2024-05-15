@@ -819,6 +819,11 @@ require("lazy").setup(
             man_pages = {
               sections = { "ALL" },
             },
+            live_grep = {
+              additional_args = {
+                "--multiline" -- enables newline("\n") searching
+              }
+            },
           },
         })
         require("telescope").load_extension("notify")

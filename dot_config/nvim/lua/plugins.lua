@@ -851,33 +851,6 @@ require("lazy").setup(
     },
 
     {
-      "nvim-neorg/neorg", -- neorg (emacs org)
-      build = ":Neorg sync-parsers",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      config = function()
-        vim.api.nvim_create_autocmd("BufWinEnter", {
-          pattern = "*.norg",
-          callback = function()
-            vim.wo.conceallevel = 2
-          end
-        })
-        require("neorg").setup({
-          load = {
-            ["core.defaults"] = {},  -- Loads default behaviour
-            ["core.concealer"] = {}, -- Adds pretty icons to your documents
-            ["core.dirman"] = {      -- Manages Neorg workspaces
-              config = {
-                workspaces = {
-                  notes = "~/Documents/notes",
-                },
-              },
-            },
-          },
-        })
-      end,
-    },
-
-    {
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
       opts = {

@@ -58,7 +58,7 @@ vim.filetype.add({
   vim.api.nvim_create_autocmd("BufWinLeave", {
     group = autoview_augroup,
     callback = function ()
-      if (vim.o.buftype == "") then
+      if (vim.o.buftype == "" and vim.fn.bufname() ~= "") then
         vim.cmd("mkview")
       end
     end
@@ -68,7 +68,7 @@ vim.filetype.add({
   vim.api.nvim_create_autocmd("BufWinEnter", {
     group = autoview_augroup,
     callback = function ()
-      if (vim.o.buftype == "") then
+      if (vim.o.buftype == "" and vim.fn.bufname() ~= "") then
         vim.cmd("silent! loadview")
       end
     end

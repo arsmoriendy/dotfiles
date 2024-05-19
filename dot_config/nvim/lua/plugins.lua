@@ -818,10 +818,12 @@ require("lazy").setup(
             mappings = {
               n = {
                 ["q"] = act.close,
-                ["<C-c>"] = act.close
+                ["<C-c>"] = act.close,
+                ["<C-Enter>"] = act.file_tab,
               },
               i = {
-                ["<C-c>"] = false
+                ["<C-c>"] = false,
+                ["<C-Enter>"] = act.file_tab,
               }
             },
           },

@@ -810,10 +810,20 @@ require("lazy").setup(
         "rcarriga/nvim-notify",
       },
       config = function()
+        local act = require("telescope.actions")
         require("telescope").setup({
           defaults = {
             borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             prompt_prefix = " ",
+            mappings = {
+              n = {
+                ["q"] = act.close,
+                ["<C-c>"] = act.close
+              },
+              i = {
+                ["<C-c>"] = false
+              }
+            },
           },
           pickers = {
             man_pages = {

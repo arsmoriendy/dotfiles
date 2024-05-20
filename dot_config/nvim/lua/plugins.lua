@@ -819,11 +819,11 @@ require("lazy").setup(
               n = {
                 ["q"] = act.close,
                 ["<C-c>"] = act.close,
-                ["<C-Enter>"] = act.file_tab,
+                ["<C-Enter>"] = act.select_tab,
               },
               i = {
                 ["<C-c>"] = false,
-                ["<C-Enter>"] = act.file_tab,
+                ["<C-Enter>"] = act.select_tab,
               }
             },
           },

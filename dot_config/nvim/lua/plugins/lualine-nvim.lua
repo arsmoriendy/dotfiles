@@ -102,7 +102,7 @@ return {
 
               local filetype_icon = require("nvim-web-devicons").get_icon(name)
 
-              return (filetype_icon or "") .. " " .. name .. (is_modified == 1 and " ●" or "")
+              return (filetype_icon or "") .. " " .. name .. (is_modified == 1 and " ●" or "")
             end,
           }
         }

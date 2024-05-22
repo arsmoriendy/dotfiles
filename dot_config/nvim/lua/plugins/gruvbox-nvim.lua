@@ -1,5 +1,5 @@
 return {
-  "ellisonleao/gruvbox.nvim",   -- colorscheme
+  "ellisonleao/gruvbox.nvim", -- colorscheme
   lazy = true,
   priority = 1000,
   config = function()
@@ -9,16 +9,18 @@ return {
       overrides = {
         -- borders
         VertSplit = { bg = "None" },
-        -- [[ float
+
+        -- float [
         NormalFloat = { bg = "#3C3836", fg = "#EBDBB2", },
         FloatTitle = { bg = "#3C3836", fg = "#EBDBB2", },
         FloatBorder = { bg = "#3C3836", fg = "#7C6F64", },
-        -- ]]
-        -- [[ winbar
+        -- ]
+
+        -- winbar [
         WinBar = { bg = "None", fg = "#a89984", },
         NavicText = { fg = "#a89984", },
         NavicSeparator = { fg = "#7C6F64", },
-        -- ]]
+        -- ]
       }
     })
     vim.cmd("colorscheme gruvbox")

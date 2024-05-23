@@ -77,6 +77,26 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 -- ]
 
+-- FUNCTIONS [
+
+-- table to string
+-- https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
+-- @param o table to be stringified
+function dump(o)
+  if type(o) == 'table' then
+    local s = '{ \n'
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ',\n'
+    end
+    return s .. '} '
+  else
+    return "'" .. tostring(o) .. "'"
+  end
+end
+
+-- ]
+
 -- KEYMAPS [
 -- Consists of mappings that are not dependent on plugins
 -- plugin dependent maps are stored in plugins.lua
@@ -122,12 +142,6 @@ kms({ "i" }, "<C-s>", "<ESC><CMD>w<CR>")
 -- delete
 kms("i", "<C-l>", "<DEL>")
 
--- "indent all lines
--- function IndentAll()
---   return "gg=G" . line(".") . "G"
--- endfunction
--- nnoremap <expr> == IndentAll()
-
 -- windows [
 -- navigate windows [
 kms("n", "<C-h>", "<C-w>h", { remap = false })
@@ -156,28 +170,11 @@ kms("n", "<Leader>k", "<CMD>lua vim.lsp.buf.hover()<CR>")
 
 -- lsp go to definition
 kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>");
---
+
 -- lsp action
 kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>");
--- ]
 
--- FUNCTIONS [
-
--- table to string
--- https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console
--- @param o table to be stringified
-function dump(o)
-  if type(o) == 'table' then
-    local s = '{ \n'
-    for k, v in pairs(o) do
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
-      s = s .. '[' .. k .. '] = ' .. dump(v) .. ',\n'
-    end
-    return s .. '} '
-  else
-    return "'" .. tostring(o) .. "'"
-  end
-end
+kms("n", "==", "<CMD>mkview<CR>gg=G<CMD>loadview<CR>", { desc = "Reindent all lines" })
 
 -- ]
 

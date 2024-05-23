@@ -31,7 +31,6 @@ local lazy_plugins = {
     require("plugins.ccc-nvim"),
     require("plugins.twilight-nvim"),
     require("plugins.Comment-nvim"),
-    require("plugins.nvim-tree-lua"),
     require("plugins.nvim-autopairs"),
     require("plugins.nvim-lspconfig"),
     require("plugins.LuaSnip"),
@@ -46,6 +45,7 @@ local lazy_plugins = {
     require("plugins.telescope-nvim"),
     require("plugins.telescope-fzf-native-nvim"),
     require("plugins.todo-comments-nvim"),
+    require("plugins.oil-nvim"),
   }
 }
 

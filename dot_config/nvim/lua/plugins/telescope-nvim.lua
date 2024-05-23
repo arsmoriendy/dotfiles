@@ -1,5 +1,5 @@
 return {
-  "nvim-telescope/telescope.nvim",     -- telescope
+  "nvim-telescope/telescope.nvim", -- telescope
   event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -31,7 +31,7 @@ return {
         },
         live_grep = {
           additional_args = {
-            "--multiline"     -- enables newline("\n") searching
+            "--multiline" -- enables newline("\n") searching
           }
         },
       },

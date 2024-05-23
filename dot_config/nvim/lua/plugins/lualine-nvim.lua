@@ -41,7 +41,7 @@ return {
             function()
               local nvim_notify = require("notify")
               if nvim_notify.notification_is_supressed then
-                local indicator = ""
+                local indicator = "󰂛"
                 if #nvim_notify.supressed_notifications ~= 0 then
                   indicator = indicator .. " " .. #nvim_notify.supressed_notifications
                 end

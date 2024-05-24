@@ -30,7 +30,6 @@ vim.g.omni_sql_no_default_maps = 1
 -- vanilla vim ex-commands
 
 -- command abbreviations [
-vim.cmd.cabbrev("h help")
 vim.cmd.cabbrev("th tab help")
 -- ]
 

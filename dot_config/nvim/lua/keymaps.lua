@@ -44,6 +44,18 @@ kms({ "i" }, "<C-s>", "<ESC><CMD>w<CR>")
 -- delete
 kms("i", "<C-l>", "<DEL>")
 
+-- yank and append line to the unnamed register (:help registers)
+kms("n", "yY", "<CMD>let @\" .= getline('.') . \"\\n\"<CR>", {
+  desc = "Yank and append line to the unamed register",
+  silent = true,
+})
+
+-- delete and append line to the unnamed register (:help registers)
+kms("n", "dD", "<CMD>let @\" .= getline('.') . \"\\n\" | d _<CR>", {
+  desc = "Delete and append line to the unamed register",
+  silent = true,
+})
+
 -- windows [
 -- navigate windows [
 kms("n", "<C-h>", "<C-w>h", { remap = false })

@@ -1,3 +1,17 @@
+-- download and install lazy.nvim package manager, if not already installed [
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+-- ]
+
 -- OPTIONS [
 -- vanilla vim options (set only)
 local opt = vim.opt
@@ -17,6 +31,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.updatetime = 100
 opt.listchars:append("trail:•")
+opt.rtp:prepend(lazypath)
 -- ]
 
 -- VARIABLES [
@@ -76,6 +91,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 -- ]
 
+-- load config from different files [
 require("functions")
 require("keymaps")
-require("plugins") -- load plugins
+require("lazy").setup("plugins") -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
+-- ]

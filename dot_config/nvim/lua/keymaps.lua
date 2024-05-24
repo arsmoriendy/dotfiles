@@ -89,3 +89,5 @@ kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>");
 kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>");
 
 kms("n", "==", "<CMD>mkview<CR>gg=G<CMD>loadview<CR>", { desc = "Reindent all lines" })
+
+kms("n", "<Leader>l", "<CMD>Lazy<CR>", { desc = "Open lazy.nvim UI" })

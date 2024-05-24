@@ -1,49 +1,53 @@
 return {
-  "rcarriga/nvim-notify",     -- notification
+  "rcarriga/nvim-notify", -- notification
   config = function()
-    local nvim_notify = require("notify")
-    nvim_notify.setup({
+    ---@type table
+    local notify = require("notify")
+    notify.setup({
       background_colour = "#00000000",
+      minimum_width = 0,
       max_width = 50,
+      render = "wrapped-compact",
+      stages = "slide",
     })
-    vim.notify = nvim_notify     -- implement
+    vim.notify = notify -- implement
 
-    -- suppress notifications [[
-    nvim_notify.notification_is_supressed = false
-    nvim_notify.supressed_notifications = {}
+    -- suppress notifications [
+    notify.notification_is_supressed = false
+    notify.supressed_notifications = {}
 
-    nvim_notify.insert_supressed_notifications = function(msg, level, opts)
-      local local_supressed_notifications = nvim_notify.supressed_notifications
+    notify.append_supressed_notifications = function(msg, level, opts)
+      local local_supressed_notifications = notify.supressed_notifications
       table.insert(local_supressed_notifications, {
         msg = msg,
         level = level,
         opts = opts
       })
-      nvim_notify.supressed_notifications = local_supressed_notifications
+      notify.supressed_notifications = local_supressed_notifications
     end
 
-    nvim_notify.toggle_notification_supress = function()
-      if nvim_notify.notification_is_supressed then
-        vim.notify = nvim_notify
-        for _, notification in pairs(nvim_notify.supressed_notifications) do
+    notify.toggle_notification_supress = function()
+      if notify.notification_is_supressed then
+        vim.notify = notify
+        for _, notification in pairs(notify.supressed_notifications) do
           vim.notify(notification.msg, notification.level, notification.opts)
         end
-        nvim_notify.supressed_notifications = {}
+        notify.supressed_notifications = {}
       else
-        vim.notify = nvim_notify.insert_supressed_notifications
+        vim.notify = notify.append_supressed_notifications
       end
-      nvim_notify.notification_is_supressed = not nvim_notify.notification_is_supressed
+      notify.notification_is_supressed = not notify.notification_is_supressed
     end
 
     vim.keymap.set("n", "<Leader>ns", function()
-      nvim_notify.toggle_notification_supress()
+      notify.toggle_notification_supress()
       require("lualine").refresh({ place = { "statusline" } })
     end)
-    -- ]]
+    -- ]
 
     -- dismiss all notifications
     vim.keymap.set("n", "<Leader>nd", function()
-      nvim_notify.dismiss()
+      notify.dismiss()
     end)
   end,
 }

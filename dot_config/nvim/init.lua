@@ -34,8 +34,6 @@ opt.rtp:prepend(lazypath)
 -- ]
 
 -- VARIABLES [
--- vanilla vim variables
-vim.g.mapleader = "\\"
 -- disable <C-C> maps on sql files
 vim.g.omni_sql_no_default_maps = 1
 -- ]

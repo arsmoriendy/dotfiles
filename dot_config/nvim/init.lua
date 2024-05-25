@@ -94,5 +94,12 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 -- load config from different files [
 require("functions")
 require("keymaps")
-require("lazy").setup("plugins") -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
+require("lazy").setup(
+  "plugins", -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
+  {
+    change_detection = {
+      notify = false,
+    },
+  }
+)
 -- ]

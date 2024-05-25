@@ -24,13 +24,13 @@ opt.list = true
 opt.cursorline = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.wrap = false
 opt.autoread = true
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.updatetime = 100
 opt.listchars:append("trail:•")
 opt.rtp:prepend(lazypath)
+opt.breakindent = true
 -- ]
 
 -- VARIABLES [

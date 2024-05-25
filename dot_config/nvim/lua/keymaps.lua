@@ -91,3 +91,9 @@ kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>");
 kms("n", "==", "<CMD>mkview<CR>gg=G<CMD>loadview<CR>", { desc = "Reindent all lines" })
 
 kms("n", "<Leader>l", "<CMD>Lazy<CR>", { desc = "Open lazy.nvim UI" })
+
+-- quick fix [
+kms("n", "cn", "<CMD>cnext<CR>", { desc = "Go to next entry on quickfix list" })
+kms("n", "cp", "<CMD>cNext<CR>", { desc = "Go to previous entry on quickfix list" })
+kms("n", "cN", "<CMD>cNext<CR>", { desc = "Go to previous entry on quickfix list" })
+-- ]

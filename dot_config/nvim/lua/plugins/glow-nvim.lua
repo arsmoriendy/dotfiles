@@ -1,6 +1,6 @@
 return {
   "ellisonleao/glow.nvim",     -- markdown viewer
-  cmd = "Glow",
+  ft = "markdown",
   config = function()
     require("glow").setup({
       border = "single",

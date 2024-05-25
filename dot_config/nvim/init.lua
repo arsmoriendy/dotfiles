@@ -25,7 +25,6 @@ opt.cursorline = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wrap = false
-opt.timeout = false
 opt.autoread = true
 opt.softtabstop = 2
 opt.shiftwidth = 2

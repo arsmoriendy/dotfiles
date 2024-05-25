@@ -18,10 +18,14 @@ return {
             ["q"] = act.close,
             ["<C-c>"] = act.close,
             ["<C-Enter>"] = act.select_tab,
+            ["<C-d>"] = act.results_scrolling_down,
+            ["<C-u>"] = act.results_scrolling_up,
           },
           i = {
             ["<C-c>"] = false,
             ["<C-Enter>"] = act.select_tab,
+            ["<C-d>"] = act.results_scrolling_down,
+            ["<C-u>"] = act.results_scrolling_up,
           }
         },
       },
@@ -50,12 +54,12 @@ return {
         highlight! link TelescopePromptCounter GruvboxFg4
         highlight! link TelescopePreviewHyphen GruvboxFg4
         ]])
-    -- keymaps [[
+    -- keymaps [
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<C-p>", builtin.find_files)
     vim.keymap.set("n", "<Leader>h", builtin.help_tags)
     vim.keymap.set("n", "<Leader>nh", require("telescope").extensions.notify.notify)
     vim.keymap.set("n", "<Leader>p", function() builtin.builtin({ include_extensions = true, }) end)
-    -- ]]
+    -- ]
   end,
 }

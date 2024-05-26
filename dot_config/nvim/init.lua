@@ -94,6 +94,10 @@ require("keymaps")
 require("lazy").setup(
   "plugins", -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
   {
+    ui = {
+      border = "single",
+      title = " Plugins ",
+    },
     change_detection = {
       notify = false,
     },

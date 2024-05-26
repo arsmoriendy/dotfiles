@@ -1,13 +1,17 @@
 return {
-  "neovim/nvim-lspconfig",                   -- LSP
+  "neovim/nvim-lspconfig",               -- LSP
   dependencies = {
-    "williamboman/mason.nvim",               -- mason.nvim (LSP auto installer)
-    "williamboman/mason-lspconfig.nvim",     -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
-    "SmiteshP/nvim-navic",                   -- winbar
+    "williamboman/mason.nvim",           -- mason.nvim (LSP auto installer)
+    "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
+    "SmiteshP/nvim-navic",               -- winbar
   },
   config = function()
     -- dependency ordering matters
-    require("mason").setup()
+    require("mason").setup({
+      ui = {
+        border = "single",
+      },
+    })
     require("mason-lspconfig").setup({})
     -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
     require("mason-lspconfig").setup_handlers({
@@ -46,8 +50,8 @@ return {
         -- current config
         local config = configs[server_name] or {};
         -- append default configs
-        config.capabilities = require("cmp_nvim_lsp").default_capabilities();     -- cmp lsp capabilities
-        config.on_attach = function(client, bufnr)                                -- attach nvim-navic if possible
+        config.capabilities = require("cmp_nvim_lsp").default_capabilities(); -- cmp lsp capabilities
+        config.on_attach = function(client, bufnr)                            -- attach nvim-navic if possible
           if client.server_capabilities.documentSymbolProvider then
             require("nvim-navic").attach(client, bufnr)
           end

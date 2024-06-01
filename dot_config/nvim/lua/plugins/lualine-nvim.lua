@@ -22,14 +22,12 @@ return {
       local winnr = vim.fn.tabpagewinnr(context.tabnr)
       local bufnr = buflist[winnr]
 
-      local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-      local ext = nwd.get_icon_name_by_filetype(ft)
+      local ext = nwd.get_icon_name_by_filetype(context.filetype)
       local icon_tbl = nwd_light[ext] or nwd.get_default_icon()
 
       local tab_icon_hi = "lualine_tab" .. context.tabnr .. "_icon"
 
-      local is_curr = vim.api.nvim_get_current_tabpage() == context.tabnr
-      local bg_hi = is_curr and "lualine_a_tabs_active" or "lualine_a_tabs_inactive"
+      local bg_hi = context.current and "lualine_a_tabs_active" or "lualine_a_tabs_inactive"
 
       local bg_c = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(bg_hi)), "bg#")
 

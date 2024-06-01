@@ -14,6 +14,7 @@ return {
     local notify = require("notify")
     local nwd = require("nvim-web-devicons")
     local nwd_light = require("nvim-web-devicons.icons-light").icons_by_file_extension
+    local nwd_dark = require("nvim-web-devicons.icons-default").icons_by_file_extension
 
     -- functions [
     local function tabline_fmt_func(name, context)
@@ -22,7 +23,9 @@ return {
       local bufnr = buflist[winnr]
 
       local ext = nwd.get_icon_name_by_filetype(context.filetype)
-      local icon_tbl = nwd_light[ext] or nwd.get_default_icon()
+      -- get dark or light icon table according to context.current, fallback on default icon
+      local icon_tbl =
+          (context.current and nwd_light[ext] or nwd_dark[ext]) or nwd.get_default_icon()
 
       local tab_icon_hi = "lualine_tab" .. context.tabnr .. "_icon"
 

@@ -1,20 +1,24 @@
 return {
-  "lewis6991/gitsigns.nvim",     -- git signs (next to number column) and git mappings
+  "lewis6991/gitsigns.nvim", -- git signs (next to number column) and git mappings
   config = function()
-    local gitsigns = require("gitsigns")
-    gitsigns.setup()
-    -- mappings
+    local gs = require("gitsigns")
+    local lib = require("lib")
+    local b = lib.bind
     local map = vim.keymap.set
-    map("n", "gn", gitsigns.next_hunk)
-    map("n", "gN", gitsigns.prev_hunk)
-    map("n", "gp", gitsigns.preview_hunk)
-    map("n", "gd", gitsigns.diffthis)
-    map("n", "gs", gitsigns.stage_hunk)
-    -- stage selected
-    map("x", "gs", [[<ESC>:lua require("gitsigns").stage_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
-    -- reset hunk
-    map("n", "gr", gitsigns.reset_hunk)
-    map("x", "gr", [[<ESC>:lua require("gitsigns").reset_hunk({vim.fn.line("'<"), vim.fn.line("'>")})<CR>gv]])
-    map("n", "gR", gitsigns.reset_buffer)
+
+    gs.setup()
+
+    map("n", "gn", b(gs.nav_hunk, "next"), { desc = "Go to next git hunk" })
+    map("n", "gN", b(gs.nav_hunk, "prev"), { desc = "Go to previous git hunk" })
+    map("n", "gp", gs.preview_hunk, { desc = "Preview git hunk" })
+    map("n", "gD", gs.diffthis, { desc = "Diffmode current file with git's staged version" })
+    map("n", "gs", gs.stage_hunk, { desc = "Stage git hunk under cursor" })
+    map("x", "gs", function() gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
+      { desc = "Stage selected line to git" })
+    map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
+    map("x", "gr", function() gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
+      { desc = "Reset selected line from git" })
+    map("n", "gR", gs.reset_buffer, { desc = "Reset entire buffer from git" })
+    map("n", "gB", gs.blame_line, { desc = "Git blame current line" })
   end
 }

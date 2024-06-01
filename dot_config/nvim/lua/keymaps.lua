@@ -27,10 +27,6 @@ kms({ "n", "i", "x" }, "<C-M-r>", "<CMD>later 1f<CR>")
 
 kms({ "n" }, "<Leader>f", "za") -- toggle fold
 
--- reload config
--- TODO: account for windows init.lua path
-kms("n", "<F5>", "<CMD>source ~/.config/nvim/init.lua<CR>")
-
 -- exit
 kms("n", "<S-q>", "<CMD>qa!<CR>")
 -- kms("n", "<C-w><C-q>", "<CMD>q!<CR>")

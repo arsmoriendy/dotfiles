@@ -16,6 +16,10 @@ return {
         mappings = {
           n = {
             ["q"] = "Close",
+            ["<C-c>"] = "Close",
+          },
+          i = {
+            ["<C-c>"] = false,
           },
         },
 

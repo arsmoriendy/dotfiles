@@ -4,6 +4,7 @@ return {
     "williamboman/mason.nvim",           -- mason.nvim (LSP auto installer)
     "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
     "SmiteshP/nvim-navic",               -- winbar
+    "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
     -- dependency ordering matters

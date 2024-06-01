@@ -1,4 +1,3 @@
--- TODO: lualine_b separator color
 -- TODO: default tabline filetype icon light color (nvim-web-devicons)
 -- TODO: derive statusline filetype icon from filetype and not file extension
 
@@ -157,7 +156,7 @@ return {
     require("lualine").setup({
       options = {
         section_separators = "",
-        component_separators = "│",
+        component_separators = "",
       },
       -- statusline
       sections = sections,

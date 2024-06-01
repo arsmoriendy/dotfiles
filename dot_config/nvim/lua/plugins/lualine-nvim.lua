@@ -1,91 +1,100 @@
+-- TODO: lualine_b separator color
+-- TODO: tabline icon color
+
 return {
-  "nvim-lualine/lualine.nvim",     -- statusline
+  "nvim-lualine/lualine.nvim", -- statusline
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
     "rcarriga/nvim-notify",
+    "L3MON4D3/LuaSnip",
   },
   config = function()
-    require("lualine").setup({
-      options = {
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "╲", right = "╱" },
-      },
-      -- statusline
-      sections = {
-        lualine_a = {
-          -- vim logo
-          {
-            function()
-              return ""
-            end
-          },
-          -- extra symbols for submodes (eg. visual line)
-          {
-            function()
-              local symbol = {
-                V = "LINE",          -- visual line
-                [""] = "BLOCK",     -- visual block
-                s = "SELECT"         -- select
-              }
-              -- return symbol table according to current mode or empty string if nil
-              return symbol[vim.fn.mode()] or ""
-            end
-          },
-          -- snippet indicator
-          {
-            function() return require("luasnip").in_snippet() and "" or "" end
-          },
-          -- notification indicator
-          {
-            function()
-              local nvim_notify = require("notify")
-              if nvim_notify.notification_is_supressed then
-                local indicator = "󰂛"
-                if #nvim_notify.supressed_notifications ~= 0 then
-                  indicator = indicator .. " " .. #nvim_notify.supressed_notifications
-                end
-                return indicator
-              end
-              return "󰂚"
-            end,
-            on_click = function()
-              require("notify").toggle_notification_supress()
-              require("lualine").refresh({ place = { "statusline" } })
-            end
-          },
+    local navic = require("nvim-navic")
+    local notify = require("notify")
+    local nwd = require("nvim-web-devicons")
+
+    -- variables used to match active and inactive (global) [
+    local sections = {
+      lualine_a = {
+        {
+          function() return vim.fn.mode() end
         },
-        lualine_c = {
-          {
-            "filename",
-            newfile_status = true,
-            path = 1,     --relative path
-            symbols = {
-              modified = "●",
-              readonly = "[RO]"
-            }
+      },
+      lualine_b = {
+        -- notification indicator
+        {
+          function()
+            local indicator = "󰂛"
+            -- suppressed notifications count
+            local snc = #notify.supressed_notifications
+
+            if snc > 0 then
+              indicator = indicator .. " " .. snc
+            end
+            return indicator
+          end,
+          cond = function() return notify.notification_is_supressed end,
+        },
+        -- snippet indicator
+        {
+          function() return require("luasnip").in_snippet() and "" or "" end
+        },
+        'branch',
+        'diff',
+        'diagnostics'
+      },
+      lualine_c = {
+        {
+          "filename",
+          newfile_status = true,
+          path = 1, --relative path
+          symbols = {
+            modified = "●",
+            readonly = "[RO]"
           }
         }
       },
-      -- winbar
-      winbar = {
-        lualine_c = {
-          {
-            function()
-              local navic_location = require("nvim-navic").get_location()
-              local filename = vim.fn.expand("%:t")
-              local filetype_icon, filetype_icon_color = require("nvim-web-devicons").get_icon(filename)
+      lualine_x = { 'filetype' },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' }
+    }
 
-              return "%#" ..
-                  filetype_icon_color ..
-                  "#" .. filetype_icon .. " %#NavicText#" .. filename .. "%#NavicSeparator#  " .. navic_location
-            end,
-            cond = function()
-              return require("nvim-navic").is_available()
-            end,
-          },
+    local winbar = {
+      lualine_c = {
+        {
+          -- NOTE: wrapper function has to be included
+          function()
+            local loc = navic.get_location()
+            local filename = vim.fn.expand("%:t")
+            local filetype_icon, filetype_icon_color = nwd.get_icon(filename)
+
+            return string.format(
+              "%%#%s#%s%%#NavicText# %s %%#NavicSeparator# %s%%#NavicText#",
+              filetype_icon_color,
+              filetype_icon,
+              filename,
+              loc
+            )
+          end,
+          cond = navic.is_available,
         },
+
       },
+    }
+    -- ]
+
+    require("lualine").setup({
+      options = {
+        section_separators = "",
+        component_separators = "│",
+      },
+      -- statusline
+      sections = sections,
+      inactive_sections = sections,
+      -- winbar
+      winbar = winbar,
+      inactive_winbar = winbar,
       -- tabline
       tabline = {
         lualine_a = {
@@ -93,6 +102,7 @@ return {
             "tabs",
             max_length = vim.o.columns,
             mode = 1,
+            show_modified_status = false,
             fmt = function(name, context)
               local buflist = vim.fn.tabpagebuflist(context.tabnr)
               local winnr = vim.fn.tabpagewinnr(context.tabnr)
@@ -100,9 +110,15 @@ return {
 
               local is_modified = vim.fn.getbufvar(bufnr, "&modified")
 
-              local filetype_icon = require("nvim-web-devicons").get_icon(name)
+              local filetype_icon = nwd.get_icon(name)
+              local default_filetype_icon = ""
 
-              return (filetype_icon or "") .. " " .. name .. (is_modified == 1 and " ●" or "")
+              return string.format(
+                "%s %s%s",
+                filetype_icon or default_filetype_icon,
+                name,
+                is_modified == 1 and " ●" or ""
+              )
             end,
           }
         }

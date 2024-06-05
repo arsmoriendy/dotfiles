@@ -34,7 +34,7 @@ kms("n", "<S-q>", "<CMD>qa!<CR>", { desc = "Exit neovim without saving" })
 -- save / write file [
 kms({ "n", "v", "o" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })
 -- separate insert mode mapping for going back to normal mode after saving
-kms({ "i" }, "<Esc><C-s>", "<CMD>w<CR>", { desc = "Save file" })
+kms({ "i" }, "<C-s>", "<Esc><CMD>w<CR>", { desc = "Save file" })
 -- ]
 
 -- delete

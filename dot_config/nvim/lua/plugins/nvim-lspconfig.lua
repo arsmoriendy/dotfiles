@@ -5,7 +5,16 @@ local function config()
 
   -- default server overrides [
   local default_lspconfig_overrides = {
-    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    capabilities = vim.tbl_deep_extend("force",
+      require("cmp_nvim_lsp").default_capabilities(),
+      {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          }
+        }
+      }),
     on_attach = function(client, bufnr) -- attach nvim-navic if possible
       if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)

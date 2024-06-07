@@ -48,6 +48,12 @@ local function config()
       enabled = false,
     },
   }
+
+  local sqls_cfg = {
+    on_attach = function(client, bufnr)
+      require("sqls").on_attach(client, bufnr)
+    end
+  }
   -- ]
 
   -- dependency ordering matters
@@ -63,6 +69,7 @@ local function config()
     ["lua_ls"] = bind(lspconfig["lua_ls"].setup, lua_ls_cfg),
     ["emmet_ls"] = bind(lspconfig["emmet_ls"].setup, emmet_ls_cfg),
     ["intelephense"] = bind(lspconfig["intelephense"].setup, intelephense_cfg),
+    ["sqls"] = bind(lspconfig["sqls"].setup, sqls_cfg),
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })
@@ -75,6 +82,7 @@ return {
     "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
     "SmiteshP/nvim-navic",               -- winbar
     "hrsh7th/cmp-nvim-lsp",
+    "nanotee/sqls.nvim",
   },
   config = config
 }

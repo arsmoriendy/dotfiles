@@ -34,8 +34,8 @@ local function config()
     -- current config
     local srv_config = configs[server_name] or {};
     -- append default configs
-    srv_config.capabilities = require("cmp_nvim_lsp").default_capabilities();   -- cmp lsp capabilities
-    srv_config.on_attach = function(client, bufnr)                              -- attach nvim-navic if possible
+    srv_config.capabilities = require("cmp_nvim_lsp").default_capabilities(); -- cmp lsp capabilities
+    srv_config.on_attach = function(client, bufnr)                            -- attach nvim-navic if possible
       if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)
       end
@@ -55,15 +55,7 @@ local function config()
     defaultSetupHandler
   })
 
-  require("lspconfig").dartls.setup({
-    root_dir = function()
-      return vim.fn.getcwd()
-    end
-  })
-  require("lspconfig").glslls.setup({})
-
-  -- summon ui mapping
-  vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>")
+  vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })
 end
 
 return {

@@ -59,6 +59,7 @@ local function config()
   require("mason-lspconfig").setup({})
   -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
   require("mason-lspconfig").setup_handlers({
+    function(server_name) lspconfig[server_name].setup({}) end,
     ["lua_ls"] = bind(lspconfig["lua_ls"].setup, lua_ls_cfg),
     ["emmet_ls"] = bind(lspconfig["emmet_ls"].setup, emmet_ls_cfg),
     ["intelephense"] = bind(lspconfig["intelephense"].setup, intelephense_cfg),

@@ -23,19 +23,23 @@ local function select_url()
   local ok, dadbod_sys = pcall(require, "sysconfig.vim-dadbod-sys")
 
   if not ok then
-    vim.notify("Dadbod sysconfig not configured", vim.log.levels.ERROR)
+    vim.notify(
+      "Make sure `$HOME/.config/nvim/lua/sysconfig/vim-dadbod-sys.lua` exists and is configured properly",
+      vim.log.levels.ERROR,
+      { title = "Failed to load dadbod sysconfig" }
+    )
     return
   end
 
-  local connections = dadbod_sys.connections
+  local urls = dadbod_sys.urls
 
-  local items = vim.tbl_map(function(con) return con.name end, connections)
+  local items = vim.tbl_map(function(url) return url.name end, urls)
   local opts = {
-    prompt = "Select Database"
+    prompt = "Select Database URL"
   }
   local on_choice = function(_, i)
     if i ~= nil then
-      vim.cmd("DB g:db = " .. connections[i].url)
+      vim.cmd("DB g:db = " .. urls[i].url)
     end
   end
 
@@ -52,7 +56,7 @@ local actions = {
     callback = split_tmp_buf,
   },
   [3] = {
-    desc = "Select database",
+    desc = "Select database url",
     callback = select_url,
   },
 }

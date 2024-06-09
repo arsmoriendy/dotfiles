@@ -58,7 +58,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local config = function()
+  vim.cmd("cabbrev db DB")
+  vim.cmd("cabbrev dbg DB g:db =")
+end
+
 return {
   "tpope/vim-dadbod",
   cmd = "DB",
+  config = config,
 }

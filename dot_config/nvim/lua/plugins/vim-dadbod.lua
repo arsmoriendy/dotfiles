@@ -19,6 +19,29 @@ local function split_tmp_buf()
   vim.cmd.sbuffer(buf)
 end
 
+local function select_url()
+  local ok, dadbod_sys = pcall(require, "sysconfig.vim-dadbod-sys")
+
+  if not ok then
+    vim.notify("Dadbod sysconfig not configured", vim.log.levels.ERROR)
+    return
+  end
+
+  local connections = dadbod_sys.connections
+
+  local items = vim.tbl_map(function(con) return con.name end, connections)
+  local opts = {
+    prompt = "Select Database"
+  }
+  local on_choice = function(_, i)
+    if i ~= nil then
+      vim.cmd("DB g:db = " .. connections[i].url)
+    end
+  end
+
+  vim.ui.select(items, opts, on_choice)
+end
+
 local actions = {
   [1] = {
     desc = "Execute current buffer as a query",
@@ -27,6 +50,10 @@ local actions = {
   [2] = {
     desc = "Open a temporary query buffer",
     callback = split_tmp_buf,
+  },
+  [3] = {
+    desc = "Select database",
+    callback = select_url,
   },
 }
 

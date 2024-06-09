@@ -7,7 +7,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
     "rcarriga/nvim-notify",
-    "L3MON4D3/LuaSnip",
   },
   config = function()
     local navic = require("nvim-navic")
@@ -80,7 +79,15 @@ return {
     }
 
     local snippet_indicator = {
-      function() return require("luasnip").in_snippet() and "" or "" end
+      function()
+        local ok, luasnip = pcall(require, "luasnip")
+
+        if ok and luasnip.in_snippet() then
+          return ""
+        end
+
+        return ""
+      end
     }
 
     local navic_breadcrumbs = {

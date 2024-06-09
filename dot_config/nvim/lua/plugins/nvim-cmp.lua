@@ -11,13 +11,7 @@ local config = function()
       ["<C-down>"] = cmp.mapping(cmp.mapping.scroll_docs(1)),
       ["<C-up>"] = cmp.mapping(cmp.mapping.scroll_docs(-1)),
       ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true })),
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({
-        config = {
-          sources = {
-            { name = "nvim_lsp" }
-          }
-        }
-      })),
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete()),
     },
     snippet = {
       expand = function(args)

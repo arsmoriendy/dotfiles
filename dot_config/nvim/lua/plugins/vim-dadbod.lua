@@ -21,7 +21,7 @@ end
 
 local actions = {
   [1] = {
-    desc = "Execute current buffer as an SQL query",
+    desc = "Execute current buffer as a query",
     callback = function() vim.cmd("%DB") end,
   },
   [2] = {

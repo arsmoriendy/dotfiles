@@ -44,7 +44,6 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Add sql/mysql keymaps",
-  once = true,
   pattern = { "sql", "mysql" },
   callback = function(args)
     map({ "n" }, "<Leader>a", select_actions, {

@@ -1,5 +1,6 @@
 return {
-  "L3MON4D3/LuaSnip",     -- snippet engine
+  "L3MON4D3/LuaSnip", -- snippet engine
+  event = "VeryLazy",
   dependencies = { "rafamadriz/friendly-snippets" },
   config = function()
     -- atuo load snippets from friendly-snippets

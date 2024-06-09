@@ -19,10 +19,10 @@ local config = function()
       end
     },
     sources = {
+      { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "path" },
       { name = "buffer" },
-      { name = "nvim_lsp" },
     },
     --[[ experimental = {
           ghost_text = true
@@ -30,7 +30,7 @@ local config = function()
   }
 
   local sql_cfg = default_cfg
-  table.insert(sql_cfg.sources, { name = "vim-dadbod-completion" })
+  table.insert(sql_cfg.sources, 1, { name = "vim-dadbod-completion" })
 
   cmp.setup(default_cfg)
   cmp.setup.filetype("sql", sql_cfg)

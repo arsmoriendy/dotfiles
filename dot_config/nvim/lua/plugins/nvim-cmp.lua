@@ -39,6 +39,7 @@ local config = function()
 
   cmp.setup(default_cfg)
   cmp.setup.filetype("sql", sql_cfg)
+  cmp.setup.filetype("mysql", sql_cfg)
 end
 
 return {

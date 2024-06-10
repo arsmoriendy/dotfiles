@@ -90,16 +90,16 @@ return {
     }
 
     local navic_breadcrumbs = {
-      -- NOTE: wrapper function has to be included
       function()
         local loc = navic.get_location()
         local filename = vim.fn.expand("%:t")
-        local filetype_icon, filetype_icon_color = nwd.get_icon(filename)
+        local filetype = vim.api.nvim_get_option_value("filetype", {})
+        local icon, icon_hi = nwd.get_icon_by_filetype(filetype)
 
         return string.format(
           "%%#%s#%s%%#NavicText# %s %%#NavicSeparator# %s%%#NavicText#",
-          filetype_icon_color,
-          filetype_icon,
+          icon_hi,
+          icon,
           filename,
           loc
         )
@@ -139,7 +139,6 @@ return {
     local winbar = {
       lualine_c = {
         navic_breadcrumbs,
-
       },
     }
 

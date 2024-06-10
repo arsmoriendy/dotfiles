@@ -29,8 +29,13 @@ local config = function()
         }, ]]
   }
 
-  local sql_cfg = default_cfg
-  table.insert(sql_cfg.sources, 1, { name = "vim-dadbod-completion" })
+  local sql_ovr = {
+    sources = {
+      { name = "vim-dadbod-completion" },
+      { name = "buffer" },
+    },
+  }
+  local sql_cfg = vim.tbl_deep_extend("force", default_cfg, sql_ovr)
 
   cmp.setup(default_cfg)
   cmp.setup.filetype("sql", sql_cfg)

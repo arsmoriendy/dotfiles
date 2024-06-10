@@ -28,8 +28,7 @@ return {
 
       local tab_icon_hi = "lualine_tab" .. context.tabnr .. "_icon"
 
-      local is_curr = vim.api.nvim_get_current_tabpage() == context.tabnr
-      local bg_hi = is_curr and "lualine_a_tabs_active" or "lualine_a_tabs_inactive"
+      local bg_hi = context.current and "lualine_a_tabs_active" or "lualine_a_tabs_inactive"
 
       local bg_c = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(bg_hi)), "bg#")
 

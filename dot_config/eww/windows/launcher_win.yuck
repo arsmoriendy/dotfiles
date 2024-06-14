@@ -1,33 +1,7 @@
 ;; app launcher for wayland
-
-(defvar gap "10px")
-
-;; colors
-(defvar f_text "#FBF1C7")
-(defvar u_text "#bcb6a0")
-(defvar f_bgrd "#181a1b")
-(defvar u_bgrd "#0c0d0e")
-(defvar e_bgrd "#9e0005")
-(defvar accent "#FABD2F")
-(defvar border "#363130")
-(defvar primry "#8EC07C")
-(defvar second "#B8BB26")
+(include "./widgets/launcher_wgt.yuck")
 
 (defwindow launcher
   :focusable true
-  (searchbox)
-)
-
-(defwidget searchbox []
-  (input
-    :width 800
-    :style "
-      padding: ${gap};
-      font-size: 24px;
-      background-color: ${f_bgrd};
-      color: ${f_text};
-      border-radius: 0;
-    "
-    :onaccept "swaymsg mode default; eww close launcher; swaymsg exec {}"
-  )
+  (launcher_wgt)
 )

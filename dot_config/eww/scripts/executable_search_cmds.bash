@@ -23,7 +23,7 @@ get_cmds() {
 }
 
 encapsulate_cmd() {
-  echo "(button :onclick \"$1\" (label :text \"$1\"))"
+  echo "(button :onclick \"swaymsg mode default; eww close launcher; swaymsg exec '$1'\" (label :text \"$1\"))"
 }
 
 main "$@"

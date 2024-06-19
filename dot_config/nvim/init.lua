@@ -86,6 +86,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 -- ]
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go" },
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.shiftwidth = 0
+  end
+})
+
 -- ]
 
 -- load config from different files [

@@ -57,6 +57,19 @@ local function config()
       enabled = false,
     },
   }
+
+  local tsserver_cfg = {
+    init_options = {
+      preferences = {
+        includeInlayParameterNameHints = "all",
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  }
   -- ]
 
   -- dependency ordering matters
@@ -72,6 +85,7 @@ local function config()
     ["lua_ls"] = bind(lspconfig["lua_ls"].setup, lua_ls_cfg),
     ["emmet_ls"] = bind(lspconfig["emmet_ls"].setup, emmet_ls_cfg),
     ["intelephense"] = bind(lspconfig["intelephense"].setup, intelephense_cfg),
+    ["tsserver"] = bind(lspconfig["tsserver"].setup, tsserver_cfg),
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })

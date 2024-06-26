@@ -84,6 +84,27 @@ kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Go to d
 -- lsp action
 kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Select lsp actions" });
 
+-- lsp toggle inlay hints
+kms("n", "<Leader>k", function()
+  local buf = vim.api.nvim_get_current_buf()
+  local buf_clients = vim.lsp.get_clients({ bufnr = buf })
+
+  local inlay_capable = false
+  for _, client in pairs(buf_clients) do
+    if client.server_capabilities.inlayHintProvider then
+      inlay_capable = true
+    end
+  end
+
+  if not inlay_capable then
+    vim.notify("No LSPs in current buffer supports inlay hints", vim.log.levels.ERROR)
+    return
+  end
+
+  local inlay_is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buf })
+  vim.lsp.inlay_hint.enable(not inlay_is_enabled, { bufnr = buf })
+end, { desc = "Toggle lsp inlay hints in buffer" })
+
 kms("n", "==", "<CMD>mkview<CR>gg=G<CMD>loadview<CR>", { desc = "Reindent all lines" })
 
 kms("n", "<Leader>l", "<CMD>Lazy<CR>", { desc = "Open lazy.nvim UI" })

@@ -31,6 +31,7 @@ opt.updatetime = 100
 opt.listchars:append("trail:•")
 opt.rtp:prepend(lazypath)
 opt.breakindent = true
+opt.scrolloff = 3
 -- ]
 
 -- VARIABLES [

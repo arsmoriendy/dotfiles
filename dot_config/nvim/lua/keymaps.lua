@@ -4,7 +4,7 @@
 local kms = vim.keymap.set
 
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)
-kms({ "n", "i", "x" }, "<C-f>", vim.cmd.nohlsearch, { desc = "Temporarily disable search highlights" })
+kms({ "n", "i", "x" }, "<C-M-f>", vim.cmd.nohlsearch, { desc = "Temporarily disable search highlights" })
 
 -- tab navigation [
 kms({ "n", "i", "x" }, "<C-Tab>", vim.cmd.tabnext, { desc = "Go to next tab" })

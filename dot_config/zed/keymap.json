@@ -1,0 +1,16 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-q": "pane::CloseActiveItem",
+
+      // git [
+      "g n": "editor::GoToHunk",
+      "g N": "editor::GoToPrevHunk",
+      "g p": "editor::ToggleHunkDiff",
+      // ]
+
+      "\\ i": "editor::Format"
+    }
+  }
+]

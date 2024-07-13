@@ -1,5 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",   -- scrollbar
+  enabled = false,
   dependencies = {
     "kevinhwang91/nvim-hlslens", -- search handler
     "lewis6991/gitsigns.nvim"    -- git signs handler

@@ -4,9 +4,6 @@ return {
   config = function()
     require("dressing").setup({
       input = {
-        -- When true, <Esc> will close the modal
-        insert_only = false,
-
         win_options = {
           -- Window transparency (0-100)
           winblend = 0,

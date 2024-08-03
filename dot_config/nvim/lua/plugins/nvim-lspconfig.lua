@@ -43,7 +43,7 @@ local function config()
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
           enable = false,
-        },
+        }
       }
     }
   }
@@ -71,6 +71,22 @@ local function config()
       },
     },
   }
+
+  local gopls_cfg = {
+    settings = {
+      gopls = {
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        }
+      }
+    }
+  }
   -- ]
 
   -- dependency ordering matters
@@ -87,6 +103,7 @@ local function config()
     ["emmet_ls"] = bind(lspconfig["emmet_ls"].setup, emmet_ls_cfg),
     ["intelephense"] = bind(lspconfig["intelephense"].setup, intelephense_cfg),
     ["tsserver"] = bind(lspconfig["tsserver"].setup, tsserver_cfg),
+    ["gopls"] = bind(lspconfig["gopls"].setup, gopls_cfg)
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })

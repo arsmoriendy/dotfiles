@@ -20,11 +20,6 @@ local function config()
       if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)
       end
-
-      -- show inlay hints if possible
-      if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr })
-      end
     end
   }
 

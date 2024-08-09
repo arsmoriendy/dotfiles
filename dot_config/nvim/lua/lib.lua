@@ -28,4 +28,20 @@ function lib.strrfindc(s, c)
   return 0
 end
 
+---Wrapper for vim.keymap.set
+---@param mode string|string[]
+---@param lhs string
+---@param rhs string|function
+---@param desc string Keymap description, this will override *desc* set in *opts*
+---@param opts table?
+function lib.kms(mode, lhs, rhs, desc, opts)
+  if opts ~= nil then
+    opts = vim.tbl_extend("keep", { desc = desc }, opts)
+  else
+    opts = { desc = desc }
+  end
+
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 return lib

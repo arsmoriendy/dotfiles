@@ -56,7 +56,8 @@ vim.diagnostic.config({
 -- recognize "*.swayconfig" files as swayconfig files
 vim.filetype.add({
   extension = {
-    swayconfig = "swayconfig"
+    swayconfig = "swayconfig",
+    tmpl = "gotmpl",
   }
 })
 -- ]

@@ -1,3 +1,3 @@
 # Eww Configuration
 ## Required Initial Manual Steps
-- Complete sway configuration to specify $ewwoutput sway variable
+- Complete [sway configuration](../sway/README.md) to specify $ewwoutput sway variable

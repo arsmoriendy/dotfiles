@@ -1,5 +1,11 @@
 # gruv0
 Gruvbox themed rice
+
+> [!NOTE]
+> For everything to work, some system specific configs needed to be set:
+> - [sway config](./dot_config/sway/README.md)
+> - [eww config](./dot_config/sway/README.md)
+
 ## Dependencies
 ### Arch/Pacman:
 #### Runtime Dependencies

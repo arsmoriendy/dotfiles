@@ -1,7 +1,5 @@
 local function config()
   local lspconfig = require("lspconfig")
-  local lib = require("lib")
-  local bind = lib.bind
 
   -- default server overrides [
   local default_lspconfig_overrides = {

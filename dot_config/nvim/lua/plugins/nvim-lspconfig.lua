@@ -85,6 +85,9 @@ local function config()
       }
     },
   }
+  local function mason_lspcfg_default_handler(server_name)
+    lspconfig[server_name].setup(lspconfig_overrides[server_name] or {})
+  end
 
   -- dependency ordering matters
   require("mason").setup({
@@ -92,10 +95,9 @@ local function config()
       border = "single",
     },
   })
-  require("mason-lspconfig").setup({})
-  -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
-  require("mason-lspconfig").setup_handlers({
-    function(server_name) lspconfig[server_name].setup(lspconfig_overrides[server_name] or {}) end,
+  require("mason-lspconfig").setup({
+    -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
+    handlers = { mason_lspcfg_default_handler }
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })

@@ -27,67 +27,64 @@ local function config()
     lspconfig.util.default_config, default_lspconfig_overrides)
   -- ]
 
-  -- specific server overrides [
-  local lua_ls_cfg = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false,
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
+  -- specific server overrides
+  local lspconfig_overrides = {
+    lua_ls = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { "vim" },
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
+          },
+          -- Do not send telemetry data containing a randomized but unique identifier
+          telemetry = {
+            enable = false,
+          }
         }
       }
-    }
-  }
-
-  local emmet_ls_cfg = {
-    -- add php for emmet
-    filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php" },
-  }
-
-  local intelephense_cfg = {
-    telemetry = {
-      enabled = false,
     },
-  }
-
-  local tsserver_cfg = {
-    init_options = {
-      preferences = {
-        includeInlayParameterNameHints = "all",
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
+    emmet_ls = {
+      -- add php for emmet
+      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php" },
+    },
+    intelephense = {
+      telemetry = {
+        enabled = false,
       },
     },
-  }
-
-  local gopls_cfg = {
-    settings = {
-      gopls = {
-        hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
-          constantValues = true,
-          functionTypeParameters = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
+    tsserver = {
+      init_options = {
+        preferences = {
+          includeInlayParameterNameHints = "all",
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
+    gopls = {
+      settings = {
+        gopls = {
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          }
         }
       }
-    }
+    },
   }
-  -- ]
 
   -- dependency ordering matters
   require("mason").setup({
@@ -98,12 +95,7 @@ local function config()
   require("mason-lspconfig").setup({})
   -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
   require("mason-lspconfig").setup_handlers({
-    function(server_name) lspconfig[server_name].setup({}) end,
-    ["lua_ls"] = bind(lspconfig["lua_ls"].setup, lua_ls_cfg),
-    ["emmet_ls"] = bind(lspconfig["emmet_ls"].setup, emmet_ls_cfg),
-    ["intelephense"] = bind(lspconfig["intelephense"].setup, intelephense_cfg),
-    ["tsserver"] = bind(lspconfig["tsserver"].setup, tsserver_cfg),
-    ["gopls"] = bind(lspconfig["gopls"].setup, gopls_cfg)
+    function(server_name) lspconfig[server_name].setup(lspconfig_overrides[server_name] or {}) end,
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })

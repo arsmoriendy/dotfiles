@@ -6,6 +6,7 @@ abbr -a lam "exa -alH -s modified --time-style long-iso --icons -F"
 abbr -a che "chezmoi"
 # fzf modified file in current directory and merge it
 abbr -a chem "chezmoi merge (chezmoi --path-style absolute status . | awk '{print \$2}' | fzf)"
+abbr -a cher "chezmoi re-add (chezmoi --path-style absolute status . | awk '{print \$2}' | fzf)"
 abbr -a bat "bat --theme gruvbox-dark -f"
 abbr -a ip "ip -c=always"
 abbr -a snaproot "sudo btrfs subvolume snapshot -r / /.btrfs-snapshots/@_$(date -Iseconds)"

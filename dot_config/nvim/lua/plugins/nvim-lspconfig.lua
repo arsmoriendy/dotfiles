@@ -1,5 +1,10 @@
 local function config()
   local lspconfig = require("lspconfig")
+  local mason = require("mason")
+  local mason_lspconfig = require("mason-lspconfig")
+
+  local lllf = require("lib.lllf")
+  local lib = require("lib")
 
   -- default server overrides [
   local default_lspconfig_overrides = {
@@ -84,21 +89,69 @@ local function config()
     },
   }
   local function mason_lspcfg_default_handler(server_name)
+    -- TODO: lift this into a function
     lspconfig[server_name].setup(lspconfig_overrides[server_name] or {})
   end
 
   -- dependency ordering matters
-  require("mason").setup({
+  mason.setup({
     ui = {
       border = "single",
     },
   })
-  require("mason-lspconfig").setup({
+  mason_lspconfig.setup({
     -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
     handlers = { mason_lspcfg_default_handler }
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })
+
+  local all_lsps = mason_lspconfig.get_available_servers()
+
+  local local_lsps, err = lllf.servers()
+  if local_lsps == nil then
+    lib.error(err, "Failed getting local lsp list")
+    return
+  end
+  for _, local_lsp in pairs(local_lsps) do
+    lspconfig[local_lsp].setup(lspconfig_overrides[local_lsp] or {})
+  end
+
+  local function reg_local_lsp()
+    local mason_installed_lsps = mason_lspconfig.get_installed_servers()
+    local items = vim.tbl_filter(function(lsp)
+      return not vim.list_contains(mason_installed_lsps, lsp)
+    end, all_lsps)
+
+    vim.ui.select(items, { prompt = "Register local lsp" }, function(name)
+      if name == nil then return end
+
+      err = lllf.register(name)
+      if err ~= nil then
+        lib.error(err, "Failed writting to local lsp list file, aborting.")
+        return
+      end
+
+      lspconfig[name].setup(lspconfig_overrides[name] or {})
+    end)
+  end
+
+  local function unreg_local_lsp()
+    local_lsps, err = lllf.servers()
+    if local_lsps == nil then
+      lib.error(err)
+      return
+    end
+
+    vim.ui.select(local_lsps, { prompt = "Unregister local lsp" }, function(name)
+      if name == nil then return end
+      err = lllf.unregister(name)
+      if err ~= nil then lib.error(err) end
+    end)
+  end
+
+  lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")
+  lib.kms("n", "<Leader>nu", unreg_local_lsp, "Unregister local lsp")
 end
 
 return {

@@ -1,6 +1,6 @@
 # f: focused, u: unfocused, e: error/urgent, bgrd: background
 set $f_text #FBF1C7
-set $u_text #bcb6a0
+set $u_text #665C54
 set $f_bgrd #181a1b
 set $u_bgrd #0c0d0e
 set $e_bgrd #9e0005

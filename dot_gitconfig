@@ -5,6 +5,9 @@
 	ll = log --graph
 	s = status
 	commitnm = commit --allow-empty-message -m ''
+	c = commit
+	p = push
+	cp = commit push
 [user]
 	email = nugrahasteven@gmail.com
 	name = arsmoriendy

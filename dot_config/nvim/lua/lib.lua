@@ -44,4 +44,14 @@ function lib.kms(mode, lhs, rhs, desc, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+---Wrapper for notifying errors
+---@param msg string
+---@param title string
+---@param opts? notify.Options
+function lib.error(msg, title, opts)
+  opts = opts or {}
+  opts.title = title
+  vim.notify(msg, vim.log.levels.ERROR, opts)
+end
+
 return lib

@@ -30,8 +30,11 @@ local function config()
     lspconfig.util.default_config, default_lspconfig_overrides)
   -- ]
 
+  -- TODO: dynamic config https://www.reddit.com/r/neovim/comments/19dodgd/how_can_i_dynamicly_change_lsp_configuration/
+
   -- specific server overrides
   local lspconfig_overrides = {
+    -- This lua_ls configuration mainly adheres to neovim's lua runtime
     lua_ls = {
       settings = {
         Lua = {
@@ -44,6 +47,11 @@ local function config()
             library = vim.api.nvim_get_runtime_file("", true),
             checkThirdParty = false,
           },
+          runtime = {
+            version = "Lua 5.1", -- Adhere to neovim's lua runtime version 5.1
+            path = { "?.lua", "?/init.lua", "/lua/?.lua", "/lua/?/init.lua", },
+            pathStrict = true,
+          },
           -- Do not send telemetry data containing a randomized but unique identifier
           telemetry = {
             enable = false,
@@ -51,6 +59,7 @@ local function config()
         }
       }
     },
+
     emmet_ls = {
       -- add php for emmet
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php" },
@@ -162,5 +171,6 @@ return {
     "SmiteshP/nvim-navic",               -- winbar
     "hrsh7th/cmp-nvim-lsp",
   },
+  event = "VeryLazy",
   config = config
 }

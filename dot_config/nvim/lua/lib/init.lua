@@ -46,11 +46,11 @@ end
 
 ---Wrapper for notifying errors
 ---@param msg string
----@param title string
+---@param title? string
 ---@param opts? notify.Options
 function lib.error(msg, title, opts)
   opts = opts or {}
-  opts.title = title
+  if title ~= nil then opts.title = title end
   vim.notify(msg, vim.log.levels.ERROR, opts)
 end
 

@@ -118,11 +118,11 @@ local function config()
   local all_lsps = mason_lspconfig.get_available_servers()
 
   local local_lsps, err = lllf.servers()
-  if local_lsps == nil then
+  if local_lsps == nil and err ~= nil then
     lib.error(err, "Failed getting local lsp list")
     return
   end
-  for _, local_lsp in pairs(local_lsps) do
+  for _, local_lsp in pairs(local_lsps --[[@as string[] ]]) do
     lspconfig[local_lsp].setup(lspconfig_overrides[local_lsp] or {})
   end
 
@@ -147,7 +147,7 @@ local function config()
 
   local function unreg_local_lsp()
     local_lsps, err = lllf.servers()
-    if local_lsps == nil then
+    if local_lsps == nil and err ~= nil then
       lib.error(err)
       return
     end

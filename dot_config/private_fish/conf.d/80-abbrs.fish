@@ -4,6 +4,7 @@ abbr -a ls "eza --icons always"
 abbr -a la "eza --icons -AlHg"
 abbr -a lam "eza --icons -AlHg -s modified --time-style long-iso"
 abbr -a che "chezmoi"
+abbr -a chema "chezmoi merge-all ."
 # fzf modified file in current directory and merge it
 abbr -a chem "chezmoi merge (chezmoi --path-style absolute status . | awk '{print \$2}' | fzf)"
 abbr -a cher "chezmoi re-add (chezmoi --path-style absolute status . | awk '{print \$2}' | fzf)"

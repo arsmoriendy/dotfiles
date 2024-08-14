@@ -1,8 +1,8 @@
 abbr -a p "sudo $PACK_MAN"
 abbr -a sctl "sudo systemctl"
 abbr -a ls "eza --icons"
-abbr -a la "eza -alH --icons -F"
-abbr -a lam "eza -alH -s modified --time-style long-iso --icons -F"
+abbr -a la "eza -AlH --icons -F"
+abbr -a lam "eza -AlH -s modified --time-style long-iso --icons -F"
 abbr -a che "chezmoi"
 # fzf modified file in current directory and merge it
 abbr -a chem "chezmoi merge (chezmoi --path-style absolute status . | awk '{print \$2}' | fzf)"

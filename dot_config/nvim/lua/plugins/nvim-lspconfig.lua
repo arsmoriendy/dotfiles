@@ -8,8 +8,6 @@ local function config()
 
   -- default server overrides [
   local default_lspconfig_overrides = {
-    -- This function is called by the "VeryLazy" event, therefore autostarting may not work
-    autostart = false,
     capabilities = vim.tbl_deep_extend("force",
       require("cmp_nvim_lsp").default_capabilities(),
       {

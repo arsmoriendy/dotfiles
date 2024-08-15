@@ -177,6 +177,8 @@ return {
     "SmiteshP/nvim-navic",               -- winbar
     "hrsh7th/cmp-nvim-lsp",
   },
+  -- Neovim's runtimepath is needed by lua_ls to properly lookup modules, therefore, this
+  -- ensures neovim's runtimepath is initialized completely before calling the config function.
   event = "VeryLazy",
   config = config
 }

@@ -8,6 +8,8 @@ local function config()
 
   -- default server overrides [
   local default_lspconfig_overrides = {
+    -- This function is called by the "VeryLazy" event, therefore autostarting may not work
+    autostart = false,
     capabilities = vim.tbl_deep_extend("force",
       require("cmp_nvim_lsp").default_capabilities(),
       {
@@ -162,6 +164,9 @@ local function config()
 
   lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")
   lib.kms("n", "<Leader>nu", unreg_local_lsp, "Unregister local lsp")
+
+  -- Manually start lsps, because by default autostart is false
+  vim.cmd("LspStart")
 end
 
 return {

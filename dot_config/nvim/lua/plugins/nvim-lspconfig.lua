@@ -152,11 +152,12 @@ local function config()
       return
     end
 
-    vim.ui.select(local_lsps, { prompt = "Unregister local lsp" }, function(name)
+    local on_select = function(name)
       if name == nil then return end
       err = lllf.unregister(name)
       if err ~= nil then lib.error(err) end
-    end)
+    end
+    vim.ui.select(local_lsps --[[@as string[] ]], { prompt = "Unregister local lsp" }, on_select)
   end
 
   lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")

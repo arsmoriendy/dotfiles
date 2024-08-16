@@ -51,9 +51,9 @@ local function config()
         ]])
   -- keymaps [
   local builtin = require("telescope.builtin")
-  kms("n", "<C-p>", builtin.find_files, "Find files [telescope]")
-  kms("n", "<Leader>h", builtin.help_tags, "Help tags [telescope]")
-  kms("n", "<Leader>p", b(builtin.builtin, { include_extensions = true }), "Builtin picker [telescope]")
+  kms("n", "<C-p>", builtin.find_files, "File picker [telescope]")
+  kms("n", "<Leader>h", builtin.help_tags, "Vim help file picker [telescope]")
+  kms("n", "<Leader>p", b(builtin.builtin, { include_extensions = true }), "Picker picker [telescope]")
   -- ]
 end
 

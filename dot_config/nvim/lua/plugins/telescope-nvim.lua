@@ -1,5 +1,9 @@
 local function config()
   local act = require("telescope.actions")
+  local lib = require("lib")
+  local kms = lib.kms
+  local b = lib.bind
+
   require("telescope").setup({
     defaults = {
       borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
@@ -26,7 +30,7 @@ local function config()
       },
       live_grep = {
         additional_args = {
-          "--multiline"   -- enables newline("\n") searching
+          "--multiline" -- enables newline("\n") searching
         }
       },
     },
@@ -47,9 +51,9 @@ local function config()
         ]])
   -- keymaps [
   local builtin = require("telescope.builtin")
-  vim.keymap.set("n", "<C-p>", builtin.find_files)
-  vim.keymap.set("n", "<Leader>h", builtin.help_tags)
-  vim.keymap.set("n", "<Leader>p", function() builtin.builtin({ include_extensions = true, }) end)
+  kms("n", "<C-p>", builtin.find_files, "Find files [telescope]")
+  kms("n", "<Leader>h", builtin.help_tags, "Help tags [telescope]")
+  kms("n", "<Leader>p", b(builtin.builtin, { include_extensions = true }), "Builtin picker [telescope]")
   -- ]
 end
 

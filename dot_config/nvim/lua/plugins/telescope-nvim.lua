@@ -1,49 +1,40 @@
-return {
-  "nvim-telescope/telescope.nvim", -- telescope
-  event = "VeryLazy",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "rcarriga/nvim-notify",
-  },
-  config = function()
-    local act = require("telescope.actions")
-    require("telescope").setup({
-      defaults = {
-        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-        prompt_prefix = " ",
-        mappings = {
-          n = {
-            ["q"] = act.close,
-            ["<C-c>"] = act.close,
-            ["<C-Enter>"] = act.select_tab,
-            ["<C-d>"] = act.results_scrolling_down,
-            ["<C-u>"] = act.results_scrolling_up,
-          },
-          i = {
-            ["<C-c>"] = false,
-            ["<C-Enter>"] = act.select_tab,
-            ["<C-d>"] = act.results_scrolling_down,
-            ["<C-u>"] = act.results_scrolling_up,
-          }
+local function config()
+  local act = require("telescope.actions")
+  require("telescope").setup({
+    defaults = {
+      borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+      prompt_prefix = " ",
+      mappings = {
+        n = {
+          ["q"] = act.close,
+          ["<C-c>"] = act.close,
+          ["<C-Enter>"] = act.select_tab,
+          ["<C-d>"] = act.results_scrolling_down,
+          ["<C-u>"] = act.results_scrolling_up,
         },
+        i = {
+          ["<C-c>"] = false,
+          ["<C-Enter>"] = act.select_tab,
+          ["<C-d>"] = act.results_scrolling_down,
+          ["<C-u>"] = act.results_scrolling_up,
+        }
       },
-      pickers = {
-        man_pages = {
-          sections = { "ALL" },
-        },
-        live_grep = {
-          additional_args = {
-            "--multiline" -- enables newline("\n") searching
-          }
-        },
+    },
+    pickers = {
+      man_pages = {
+        sections = { "ALL" },
       },
-    })
-    require("telescope").load_extension("notify")
-    require("telescope").load_extension("fzf")
-    -- highlights
-    vim.cmd([[
+      live_grep = {
+        additional_args = {
+          "--multiline"   -- enables newline("\n") searching
+        }
+      },
+    },
+  })
+  require("telescope").load_extension("notify")
+  require("telescope").load_extension("fzf")
+  -- highlights
+  vim.cmd([[
         highlight! link TelescopeNormal NormalFloat
         highlight! link TelescopeBorder FloatBorder
         highlight! link TelescopeResultsBorder TelescopeBorder
@@ -54,12 +45,23 @@ return {
         highlight! link TelescopePromptCounter GruvboxFg4
         highlight! link TelescopePreviewHyphen GruvboxFg4
         ]])
-    -- keymaps [
-    local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<C-p>", builtin.find_files)
-    vim.keymap.set("n", "<Leader>h", builtin.help_tags)
-    vim.keymap.set("n", "<Leader>nh", require("telescope").extensions.notify.notify)
-    vim.keymap.set("n", "<Leader>p", function() builtin.builtin({ include_extensions = true, }) end)
-    -- ]
-  end,
+  -- keymaps [
+  local builtin = require("telescope.builtin")
+  vim.keymap.set("n", "<C-p>", builtin.find_files)
+  vim.keymap.set("n", "<Leader>h", builtin.help_tags)
+  vim.keymap.set("n", "<Leader>nh", require("telescope").extensions.notify.notify)
+  vim.keymap.set("n", "<Leader>p", function() builtin.builtin({ include_extensions = true, }) end)
+  -- ]
+end
+
+return {
+  "nvim-telescope/telescope.nvim", -- telescope
+  event = "VeryLazy",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-fzf-native.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "rcarriga/nvim-notify",
+  },
+  config = config,
 }

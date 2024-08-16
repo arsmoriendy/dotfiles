@@ -54,6 +54,7 @@ local function config()
   kms("n", "<C-p>", builtin.find_files, "File picker [telescope]")
   kms("n", "<Leader>h", builtin.help_tags, "Vim help file picker [telescope]")
   kms("n", "<Leader>p", b(builtin.builtin, { include_extensions = true }), "Picker picker [telescope]")
+  kms("n", "<Leader>g", builtin.git_status, "Git status file picker [telescope]")
   -- ]
 end
 

@@ -7,8 +7,7 @@
 	commitnm = commit --allow-empty-message -m ''
 	c = commit
 	p = pull
-	P = push
-	cP = !git commit && git push
+	cp = !git commit && git push
 [user]
 	email = nugrahasteven@gmail.com
 	name = arsmoriendy

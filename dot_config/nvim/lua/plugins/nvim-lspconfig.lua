@@ -31,21 +31,28 @@ local function config()
   -- ]
 
   -- TODO: dynamic config https://www.reddit.com/r/neovim/comments/19dodgd/how_can_i_dynamicly_change_lsp_configuration/
+  -- maybe pair that with lspconfig `on_new_config` key
 
   -- specific server overrides
   local lspconfig_overrides = {
     -- This lua_ls configuration mainly adheres to neovim's lua runtime
     lua_ls = {
+      on_init = function(client)
+        local path = client.workspace_folders[1].name
+        if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+          return
+        end
+
+        client.config.settings.Lua.workspace = {
+          checkThirdParty = false,
+          library = vim.api.nvim_get_runtime_file("", true)
+        }
+      end,
       settings = {
         Lua = {
           diagnostics = {
             -- Get the language server to recognize the `vim` global
             globals = { "vim" },
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
           },
           runtime = {
             version = "Lua 5.1", -- Adhere to neovim's lua runtime version 5.1

@@ -16,6 +16,8 @@ local function config()
   vim.cmd("cabbrev G Neogit")
 
   kms("n", "gC", b(neogit.open, { "commit" }), "Git commit")
+  kms("n", "gp", b(neogit.open, { "pull" }), "Git pull [neogit]")
+  kms("n", "gP", b(neogit.open, { "push" }), "Git push [neogit]")
 end
 
 return {

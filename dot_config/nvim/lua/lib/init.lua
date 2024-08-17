@@ -33,7 +33,7 @@ end
 ---@param lhs string
 ---@param rhs string|function
 ---@param desc string Keymap description, this will override *desc* set in *opts*
----@param opts table?
+---@param opts vim.keymap.set.Opts?
 function lib.kms(mode, lhs, rhs, desc, opts)
   if opts ~= nil then
     opts = vim.tbl_extend("keep", { desc = desc }, opts)

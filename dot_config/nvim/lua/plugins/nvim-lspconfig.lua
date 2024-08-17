@@ -163,7 +163,9 @@ local function config()
   lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")
   lib.kms("n", "<Leader>nu", unreg_local_lsp, "Unregister local lsp")
 
-  -- Manually start lsps, because by default autostart is false
+  -- Because this configuration is called by the "VeryLazy" event,
+  -- which happens after filetype checking, LSPs might not start initially.
+  -- This is a workaround to manually start LSPs.
   vim.cmd("LspStart")
 end
 

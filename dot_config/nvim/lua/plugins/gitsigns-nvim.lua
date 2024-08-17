@@ -10,7 +10,7 @@ return {
 
     map("n", "gn", b(gs.nav_hunk, "next"), { desc = "Go to next git hunk" })
     map("n", "gN", b(gs.nav_hunk, "prev"), { desc = "Go to previous git hunk" })
-    map("n", "gp", gs.preview_hunk, { desc = "Preview git hunk" })
+    map("n", "gpr", gs.preview_hunk, { desc = "Preview git hunk" })
     map("n", "gD", gs.diffthis, { desc = "Diffmode current file with git's staged version" })
     map("n", "gs", gs.stage_hunk, { desc = "Stage git hunk under cursor" })
     map("x", "gs", function() gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,

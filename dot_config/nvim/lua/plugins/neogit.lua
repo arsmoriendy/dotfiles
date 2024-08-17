@@ -7,8 +7,8 @@ local function config()
   neogit.setup({
     mappings = {
       commit_editor = {
-        ["<C-c><C-c>"] = false,
-        ["<Enter><Enter>"] = "Submit",
+        ["<c-c><c-c>"] = false,
+        ["<c-c><c-k>"] = false,
       }
     }
   })

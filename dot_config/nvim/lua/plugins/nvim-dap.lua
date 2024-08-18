@@ -57,7 +57,7 @@ return {
     kms("n", "<F11>", dap.step_into, "(DAP) Step Into")
     kms("n", "<F12>", dap.step_out, "(DAP) Step Out")
     kms("n", "<Leader>b", dap.toggle_breakpoint, "(DAP) Toggle Breakpoint")
-    kms("n", "<Leader>dr", dap.repl.toggle, "(DAP) Toggle REPL")
+    kms("n", "<Leader>Dr", dap.repl.toggle, "(DAP) Toggle REPL")
     -- }
   end
 }

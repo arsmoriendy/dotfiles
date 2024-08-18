@@ -6,10 +6,16 @@ local function config()
 
   neogit.setup({
     mappings = {
+      -- disable leading <C-c> binds [
       commit_editor = {
         ["<c-c><c-c>"] = false,
         ["<c-c><c-k>"] = false,
+      },
+      commit_editor_I = {
+        ["<c-c><c-c>"] = false,
+        ["<c-c><c-k>"] = false,
       }
+      -- ]
     }
   })
 

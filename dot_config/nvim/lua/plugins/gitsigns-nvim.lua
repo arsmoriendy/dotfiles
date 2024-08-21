@@ -11,8 +11,12 @@ local function config()
   map("n", "gpr", gs.preview_hunk, { desc = "Preview git hunk" })
   map("n", "gD", gs.diffthis, { desc = "Diffmode current file with git's staged version" })
   map("n", "gs", gs.stage_hunk, { desc = "Stage git hunk under cursor" })
+
+  -- HACK:
+  vim.opt.signcolumn="auto:1-9"
   map("x", "gs", function() gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
     { desc = "Stage selected line to git" })
+
   map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
   map("x", "gr", function() gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
     { desc = "Reset selected line from git" })

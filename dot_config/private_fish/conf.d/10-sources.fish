@@ -1,2 +1,4 @@
 # load system specific confgs
-source ~/.config/fish/conf.d/sysconfig/*.fish
+for CONFIG in (find "$(realpath ~/.config/fish/conf.d/sysconfig)" -type f -name "*.fish")
+  source "$CONFIG"
+end

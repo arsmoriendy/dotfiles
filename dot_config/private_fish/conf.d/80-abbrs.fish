@@ -1,4 +1,4 @@
-abbr -a p "sudo $PACK_MAN"
+abbr -a p "$PACK_MAN"
 abbr -a sctl "sudo systemctl"
 abbr -a ls "eza --icons always"
 abbr -a la "eza --icons -AlHg"

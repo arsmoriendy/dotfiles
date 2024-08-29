@@ -1,0 +1,4 @@
+show-failed-attempts
+image=~/.config/sway/assets/background.jpg
+scaling=fit
+indicator-idle-visible

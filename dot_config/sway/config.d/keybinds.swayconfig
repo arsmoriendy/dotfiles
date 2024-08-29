@@ -202,3 +202,6 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioMicMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 bindsym $mod+s exec grim -g "$(slurp)"
+
+# lock session
+bindsym $mod+Alt+l exec swaylock

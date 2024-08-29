@@ -18,6 +18,7 @@ Gruvbox themed rice
 - ttf-cascadia-code-nerd
 - grim - screenshot utility
 - slurp - region selector for grim
+- swaylock
 ##### Optional dependencies:
 - swaybg (^1.2.0)
 - brightnessctl (^0.5.0) - for devices that need brightness control

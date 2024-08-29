@@ -200,3 +200,5 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 # volume slider }
 
 bindsym XF86AudioMicMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+
+bindsym $mod+s exec grim -g "$(slurp)"

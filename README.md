@@ -16,6 +16,8 @@ Gruvbox themed rice
 - polkit-gnome
 - wl-clipboard (^2.2.1)
 - ttf-cascadia-code-nerd
+- grim - screenshot utility
+- slurp - region selector for grim
 ##### Optional dependencies:
 - swaybg (^1.2.0)
 - brightnessctl (^0.5.0) - for devices that need brightness control

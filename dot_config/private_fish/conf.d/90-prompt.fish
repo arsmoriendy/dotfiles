@@ -1,7 +1,6 @@
 # # DEPENDENCIES
 # - whoami
 # - date
-# - hostname (inetutils)
 # - awk
 
 function fish_prompt
@@ -14,7 +13,7 @@ function fish_prompt
   set -g fish_prompt_pwd_dir_length 0
 
   set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT
-  set -f RIGHT \[(set_color --bold yellow)(whoami)(set_color --bold cyan)@(set_color --bold blue)(hostnamectl | awk -F ": " NR==1'{print $2}')(set_color --bold brcyan)" $DISTRO_ICON "(set_color --bold magenta)(date +%T)(set_color --bold red)\]"┐"
+  set -f RIGHT \[(set_color --bold yellow)(whoami)(set_color --bold cyan)@(set_color --bold blue)(prompt_hostname)(set_color --bold brcyan)" $DISTRO_ICON "(set_color --bold magenta)(date +%T)(set_color --bold red)\]"┐"
 
   set -f LINE (set_color --bold red)
   set -f i (math (string length -V $LEFT) + (string length -V $RIGHT))

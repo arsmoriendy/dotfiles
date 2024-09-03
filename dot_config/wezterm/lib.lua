@@ -4,7 +4,9 @@ lib.isUnix = function()
   return package.config:sub(1, 1) == "/"
 end
 
----Merges two or more tables (clone of nvim's function by the same name)
+---Merges two or more tables. (clone of nvim's function by the same name)
+--- WARNING: the first provided table's metatable will be used.
+---
 ---@param behavior 'error'|'keep'|'force' Decides what to do if a key is found in more than one map:
 ---      - "error": raise an error
 ---      - "keep":  use value from the leftmost map

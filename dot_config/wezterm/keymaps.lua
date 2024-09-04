@@ -103,4 +103,13 @@ keymaps.keys = {
   },
 }
 
+-- ALT + n to activate nth tab
+for n = 1, 9 do
+  table.insert(keymaps.keys, {
+    key = tostring(n),
+    mods = 'ALT',
+    action = act.ActivateTab(n - 1),
+  })
+end
+
 return keymaps

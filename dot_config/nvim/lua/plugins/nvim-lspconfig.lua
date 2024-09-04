@@ -170,6 +170,12 @@ local function config()
   lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")
   lib.kms("n", "<Leader>nu", unreg_local_lsp, "Unregister local lsp")
 
+  -- Return on diffmode, thus stops lsp from starting
+  -- TODO: turn this to an autocmd
+  if vim.wo[vim.api.nvim_get_current_win()].diff then
+    return
+  end
+
   -- Because this configuration is called by the "VeryLazy" event,
   -- which happens after filetype checking, LSPs might not start initially.
   -- This is a workaround to manually start LSPs.

@@ -15,17 +15,30 @@ local config = {
     font = wezterm.font("CaskaydiaCove Nerd Font"),
     font_size = 11,
   },
+  show_new_tab_button_in_tab_bar = false,
+  show_tab_index_in_tab_bar = false,
+  use_fancy_tab_bar = false,
   colors = {
     tab_bar = {
-      background = "rgba(100% 0% 0% 50%)",
+      background = "#0c0d0e",
+      active_tab = {
+        bg_color = "#181a1b",
+        fg_color = "#FBF1C7"
+      },
+      inactive_tab = {
+        bg_color = "#0c0d0e",
+        fg_color = "#665C54",
+      },
     }
   },
   font = wezterm.font("CaskaydiaCove Nerd Font Mono"),
   font_size = 11,
   window_close_confirmation = "NeverPrompt",
+
   -- NOTE: underlines may differ from font to font
   underline_position = "-0.1cell",
   underline_thickness = "300%",
+
   window_padding = {
     top = 0,
     left = 0,
@@ -40,10 +53,40 @@ local config = {
   },
 }
 
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+local function tab_title(tab_info)
+  local title = tab_info.tab_title
+  if title and #title > 0 then
+    return title
+  end
+  return tab_info.active_pane.title
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, _, _, _, _, max_width)
+    local prefix = "[" .. tab.tab_index .. "] "
+    local title = tab_title(tab)
+    local padding = " "
+
+    title = title:sub(1, max_width - #padding - #prefix) .. padding
+
+    return {
+      { Foreground = { Color = "#FABD2F" } },
+      { Text = prefix },
+      "ResetAttributes",
+      { Text = title }
+    }
+  end
+)
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-    config = lib.tbl_extend('error', wezterm.config_builder(), config)
+  config = lib.tbl_extend('error', wezterm.config_builder(), config)
 end
 
 local keymaps = require("keymaps")

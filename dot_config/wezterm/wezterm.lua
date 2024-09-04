@@ -68,7 +68,7 @@ end
 wezterm.on(
   'format-tab-title',
   function(tab, _, _, _, _, max_width)
-    local prefix = "[" .. tab.tab_index .. "] "
+    local prefix = "[" .. tab.tab_index + 1 .. "] "
     local title = tab_title(tab)
     local padding = " "
 

@@ -3,6 +3,9 @@ local keymaps = {}
 local wezterm = require('wezterm')
 local act = wezterm.action
 
+-- tmux style prefix key
+local prefix_key = "a"
+
 keymaps.key_tables = {
   resize_pane = {
     {
@@ -25,7 +28,26 @@ keymaps.key_tables = {
       key = "q",
       action = "PopKeyTable",
     },
-  }
+  },
+  prefix = {
+    { -- exit prefix mode
+      key = prefix_key,
+      mods = "CTRL",
+      action = act.PopKeyTable
+    },
+    {
+      key = "z",
+      action = act.TogglePaneZoomState
+    },
+    {
+      key = "[",
+      action = act.ActivateCopyMode,
+    },
+    {
+      key = "/",
+      action = act.Search({ CaseInSensitiveString = "" }),
+    },
+  },
 }
 
 keymaps.keys = {
@@ -100,6 +122,11 @@ keymaps.keys = {
     key = "Enter",
     mods = "ALT",
     action = act.SpawnTab("CurrentPaneDomain"),
+  },
+  { -- activate prefix keytable
+    key = prefix_key,
+    mods = "CTRL",
+    action = act.ActivateKeyTable({ name = "prefix" })
   },
 }
 

@@ -11,10 +11,6 @@ local config = {
   color_scheme = "GruvboxDarkHard",
   window_background_opacity = 0.9,
   -- config.hide_tab_bar_if_only_one_tab = true
-  window_frame = {
-    font = wezterm.font("CaskaydiaCove Nerd Font"),
-    font_size = 11,
-  },
   show_new_tab_button_in_tab_bar = false,
   show_tab_index_in_tab_bar = false,
   use_fancy_tab_bar = false,

@@ -81,6 +81,14 @@ wezterm.on(
   end
 )
 
+wezterm.on('update-status', function(window, _)
+  local name = window:active_key_table()
+  if name then
+    name = 'TABLE: ' .. name
+  end
+  window:set_right_status(name or '')
+end)
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then

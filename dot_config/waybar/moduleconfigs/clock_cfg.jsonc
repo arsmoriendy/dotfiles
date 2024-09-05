@@ -1,6 +1,17 @@
 {
-  "clock": {
-    "format": "{:%I:%M %p}",
-    "tooltip-format": "{:%A, %d %B %Y}"
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%I:%M %p}"
+  },
+  "clock#date": {
+    "format": "{:%d %b}",
+    "tooltip-format": "{:%d/%m/%y}"
+  },
+  "group/clocks": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock#date",
+      "clock#time"
+    ]
   }
 }

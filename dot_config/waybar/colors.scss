@@ -2,6 +2,7 @@ $f_text: #FBF1C7;
 $u_text: #bcb6a0;
 $f_bgrd: #181a1b;
 $u_bgrd: #0c0d0e;
+$s_bgrd: color.adjust($f_bgrd, $lightness: 10%);
 $e_bgrd: #9e0005;
 $accent: #FABD2F;
 $border: #363130;

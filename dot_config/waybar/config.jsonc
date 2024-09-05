@@ -19,6 +19,6 @@
   // Modules configuration
   "include": [
     "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc",
-    "~/.config/waybar/moduleconfigs/clock_cfg.jsonc"
+    "~/.config/waybar/moduleconfigs/clock_cfg.jsonc",
   ]
 }

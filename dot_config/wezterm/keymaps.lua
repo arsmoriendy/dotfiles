@@ -69,19 +69,7 @@ keymaps.keys = {
   {
     key = "q",
     mods = "ALT|CTRL",
-    action = act.InputSelector({
-      title = "Quit",
-      choices = {
-        { label = "Close pane", },
-        { label = "Close tab", },
-      },
-      action = wezterm.action_callback(function(_, pane, _, label)
-        if label == "Close pane" then
-          pane:move_to_new_tab()
-          act.CloseCurrentPane({ confirm = false })
-        end
-      end),
-    }),
+    action = act.CloseCurrentTab({ confirm = false }),
   },
   {
     key = "l",

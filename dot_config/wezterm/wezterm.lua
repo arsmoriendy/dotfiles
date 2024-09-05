@@ -9,8 +9,10 @@ local config = {
   -- and copy to terminfo directory (usually /usr/share/terminfo/w/)
   term = "wezterm",
   color_scheme = "GruvboxDarkHard",
+  window_frame = {
+    font = wezterm.font("CaskaydiaCove Nerd Font"),
+  },
   window_background_opacity = 0.9,
-  -- config.hide_tab_bar_if_only_one_tab = true
   show_new_tab_button_in_tab_bar = false,
   show_tab_index_in_tab_bar = false,
   use_fancy_tab_bar = false,

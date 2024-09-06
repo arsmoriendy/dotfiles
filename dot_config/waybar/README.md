@@ -8,7 +8,7 @@ This is the `waybar` configuration directory.
 
 ## Transpile SASS/SCSS To CSS Files
 
-> [!info]
+> [!NOTE]
 > This command will watch for changes in `style.scss` (along with its includes) and transpile it all into `style.css`.
 > Before commiting changes, make sure to transpile and include both files.
 

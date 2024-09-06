@@ -6,6 +6,14 @@ local act = wezterm.action
 -- tmux style prefix key
 local prefix_key = "a"
 
+local search_mode_key_table = {}
+if wezterm.gui then
+  search_mode_key_table = wezterm.gui.default_key_tables().search_mode
+  table.insert(search_mode_key_table,
+    { key = "c", mods = "CTRL", action = act.CopyMode 'Close' }
+  )
+end
+
 keymaps.key_tables = {
   resize_pane = {
     {
@@ -29,19 +37,7 @@ keymaps.key_tables = {
       action = "PopKeyTable",
     },
   },
-  search_mode = {
-    { key = "c",         mods = "CTRL", action = act.CopyMode 'Close' },
-    { key = 'Escape',    mods = 'NONE', action = act.CopyMode 'Close' },
-    { key = 'Enter',     mods = 'NONE', action = act.CopyMode 'PriorMatch' },
-    { key = 'n',         mods = 'CTRL', action = act.CopyMode 'NextMatch' },
-    { key = 'p',         mods = 'CTRL', action = act.CopyMode 'PriorMatch' },
-    { key = 'r',         mods = 'CTRL', action = act.CopyMode 'CycleMatchType' },
-    { key = 'u',         mods = 'CTRL', action = act.CopyMode 'ClearPattern' },
-    { key = 'PageUp',    mods = 'NONE', action = act.CopyMode 'PriorMatchPage' },
-    { key = 'PageDown',  mods = 'NONE', action = act.CopyMode 'NextMatchPage' },
-    { key = 'UpArrow',   mods = 'NONE', action = act.CopyMode 'PriorMatch' },
-    { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'NextMatch' },
-  },
+  search_mode = search_mode_key_table,
   prefix = {
     { -- exit prefix mode
       key = prefix_key,

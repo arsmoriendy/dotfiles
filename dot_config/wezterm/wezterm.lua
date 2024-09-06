@@ -99,16 +99,5 @@ local keymaps = require("keymaps")
 config = lib.tbl_extend("force", config, keymaps)
 
 
-if (lib.isUnix()) then
-  -- [[ unix only config
-  config.window_decorations = "None"
-  -- ]]
-else
-  -- [[ windows only config
-  -- use git's included bash.exe as a default shell
-  config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe" }
-  -- ]]
-end
-
 -- and finally, return the configuration to wezterm
 return config

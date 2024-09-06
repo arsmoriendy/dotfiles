@@ -2,16 +2,26 @@ local keymaps = {}
 
 local wezterm = require('wezterm')
 local act = wezterm.action
+local lib = require("lib")
 
 -- tmux style prefix key
 local prefix_key = "a"
 
 local search_mode_key_table = {}
+local copy_mode_key_table = {}
 if wezterm.gui then
-  search_mode_key_table = wezterm.gui.default_key_tables().search_mode
-  table.insert(search_mode_key_table,
+  local default_key_tables = wezterm.gui.default_key_tables()
+
+  search_mode_key_table = default_key_tables.search_mode
+  copy_mode_key_table = default_key_tables.copy_mode
+
+  lib.list_extend(search_mode_key_table, {
     { key = "c", mods = "CTRL", action = act.CopyMode 'Close' }
-  )
+  })
+
+  lib.list_extend(copy_mode_key_table, {
+    { key = "x", mods = "CTRL", action = act.CopyMode 'ClearPattern' }
+  })
 end
 
 keymaps.key_tables = {
@@ -38,6 +48,7 @@ keymaps.key_tables = {
     },
   },
   search_mode = search_mode_key_table,
+  copy_mode = copy_mode_key_table,
   prefix = {
     { -- exit prefix mode
       key = prefix_key,

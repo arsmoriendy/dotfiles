@@ -118,7 +118,15 @@ return {
         snippet_indicator,
         'branch',
         'diff',
-        'diagnostics'
+        {
+          'diagnostics',
+          symbols = {
+            error = "",
+            warn = "",
+            hint = "",
+            info = ""
+          }
+        }
       },
       lualine_c = {
         {

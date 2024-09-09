@@ -98,6 +98,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- ]
 
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = ""
+    }
+  }
+})
+
 -- load config from different files [
 require("functions")
 require("keymaps")

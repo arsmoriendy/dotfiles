@@ -53,7 +53,10 @@ keymaps.key_tables = {
     { -- exit prefix mode
       key = prefix_key,
       mods = "CTRL",
-      action = act.PopKeyTable
+      action = act.Multiple({
+        act.PopKeyTable,
+        act.SendKey({ key = prefix_key, mods = "CTRL" })
+      })
     },
     {
       key = "z",

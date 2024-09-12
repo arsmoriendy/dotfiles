@@ -36,7 +36,9 @@ local function config()
     },
   })
   require("telescope").load_extension("notify")
-  require("telescope").load_extension("fzf")
+  if select(1, pcall(require, "fzf_lib")) == true then
+    require("telescope").load_extension("fzf")
+  end
   -- highlights
   vim.cmd([[
         highlight! link TelescopeNormal NormalFloat

@@ -66,7 +66,8 @@ return {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       enabled = function() -- only enable if `make` exists
-        return vim.system({ "make", "--version" }):wait().code == 0
+        local ok = pcall(vim.system, { "make", "--version" })
+        return ok
       end,
       build = "make",
     },

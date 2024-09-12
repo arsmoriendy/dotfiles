@@ -63,7 +63,13 @@ return {
   event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      enabled = function() -- only enable if `make` exists
+        return vim.system({ "make", "--version" }):wait().code == 0
+      end,
+      build = "make",
+    },
     "nvim-tree/nvim-web-devicons",
     "rcarriga/nvim-notify",
   },

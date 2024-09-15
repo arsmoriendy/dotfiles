@@ -26,7 +26,7 @@ local function config()
     end
   }
 
-  lspconfig.util.default_config = vim.tbl_extend("force",
+  lspconfig.util.default_config = vim.tbl_deep_extend("force",
     lspconfig.util.default_config, default_lspconfig_overrides)
   -- ]
 

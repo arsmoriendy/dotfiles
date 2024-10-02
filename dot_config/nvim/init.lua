@@ -32,6 +32,7 @@ opt.listchars:append("trail:•")
 opt.rtp:prepend(lazypath)
 opt.breakindent = true
 opt.scrolloff = 3
+opt.spelllang = "en,id"
 -- ]
 
 -- VARIABLES [

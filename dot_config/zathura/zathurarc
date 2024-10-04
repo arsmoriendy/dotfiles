@@ -1,11 +1,5 @@
-map f navigate next
-map b navigate previous
-map <C--> zoom out
-map <C-s> zoom out
-map <C-+> zoom in
-map <C-w> zoom in
-map <C-b> adjust_window best-fit
-map <C-W> adjust_window width
+map d scroll half-down
+map u scroll half-up
 
 # invert (<C-r> to invert invert)
 set recolor

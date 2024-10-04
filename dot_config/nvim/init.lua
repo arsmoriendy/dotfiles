@@ -113,6 +113,7 @@ vim.diagnostic.config({
 -- load config from different files [
 require("functions")
 require("keymaps")
+require("flie-keymaps")
 require("lazy").setup(
   "plugins", -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
   {

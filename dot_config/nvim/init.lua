@@ -58,7 +58,7 @@ vim.diagnostic.config({
 vim.filetype.add({
   extension = {
     swayconfig = "swayconfig",
-    tmpl = "gotmpl",
+    zathurarc = "zathurarc",
   }
 })
 -- ]

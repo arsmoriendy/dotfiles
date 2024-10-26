@@ -2,7 +2,7 @@ local cau = vim.api.nvim_create_autocmd
 local lib = require("lib")
 local kms = lib.kms
 
---- ConTeXt main file name
+---ConTeXt main file name
 ---@type string
 local ctx_main_file
 ---ConTeXt file types

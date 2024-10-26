@@ -16,8 +16,8 @@ local ctx_file_types = {
 ---@param ctx_fn string A ConTeXt filename (not path)
 ---@return boolean
 local function is_ctx_main(ctx_fn)
-  local splitidx = lib.strrfindc(ctx_fn, '_')
-  if splitidx == 0 then
+  local underscoreidx = lib.strrfindc(ctx_fn, '_')
+  if underscoreidx == 0 then
     return true
   end
 

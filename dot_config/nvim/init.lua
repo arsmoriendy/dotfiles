@@ -51,7 +51,7 @@ vim.cmd.cabbrev("th tab help")
 
 -- LUA APIS [
 vim.diagnostic.config({
-  update_in_insert = true
+  update_in_insert = true,
 })
 
 -- recognize "*.swayconfig" files as swayconfig files
@@ -73,20 +73,20 @@ local autoview_augroup = vim.api.nvim_create_augroup("autoview", { clear = true 
 vim.api.nvim_create_autocmd("BufWinLeave", {
   group = autoview_augroup,
   callback = function()
-    if (vim.o.buftype == "" and vim.fn.bufname() ~= "") then
+    if vim.o.buftype == "" and vim.fn.bufname() ~= "" then
       vim.cmd("mkview")
     end
-  end
+  end,
 })
 
 -- loadview autocmd on window enter
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = autoview_augroup,
   callback = function()
-    if (vim.o.buftype == "" and vim.fn.bufname() ~= "") then
+    if vim.o.buftype == "" and vim.fn.bufname() ~= "" then
       vim.cmd("silent! loadview")
     end
-  end
+  end,
 })
 -- ]
 
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.expandtab = false
     vim.opt_local.shiftwidth = 0
-  end
+  end,
 })
 
 -- ]
@@ -106,9 +106,9 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.ERROR] = "",
       [vim.diagnostic.severity.WARN] = "",
       [vim.diagnostic.severity.HINT] = "",
-      [vim.diagnostic.severity.INFO] = ""
-    }
-  }
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
 })
 
 -- load config from different files [

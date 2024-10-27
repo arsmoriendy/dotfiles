@@ -60,7 +60,7 @@ vim.filetype.add({
     swayconfig = "swayconfig",
     zathurarc = "zathurarc",
     context = "context",
-  }
+  },
 })
 -- ]
 

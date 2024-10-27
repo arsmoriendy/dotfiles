@@ -72,9 +72,6 @@ kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { silent = true, 
 -- lsp rename
 kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" })
 
--- lsp format
-kms("n", "<Leader>i", "<CMD>lua vim.lsp.buf.format()<CR>", { desc = "Reformat buffer" })
-
 -- lsp hover
 kms("n", "<Leader>k", "<CMD>lua vim.lsp.buf.hover()<CR>", { desc = "Simulate hover symbol" })
 

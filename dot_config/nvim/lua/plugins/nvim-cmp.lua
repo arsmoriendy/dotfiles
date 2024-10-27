@@ -16,7 +16,7 @@ local config = function()
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
-      end
+      end,
     },
     sources = {
       { name = "nvim_lsp" },
@@ -43,10 +43,10 @@ local config = function()
 end
 
 return {
-  "hrsh7th/nvim-cmp",           -- dropdown completion
+  "hrsh7th/nvim-cmp", -- dropdown completion
   dependencies = {
     "saadparwaiz1/cmp_luasnip", -- for integration with luasnip
-    "hrsh7th/cmp-nvim-lsp",     -- for integration with lsp
+    "hrsh7th/cmp-nvim-lsp", -- for integration with lsp
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-buffer",
   },

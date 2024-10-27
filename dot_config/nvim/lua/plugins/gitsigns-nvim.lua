@@ -13,18 +13,20 @@ local function config()
   map("n", "gs", gs.stage_hunk, { desc = "Stage git hunk under cursor" })
 
   -- HACK:
-  vim.opt.signcolumn="auto:1-9"
-  map("x", "gs", function() gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
-    { desc = "Stage selected line to git" })
+  vim.opt.signcolumn = "auto:1-9"
+  map("x", "gs", function()
+    gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })
+  end, { desc = "Stage selected line to git" })
 
   map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
-  map("x", "gr", function() gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") }) end,
-    { desc = "Reset selected line from git" })
+  map("x", "gr", function()
+    gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })
+  end, { desc = "Reset selected line from git" })
   map("n", "gR", gs.reset_buffer, { desc = "Reset entire buffer from git" })
   map("n", "gB", gs.blame_line, { desc = "Git blame current line" })
 end
 
 return {
   "lewis6991/gitsigns.nvim", -- git signs (next to number column) and git mappings
-  config = config
+  config = config,
 }

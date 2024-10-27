@@ -33,9 +33,11 @@ local function select_url()
 
   local urls = dadbod_sys.urls
 
-  local items = vim.tbl_map(function(url) return url.name end, urls)
+  local items = vim.tbl_map(function(url)
+    return url.name
+  end, urls)
   local opts = {
-    prompt = "Select Database URL"
+    prompt = "Select Database URL",
   }
   local on_choice = function(_, i)
     if i ~= nil then
@@ -49,7 +51,9 @@ end
 local actions = {
   [1] = {
     desc = "Execute current buffer as a query",
-    callback = function() vim.cmd("%DB") end,
+    callback = function()
+      vim.cmd("%DB")
+    end,
   },
   [2] = {
     desc = "Open a temporary query buffer",
@@ -62,12 +66,16 @@ local actions = {
 }
 
 local function select_actions()
-  local items = vim.tbl_map(function(act) return act.desc end, actions)
+  local items = vim.tbl_map(function(act)
+    return act.desc
+  end, actions)
   local opts = {
-    prompt = "Database Actions"
+    prompt = "Database Actions",
   }
   local on_choice = function(_, i)
-    if i ~= nil then actions[i].callback() end
+    if i ~= nil then
+      actions[i].callback()
+    end
   end
 
   vim.ui.select(items, opts, on_choice)
@@ -79,7 +87,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
     map({ "n" }, "<Leader>a", select_actions, {
       desc = "Select actions",
-      buffer = args.buf
+      buffer = args.buf,
     })
 
     map({ "n", "i" }, "<F6>", actions[1].callback, {

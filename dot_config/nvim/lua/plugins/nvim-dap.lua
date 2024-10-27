@@ -31,19 +31,19 @@ return {
 
             if res.code ~= 0 then
               vim.notify(res.stderr, vim.log.levels, {
-                title = "Failed retrieving go packages" })
+                title = "Failed retrieving go packages",
+              })
               return
             end
 
             local items = vim.split(res.stdout, "\n")
 
-            vim.ui.select(items, { prompt = "Select debugee" },
-              function(item, idx)
-                if idx == nil then
-                  return
-                end
-                coroutine.resume(dap_run_co, item)
-              end)
+            vim.ui.select(items, { prompt = "Select debugee" }, function(item, idx)
+              if idx == nil then
+                return
+              end
+              coroutine.resume(dap_run_co, item)
+            end)
           end)
         end,
       },
@@ -59,5 +59,5 @@ return {
     kms("n", "<Leader>b", dap.toggle_breakpoint, "(DAP) Toggle Breakpoint")
     kms("n", "<Leader>Dr", dap.repl.toggle, "(DAP) Toggle REPL")
     -- }
-  end
+  end,
 }

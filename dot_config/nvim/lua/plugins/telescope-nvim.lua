@@ -21,7 +21,7 @@ local function config()
           ["<C-Enter>"] = act.select_tab,
           ["<C-d>"] = act.results_scrolling_down,
           ["<C-u>"] = act.results_scrolling_up,
-        }
+        },
       },
     },
     pickers = {
@@ -30,8 +30,8 @@ local function config()
       },
       live_grep = {
         additional_args = {
-          "--multiline" -- enables newline("\n") searching
-        }
+          "--multiline", -- enables newline("\n") searching
+        },
       },
     },
   })

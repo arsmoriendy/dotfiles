@@ -50,7 +50,9 @@ end
 ---@param opts? notify.Options
 function lib.error(msg, title, opts)
   opts = opts or {}
-  if title ~= nil then opts.title = title end
+  if title ~= nil then
+    opts.title = title
+  end
   vim.notify(msg, vim.log.levels.ERROR, opts)
 end
 

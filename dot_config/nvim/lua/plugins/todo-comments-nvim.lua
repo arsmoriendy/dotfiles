@@ -3,5 +3,5 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
   opts = {
     -- leave empty to load default settings
-  }
+  },
 }

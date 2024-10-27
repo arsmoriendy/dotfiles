@@ -7,8 +7,8 @@ return {
       keymaps = {
         ["q"] = "actions.close",
         ["<C-s>"] = false,
-      }
+      },
     })
     vim.keymap.set("n", "-", oil.open, { desc = "Oil: Open parent directory" })
-  end
+  end,
 }

@@ -16,12 +16,12 @@ local ctx_file_types = {
 ---@param ctx_fn string A ConTeXt filename (not path)
 ---@return boolean
 local function is_ctx_main(ctx_fn)
-  local underscoreidx = lib.strrfindc(ctx_fn, '_')
+  local underscoreidx = lib.strrfindc(ctx_fn, "_")
   if underscoreidx == 0 then
     return true
   end
 
-  local dotidx = lib.strrfindc(ctx_fn, '.')
+  local dotidx = lib.strrfindc(ctx_fn, ".")
   local type = ctx_fn:sub(underscoreidx + 1, dotidx - 1)
 
   if ctx_file_types[type] == nil then
@@ -38,7 +38,7 @@ cau("FileType", {
 
     local buf = vim.api.nvim_get_current_buf()
     local bufname = vim.api.nvim_buf_get_name(buf)
-    local buf_fn = bufname:sub(lib.strrfindc(bufname, '/') + 1)
+    local buf_fn = bufname:sub(lib.strrfindc(bufname, "/") + 1)
 
     if is_ctx_main(buf_fn) then
       ctx_main_file = bufname
@@ -56,5 +56,5 @@ cau("FileType", {
       vim.cmd("write")
       compile()
     end, "Save and Compile ConTeXt file")
-  end
+  end,
 })

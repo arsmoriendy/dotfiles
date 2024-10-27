@@ -1,9 +1,9 @@
 return {
-  "petertriho/nvim-scrollbar",   -- scrollbar
+  "petertriho/nvim-scrollbar", -- scrollbar
   enabled = false,
   dependencies = {
     "kevinhwang91/nvim-hlslens", -- search handler
-    "lewis6991/gitsigns.nvim"    -- git signs handler
+    "lewis6991/gitsigns.nvim", -- git signs handler
   },
   config = function()
     require("scrollbar.handlers.search").setup({}) -- need table parameter
@@ -19,8 +19,8 @@ return {
         "DressingInput",
       },
       handle = {
-        highlight = "Visual"
-      }
+        highlight = "Visual",
+      },
     })
-  end
+  end,
 }

@@ -1,5 +1,5 @@
 return {
-  "uga-rosa/ccc.nvim",     -- color picker
+  "uga-rosa/ccc.nvim", -- color picker
   cmd = "Ccc",
   config = function()
     require("ccc").setup({
@@ -8,7 +8,7 @@ return {
       win_opts = {
         border = "single",
         title = "Color Picker",
-      }
+      },
     })
-  end
+  end,
 }

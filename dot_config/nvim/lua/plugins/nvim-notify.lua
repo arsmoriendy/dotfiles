@@ -21,7 +21,7 @@ return {
       table.insert(local_supressed_notifications, {
         msg = msg,
         level = level,
-        opts = opts
+        opts = opts,
       })
       notify.supressed_notifications = local_supressed_notifications
     end

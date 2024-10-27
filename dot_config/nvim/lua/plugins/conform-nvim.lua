@@ -12,6 +12,7 @@ local formatters_by_ft = {
   json = { "prettierd" },
   yaml = { "prettierd" },
   graphql = { "prettierd" },
+  lua = { "stylua" },
 }
 
 local format_on_save = true
@@ -25,10 +26,12 @@ local function config()
 
   conform.setup({
     formatters_by_ft = formatters_by_ft,
-    format_on_save = function() return format_on_save and {} or nil end,
+    format_on_save = function()
+      return format_on_save and {} or nil
+    end,
     default_format_opts = {
-      lsp_format = "fallback"
-    }
+      lsp_format = "fallback",
+    },
   })
 
   lib.kms("n", "<Leader>i", conform.format, "Format file/buffer")
@@ -36,7 +39,7 @@ local function config()
 end
 
 return {
-  'stevearc/conform.nvim',
+  "stevearc/conform.nvim",
   opts = {},
   config = config,
 }

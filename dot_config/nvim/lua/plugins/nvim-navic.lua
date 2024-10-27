@@ -1,5 +1,5 @@
 return {
-  "SmiteshP/nvim-navic",     -- location in current file specifier
+  "SmiteshP/nvim-navic", -- location in current file specifier
   config = function()
     require("nvim-navic").setup({
       separator = "  ",

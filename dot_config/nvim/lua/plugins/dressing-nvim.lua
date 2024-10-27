@@ -21,7 +21,7 @@ return {
         },
 
         override = function(conf)
-          conf.border = "single";
+          conf.border = "single"
           return conf
         end,
       },
@@ -43,7 +43,7 @@ return {
           },
 
           override = function(conf)
-            conf.border = "single";
+            conf.border = "single"
             return conf
           end,
         },

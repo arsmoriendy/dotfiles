@@ -23,8 +23,7 @@ return {
 
       local ext = nwd.get_icon_name_by_filetype(context.filetype)
       -- get dark or light icon table according to context.current, fallback on default icon
-      local icon_tbl =
-          (context.current and nwd_light[ext] or nwd_dark[ext]) or nwd.get_default_icon()
+      local icon_tbl = (context.current and nwd_light[ext] or nwd_dark[ext]) or nwd.get_default_icon()
 
       local tab_icon_hi = "lualine_tab" .. context.tabnr .. "_icon"
 
@@ -32,27 +31,17 @@ return {
 
       local bg_c = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(bg_hi)), "bg#")
 
-      local icon = string.format(
-        "%%#%s#%s%%#%s#",
-        tab_icon_hi,
-        icon_tbl.icon,
-        bg_hi
-      )
+      local icon = string.format("%%#%s#%s%%#%s#", tab_icon_hi, icon_tbl.icon, bg_hi)
 
       local is_modified = vim.fn.getbufvar(bufnr, "&modified")
 
       vim.cmd.highlight({
         tab_icon_hi,
         "guifg=" .. icon_tbl.color,
-        "guibg=" .. bg_c
+        "guibg=" .. bg_c,
       })
 
-      return string.format(
-        "%s %s%s",
-        icon,
-        name,
-        is_modified == 1 and " ●" or ""
-      )
+      return string.format("%s %s%s", icon, name, is_modified == 1 and " ●" or "")
     end
     -- ]
 
@@ -60,7 +49,7 @@ return {
     local mode = {
       function()
         return vim.fn.mode()
-      end
+      end,
     }
 
     local notification_indicator = {
@@ -74,7 +63,9 @@ return {
         end
         return indicator
       end,
-      cond = function() return notify.notification_is_supressed end,
+      cond = function()
+        return notify.notification_is_supressed
+      end,
     }
 
     local snippet_indicator = {
@@ -86,7 +77,7 @@ return {
         end
 
         return ""
-      end
+      end,
     }
 
     local navic_breadcrumbs = {
@@ -116,17 +107,17 @@ return {
       lualine_b = {
         notification_indicator,
         snippet_indicator,
-        'branch',
-        'diff',
+        "branch",
+        "diff",
         {
-          'diagnostics',
+          "diagnostics",
           symbols = {
             error = "",
             warn = "",
             hint = "",
-            info = ""
-          }
-        }
+            info = "",
+          },
+        },
       },
       lualine_c = {
         {
@@ -135,13 +126,13 @@ return {
           path = 1, --relative path
           symbols = {
             modified = "●",
-            readonly = "[RO]"
-          }
-        }
+            readonly = "[RO]",
+          },
+        },
       },
-      lualine_x = { 'filetype' },
-      lualine_y = { 'progress' },
-      lualine_z = { 'location' }
+      lualine_x = { "filetype" },
+      lualine_y = { "progress" },
+      lualine_z = { "location" },
     }
 
     local winbar = {
@@ -164,8 +155,8 @@ return {
           mode = 1,
           show_modified_status = false,
           fmt = tabline_fmt_func,
-        }
-      }
+        },
+      },
     }
     -- ]
 

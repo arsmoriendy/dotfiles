@@ -1,5 +1,5 @@
 return {
-  "ellisonleao/glow.nvim",     -- markdown viewer
+  "ellisonleao/glow.nvim", -- markdown viewer
   ft = "markdown",
   config = function()
     require("glow").setup({

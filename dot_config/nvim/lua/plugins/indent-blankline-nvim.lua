@@ -12,5 +12,5 @@ return {
       },
     })
     vim.opt.listchars:append(string.format("tab:%s ", char))
-  end
+  end,
 }

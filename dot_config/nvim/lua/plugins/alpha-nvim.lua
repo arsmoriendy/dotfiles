@@ -1,5 +1,5 @@
 return {
-  "goolord/alpha-nvim",     -- startup splash screen
+  "goolord/alpha-nvim", -- startup splash screen
   config = function()
     -- highlights
     vim.cmd([[
@@ -49,13 +49,13 @@ return {
         -- else replace with "X" as placeholder
         local parsed_major = nvim_version_table.major <= 15
             and string.upper(string.format("%x ", nvim_version_table.major))
-            or " X"
+          or " X"
         local parsed_minor = nvim_version_table.minor <= 15
             and string.upper(string.format("%x ", nvim_version_table.minor))
-            or " X"
+          or " X"
         local parsed_patch = nvim_version_table.patch <= 15
             and string.upper(string.format("%x ", nvim_version_table.patch))
-            or " X"
+          or " X"
 
         local lazy_stats = require("lazy").stats()
 
@@ -68,13 +68,18 @@ return {
         return {
           "NEOVIM INFORMATION        + + + + +",
           "------------------------- + N E O +",
-          string.format("%-28s",
-            " v" .. nvim_version_table.major .. "." .. nvim_version_table.minor .. "." .. nvim_version_table
-            .patch) .. "+ V I M +",
-          string.format("%-29s", "󰒲 " .. lazy_stats.count .. " plugins installed") ..
-          "+ " .. parsed_major .. parsed_minor .. parsed_patch .. "+",
-          string.format("%-29s", "󰀠 " .. string.format("%.2f", lazy_stats.startuptime) .. "ms startuptime") ..
-          "+ + + + +",
+          string.format(
+            "%-28s",
+            " v" .. nvim_version_table.major .. "." .. nvim_version_table.minor .. "." .. nvim_version_table.patch
+          ) .. "+ V I M +",
+          string.format("%-29s", "󰒲 " .. lazy_stats.count .. " plugins installed")
+            .. "+ "
+            .. parsed_major
+            .. parsed_minor
+            .. parsed_patch
+            .. "+",
+          string.format("%-29s", "󰀠 " .. string.format("%.2f", lazy_stats.startuptime) .. "ms startuptime")
+            .. "+ + + + +",
         }
       end,
       opts = {
@@ -91,7 +96,9 @@ return {
       return {
         type = "button",
         val = val,
-        on_press = function() vim.api.nvim_input(action) end,
+        on_press = function()
+          vim.api.nvim_input(action)
+        end,
         opts = {
           position = "center",
           width = 35,
@@ -100,7 +107,7 @@ return {
           align_shortcut = "right",
           hl_shortcut = "AlphaTextBold",
           keymap = { "n", shortcut, action, { silent = true } },
-        }
+        },
       }
     end
 
@@ -116,7 +123,7 @@ return {
       },
       opts = {
         spacing = 1,
-      }
+      },
     }
 
     local theme = {
@@ -130,7 +137,7 @@ return {
           type = "text",
           val = {
             "ACTIONS",
-            "-----------------------------------"
+            "-----------------------------------",
           },
           opts = {
             position = "center",
@@ -139,9 +146,9 @@ return {
         },
         buttonGroup,
         { type = "padding", val = 10 },
-      }
+      },
     }
 
     require("alpha").setup(theme)
-  end
+  end,
 }

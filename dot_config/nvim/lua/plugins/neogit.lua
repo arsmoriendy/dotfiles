@@ -14,9 +14,9 @@ local function config()
       commit_editor_I = {
         ["<c-c><c-c>"] = false,
         ["<c-c><c-k>"] = false,
-      }
+      },
       -- ]
-    }
+    },
   })
 
   vim.cmd("cabbrev G Neogit")

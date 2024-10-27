@@ -41,13 +41,13 @@ kms({ "i" }, "<C-s>", "<Esc><CMD>w<CR>", { desc = "Save file" })
 kms("i", "<C-l>", "<DEL>", { desc = "Delete" })
 
 -- yank and append line to the unnamed register (:help registers)
-kms("n", "yY", "<CMD>let @\" .= getline('.') . \"\\n\"<CR>", {
+kms("n", "yY", '<CMD>let @" .= getline(\'.\') . "\\n"<CR>', {
   desc = "Yank and append line to the unamed register",
   silent = true,
 })
 
 -- delete and append line to the unnamed register (:help registers)
-kms("n", "dD", "<CMD>let @\" .= getline('.') . \"\\n\" | d _<CR>", {
+kms("n", "dD", '<CMD>let @" .= getline(\'.\') . "\\n" | d _<CR>', {
   desc = "Delete and append line to the unamed register",
   silent = true,
 })
@@ -76,10 +76,10 @@ kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symb
 kms("n", "<Leader>k", "<CMD>lua vim.lsp.buf.hover()<CR>", { desc = "Simulate hover symbol" })
 
 -- lsp go to definition
-kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" });
+kms("n", "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
 
 -- lsp action
-kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Select lsp actions" });
+kms("n", "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Select lsp actions" })
 
 -- lsp toggle inlay hints
 kms("n", "<Leader>k", function()

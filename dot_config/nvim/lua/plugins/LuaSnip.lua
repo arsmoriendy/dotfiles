@@ -21,5 +21,5 @@ return {
         luasnip.jump(-1)
       end
     end)
-  end
+  end,
 }

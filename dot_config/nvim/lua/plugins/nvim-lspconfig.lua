@@ -8,26 +8,24 @@ local function config()
 
   -- default server overrides [
   local default_lspconfig_overrides = {
-    capabilities = vim.tbl_deep_extend("force",
-      require("cmp_nvim_lsp").default_capabilities(),
-      {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          }
-        }
-      }),
+    capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
+      textDocument = {
+        foldingRange = {
+          dynamicRegistration = false,
+          lineFoldingOnly = true,
+        },
+      },
+    }),
     on_attach = function(client, bufnr)
       -- attach nvim-navic if possible
       if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)
       end
-    end
+    end,
   }
 
-  lspconfig.util.default_config = vim.tbl_deep_extend("force",
-    lspconfig.util.default_config, default_lspconfig_overrides)
+  lspconfig.util.default_config =
+    vim.tbl_deep_extend("force", lspconfig.util.default_config, default_lspconfig_overrides)
   -- ]
 
   -- TODO: dynamic config https://www.reddit.com/r/neovim/comments/19dodgd/how_can_i_dynamicly_change_lsp_configuration/
@@ -39,13 +37,13 @@ local function config()
     lua_ls = {
       on_init = function(client)
         local path = client.workspace_folders[1].name
-        if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+        if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
           return
         end
 
         client.config.settings.Lua.workspace = {
           checkThirdParty = false,
-          library = vim.api.nvim_get_runtime_file("", true)
+          library = vim.api.nvim_get_runtime_file("", true),
         }
       end,
       settings = {
@@ -56,20 +54,30 @@ local function config()
           },
           runtime = {
             version = "Lua 5.1", -- Adhere to neovim's lua runtime version 5.1
-            path = { "?.lua", "?/init.lua", "/lua/?.lua", "/lua/?/init.lua", },
+            path = { "?.lua", "?/init.lua", "/lua/?.lua", "/lua/?/init.lua" },
             pathStrict = true,
           },
           -- Do not send telemetry data containing a randomized but unique identifier
           telemetry = {
             enable = false,
-          }
-        }
-      }
+          },
+        },
+      },
     },
 
-    emmet_ls = {
+    emmet_language_server = {
       -- add php for emmet
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php" },
+      filetypes = {
+        "html",
+        "typescriptreact",
+        "javascriptreact",
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "eruby",
+        "php",
+      },
     },
     intelephense = {
       telemetry = {
@@ -99,9 +107,9 @@ local function config()
             functionTypeParameters = true,
             parameterNames = true,
             rangeVariableTypes = true,
-          }
-        }
-      }
+          },
+        },
+      },
     },
   }
   local function mason_lspcfg_default_handler(server_name)
@@ -117,7 +125,7 @@ local function config()
   })
   mason_lspconfig.setup({
     -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
-    handlers = { mason_lspcfg_default_handler }
+    handlers = { mason_lspcfg_default_handler },
   })
 
   vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })
@@ -129,7 +137,9 @@ local function config()
     lib.error(err, "Failed getting local lsp list")
     return
   end
-  for _, local_lsp in pairs(local_lsps --[[@as string[] ]]) do
+  for _, local_lsp in
+    pairs(local_lsps --[[@as string[] ]])
+  do
     lspconfig[local_lsp].setup(lspconfig_overrides[local_lsp] or {})
   end
 
@@ -140,7 +150,9 @@ local function config()
     end, all_lsps)
 
     vim.ui.select(items, { prompt = "Register local lsp" }, function(name)
-      if name == nil then return end
+      if name == nil then
+        return
+      end
 
       err = lllf.register(name)
       if err ~= nil then
@@ -160,9 +172,13 @@ local function config()
     end
 
     local on_select = function(name)
-      if name == nil then return end
+      if name == nil then
+        return
+      end
       err = lllf.unregister(name)
-      if err ~= nil then lib.error(err) end
+      if err ~= nil then
+        lib.error(err)
+      end
     end
     vim.ui.select(local_lsps --[[@as string[] ]], { prompt = "Unregister local lsp" }, on_select)
   end
@@ -183,15 +199,15 @@ local function config()
 end
 
 return {
-  "neovim/nvim-lspconfig",               -- LSP
+  "neovim/nvim-lspconfig", -- LSP
   dependencies = {
-    "williamboman/mason.nvim",           -- mason.nvim (LSP auto installer)
+    "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
     "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
-    "SmiteshP/nvim-navic",               -- winbar
+    "SmiteshP/nvim-navic", -- winbar
     "hrsh7th/cmp-nvim-lsp",
   },
   -- Neovim's runtimepath is needed by lua_ls to properly lookup modules, therefore, this
   -- ensures neovim's runtimepath is initialized completely before calling the config function.
   event = "VeryLazy",
-  config = config
+  config = config,
 }

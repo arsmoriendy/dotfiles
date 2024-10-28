@@ -1,3 +1,5 @@
+---conform.nvim is a formatter helper
+
 local lib = require("lib")
 
 local formatters_by_ft = {

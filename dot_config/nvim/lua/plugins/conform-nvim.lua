@@ -7,6 +7,7 @@ local formatters_by_ft = {
   javascriptreact = { "prettierd" },
   typescript = { "prettierd" },
   typescriptreact = { "prettierd" },
+  astro = { "prettierd" },
   css = { "prettierd" },
   scss = { "prettierd" },
   sass = { "prettierd" },

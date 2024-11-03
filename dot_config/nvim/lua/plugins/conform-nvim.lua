@@ -16,6 +16,7 @@ local formatters_by_ft = {
   yaml = { "prettierd" },
   graphql = { "prettierd" },
   lua = { "stylua" },
+  nix = { "nixfmt" },
 }
 
 -- global format on save {

@@ -3,6 +3,7 @@
 local lib = require("lib")
 
 local formatters_by_ft = {
+  html = { "prettierd" },
   javascript = { "prettierd" },
   javascriptreact = { "prettierd" },
   typescript = { "prettierd" },

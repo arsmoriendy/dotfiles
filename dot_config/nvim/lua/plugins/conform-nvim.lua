@@ -14,6 +14,7 @@ local formatters_by_ft = {
   sass = { "prettierd" },
   markdown = { "prettierd" },
   json = { "prettierd" },
+  jsonc = { "prettierd" },
   yaml = { "prettierd" },
   graphql = { "prettierd" },
   lua = { "stylua" },

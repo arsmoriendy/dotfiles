@@ -22,7 +22,7 @@ main() {
 
   # skip if urls do contain GIT_USER
   SKIP_CHECK=true
-  for REMOTE in "$(git remote)"
+  for REMOTE in $(git remote)
   do
     URL="$(git config --get "remote.${REMOTE}.url")"
     if [[ "$URL" != *${GIT_USER}* ]]

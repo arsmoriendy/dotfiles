@@ -1,7 +1,6 @@
 # # DEPENDENCIES
 # - whoami
 # - date
-# - awk
 
 function fish_prompt
   if [ (fish_git_prompt) ]

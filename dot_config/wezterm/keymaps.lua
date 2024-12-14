@@ -1,6 +1,6 @@
 local keymaps = {}
 
-local wezterm = require('wezterm')
+local wezterm = require("wezterm")
 local act = wezterm.action
 local lib = require("lib")
 
@@ -16,11 +16,11 @@ if wezterm.gui then
   copy_mode_key_table = default_key_tables.copy_mode
 
   lib.list_extend(search_mode_key_table, {
-    { key = "c", mods = "CTRL", action = act.CopyMode 'Close' }
+    { key = "c", mods = "CTRL", action = act.CopyMode("Close") },
   })
 
   lib.list_extend(copy_mode_key_table, {
-    { key = "x", mods = "CTRL", action = act.CopyMode 'ClearPattern' }
+    { key = "x", mods = "CTRL", action = act.CopyMode("ClearPattern") },
   })
 end
 
@@ -55,12 +55,12 @@ keymaps.key_tables = {
       mods = "CTRL",
       action = act.Multiple({
         act.PopKeyTable,
-        act.SendKey({ key = prefix_key, mods = "CTRL" })
-      })
+        act.SendKey({ key = prefix_key, mods = "CTRL" }),
+      }),
     },
     {
       key = "z",
-      action = act.TogglePaneZoomState
+      action = act.TogglePaneZoomState,
     },
     {
       key = "[",
@@ -122,7 +122,7 @@ keymaps.keys = {
   {
     key = "r",
     mods = "ALT",
-    action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false, }),
+    action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
   },
   {
     key = "c",
@@ -137,7 +137,7 @@ keymaps.keys = {
   { -- activate prefix keytable
     key = prefix_key,
     mods = "CTRL",
-    action = act.ActivateKeyTable({ name = "prefix" })
+    action = act.ActivateKeyTable({ name = "prefix" }),
   },
 }
 
@@ -145,7 +145,7 @@ keymaps.keys = {
 for n = 1, 9 do
   table.insert(keymaps.keys, {
     key = tostring(n),
-    mods = 'ALT',
+    mods = "ALT",
     action = act.ActivateTab(n - 1),
   })
 end

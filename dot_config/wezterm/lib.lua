@@ -14,18 +14,14 @@ end
 ---@param ... table Two or more tables
 ---@return table : Merged table
 lib.tbl_extend = function(behavior, ...)
-  if behavior ~= 'error' and behavior ~= 'keep' and behavior ~= 'force' then
+  if behavior ~= "error" and behavior ~= "keep" and behavior ~= "force" then
     error('invalid "behavior": ' .. tostring(behavior))
   end
 
   local tbls = table.pack(...)
 
   if tbls.n < 2 then
-    error(
-      'wrong number of arguments (given '
-      .. tostring(1 + tbls.n)
-      .. ', expected at least 3)'
-    )
+    error("wrong number of arguments (given " .. tostring(1 + tbls.n) .. ", expected at least 3)")
   end
 
   local rtbl = tbls[1]
@@ -35,8 +31,8 @@ lib.tbl_extend = function(behavior, ...)
     for key, value in pairs(tbl) do
       if rtbl[key] ~= nil then
         if behavior == "error" then
-          error('key found in more than one map: ' .. key)
-        elseif behavior == 'keep' then
+          error("key found in more than one map: " .. key)
+        elseif behavior == "keep" then
           goto continue
         end
       end

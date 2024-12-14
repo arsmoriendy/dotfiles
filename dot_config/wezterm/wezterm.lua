@@ -21,13 +21,13 @@ local config = {
       background = "#0c0d0e",
       active_tab = {
         bg_color = "#181a1b",
-        fg_color = "#FBF1C7"
+        fg_color = "#FBF1C7",
       },
       inactive_tab = {
         bg_color = "#0c0d0e",
         fg_color = "#665C54",
       },
-    }
+    },
   },
   font = wezterm.font("CaskaydiaCove Nerd Font Mono"),
   font_size = 11,
@@ -63,41 +63,37 @@ local function tab_title(tab_info)
   return tab_info.active_pane.title
 end
 
-wezterm.on(
-  'format-tab-title',
-  function(tab, _, _, _, _, max_width)
-    local prefix = "[" .. tab.tab_index + 1 .. "] "
-    local title = tab_title(tab)
-    local padding = " "
+wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
+  local prefix = "[" .. tab.tab_index + 1 .. "] "
+  local title = tab_title(tab)
+  local padding = " "
 
-    title = title:sub(1, max_width - #padding - #prefix) .. padding
+  title = title:sub(1, max_width - #padding - #prefix) .. padding
 
-    return {
-      { Foreground = { Color = "#FABD2F" } },
-      { Text = prefix },
-      "ResetAttributes",
-      { Text = title }
-    }
-  end
-)
+  return {
+    { Foreground = { Color = "#FABD2F" } },
+    { Text = prefix },
+    "ResetAttributes",
+    { Text = title },
+  }
+end)
 
-wezterm.on('update-status', function(window, _)
+wezterm.on("update-status", function(window, _)
   local name = window:active_key_table()
   if name then
-    name = 'TABLE: ' .. name
+    name = "TABLE: " .. name
   end
-  window:set_right_status(name or '')
+  window:set_right_status(name or "")
 end)
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  config = lib.tbl_extend('error', wezterm.config_builder(), config)
+  config = lib.tbl_extend("error", wezterm.config_builder(), config)
 end
 
 local keymaps = require("keymaps")
 config = lib.tbl_extend("force", config, keymaps)
-
 
 -- and finally, return the configuration to wezterm
 return config

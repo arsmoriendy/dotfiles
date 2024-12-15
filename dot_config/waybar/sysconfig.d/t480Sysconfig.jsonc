@@ -13,8 +13,8 @@
       "󰂀", // 70%
       "󰂁", // 80%
       "󰂂", // 90%
-      "󰁹", // 100%
-    ],
+      "󰁹" // 100%
+    ]
   },
   "battery#bat1": {
     "bat": "BAT1",
@@ -30,14 +30,14 @@
       "󰂀", // 70%
       "󰂁", // 80%
       "󰂂", // 90%
-      "󰁹", // 100%
-    ],
+      "󰁹" // 100%
+    ]
   },
   "group/batteries": {
     "orientation": "horizontal",
-    "modules": ["battery#bat0", "battery#bat1"],
+    "modules": ["battery#bat0", "battery#bat1"]
   },
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["group/batteries", "group/clocks"],
+  "modules-right": ["group/batteries", "group/clocks"]
 }

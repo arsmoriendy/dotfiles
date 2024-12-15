@@ -2,6 +2,6 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": true,
-    "format-icons": "󱂬",
-  },
+    "format-icons": "󱂬"
+  }
 }

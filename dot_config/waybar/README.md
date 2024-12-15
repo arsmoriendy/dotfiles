@@ -11,8 +11,18 @@ This is the `waybar` configuration directory.
 
 ## Transpile SASS/SCSS To CSS Files
 
+Be sure to install the sass npm dependency
+
+```bash
+npm i
+```
+
 > [!info]
 > This command will watch for changes in `style.scss` (along with its includes) and transpile it all into `style.css`.
 > Before commiting changes, make sure to transpile and include both files.
 
-`sass --watch --no-source-map --style=compressed style.scss:style.css`
+and then run
+
+```bash
+npm run dev
+```

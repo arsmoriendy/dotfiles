@@ -1,3 +1,12 @@
+-- HACK:
+vim.opt.signcolumn = "auto:1-9"
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "man" },
+  callback = function()
+    vim.opt.signcolumn = "auto"
+  end,
+})
+
 local function config()
   local gs = require("gitsigns")
   local lib = require("lib")
@@ -12,8 +21,6 @@ local function config()
   map("n", "gD", gs.diffthis, { desc = "Diffmode current file with git's staged version" })
   map("n", "gs", gs.stage_hunk, { desc = "Stage git hunk under cursor" })
 
-  -- HACK:
-  vim.opt.signcolumn = "auto:1-9"
   map("x", "gs", function()
     gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })
   end, { desc = "Stage selected line to git" })

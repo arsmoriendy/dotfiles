@@ -11,7 +11,16 @@ function fish_prompt
 
   set -g fish_prompt_pwd_dir_length 0
 
-  set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT
+  function __VENV_PROMPT__
+    if test -z "$VIRTUAL_ENV"
+      echo && return
+    end
+
+    set -f ENV_NAME (echo "$VIRTUAL_ENV" | awk -F / '{print $NF}')
+    echo "─["(set_color --bold blue)"  $ENV_NAME"(set_color --bold red)" ]"
+  end
+
+  set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT(__VENV_PROMPT__)
   set -f RIGHT \[(set_color --bold yellow)(whoami)(set_color --bold cyan)@(set_color --bold blue)(prompt_hostname)(set_color --bold brcyan)" $DISTRO_ICON "(set_color --bold magenta)(date +%T)(set_color --bold red)\]"┐"
 
   set -f LINE (set_color --bold red)
@@ -24,6 +33,7 @@ function fish_prompt
   echo -e "$LEFT$LINE$RIGHT"
   echo -e "└"(fish_custom_mode_prompt; set_color --bold red)"─[ "(set_color normal)
 
+  functions -e __VENV_PROMPT__
 end
 
 function fish_right_prompt

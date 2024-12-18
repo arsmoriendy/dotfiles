@@ -30,6 +30,9 @@ local config = {
     },
   },
   font = wezterm.font("CaskaydiaCove Nerd Font Mono"),
+  set_environment_variables = {
+    TERM_NF_ENABLED = "true", -- specify nerd font support
+  },
   font_size = 11,
   window_close_confirmation = "NeverPrompt",
 

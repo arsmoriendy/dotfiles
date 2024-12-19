@@ -35,6 +35,7 @@ local config = {
   },
   font_size = 11,
   window_close_confirmation = "NeverPrompt",
+  front_end = "WebGpu",
 
   -- NOTE: underlines may differ from font to font
   underline_position = "-0.1cell",

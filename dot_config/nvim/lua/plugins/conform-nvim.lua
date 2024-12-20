@@ -2,24 +2,38 @@
 
 local lib = require("lib")
 
-local formatters_by_ft = {
-  html = { "prettierd" },
-  javascript = { "prettierd" },
-  javascriptreact = { "prettierd" },
-  typescript = { "prettierd" },
-  typescriptreact = { "prettierd" },
-  astro = { "prettierd" },
-  css = { "prettierd" },
-  scss = { "prettierd" },
-  sass = { "prettierd" },
-  markdown = { "prettierd" },
-  json = { "prettierd" },
-  jsonc = { "prettierd" },
-  yaml = { "prettierd" },
-  graphql = { "prettierd" },
-  lua = { "stylua" },
-  nix = { "nixfmt" },
+local ft_by_formatters = {
+  prettierd = {
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "astro",
+    "css",
+    "scss",
+    "sass",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "graphql",
+  },
+  stylua = { "lua" },
+  nixfmt = { "nix" },
 }
+
+local formatters_by_ft = {}
+for formatter, fts in pairs(ft_by_formatters) do
+  for _, ft in pairs(fts) do
+    local tb = formatters_by_ft[ft]
+    if tb == nil then
+      formatters_by_ft[ft] = { formatter }
+    else
+      table.insert(formatters_by_ft[ft], formatter)
+    end
+  end
+end
 
 -- global format on save {
 ---@type boolean

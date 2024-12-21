@@ -21,6 +21,7 @@ local ft_by_formatters = {
   },
   stylua = { "lua" },
   nixfmt = { "nix" },
+  ruff_format = { "python" },
 }
 
 local formatters_by_ft = {}

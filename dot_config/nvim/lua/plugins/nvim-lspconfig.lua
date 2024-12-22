@@ -84,7 +84,7 @@ local function config()
         enabled = false,
       },
     },
-    tsserver = {
+    ts_ls = {
       init_options = {
         preferences = {
           includeInlayParameterNameHints = "all",

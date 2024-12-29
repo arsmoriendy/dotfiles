@@ -20,7 +20,15 @@ function fish_prompt
     echo "─["(set_color --bold blue)"  $ENV_NAME"(set_color --bold red)" ]"
   end
 
-  set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT(__VENV_PROMPT__)
+  function __NIX_SHELL_PROMPT__
+    if echo "$PATH" | grep -qc "nix/store"
+      echo "─["(set_color --bold cyan)" 󱄅 shell"(set_color --bold red)" ]"
+      return
+    end
+    echo && return
+  end
+
+  set -f LEFT (set_color --bold red)"┌"\[(set_color --bold yellow)(prompt_pwd)(set_color --bold red)\]$GIT(__VENV_PROMPT__)(__NIX_SHELL_PROMPT__)
   set -f RIGHT \[(set_color --bold yellow)(whoami)(set_color --bold cyan)@(set_color --bold blue)(prompt_hostname)(set_color --bold brcyan)" $DISTRO_ICON "(set_color --bold magenta)(date +%T)(set_color --bold red)\]"┐"
 
   set -f LINE (set_color --bold red)

@@ -42,6 +42,7 @@ function fish_prompt
   echo -e "└"(fish_custom_mode_prompt; set_color --bold red)"─[ "(set_color normal)
 
   functions -e __VENV_PROMPT__
+  functions -e __NIX_SHELL_PROMPT__
 end
 
 function fish_right_prompt

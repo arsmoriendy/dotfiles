@@ -31,12 +31,13 @@ main() {
     exit 0
   fi
 
-  read -p "Some remote urls do not contain \"${GIT_USER}\", change git user? [y/n]: " CHANGE_USR
+  read -p "Some remote urls do not contain \"${GIT_USER}\", change local git user? [y/n]: " CHANGE_USR
   case "$CHANGE_USR" in
   'y')
     change_usr
     nomore_prompt
-    exit 0
+    echo "Successfully changed local git user (ignore exit code)"
+    exit 1
     ;;
   'n')
     nomore_prompt

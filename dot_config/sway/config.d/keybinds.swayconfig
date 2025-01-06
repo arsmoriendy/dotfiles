@@ -205,3 +205,6 @@ bindsym $mod+s exec grim -g "$(slurp)"
 
 # lock session
 bindsym $mod+Alt+l exec swaylock
+
+# toggle notification (swaync) control center
+bindsym $mod+n exec swaync-client -t

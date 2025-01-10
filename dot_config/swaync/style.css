@@ -319,6 +319,7 @@ switch image:nth-child(3) {
 
 .notification-group {
   /* Styling only for Grouped Notifications */
+  outline: none;
 }
 
 .notification-group.low {
@@ -350,6 +351,15 @@ switch image:nth-child(3) {
 
 .notification-group .notification-group-buttons {
   /* Notification Group Buttons */
+}
+
+.notification-group .notification-group-buttons button {
+  border: 1px solid @border;
+  background: transparent;
+}
+
+.notification-group .notification-group-buttons button:hover {
+  background: @border;
 }
 
 .notification-group.collapsed .notification-row .notification {

@@ -1,12 +1,3 @@
--- HACK:
-vim.opt.signcolumn = "auto:1-9"
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "man" },
-  callback = function()
-    vim.opt.signcolumn = "auto"
-  end,
-})
-
 local function config()
   local gs = require("gitsigns")
   local lib = require("lib")

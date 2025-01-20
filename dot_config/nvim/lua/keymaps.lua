@@ -3,6 +3,9 @@
 
 local kms = vim.keymap.set
 
+kms({ "n", "x" }, "gh", "0")
+kms({ "n", "x" }, "gl", "$")
+
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)
 kms({ "n", "i", "x" }, "<C-M-f>", vim.cmd.nohlsearch, { desc = "Temporarily disable search highlights" })
 

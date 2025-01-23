@@ -23,6 +23,7 @@ local ft_by_formatters = {
   nixfmt = { "nix" },
   ruff_format = { "python" },
   shfmt = { "bash", "sh" },
+  zigfmt = { "zig" },
 }
 
 local formatters_by_ft = {}

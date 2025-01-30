@@ -8,3 +8,6 @@ source ./conf.d/vi.nu
 source ./conf.d/zoxide.nu
 source ./conf.d/starship.nu
 source ./conf.d/carapace.nu
+
+# source sysconfig
+source ./conf.d/sysconfig.nu

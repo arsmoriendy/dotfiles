@@ -1,0 +1,23 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '''
+[┌$directory─$git_branch$fill┐
+└\[](bold red)
+'''
+
+right_format = '''
+[\]─$time┘](bold red)
+'''
+
+add_newline = false
+
+[directory]
+format = '[\[[$path](bright-yellow)\]](bold red)'
+
+[git_branch]
+format = '[\[[ $symbol$branch(:$remote_branch) ]($style)\]](bold red)'
+style = "bright-cyan"
+
+[fill]
+symbol = "─"
+style = "bold red"

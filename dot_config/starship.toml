@@ -23,7 +23,7 @@ format = '[─\[[ ${symbol}${branch}(:${remote_branch}) ](${style})\]](bold red)
 style = "bright-cyan"
 
 [python]
-format = '([─\[[ ${symbol}$virtualenv]($style)\]](bold red))'
+format = '([─\[[ ${symbol}$virtualenv]($style) \]](bold red))'
 symbol = " "
 
 [nix_shell]

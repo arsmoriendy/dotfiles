@@ -2,7 +2,7 @@
 
 format = '''
 [┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )($os )$time \]┐
-└\[ ](bold red)
+└${shell}─\[ ](bold red)
 '''
 
 right_format = '''
@@ -62,3 +62,10 @@ style = "bold purple"
 
 
 ##}
+
+[shell]
+format = '[\[ $indicator \]](bold red)'
+disabled = false
+nu_indicator = "[󰧚](bold green)"
+fish_indicator = "[󰻳](bold blue)"
+bash_indicator = "[](bold green)"

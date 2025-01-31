@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )$shell $time \](─\[( ${status})( ${cmd_duration}) \])
+[┌\[ $directory \](─\[ $git_branch \])(─\[ $python \])(─\[ $nix_shell \])$fill\[ ($username$hostname )$shell $time \](─\[( $status)( $cmd_duration) \])
 └\[ ](bold red)
 '''
 
@@ -12,18 +12,19 @@ add_newline = false
 #
 
 [directory]
-format = '[\[ [${path}](bright-yellow) \]](bold red)'
+format = '[$path]($style)'
+style = "bright-yellow"
 
 [git_branch]
-format = '[─\[[ ${symbol}${branch}(:${remote_branch}) ](${style})\]](bold red)'
+format = '[$symbol$branch(:$remote_branch)]($style)'
 style = "bright-cyan"
 
 [python]
-format = '([─\[[ ${symbol}$virtualenv]($style) \]](bold red))'
+format = '([$symbol$virtualenv]($style))'
 symbol = " "
 
 [nix_shell]
-format = '[─\[[$symbol$state( \($name\))]($style)\]](bold red)'
+format = '[$symbol$state( \($name\))]($style)'
 style = "bold cyan"
 symbol = "󱄅 "
 

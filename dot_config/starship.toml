@@ -62,6 +62,6 @@ style = "bold purple"
 [shell]
 format = '[\[ $indicator \]](bold red)'
 disabled = false
-nu_indicator = "[󰧚](bold green)"
+nu_indicator = "[ü](bold green)"
 fish_indicator = "[󰻳](bold blue)"
 bash_indicator = "[](bold green)"

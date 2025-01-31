@@ -1,15 +1,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌${directory}${git_branch}${python}${nix_shell}${fill}┐
+[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )$os $time \]┐
 └\[](bold red)
 '''
 
 right_format = '''
-[\]─${time}┘](bold red)
+[\]┘](bold red)
 '''
 
 add_newline = false
+
+##{
+# R1 Left Modules
+#
 
 [directory]
 format = '[\[[${path}](bright-yellow)\]](bold red)'
@@ -27,6 +31,37 @@ format = '[─\[[$symbol$state( \($name\))]($style)\]](bold red)'
 style = "bold cyan"
 symbol = "󱄅 "
 
+##}
+
 [fill]
 symbol = "─"
 style = "bold red"
+
+##{
+# R1 Right Modules
+#
+
+[username]
+show_always = true
+format = '([$user]($style)[@](bold cyan))'
+style_root = "blink bold yellow"
+
+[hostname]
+ssh_only = false
+format = '[$hostname]($style)'
+style = 'bold blue'
+
+[os]
+disabled = false
+style = "bold cyan"
+
+[os.symbols]
+NixOS = ""
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "bold purple"
+
+
+##}

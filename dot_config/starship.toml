@@ -16,7 +16,7 @@ add_newline = false
 #
 
 [directory]
-format = '[\[[${path}](bright-yellow)\]](bold red)'
+format = '[\[ [${path}](bright-yellow) \]](bold red)'
 
 [git_branch]
 format = '[─\[[ ${symbol}${branch}(:${remote_branch}) ](${style})\]](bold red)'

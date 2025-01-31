@@ -14,28 +14,6 @@ then
   export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
-### DISTRO INFO ###
-DISTRO=$(cat /etc/os-release | grep ^ID | cut -d= -f2)
-
-case $DISTRO in
-  fedora)
-    PACK_MAN="dnf"
-    DISTRO_ICON=""
-    ;;
-  arch)
-    PACK_MAN="pacman --color always"
-    DISTRO_ICON=""
-    ;;
-  gentoo)
-    PACK_MAN="emerge"
-    DISTRO_ICON=""
-    ;;
-  ubuntu)
-    PACK_MAN="apt"
-    DISTRO_ICON=""
-    ;;
-esac
-
 ### ALIASES ###
 source ~/.alias
 [[ $DISTRO = fedora ]] && alias 7z="7za"
@@ -67,31 +45,7 @@ B_CYAN="\[\e[1;96m\]"
 B_WHITE="\[\e[1;97m\]"
 
 ### PROMPT ###
-PROMPT_COMMAND=__prompt_command
-__prompt_command() {
-  if [[ $? != 0 ]]; then
-    EXIT="$RED"
-  else
-    EXIT="$GREEN"
-  fi
-
-  local PS1L="$RED┌[$YELLOW\w$RED]$(__git_ps1 "─[$CYAN  %s$RED ]")"
-  local PS1R="[$YELLOW$(whoami)$CYAN@$BLUE$(hostnamectl | awk -F ": " NR==2'{print $2}') $B_CYAN$DISTRO_ICON $MAGENTA$(date +%T)$RED]"
-
-  local LINE="$RED"
-  local i=0
-  local c=6 # the number of color codes used in $PS1R
-  local n=$(($COLUMNS + (12*$c) - ${#PS1R}))
-  while [[ $i -lt $n ]]
-  do
-    ((i++))
-    LINE+="─"
-  done
-
-  PS1=$(printf "%s\r%s" "$LINE$PS1R" "$PS1L")
-
-  PS1+="\n$RED└$EXIT>>> $NORMAL"
-}
+eval "$(starship init bash)"
 
 ### AUTO START TMUX ###
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ ! "$(tmux ls)" =~ ^[main*attached] ]];

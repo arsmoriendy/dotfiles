@@ -9,8 +9,9 @@ export-env { $env.STARSHIP_SHELL = "nu"; load-env {
     )
 
     # Does not play well with default character module.
-    # TODO: Also Use starship vi mode indicators?
     PROMPT_INDICATOR: ""
+    PROMPT_INDICATOR_VI_NORMAL: $"(ansi purple_bold)N(ansi red_bold) ]─[ "
+    PROMPT_INDICATOR_VI_INSERT: $"(ansi cyan_bold)I(ansi red_bold) ]─[ "
 
     PROMPT_COMMAND: {||
         # jobs are not supported

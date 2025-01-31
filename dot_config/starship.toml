@@ -1,8 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )($os )$time \](─\[( ${status})( ${cmd_duration}) \])
-└${shell}─\[ ](bold red)
+[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )$shell $time \](─\[( ${status})( ${cmd_duration}) \])
+└\[ ](bold red)
 '''
 
 add_newline = false
@@ -51,6 +51,13 @@ style = "bold cyan"
 [os.symbols]
 NixOS = ""
 
+[shell]
+format = '$indicator'
+disabled = false
+nu_indicator = "[ü](bold green)"
+fish_indicator = "[󰻳](bold blue)"
+bash_indicator = "[](bold green)"
+
 [time]
 disabled = false
 format = "[$time]($style)"
@@ -63,19 +70,3 @@ format = '[$duration]($style)'
 disabled = false
 format = '[$symbol$status]($style)'
 symbol = ''
-
-
-##}
-
-##
-# R2 Right MOdules
-#
-
-[shell]
-format = '[\[ $indicator \]](bold red)'
-disabled = false
-nu_indicator = "[ü](bold green)"
-fish_indicator = "[󰻳](bold blue)"
-bash_indicator = "[](bold green)"
-
-##}

@@ -42,17 +42,14 @@ style = "bold red"
 #
 
 [username]
-show_always = true
 format = '([$user]($style)[@](bold cyan))'
 style_root = "blink bold yellow"
 
 [hostname]
-ssh_only = false
 format = '[$hostname]($style)'
 style = 'bold blue'
 
 [os]
-disabled = false
 style = "bold cyan"
 
 [os.symbols]

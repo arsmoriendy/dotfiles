@@ -1,12 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )($os )$time \]┐
+[┌${directory}${git_branch}${python}${nix_shell}${fill}\[ (${username}${hostname} )($os )$time \]
 └${shell}─\[ ](bold red)
-'''
-
-right_format = '''
-[\]┘](bold red)
 '''
 
 add_newline = false

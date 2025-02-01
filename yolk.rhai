@@ -4,7 +4,10 @@ export let data = #{
 };
 export let eggs = #{
     nushell: #{
-      targets: "~/.config/nushell/",
+      targets: switch SYSTEM.platform {
+        "Windows" => "~/AppData/Roaming/nushell/",
+        _ => "~/.config/nushell/"
+      },
       enabled: true,
       main_file: "config.nu"
     }

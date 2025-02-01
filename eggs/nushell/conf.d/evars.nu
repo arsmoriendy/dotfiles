@@ -8,6 +8,6 @@ load-env {
   # {% end %}
   VIRTUAL_ENV_DISABLE_PROMPT: true
   PATH: ($env.PATH ++ [
-    ~/.local/bin/
+    ("~/.local/bin/" | path expand)
   ])
 }

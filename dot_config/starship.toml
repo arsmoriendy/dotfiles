@@ -43,7 +43,6 @@ format = '[$symbol]($style)'
 symbol = ""
 style = "blink bold red"
 disabled = false
-allow_windows = true
 
 [username]
 format = '([$user]($style)[@](bold cyan))'

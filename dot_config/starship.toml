@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌\[ $directory \](─\[ $git_branch \])(─\[ $python \])(─\[ $nix_shell \])$fill(\[ $sudo \]─)\[ ($username$hostname )$shell $time \](─\[( $status)( $cmd_duration) \])
+[┌\[ $directory \](─\[ $git_branch \])(─\[ $python \])(─\[ $nix_shell \])$fill(\[ $sudo \]─)\[ ($username$hostname )$shell $time $os\](─\[( $status)( $cmd_duration) \])
 └\[ ](bold red)
 '''
 
@@ -53,10 +53,14 @@ format = '[$hostname]($style)'
 style = 'bold blue'
 
 [os]
+disabled = false
 style = "bold cyan"
 
 [os.symbols]
-NixOS = ""
+NixOS = " "
+Arch = " "
+openSUSE = " "
+Windows = " "
 
 [shell]
 format = '$indicator'

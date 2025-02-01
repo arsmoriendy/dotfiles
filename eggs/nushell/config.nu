@@ -14,6 +14,3 @@ source ./conf.d/keybinds.nu
 source ./conf.d/zoxide.nu
 source ./conf.d/prompt.nu
 source ./conf.d/carapace.nu
-
-# source sysconfig
-source ./conf.d/sysconfig.nu

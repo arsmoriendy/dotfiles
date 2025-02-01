@@ -10,6 +10,6 @@ export let eggs = #{
       },
       enabled: true,
       main_file: "config.nu",
-      templates: [ "conf.d/evars.nu" ]
+      templates: [ "conf.d/evars.nu", "config.nu" ]
     }
 };

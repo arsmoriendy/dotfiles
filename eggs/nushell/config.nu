@@ -1,5 +1,10 @@
 $env.config.show_banner = false;
 $env.config.footer_mode = "auto";
+$env.config.footer_mode = "auto";
+
+# {% if SYSTEM.platform == "Windows" %}
+#<yolk> $env.config.shell_integration.osc133 = false
+# {% end %}
 
 # source conf.d files (initially inherited from fish shell's config)
 source ./conf.d/evars.nu

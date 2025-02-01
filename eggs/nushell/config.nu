@@ -1,7 +1,7 @@
 $env.config.show_banner = false;
 $env.config.footer_mode = "auto";
 
-# {% if SYSTEM.platform == "Windows" %}
+# {% if SYSTEM.platform == "Windows" || io::env("WSL_DISTRO_NAME", "null") != "null" %}
 #<yolk> $env.config.shell_integration.osc133 = false
 # {% end %}
 

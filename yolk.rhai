@@ -9,6 +9,7 @@ export let eggs = #{
         _ => "~/.config/nushell/"
       },
       enabled: true,
-      main_file: "config.nu"
+      main_file: "config.nu",
+      templates: [ "conf.d/evars" ]
     }
 };

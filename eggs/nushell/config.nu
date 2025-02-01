@@ -1,6 +1,5 @@
 $env.config.show_banner = false;
 $env.config.footer_mode = "auto";
-$env.config.footer_mode = "auto";
 
 # {% if SYSTEM.platform == "Windows" %}
 #<yolk> $env.config.shell_integration.osc133 = false

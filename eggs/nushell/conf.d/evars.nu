@@ -9,5 +9,6 @@ load-env {
   VIRTUAL_ENV_DISABLE_PROMPT: true
   PATH: ($env.PATH ++ [
     ("~/.local/bin/" | path expand)
+    ("~/.cargo/bin/" | path expand)
   ])
 }

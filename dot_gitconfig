@@ -4,8 +4,8 @@
 	l = log --graph --oneline
 	ll = log --graph
 	s = status
-	commitnm = commit --allow-empty-message -m ''
 	c = commit
+	cnm = commit --allow-empty-message -m ''
 	p = pull
 	cp = !git commit && git push
 [user]

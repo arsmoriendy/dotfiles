@@ -54,6 +54,9 @@ local config = {
     saturation = 0.9,
     brightness = 0.5,
   },
+  -- {% if SYSTEM.platform == "Windows" %}
+  --<yolk> default_prog = "nu",
+  -- {% end %}
 }
 
 -- This function returns the suggested title for a tab.

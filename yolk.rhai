@@ -18,5 +18,6 @@ export let eggs = #{
       },
       enabled: true,
       main_file: "wezterm.lua",
+      templates: [ "wezterm.lua" ]
     }
 };

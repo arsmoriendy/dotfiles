@@ -1,5 +1,9 @@
-$env.config.show_banner = false;
-$env.config.footer_mode = "auto";
+let config_overrides = {
+  show_banner: false
+  footer_mode: "auto"
+}
+
+$env.config = $env.config | merge $config_overrides
 
 # {% if SYSTEM.platform == "Windows" || io::env("WSL_DISTRO_NAME", "null") != "null" %}
 #<yolk> $env.config.shell_integration.osc133 = false

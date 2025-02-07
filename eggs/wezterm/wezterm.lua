@@ -55,7 +55,7 @@ local config = {
     brightness = 0.5,
   },
   -- {% if SYSTEM.platform == "Windows" %}
-  --<yolk> default_prog = "nu",
+  --<yolk> default_prog = { "nu" },
   -- {% end %}
 }
 

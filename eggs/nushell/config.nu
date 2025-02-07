@@ -13,6 +13,7 @@ if not ($ssh_agent_sock_path | path exists) {
 # {% end %}
 
 # source conf.d files (initially inherited from fish shell's config)
+source ./conf.d/common.nu
 source ./conf.d/evars.nu
 source ./conf.d/aliases.nu # I prefer abbrs but nushell doesn't have it yet :(
 source ./conf.d/vi.nu

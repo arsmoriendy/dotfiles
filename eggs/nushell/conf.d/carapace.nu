@@ -1,6 +1,7 @@
 load-env {
   CARAPACE_BRIDGES: 'fish,bash,zsh'
   CARAPACE_LOG: 0
+  CARAPACE_MATCH: 1
 }
 
 #

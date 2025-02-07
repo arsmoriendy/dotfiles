@@ -2,5 +2,5 @@
 /.deployed_cache
 
 # nushell
-/eggs/nushell/history.txt
+/eggs/nushell/history*
 /eggs/nushell/vendor/

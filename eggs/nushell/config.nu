@@ -1,6 +1,10 @@
 let config_overrides = {
   show_banner: false
   footer_mode: "auto"
+  history: {
+    file_format: "sqlite"
+    isolation: true
+  }
 }
 
 $env.config = $env.config | merge $config_overrides

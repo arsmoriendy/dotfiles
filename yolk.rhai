@@ -13,9 +13,7 @@ export let eggs = #{
       templates: [ "conf.d/evars.nu", "config.nu" ]
     },
     wezterm: #{
-      targets: switch SYSTEM.platform {
-        _ => "~/.config/wezterm/"
-      },
+      targets: "~/.config/wezterm/",
       enabled: true,
       main_file: "wezterm.lua",
       templates: [ "wezterm.lua" ]

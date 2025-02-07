@@ -8,13 +8,11 @@ export let eggs = #{
         "Windows" => "~/AppData/Roaming/nushell/",
         _ => "~/.config/nushell/"
       },
-      enabled: true,
       main_file: "config.nu",
       templates: [ "conf.d/evars.nu", "config.nu" ]
     },
     wezterm: #{
       targets: "~/.config/wezterm/",
-      enabled: true,
       main_file: "wezterm.lua",
       templates: [ "wezterm.lua" ]
     }

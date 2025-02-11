@@ -24,6 +24,7 @@ local ft_by_formatters = {
   ruff_format = { "python" },
   shfmt = { "bash", "sh" },
   zigfmt = { "zig" },
+  taplo = { "toml" },
 }
 
 local formatters_by_ft = {}

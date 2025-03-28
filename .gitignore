@@ -4,3 +4,4 @@
 # nushell
 /eggs/nushell/history*
 /eggs/nushell/vendor/
+/.yolk_git

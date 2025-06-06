@@ -25,6 +25,7 @@ local ft_by_formatters = {
   shfmt = { "bash", "sh" },
   zigfmt = { "zig" },
   taplo = { "toml" },
+  ["tex-fmt"] = { "tex" },
 }
 
 local formatters_by_ft = {}

@@ -9,7 +9,11 @@ return {
         ["<C-s>"] = false,
         ["~"] = false,
       },
+      float = {
+        border = "single",
+        max_width = 80,
+      },
     })
-    vim.keymap.set("n", "-", oil.open, { desc = "Oil: Open parent directory" })
+    vim.keymap.set("n", "-", oil.open_float, { desc = "Oil: Open parent directory" })
   end,
 }

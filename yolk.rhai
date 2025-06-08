@@ -15,5 +15,11 @@ export let eggs = #{
       targets: "~/.config/wezterm/",
       main_file: "wezterm.lua",
       templates: [ "wezterm.lua" ]
-    }
+    },
+    sioyek: #{
+      targets: switch SYSTEM.platform {
+        "Windows" => "C:/ProgramData/sioyek",
+        _ =>  "~/.config/sioyek"
+      },
+    },
 };

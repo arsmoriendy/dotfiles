@@ -26,7 +26,7 @@ local ft_by_formatters = {
   zigfmt = { "zig" },
   taplo = { "toml" },
   ["tex-fmt"] = { "tex" },
-  typstyle = { "typ" },
+  typstyle = { "typst" },
 }
 
 local formatters_by_ft = {}

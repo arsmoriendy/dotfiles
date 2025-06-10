@@ -111,6 +111,19 @@ local function config()
         },
       },
     },
+    texlab = {
+      settings = {
+        texlab = {
+          build = {
+            executable = "tectonic",
+            args = {
+              "-X",
+              "build",
+            },
+          },
+        },
+      },
+    },
   }
   local function mason_lspcfg_default_handler(server_name)
     -- TODO: lift this into a function

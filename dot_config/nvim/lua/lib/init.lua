@@ -72,4 +72,14 @@ function lib.error(msg, title, opts)
   vim.notify(msg, vim.log.levels.ERROR, opts)
 end
 
+---Wrapper for indexing strings
+---@param s string
+---@param idx number
+function lib.strat(s, idx)
+  return s:sub(idx, idx)
+end
+
+---Use `lib.strat` instead for proper lua lsp support
+getmetatable("").__index.at = lib.strat
+
 return lib

@@ -1,3 +1,6 @@
+local lib = require("lib")
+local fthook = lib.fthook
+
 -- download and install lazy.nvim package manager, if not already installed [
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -90,20 +93,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 -- ]
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "go" },
-  callback = function()
-    vim.opt_local.expandtab = false
-    vim.opt_local.shiftwidth = 0
-  end,
-})
+fthook({ "go" }, function()
+  vim.opt_local.expandtab = false
+  vim.opt_local.shiftwidth = 0
+end)
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "python" },
-  callback = function()
-    vim.opt_local.shiftwidth = 0
-  end,
-})
+fthook({ "python" }, function()
+  vim.opt_local.shiftwidth = 0
+end)
 
 -- ]
 

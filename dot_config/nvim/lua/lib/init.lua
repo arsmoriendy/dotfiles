@@ -28,7 +28,7 @@ function lib.strrfindc(s, c)
   return 0
 end
 
----Wrapper for vim.keymap.set
+---Wrapper for vim.keymap.set with mandatory description `desc`
 ---@param mode string|string[]
 ---@param lhs string
 ---@param rhs string|function
@@ -42,6 +42,22 @@ function lib.kms(mode, lhs, rhs, desc, opts)
   end
 
   vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+---Buffer local wrapper for `lib.kms`
+---@param mode string|string[]
+---@param lhs string
+---@param rhs string|function
+---@param desc string Keymap description, this will override *desc* set in *opts*
+---@param opts vim.keymap.set.Opts?
+function lib.buf_kms(mode, lhs, rhs, desc, opts)
+  if opts ~= nil then
+    opts = vim.tbl_extend("keep", { buffer = true }, opts)
+  else
+    opts = { buffer = true }
+  end
+
+  lib.kms(mode, lhs, rhs, desc, opts)
 end
 
 ---Like `kms` but only applies on cerain filetypes `ft`

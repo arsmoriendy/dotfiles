@@ -70,7 +70,7 @@ function lib.fthook(fts, hook)
   })
 end
 
----Like `kms` but only applies on cerain filetypes `ft`
+---Like `kms` but only applies on cerain buffers with filetype(s) `ft`
 ---@param fts string[]
 ---@param mode string|string[]
 ---@param lhs string
@@ -78,12 +78,9 @@ end
 ---@param desc string Keymap description, this will override *desc* set in *opts*
 ---@param opts vim.keymap.set.Opts?
 function lib.ftkms(fts, mode, lhs, rhs, desc, opts)
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = fts,
-    callback = function()
-      lib.kms(mode, lhs, rhs, desc, opts)
-    end,
-  })
+  lib.fthook(fts, function()
+    lib.buf_kms(mode, lhs, rhs, desc, opts)
+  end)
 end
 
 ---Wrapper for notifying errors

@@ -60,6 +60,16 @@ function lib.buf_kms(mode, lhs, rhs, desc, opts)
   lib.kms(mode, lhs, rhs, desc, opts)
 end
 
+---Run `hook` on certain filetypes `fts`
+---@param fts string[]
+---@param hook function
+function lib.fthook(fts, hook)
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = fts,
+    callback = hook,
+  })
+end
+
 ---Like `kms` but only applies on cerain filetypes `ft`
 ---@param fts string[]
 ---@param mode string|string[]

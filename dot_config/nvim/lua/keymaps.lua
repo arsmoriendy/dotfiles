@@ -32,8 +32,6 @@ kms({ "n", "i", "x" }, "<C-M-u>", "<CMD>earlier 1f<CR>", { desc = "Undo to last 
 kms({ "n", "i", "x" }, "<C-M-r>", "<CMD>later 1f<CR>", { desc = "Redo to next save" })
 -- ]
 
-kms({ "n" }, "<Leader>f", "za", { desc = "Toggle fold" })
-
 -- exit
 kms("n", "<S-q>", "<CMD>qa!<CR>", { desc = "Exit neovim without saving" })
 -- kms("n", "<C-w><C-q>", "<CMD>q!<CR>")

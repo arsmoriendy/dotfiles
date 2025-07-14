@@ -105,4 +105,76 @@ end
 ---Use `lib.strat` instead for proper lua lsp support
 getmetatable("").__index.at = lib.strat
 
+---@param affix string
+---@param use_keyword boolean? Use vim's `iskeyword` option as a delimiter
+function lib.toggle_surround_at_cursor(affix, use_keyword)
+  local current_buf = vim.api.nvim_get_current_buf()
+  local current_win = vim.api.nvim_get_current_win()
+  -- row is 1 indexed, zcol is 0 indexed
+  local row, zcol = unpack(vim.api.nvim_win_get_cursor(current_win))
+  local zrow, col = row - 1, zcol + 1
+  local line = vim.api.nvim_get_current_line()
+  local spos, epos = 1, #line -- start, end position
+
+  ---@param c string Character
+  local function is_delimiter(c)
+    local match = c == affix
+    if use_keyword == false then
+      match = match or c:byte() <= 32
+    else
+      match = match or vim.fn.match(c, "\\k") == -1
+    end
+    return match
+  end
+
+  local current_char = line:at(col)
+  if is_delimiter(line:at(col)) then
+    return
+  end
+
+  -- get epos
+  for i = col, 1, -1 do
+    current_char = line:at(i)
+
+    -- check whitespace or affix
+    if is_delimiter(current_char) then
+      spos = i + 1
+      break
+    end
+  end
+
+  -- get spos
+  for i = col + 1, #line do
+    current_char = line:at(i)
+
+    -- check whitespace or affix
+    if is_delimiter(current_char) then
+      epos = i - 1
+      break
+    end
+  end
+
+  local schar, echar = line:at(spos), line:at(epos)
+  local zspos, zepos = spos - 1, epos - 1
+  -- prefix and postfix
+  local pfx_pos, pst_pos = spos - 1, epos + 1
+  local pfx, pst = line:at(pfx_pos), line:at(pst_pos)
+  local zpfx_pos, zpst_pos = pfx_pos - 1, pst_pos - 1
+
+  ---@param zat integer Zero indexed at
+  ---@param replacement string[]
+  local function set_col(zat, replacement)
+    vim.api.nvim_buf_set_text(current_buf, zrow, zat, zrow, zat + 1, replacement)
+  end
+
+  -- if surrounded by affix
+  if pfx == affix and pst == affix then -- delete affix
+    set_col(zpfx_pos, {})
+    set_col(zpst_pos - 1, {})
+  else -- add affix
+    set_col(zspos, { affix .. schar })
+    set_col(zepos + 1, { echar .. affix })
+  end
+end
+
 return lib

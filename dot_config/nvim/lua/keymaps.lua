@@ -5,7 +5,7 @@ local lib = require("lib")
 
 -- TODO: use lib.kms
 local kms = vim.keymap.set
-local ftkms = lib.ftkms
+local bind = lib.bind
 
 kms({ "n", "x" }, "gh", "0")
 kms({ "n", "x" }, "gl", "$")
@@ -118,58 +118,10 @@ kms("n", "cN", "<CMD>cNext<CR>", { desc = "Go to previous entry on quickfix list
 -- ]
 
 -- file specific keymaps [
-ftkms({ "typst" }, { "n" }, "<Leader>i", function()
-  local affix = "_"
-
-  local current_buf = vim.api.nvim_get_current_buf()
-  local current_win = vim.api.nvim_get_current_win()
-  -- row is 1 indexed, zcol is 0 indexed
-  local row, zcol = unpack(vim.api.nvim_win_get_cursor(current_win))
-  local zrow, col = row - 1, zcol + 1
-  local line = vim.api.nvim_get_current_line()
-  local pfx_pos, pst_pos = 1, 1 -- prefix, postfix position
-
-  for i = col, 1, -1 do
-    local c = line:sub(i, i)
-
-    -- check whitespace or affix
-    if c:byte() <= 32 or c == affix then
-      pfx_pos = i
-      break
-    end
-  end
-
-  for i = col + 1, #line do
-    local c = line:sub(i, i)
-
-    -- check whitespace or affix
-    if c:byte() <= 32 or c == affix then
-      pst_pos = i
-      break
-    end
-  end
-
-  local zpfx_pos, zpst_pos = pfx_pos - 1, pst_pos - 1
-
-  if line:sub(pfx_pos, pfx_pos) == affix and line:sub(pst_pos, pst_pos) == affix then
-    local empty_replacement = {}
-    vim.api.nvim_buf_set_text(current_buf, zrow, zpfx_pos, zrow, zpfx_pos + 1, empty_replacement)
-    vim.api.nvim_buf_set_text(current_buf, zrow, zpst_pos - 1, zrow, zpst_pos, empty_replacement)
-    return
-  end
-
-  print(zpfx_pos)
-
-  vim.api.nvim_buf_set_text(current_buf, zrow, zpfx_pos, zrow, zpfx_pos + 1, { line:sub(pfx_pos, pfx_pos) .. affix })
-  vim.api.nvim_buf_set_text(
-    current_buf,
-    zrow,
-    zpst_pos + 1,
-    zrow,
-    zpst_pos + 2,
-    { affix .. line:sub(pst_pos, pst_pos) }
-  )
-
-  -- vim.api.nvim_win_set_cursor(current_buf, { row, zcol })
-end, "Toggle word italication [typst]")
+lib.fthook({ "typst" }, function()
+  lib.buf_kms({ "n" }, "<Leader>i", bind(lib.toggle_surround_at_cursor, "_", true), "Toggle word italication [typst]")
+  lib.buf_kms({ "n" }, "<Leader>I", bind(lib.toggle_surround_at_cursor, "_"), "Toggle WORD italication [typst]")
+  lib.buf_kms({ "n" }, "<Leader>b", bind(lib.toggle_surround_at_cursor, "*", true), "Toggle word italication [typst]")
+  lib.buf_kms({ "n" }, "<Leader>B", bind(lib.toggle_surround_at_cursor, "*"), "Toggle WORD italication [typst]")
+end)
 -- ]

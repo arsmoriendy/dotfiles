@@ -1,6 +1,7 @@
 ---conform.nvim is a formatter helper
 
 local lib = require("lib")
+local bind = lib.bind
 
 local ft_by_formatters = {
   prettierd = {
@@ -41,84 +42,58 @@ for formatter, fts in pairs(ft_by_formatters) do
   end
 end
 
--- global format on save {
 ---@type boolean
 vim.g.format_on_save = true
 
----@return boolean
-local function getg()
+---@param global boolean
+local function toggle_format_on_save(global)
+  local msg = "%s format on save: %s"
+
+  if global then
+    vim.g.format_on_save = not vim.g.format_on_save
+
+    vim.notify(msg:format("Global", vim.g.format_on_save))
+  else
+    local current_buf = vim.api.nvim_get_current_buf()
+
+    if vim.b[current_buf].format_on_save == nil then
+      vim.b[current_buf].format_on_save = true
+    else
+      vim.b[current_buf].format_on_save = not vim.b[current_buf].format_on_save
+    end
+
+    vim.notify(msg:format("Buffer", vim.b[current_buf].format_on_save))
+  end
+end
+
+---@param buf number
+---@return boolean should_format
+local function should_format_on_save(buf)
+  local buf_state = vim.b[buf].format_on_save
+  if buf_state ~= nil then
+    return buf_state
+  end
+
   return vim.g.format_on_save
 end
----
----@param state boolean
-local function setg(state)
-  vim.g.format_on_save = state
-end
-
-local function toggle_g_format_on_save_wrapper()
-  -- toggle global format on save
-  setg(not getg())
-
-  local msg = string.format("%s formatting on save globally", getg() and "Enabled" or "Disabled")
-  vim.notify(msg)
-end
--- }
-
--- buffer format on save {
----@return boolean|nil
-local function gets(bufn)
-  return vim.b[bufn].format_on_save
-end
-
----@param bufn number
----@param state boolean
-local function sets(bufn, state)
-  vim.b[bufn].format_on_save = state
-end
-
-local function toggle_current_b_format_on_save()
-  local current_bufn = vim.api.nvim_get_current_buf()
-
-  -- init or toggle
-  if gets(current_bufn) == nil then
-    sets(current_bufn, false)
-  else
-    sets(
-      current_bufn,
-      ---@diagnostic disable-next-line:param-type-mismatch
-      not gets(current_bufn)
-    )
-  end
-
-  local msg = string.format("%s formatting on save in current file", gets(current_bufn) and "Enabled" or "Disabled")
-  vim.notify(msg)
-end
-
----@return conform.FormatOpts|nil
-local function format_on_save(bufn)
-  local b = gets(bufn)
-  if b ~= nil then
-    return b and {} or nil
-  end
-
-  return getg() and {} or nil
-end
--- }
 
 local function config()
   local conform = require("conform")
 
   conform.setup({
     formatters_by_ft = formatters_by_ft,
-    format_on_save = format_on_save,
+    format_on_save = function(buf)
+      return should_format_on_save(buf) and {} or nil
+    end,
     default_format_opts = {
       lsp_format = "fallback",
     },
   })
 
-  lib.kms("n", "<Leader>i", conform.format, "Format file/buffer")
-  lib.kms("n", "<Leader>I", toggle_g_format_on_save_wrapper, "Toggle formatting on save globally")
-  lib.kms("n", "<Leader>Ib", toggle_current_b_format_on_save, "Toggle formatting on save in current file")
+  -- TODO: buffer follows global (i.e. remove buffer option) function and keymap
+  lib.kms("n", "<Leader>f", conform.format, "Format file/buffer")
+  lib.kms("n", "<Leader>F", bind(toggle_format_on_save, true), "Toggle formatting on save globally")
+  lib.kms("n", "<Leader>Fb", bind(toggle_format_on_save), "Toggle formatting on save in current buffer")
 end
 
 return {

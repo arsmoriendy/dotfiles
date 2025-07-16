@@ -57,7 +57,7 @@ local function toggle_format_on_save(global)
     local current_buf = vim.api.nvim_get_current_buf()
 
     if vim.b[current_buf].format_on_save == nil then
-      vim.b[current_buf].format_on_save = true
+      vim.b[current_buf].format_on_save = false
     else
       vim.b[current_buf].format_on_save = not vim.b[current_buf].format_on_save
     end

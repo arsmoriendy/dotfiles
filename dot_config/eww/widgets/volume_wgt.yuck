@@ -2,11 +2,11 @@
 
 (deflisten volume_poll
   :initial 0
-  "pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}'"
+  "wpctl get-volume @DEFAULT_SINK@ | awk '{print $2 * 100}'"
 )
 (deflisten mute_poll
-  :initial "no"
-  "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'"
+  :initial false
+  "wpctl get-volume @DEFAULT_SINK@ | awk '{ if ($3 == \"[MUTED]\") print \"true\"; else print \"false\"; }'"
 )
 
 ;; vertical volume widget
@@ -26,8 +26,8 @@
       :orientation "vertical"
       :flipped true
       :height 200
-      :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}% && eww update volume_poll={}"
-      :class "${mute_poll == "yes" ? "disabled": ""}"
+      :onchange "wpctl set-volume @DEFAULT_SINK@ {}% && eww update volume_poll={}"
+      :class "${mute_poll ? "disabled" : ""}"
     )
     (label
       :text "󰓃"

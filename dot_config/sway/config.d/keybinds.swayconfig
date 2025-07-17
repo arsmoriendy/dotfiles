@@ -160,40 +160,44 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 # app launcher }
 
 # volume slider {
-  set $opnvolwincmd "eww open volume_win --screen $ewwoutput"
-  bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -10%" ; mode "volume"; exec $opnvolwincmd
-  bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +10%" ; mode "volume"; exec $opnvolwincmd
-  bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle" ; mode "volume"; exec $opnvolwincmd
+  set $opnvolwincmd eww open volume_win --screen $ewwoutput # $ewwoutput is an environment variable
+  set $volinterval  10
+  set $voldncmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%-
+  set $volupcmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%+
+  set $volmtcmd     wpctl set-mute   @DEFAULT_SINK@ toggle
+  set $updewwvolcmd eww update volume_poll=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $2 * 100}')
+  set $updewwmutcmd eww update   mute_poll=$(wpctl get-volume @DEFAULT_SINK@ | awk '{ if ($3 == "[MUTED]") print "true"; else print "false"; }')
+
+  bindsym XF86AudioLowerVolume exec $voldncmd; mode "volume"; exec $opnvolwincmd
+  bindsym XF86AudioRaiseVolume exec $volupcmd; mode "volume"; exec $opnvolwincmd
+  bindsym XF86AudioMute        exec $volmtcmd; mode "volume"; exec $opnvolwincmd
 
   mode "volume" {
     # exit
     set $exitcmd "eww close volume_win"
-    bindsym Escape mode "default"; exec $exitcmd
-    bindsym q mode "default"; exec $exitcmd
-    bindsym $mod+g mode "default"; exec $exitcmd
+    bindsym Escape  mode "default"; exec $exitcmd
+    bindsym q       mode "default"; exec $exitcmd
+    bindsym $mod+g  mode "default"; exec $exitcmd
     bindsym --whole-window --border button1 mode "default" ; exec $exitcmd
     bindsym --whole-window --border button2 mode "default" ; exec $exitcmd
 
     # volume down
-    set $voldncmd "pactl set-sink-volume @DEFAULT_SINK@ -10% && eww update volume_poll=$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}')"
-    bindsym j exec $voldncmd
-    bindsym down exec $voldncmd
-    bindsym Shift+j exec $voldncmd
-    bindsym Shift+down exec $voldncmd
-    bindsym XF86AudioLowerVolume exec $voldncmd
+    bindsym j                     exec $voldncmd; exec $updewwvolcmd
+    bindsym down                  exec $voldncmd; exec $updewwvolcmd
+    bindsym Shift+j               exec $voldncmd; exec $updewwvolcmd
+    bindsym Shift+down            exec $voldncmd; exec $updewwvolcmd
+    bindsym XF86AudioLowerVolume  exec $voldncmd; exec $updewwvolcmd
 
     # volume up
-    set $volupcmd "pactl set-sink-volume @DEFAULT_SINK@ +10% && eww update volume_poll=$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}' | awk -F% '{print $1}')"
-    bindsym k exec $volupcmd
-    bindsym up exec $volupcmd
-    bindsym Shift+k exec $volupcmd
-    bindsym Shift+up exec $volupcmd
-    bindsym XF86AudioRaiseVolume exec $volupcmd
+    bindsym k                     exec $volupcmd; exec $updewwvolcmd
+    bindsym up                    exec $volupcmd; exec $updewwvolcmd
+    bindsym Shift+k               exec $volupcmd; exec $updewwvolcmd
+    bindsym Shift+up              exec $volupcmd; exec $updewwvolcmd
+    bindsym XF86AudioRaiseVolume  exec $volupcmd; exec $updewwvolcmd
 
     # toggle mute
-    set $volmutcmd "pactl set-sink-mute @DEFAULT_SINK@ toggle && eww update mute_poll=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
-    bindsym m exec $volmutcmd
-    bindsym XF86AudioMute exec $volmutcmd
+    bindsym m             exec $volmtcmd; exec $updewwmutcmd
+    bindsym XF86AudioMute exec $volmtcmd; exec $updewwmutcmd
   }
 
   bindsym --no-repeat $mod+g mode "volume"; exec $opnvolwincmd

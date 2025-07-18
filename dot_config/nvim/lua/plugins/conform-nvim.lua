@@ -23,9 +23,11 @@ local ft_by_formatters = {
   stylua = { "lua" },
   nixfmt = { "nix" },
   ruff_format = { "python" },
+  nginxfmt = { "nginx" },
   shfmt = { "bash", "sh" },
   zigfmt = { "zig" },
   taplo = { "toml" },
+  sqlfluff = { "sql", "mysql" },
   ["tex-fmt"] = { "tex" },
   typstyle = { "typst" },
 }

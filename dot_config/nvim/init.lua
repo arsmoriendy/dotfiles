@@ -116,7 +116,6 @@ vim.diagnostic.config({
 })
 
 -- load config from different files [
-require("functions")
 require("keymaps")
 require("file-keymaps")
 require("lazy").setup(

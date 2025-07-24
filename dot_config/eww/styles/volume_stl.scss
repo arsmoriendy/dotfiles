@@ -5,13 +5,14 @@ scale * {
 
 scale {
   // Variables {
-  // read proceding comments for details
   $bar_bg: $background5;
   $disabled_bar_bg: $background3;
 
+  // filled part of the bar
   $highlight_bg: $bar_bg;
   $disabled_highlight_bg: $disabled_bar_bg;
 
+  // handle of the bar
   $slider_bg: $background0;
   $focused_slider_bg: $primry;
 
@@ -67,13 +68,10 @@ scale {
       transition-property: border-color, background;
     }
 
-    // filled part of the bar
     highlight {
       @include background($highlight_bg);
     }
 
-    // handle of the bar
-    // or the part in between the background and filled part of the bar
     slider {
       min-width: 25px;
       min-height: 15px;

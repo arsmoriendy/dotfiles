@@ -30,7 +30,11 @@
       :class "${mute_poll ? "disabled" : ""}"
     )
     (label
-      :text "󰓃"
+      :text {mute_poll ? "󰖁" :
+        volume_poll >= 66 ? "󰕾":
+        volume_poll >= 33 ? "󰖀":
+        "󰕿"
+      }
       :style "font-size: 1.5em"
     )
   )

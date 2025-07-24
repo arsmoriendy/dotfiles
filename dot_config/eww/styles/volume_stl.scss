@@ -30,13 +30,15 @@ scale {
   // }
 
   @mixin slider-background($bg, $line, $border) {
-    background: linear-gradient(90deg,
+    background: linear-gradient(
+        90deg,
         $bg 5px,
         transparent 5px,
         transparent 20px,
-        $bg 20px,
+        $bg 20px
       ),
-      linear-gradient(180deg,
+      linear-gradient(
+        180deg,
         $bg 4.5px,
         $line 4.5px,
         $line 5.5px,
@@ -44,18 +46,19 @@ scale {
         $bg 9.5px,
         $line 9.5px,
         $line 10.5px,
-        $bg 10.5px,
+        $bg 10.5px
       );
     border-color: $border;
   }
 
   @mixin background($bg) {
-    background: linear-gradient(90deg,
-        transparent 12px,
-        $bg 12px,
-        $bg 13px,
-        transparent 13px,
-      );
+    background: linear-gradient(
+      90deg,
+      transparent 12px,
+      $bg 12px,
+      $bg 13px,
+      transparent 13px
+    );
   }
 
   padding: $padding;
@@ -67,7 +70,7 @@ scale {
 
     &,
     * {
-      transition-duration: .3s;
+      transition-duration: 0.3s;
       transition-property: border-color, background;
     }
 
@@ -86,7 +89,11 @@ scale {
 
   &:not(.disabled) {
     slider:hover {
-      @include slider-background($focused_slider_bg, $focused_slider_lines, $focused_slider_border);
+      @include slider-background(
+        $focused_slider_bg,
+        $focused_slider_lines,
+        $focused_slider_border
+      );
     }
   }
 

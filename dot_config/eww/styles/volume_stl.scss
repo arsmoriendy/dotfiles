@@ -23,6 +23,9 @@ scale {
   $disabled_slider_border: $disabled_bar_bg;
   $focused_slider_border: $focused_slider_lines;
 
+  // labels
+  $disabled_label: $disabled_bar_bg;
+
   $padding: 5px;
   // }
 
@@ -88,6 +91,9 @@ scale {
   }
 
   &.disabled {
+    ~ label {
+      color: $disabled_label;
+    }
     contents {
       @include background($disabled_bar_bg);
 

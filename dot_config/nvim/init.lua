@@ -102,6 +102,12 @@ fthook({ "python" }, function()
   vim.opt_local.shiftwidth = 0
 end)
 
+fthook({ "typst" }, function()
+  vim.opt_local.iskeyword:remove("_")
+  vim.opt_local.textwidth = 80
+  vim.opt_local.spell = true
+end)
+
 -- ]
 
 vim.diagnostic.config({

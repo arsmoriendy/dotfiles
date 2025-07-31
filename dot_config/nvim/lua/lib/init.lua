@@ -181,6 +181,7 @@ function lib.toggle_surround_at_cursor(affix, use_keyword)
   else -- add affix
     set_col(zspos, { affix .. schar })
     set_col(zepos + 1, { echar .. affix })
+    vim.api.nvim_win_set_cursor(current_win, { row, zcol + 1 })
   end
 end
 

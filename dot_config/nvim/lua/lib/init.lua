@@ -119,15 +119,22 @@ function lib.toggle_surround_at_cursor(affix, use_keyword)
   ---@param c string Character
   local function is_delimiter(c)
     local match = c == affix
-    if use_keyword == false then
-      match = match or c:byte() <= 32
+    if use_keyword then
+      match = match or vim.fn.match(c, "\\k") == -1 -- is keyword
     else
-      match = match or vim.fn.match(c, "\\k") == -1
+      match = match or c:byte() <= 32 -- is whitespace
     end
     return match
   end
 
   local current_char = line:at(col)
+  -- whitespace or eol edge case
+  if current_char:byte() == nil or current_char:byte() <= 32 then
+    vim.api.nvim_buf_set_text(current_buf, zrow, zcol, zrow, zcol, { affix .. affix })
+    vim.api.nvim_win_set_cursor(current_win, { row, zcol + 1 })
+    return
+  end
+
   if is_delimiter(line:at(col)) then
     return
   end

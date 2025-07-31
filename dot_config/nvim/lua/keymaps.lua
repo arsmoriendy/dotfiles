@@ -123,5 +123,8 @@ lib.fthook({ "typst" }, function()
   lib.buf_kms({ "n" }, "<Leader>I", bind(lib.toggle_surround_at_cursor, "_"), "Toggle WORD italication [typst]")
   lib.buf_kms({ "n" }, "<Leader>b", bind(lib.toggle_surround_at_cursor, "*", true), "Toggle word bold [typst]")
   lib.buf_kms({ "n" }, "<Leader>B", bind(lib.toggle_surround_at_cursor, "*"), "Toggle WORD bold [typst]")
+
+  lib.buf_kms({ "i" }, "<C-i>", bind(lib.toggle_surround_at_cursor, "_", true), "Toggle word italication [typst]")
+  lib.buf_kms({ "i" }, "<C-b>", bind(lib.toggle_surround_at_cursor, "*", true), "Toggle word bold [typst]")
 end)
 -- ]

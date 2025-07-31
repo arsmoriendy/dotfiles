@@ -116,6 +116,12 @@ function lib.toggle_surround_at_cursor(affix, use_keyword)
   local line = vim.api.nvim_get_current_line()
   local spos, epos = 1, #line -- start, end position
 
+  ---@param zat integer Zero indexed at
+  ---@param replacement string[]
+  local function set_col(zat, replacement)
+    vim.api.nvim_buf_set_text(current_buf, zrow, zat, zrow, zat + 1, replacement)
+  end
+
   ---@param c string Character
   local function is_delimiter(c)
     local match = c == affix
@@ -167,12 +173,6 @@ function lib.toggle_surround_at_cursor(affix, use_keyword)
   local pfx_pos, pst_pos = spos - 1, epos + 1
   local pfx, pst = line:at(pfx_pos), line:at(pst_pos)
   local zpfx_pos, zpst_pos = pfx_pos - 1, pst_pos - 1
-
-  ---@param zat integer Zero indexed at
-  ---@param replacement string[]
-  local function set_col(zat, replacement)
-    vim.api.nvim_buf_set_text(current_buf, zrow, zat, zrow, zat + 1, replacement)
-  end
 
   -- if surrounded by affix
   if pfx == affix and pst == affix then -- delete affix

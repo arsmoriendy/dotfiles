@@ -70,9 +70,7 @@ return {
 
     local snippet_indicator = {
       function()
-        local ok, luasnip = pcall(require, "luasnip")
-
-        if ok and luasnip.in_snippet() then
+        if require("vim.snippet").active() then
           return ""
         end
 

@@ -8,14 +8,19 @@ local function config()
 
   -- default server overrides [
   local default_lspconfig_overrides = {
-    capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
+    capabilities = {
+      workspace = {
+        executeCommand = {
+          dynamicRegistration = true,
+        },
+      },
       textDocument = {
         foldingRange = {
           dynamicRegistration = false,
           lineFoldingOnly = true,
         },
       },
-    }),
+    },
     on_attach = function(client, bufnr)
       -- attach nvim-navic if possible
       if client.server_capabilities.documentSymbolProvider then
@@ -217,7 +222,6 @@ return {
     "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
     "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
     "SmiteshP/nvim-navic", -- winbar
-    "hrsh7th/cmp-nvim-lsp",
   },
   -- Neovim's runtimepath is needed by lua_ls to properly lookup modules, therefore, this
   -- ensures neovim's runtimepath is initialized completely before calling the config function.

@@ -74,6 +74,9 @@ kms("n", "<Tab>", "<CMD>lua vim.diagnostic.goto_next()<CR>", { silent = true, de
 kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { silent = true, desc = "Go to previous diagnostic" })
 -- ]
 
+-- stop snippet
+kms({ "i", "s" }, "<C-x>", bind(require("vim.snippet").stop))
+
 -- lsp rename
 kms("n", "<Leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" })
 

@@ -62,7 +62,8 @@ kms({ "n", "v", "o" }, "<C-q>", "<C-w>q", { desc = "Close window" })
 -- ]
 
 -- tabs [
-for i = 1, 9 do
+-- NOTE: <C-6> is reserved for alternate file switching
+for i = 1, 5 do
   kms({ "n", "i", "v" }, ("<C-%d>"):format(i), function()
     local tabs = vim.api.nvim_list_tabpages()
     if i > #tabs then
@@ -127,6 +128,7 @@ kms("n", "cN", "<CMD>cNext<CR>", { desc = "Go to previous entry on quickfix list
 -- ]
 
 -- file specific keymaps [
+-- typst
 lib.fthook({ "typst" }, function()
   -- bold/italicize keymaps
   -- NOTE: Originally, <C-i> was considered for italicization in insert mode. However, <C-i> is equivalent to <Tab> within terminals.

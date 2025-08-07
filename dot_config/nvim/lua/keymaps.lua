@@ -13,13 +13,6 @@ kms({ "n", "x" }, "gl", "$")
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)
 kms({ "n", "i", "x" }, "<C-M-f>", vim.cmd.nohlsearch, { desc = "Temporarily disable search highlights" })
 
--- tab navigation [
-kms({ "n", "i", "x" }, "<C-Tab>", vim.cmd.tabnext, { desc = "Go to next tab" })
-kms({ "n", "i", "x" }, "<C-S-Tab>", vim.cmd.tabprevious, { desc = "Go to previous tab" })
-kms({ "n", "i", "x" }, "<PageDown>", vim.cmd.tabnext, { desc = "Go to next tab" })
-kms({ "n", "i", "x" }, "<PageUp>", vim.cmd.tabprevious, { desc = "Go to previous tab" })
--- ]
-
 -- window resize [
 kms("n", "<C-w>h", "<CMD>vertical resize -5<CR>", { desc = "Reduce window size vertically" })
 kms("n", "<C-w>j", "<CMD>resize +5<CR>", { desc = "Add window size horizontally" })

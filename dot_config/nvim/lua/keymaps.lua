@@ -68,6 +68,19 @@ kms("n", "<C-l>", "<C-w>l", { remap = false, desc = "Go to right window" })
 kms({ "n", "v", "o" }, "<C-q>", "<C-w>q", { desc = "Close window" })
 -- ]
 
+-- tabs [
+for i = 1, 9 do
+  kms({ "n", "i", "v" }, ("<C-%d>"):format(i), function()
+    local tabs = vim.api.nvim_list_tabpages()
+    if i > #tabs then
+      return
+    end
+    local dest_tab = tabs[i]
+    vim.api.nvim_set_current_tabpage(dest_tab)
+  end, { desc = ("Go to tab %d"):format(i) })
+end
+-- ]
+
 -- diagnostics [
 kms("n", "<Enter>", "<CMD>lua vim.diagnostic.open_float()<CR>", { silent = true, desc = "Show diagnostic window" })
 kms("n", "<Tab>", "<CMD>lua vim.diagnostic.goto_next()<CR>", { silent = true, desc = "Go to next diagnostic" })

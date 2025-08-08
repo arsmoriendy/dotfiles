@@ -25,9 +25,32 @@ kms({ "n", "i", "x" }, "<C-M-u>", "<CMD>earlier 1f<CR>", { desc = "Undo to last 
 kms({ "n", "i", "x" }, "<C-M-r>", "<CMD>later 1f<CR>", { desc = "Redo to next save" })
 -- ]
 
--- exit
-kms("n", "<S-q>", "<CMD>qa!<CR>", { desc = "Exit neovim without saving" })
--- kms("n", "<C-w><C-q>", "<CMD>q!<CR>")
+-- quit
+kms("n", "<C-S-q>", function()
+  -- get modified files
+  local modified_files = {}
+  local bufs = vim.api.nvim_list_bufs()
+  for _, b in ipairs(bufs) do
+    local is_modified = vim.api.nvim_get_option_value("modified", { buf = b })
+    if is_modified then
+      local name = vim.api.nvim_buf_get_name(b)
+      table.insert(modified_files, name)
+    end
+  end
+
+  if #modified_files < 1 then
+    return vim.cmd("qa!")
+  end
+
+  lib.float_prompt({
+    title = "Quit?",
+    messages = { "The following files are modified:", "", unpack(modified_files) },
+    actions = {
+      { name = "[D]iscard All", shortcut = "d", callback = ":qa!<CR>" },
+      { name = "[C]ancel", shortcut = "c", callback = "<C-w>q" },
+    },
+  })
+end, { desc = "Quit neovim" })
 
 -- save / write file [
 kms({ "n", "v", "o" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })

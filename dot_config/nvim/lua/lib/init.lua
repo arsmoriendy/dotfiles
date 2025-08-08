@@ -185,4 +185,86 @@ function lib.toggle_surround_at_cursor(affix, use_keyword)
   end
 end
 
+---@class (exact) lib.FloatPromptOpts
+---@field title string
+---@field messages string[]
+---@field actions {name: string, callback: function|string, shortcut: string}[]
+---@field padding? {x?: integer, y?:integer} | integer
+
+---@param opts lib.FloatPromptOpts
+---@return number buf, number win
+function lib.float_prompt(opts)
+  local columns = vim.api.nvim_get_option_value("columns", {})
+  local lines = vim.api.nvim_get_option_value("lines", {})
+  local width = #opts.messages[1]
+  local height = #opts.messages
+
+  -- set width to the longest message length
+  for _, msg in ipairs(opts.messages) do
+    width = math.max(width, #msg)
+  end
+
+  -- set default padding
+  local default_padding = 1
+  opts.padding = opts.padding ~= nil and opts.padding or default_padding
+  -- set xpad, ypad
+  local xpad, ypad = default_padding, default_padding
+  if type(opts.padding) == "table" then
+    xpad = opts.padding.x ~= nil and opts.padding.x or default_padding
+    ypad = opts.padding.y ~= nil and opts.padding.y or default_padding
+  else
+    ---@type integer
+    ---@diagnostic disable-next-line:assign-type-mismatch
+    xpad = opts.padding
+    ---@type integer
+    ---@diagnostic disable-next-line:assign-type-mismatch
+    ypad = opts.padding
+  end
+  -- adjust height and width with padding
+  width = width + xpad * 2
+  height = height + ypad * 2
+
+  local buf = vim.api.nvim_create_buf(false, true)
+
+  -- add ypad
+  for i = 0, ypad - 1 do
+    vim.api.nvim_buf_set_lines(buf, i, -1, true, { "" })
+  end
+
+  -- create horizontal string padding
+  local xpad_str = ""
+  for _ = 1, xpad do
+    xpad_str = xpad_str .. " "
+  end
+
+  -- write message
+  for i, msg in ipairs(opts.messages) do
+    vim.api.nvim_buf_set_lines(buf, ypad + i - 1, -1, true, { xpad_str .. msg })
+  end
+
+  ---@type string[][]
+  local footers = {}
+
+  -- configure footers and shortcuts
+  for _, act in ipairs(opts.actions) do
+    table.insert(footers, { act.name, "IncSearch" })
+    table.insert(footers, { "─", "FloatBorder" })
+    vim.keymap.set("n", act.shortcut, act.callback, { buffer = buf, nowait = true })
+  end
+
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    row = lines / 2 - height / 2,
+    col = columns / 2 - width / 2,
+    width = width + 1, -- starts at 0
+    height = height,
+    style = "minimal",
+    title = (" %s "):format(opts.title),
+    border = "single",
+    focusable = false,
+    footer = footers,
+  })
+
+  return buf, win
+end
 return lib

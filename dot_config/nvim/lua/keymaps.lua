@@ -75,12 +75,6 @@ for i = 1, 5 do
 end
 -- ]
 
--- diagnostics [
-kms("n", "<Enter>", "<CMD>lua vim.diagnostic.open_float()<CR>", { silent = true, desc = "Show diagnostic window" })
-kms("n", "<Tab>", "<CMD>lua vim.diagnostic.goto_next()<CR>", { silent = true, desc = "Go to next diagnostic" })
-kms("n", "<S-Tab>", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { silent = true, desc = "Go to previous diagnostic" })
--- ]
-
 -- stop snippet
 kms("i", "<C-x>", bind(require("vim.snippet").stop), { desc = "Stop snippet" })
 

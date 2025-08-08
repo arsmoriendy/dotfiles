@@ -38,9 +38,6 @@
   bindsym $mod+Down focus down
   bindsym $mod+Up focus up
   bindsym $mod+Right focus right
-  # Or use alt+tab to focus next and alt+shift+tab for previous
-  bindsym Mod1+Tab focus next
-  bindsym Mod1+Shift+Tab focus prev
 
   # Move the focused window with the same, but add Shift
   bindsym $mod+Shift+$left move left

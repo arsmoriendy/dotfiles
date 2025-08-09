@@ -1,0 +1,7 @@
+;; app launcher for wayland
+(include "./widgets/launcher_wgt.yuck")
+
+(defwindow launcher
+  :focusable true
+  (launcher_wgt)
+)

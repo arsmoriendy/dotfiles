@@ -1,0 +1,10 @@
+;; volume slider for wayland
+(include "./widgets/volume_wgt.yuck")
+
+(defwindow volume_win
+  :anchor "center right"
+  :geometry (geometry
+    :anchor "center right"
+  )
+  (v_volume_wgt)
+)

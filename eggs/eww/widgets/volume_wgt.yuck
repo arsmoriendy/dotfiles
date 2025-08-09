@@ -1,0 +1,41 @@
+(defvar reveal_volume_scale false)
+
+(deflisten volume_poll
+  :initial 0
+  "wpctl get-volume @DEFAULT_SINK@ | awk '{print $2 * 100}'"
+)
+(deflisten mute_poll
+  :initial false
+  "wpctl get-volume @DEFAULT_SINK@ | awk '{ if ($3 == \"[MUTED]\") print \"true\"; else print \"false\"; }'"
+)
+
+;; vertical volume widget
+(defwidget v_volume_wgt []
+  (box
+    :orientation "vertical"
+    :space-evenly false
+    :style "padding: 10px;"
+    (label
+      :text "${volume_poll}%"
+      :style "min-width: 3em"
+    )
+    (scale
+      :value volume_poll
+      :min 0
+      :max 151
+      :orientation "vertical"
+      :flipped true
+      :height 200
+      :onchange "wpctl set-volume @DEFAULT_SINK@ {}% && eww update volume_poll={}"
+      :class "${mute_poll ? "disabled" : ""}"
+    )
+    (label
+      :text {mute_poll ? "󰖁" :
+        volume_poll >= 66 ? "󰕾":
+        volume_poll >= 33 ? "󰖀":
+        "󰕿"
+      }
+      :style "font-size: 1.5em"
+    )
+  )
+)

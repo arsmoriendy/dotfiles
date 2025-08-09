@@ -1,0 +1,16 @@
+(defvar lwin_results "")
+
+(defwidget launcher_wgt []
+  (box
+    :space-evenly false
+    :orientation "v"
+    (input
+      :width 800
+      :onaccept "swaymsg mode default; eww close launcher; swaymsg exec {}"
+      :onchange 'eww update lwin_results="$(~/.config/eww/scripts/search_cmds.bash {})"'
+    )
+    (literal
+      :content lwin_results
+    )
+  )
+)

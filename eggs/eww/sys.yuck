@@ -1,0 +1,4 @@
+;; system specific config
+
+;; only for devices with brightness control support (e.g. laptops)
+(include "./windows/brightness_win.yuck")

@@ -1,0 +1,29 @@
+(deflisten b_poll
+  :initial 0
+  "RB=$(brightnessctl info | awk -F: 'NR==2 {print $2}' | awk '{print $2}') && BL=$(echo $RB | wc -c) && echo $RB | cut -c 2-$(($BL-3))"
+)
+
+(defwidget brightness_wgt []
+  (box
+    :orientation "vertical"
+    :space-evenly false
+    :style "padding: 10px;"
+    (label
+      :text "${b_poll}%"
+      :style "min-width: 3em"
+    )
+    (scale
+      :value b_poll
+      :min 0
+      :max 151
+      :orientation "vertical"
+      :flipped true
+      :height 200
+      :onchange "brightnessctl set {}% && eww update b_poll={}"
+    )
+    (label
+      :text "󰃞"
+      :style "font-size: 1.5em"
+    )
+  )
+)

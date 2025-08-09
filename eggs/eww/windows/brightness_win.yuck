@@ -1,0 +1,9 @@
+(include "./widgets/brightness_wgt.yuck")
+
+(defwindow brightness_win
+  :anchor "center right"
+  :geometry (geometry
+    :anchor "center right"
+  )
+  (brightness_wgt)
+)

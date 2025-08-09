@@ -1,0 +1,118 @@
+scale,
+scale * {
+  all: unset;
+}
+
+scale {
+  // Variables {
+  $bar_bg: $background5;
+  $disabled_bar_bg: $background3;
+
+  // filled part of the bar
+  $highlight_bg: $bar_bg;
+  $disabled_highlight_bg: $disabled_bar_bg;
+
+  // handle of the bar
+  $slider_bg: $background0;
+  $focused_slider_bg: $primry;
+
+  $slider_lines: $bar_bg;
+  $focused_slider_lines: $background0;
+
+  $slider_border: $slider_lines;
+  $disabled_slider_border: $disabled_bar_bg;
+  $focused_slider_border: $focused_slider_lines;
+
+  // labels
+  $disabled_label: $disabled_bar_bg;
+
+  $padding: 5px;
+  // }
+
+  @mixin slider-background($bg, $line, $border) {
+    background: linear-gradient(
+        90deg,
+        $bg 5px,
+        transparent 5px,
+        transparent 20px,
+        $bg 20px
+      ),
+      linear-gradient(
+        180deg,
+        $bg 4.5px,
+        $line 4.5px,
+        $line 5.5px,
+        $bg 5.5px,
+        $bg 9.5px,
+        $line 9.5px,
+        $line 10.5px,
+        $bg 10.5px
+      );
+    border-color: $border;
+  }
+
+  @mixin background($bg) {
+    background: linear-gradient(
+      90deg,
+      transparent 12px,
+      $bg 12px,
+      $bg 13px,
+      transparent 13px
+    );
+  }
+
+  padding: $padding;
+
+  // background of the bar
+  // or the part of the bar that is left/remaining
+  contents {
+    @include background($bar_bg);
+
+    &,
+    * {
+      transition-duration: 0.3s;
+      transition-property: border-color, background;
+    }
+
+    highlight {
+      @include background($highlight_bg);
+    }
+
+    slider {
+      min-width: 25px;
+      min-height: 15px;
+      border-width: 1px;
+      border-style: solid;
+      @include slider-background($slider_bg, $slider_lines, $slider_border);
+    }
+  }
+
+  &:not(.disabled) {
+    slider:hover {
+      @include slider-background(
+        $focused_slider_bg,
+        $focused_slider_lines,
+        $focused_slider_border
+      );
+    }
+  }
+
+  &.disabled {
+    ~ label {
+      color: $disabled_label;
+    }
+    contents {
+      @include background($disabled_bar_bg);
+
+      // filled part of the bar
+      highlight {
+        @include background($disabled_highlight_bg);
+      }
+
+      slider {
+        background: $slider_bg;
+        border-color: $disabled_slider_border;
+      }
+    }
+  }
+}

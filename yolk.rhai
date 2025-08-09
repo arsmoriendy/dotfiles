@@ -23,4 +23,8 @@ export let eggs = #{
       main_file: ".gitconfig",
       strategy: "merge",
     },
+    eww: #{
+      targets: "~/.config/eww/",
+      main_file: "eww.yuck",
+    },
 };

@@ -27,4 +27,8 @@ export let eggs = #{
       targets: "~/.config/eww/",
       main_file: "eww.yuck",
     },
+    lazygit: #{
+      targets: "~/.config/lazygit",
+      main_file: "config.yml",
+    }
 };

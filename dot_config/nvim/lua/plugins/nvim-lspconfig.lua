@@ -42,26 +42,14 @@ local function config()
     lua_ls = {
       on_init = function(client)
         local path = client.workspace_folders[1].name
-        if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-          return
+        if path == vim.fn.stdpath("config") then
+          client.config.settings.Lua.workspace = {
+            library = vim.api.nvim_list_runtime_paths(),
+          }
         end
-
-        client.config.settings.Lua.workspace = {
-          checkThirdParty = false,
-          library = vim.api.nvim_get_runtime_file("", true),
-        }
       end,
       settings = {
         Lua = {
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim" },
-          },
-          runtime = {
-            version = "Lua 5.1", -- Adhere to neovim's lua runtime version 5.1
-            path = { "?.lua", "?/init.lua", "/lua/?.lua", "/lua/?/init.lua" },
-            pathStrict = true,
-          },
           -- Do not send telemetry data containing a randomized but unique identifier
           telemetry = {
             enable = false,
@@ -71,7 +59,6 @@ local function config()
     },
 
     emmet_language_server = {
-      -- add php for emmet
       filetypes = {
         "html",
         "typescriptreact",

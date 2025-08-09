@@ -1,3 +1,6 @@
+local lib = require("lib")
+local kms = lib.kms
+
 return {
   "rcarriga/nvim-notify", -- notification
   config = function()
@@ -39,15 +42,14 @@ return {
       notify.notification_is_supressed = not notify.notification_is_supressed
     end
 
-    vim.keymap.set("n", "<Leader>ns", function()
+    kms("n", "<Leader>ns", function()
       notify.toggle_notification_supress()
       require("lualine").refresh({ place = { "statusline" } })
-    end)
+    end, "Suppress notifications")
     -- ]
 
-    -- dismiss all notifications
-    vim.keymap.set("n", "<Leader>nd", function()
+    kms("n", "<Leader>nd", function()
       notify.dismiss()
-    end)
+    end, "Dismiss notifications")
   end,
 }

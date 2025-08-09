@@ -46,6 +46,7 @@ vim.g.omni_sql_no_default_maps = 1
 -- LUA APIS [
 vim.diagnostic.config({
   update_in_insert = true,
+  virtual_lines = true,
 })
 
 -- recognize "*.swayconfig" files as swayconfig files

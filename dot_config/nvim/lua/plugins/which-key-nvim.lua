@@ -12,7 +12,7 @@ return {
     icons = {
       separator = "",
     },
-    window = {
+    win = {
       border = "single",
     },
   },

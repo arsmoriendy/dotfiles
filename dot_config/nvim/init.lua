@@ -43,15 +43,6 @@ opt.spelllang = "en,id"
 vim.g.omni_sql_no_default_maps = 1
 -- ]
 
--- COMMANDS [
--- vanilla vim ex-commands
-
--- command abbreviations [
-vim.cmd.cabbrev("th tab help")
--- ]
-
--- ]
-
 -- LUA APIS [
 vim.diagnostic.config({
   update_in_insert = true,

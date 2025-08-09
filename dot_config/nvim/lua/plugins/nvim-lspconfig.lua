@@ -188,8 +188,8 @@ local function config()
     vim.ui.select(local_lsps --[[@as string[] ]], { prompt = "Unregister local lsp" }, on_select)
   end
 
-  lib.kms("n", "<Leader>nr", reg_local_lsp, "Register local lsp")
-  lib.kms("n", "<Leader>nu", unreg_local_lsp, "Unregister local lsp")
+  lib.kms("n", "<Leader>mr", reg_local_lsp, "Register local lsp")
+  lib.kms("n", "<Leader>mu", unreg_local_lsp, "Unregister local lsp")
 
   -- Return on diffmode, thus stops lsp from starting
   -- TODO: turn this to an autocmd

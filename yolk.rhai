@@ -22,4 +22,9 @@ export let eggs = #{
         _ =>  "~/.config/sioyek"
       },
     },
+    git: #{
+      targets: "~/",
+      main_file: ".gitconfig",
+      strategy: "merge",
+    },
 };

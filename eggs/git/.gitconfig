@@ -1,0 +1,19 @@
+[core]
+	editor = nvim
+[alias]
+	l = log --graph --oneline
+	ll = log --graph
+	s = status
+	c = commit
+	cnm = commit --allow-empty-message -m ''
+	p = pull
+	cp = !git commit && git push
+[user]
+	email = nugrahasteven@gmail.com
+	name = arsmoriendy
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[init]
+	templatedir = ~/.git_template

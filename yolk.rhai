@@ -30,5 +30,9 @@ export let eggs = #{
     lazygit: #{
       targets: "~/.config/lazygit",
       main_file: "config.yml",
-    }
+    },
+    nvim: #{
+      targets: "~/.config/nvim",
+      main_file: "init.lua",
+    },
 };

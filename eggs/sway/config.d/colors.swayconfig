@@ -1,0 +1,16 @@
+# f: focused, u: unfocused, e: error/urgent, bgrd: background
+set $f_text #FBF1C7
+set $u_text #665C54
+set $f_bgrd #181a1b
+set $u_bgrd #0c0d0e
+set $e_bgrd #9e0005
+set $accent #FABD2F
+set $border #363130
+set $primry #8EC07C
+set $second #B8BB26
+
+# <class>               <border>  <bgrd>  <text>  [<indicator> [<child_border>]]
+client.focused          $border   $f_bgrd $f_text $primry
+client.focused_inactive $border   $u_bgrd $u_text $primry
+client.unfocused        $border   $u_bgrd $u_text $primry
+client.urgent           $accent   $accent $f_bgrd $primry

@@ -1,0 +1,2 @@
+system-specific/*
+!system-specific/vars.swayconfig.example

@@ -48,4 +48,8 @@ export let eggs = #{
       targets: "~/.config/mpv",
       main_file: "mpv.conf",
     },
+    sway: #{
+      targets: "~/.config/sway",
+      main_file: "config",
+    },
 };

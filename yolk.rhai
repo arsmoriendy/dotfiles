@@ -56,4 +56,8 @@ export let eggs = #{
       targets: "~/.config/swaylock",
       main_file: "config",
     },
+    swaync: #{
+      targets: "~/.config/swaync",
+      main_file: "config.json",
+    },
 };

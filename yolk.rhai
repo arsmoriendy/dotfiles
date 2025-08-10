@@ -44,4 +44,8 @@ export let eggs = #{
       targets: "~/.config/zathura",
       main_file: "zathurarc",
     },
+    mpv: #{
+      targets: "~/.config/mpv",
+      main_file: "mpv.conf",
+    },
 };

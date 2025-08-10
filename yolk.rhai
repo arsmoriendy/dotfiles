@@ -35,4 +35,9 @@ export let eggs = #{
       targets: "~/.config/nvim",
       main_file: "init.lua",
     },
+    starship: #{
+      targets: "~/.config",
+      strategy: "merge",
+      main_file: "starship.toml",
+    },
 };

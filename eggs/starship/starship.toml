@@ -1,0 +1,90 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '''
+[┌\[ $directory \](─\[ $git_branch( $git_status)( $git_state) \])(─\[ $python \])(─\[ $nix_shell \])$fill(\[ $sudo \]─)\[ ($username$hostname )$shell $time $os\](─\[( $status)( $cmd_duration) \])
+└\[ ](bold red)
+'''
+
+add_newline = false
+
+##{
+# R1 Left Modules
+#
+
+[directory]
+format = '[$path]($style)'
+style = "bright-yellow"
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style)'
+style = "bright-cyan"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bold blue"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\)'
+
+[python]
+format = '([$symbol$virtualenv]($style))'
+symbol = " "
+
+[nix_shell]
+format = '[$symbol$state( \($name\))]($style)'
+style = "bold cyan"
+symbol = "󱄅 "
+
+##}
+
+[fill]
+symbol = "─"
+style = "bold red"
+
+##{
+# R1 Right Modules
+#
+
+[sudo]
+format = '[$symbol]($style)'
+symbol = ""
+style = "blink bold red"
+disabled = false
+
+[username]
+format = '([$user]($style)[@](bold cyan))'
+style_root = "blink bold yellow"
+
+[hostname]
+format = '[$hostname]($style)'
+style = 'bold blue'
+
+[os]
+disabled = false
+style = "bold cyan"
+
+[os.symbols]
+NixOS = " "
+Arch = " "
+openSUSE = " "
+Windows = " "
+
+[shell]
+format = '$indicator'
+disabled = false
+nu_indicator = "[ü](bold green)"
+fish_indicator = "[󰻳](bold blue)"
+bash_indicator = "[](bold green)"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "bold purple"
+
+[cmd_duration]
+format = '[$duration]($style)'
+
+[status]
+disabled = false
+format = '[$symbol$status]($style)'
+symbol = ''

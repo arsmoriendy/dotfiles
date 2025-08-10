@@ -171,11 +171,6 @@ local function config()
   if vim.wo[vim.api.nvim_get_current_win()].diff then
     return
   end
-
-  -- Because this configuration is called by the "VeryLazy" event,
-  -- which happens after filetype checking, LSPs might not start initially.
-  -- This is a workaround to manually start LSPs.
-  vim.cmd("LspStart")
 end
 
 return {

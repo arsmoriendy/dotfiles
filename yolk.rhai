@@ -52,4 +52,8 @@ export let eggs = #{
       targets: "~/.config/sway",
       main_file: "config",
     },
+    swaylock: #{
+      targets: "~/.config/swaylock",
+      main_file: "config",
+    },
 };

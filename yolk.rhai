@@ -40,4 +40,8 @@ export let eggs = #{
       strategy: "merge",
       main_file: "starship.toml",
     },
+    zathura: #{
+      targets: "~/.config/zathura",
+      main_file: "zathurarc",
+    },
 };

@@ -1,7 +1,5 @@
 local function config()
   local lspconfig = require("lspconfig")
-  local mason = require("mason")
-  local mason_lspconfig = require("mason-lspconfig")
 
   local lllf = require("lib.lllf")
   local lib = require("lib")
@@ -117,25 +115,6 @@ local function config()
       },
     },
   }
-  local function mason_lspcfg_default_handler(server_name)
-    -- TODO: lift this into a function
-    lspconfig[server_name].setup(lspconfig_overrides[server_name] or {})
-  end
-
-  -- dependency ordering matters
-  mason.setup({
-    ui = {
-      border = "single",
-    },
-  })
-  mason_lspconfig.setup({
-    -- automatic server config setup (:h mason-lspconfig-automatic-server-setup)
-    handlers = { mason_lspcfg_default_handler },
-  })
-
-  vim.keymap.set({ "n" }, "<Leader>m", "<Cmd>Mason<CR>", { desc = "Open Mason ui" })
-
-  local all_lsps = mason_lspconfig.get_available_servers()
 
   local local_lsps, err = lllf.servers()
   if local_lsps == nil and err ~= nil then
@@ -149,12 +128,7 @@ local function config()
   end
 
   local function reg_local_lsp()
-    local mason_installed_lsps = mason_lspconfig.get_installed_servers()
-    local items = vim.tbl_filter(function(lsp)
-      return not vim.list_contains(mason_installed_lsps, lsp)
-    end, all_lsps)
-
-    vim.ui.select(items, { prompt = "Register local lsp" }, function(name)
+    vim.ui.input({ prompt = "Register local lsp:" }, function(name)
       if name == nil then
         return
       end
@@ -206,8 +180,6 @@ end
 return {
   "neovim/nvim-lspconfig", -- LSP
   dependencies = {
-    "williamboman/mason.nvim", -- mason.nvim (LSP auto installer)
-    "williamboman/mason-lspconfig.nvim", -- mason-lspconfig.nvim (Bridges mason.nvim and nvim-lspconfig)
     "SmiteshP/nvim-navic", -- winbar
   },
   -- Neovim's runtimepath is needed by lua_ls to properly lookup modules, therefore, this

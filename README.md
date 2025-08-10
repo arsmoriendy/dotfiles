@@ -1,11 +1,15 @@
-# dotfiles
 > [!WARNING]
-> **(WIP)** This branch is actively being worked on.
-> Some things *may not* work at all.
+> This branch is deprecated. Development moved to the `yolk` branch.
 
-Collection of my (*mostly linux*) configurations.
+# dotfiles
+
+> [!WARNING] > **(WIP)** This branch is actively being worked on.
+> Some things _may not_ work at all.
+
+Collection of my (_mostly linux_) configurations.
 
 ## Application list
+
 List of configured applications (may not be updated):
 
 - i3

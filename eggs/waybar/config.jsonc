@@ -1,0 +1,13 @@
+// -*- mode: jsonc -*-
+{
+  "position": "bottom",
+  "ipc": true, // for "hide" mode to work
+  "id": "waybar",
+  "reload_style_on_change": true, // turn off after debugging
+  // ordering matters, descending precedence
+  "include": [
+    "~/.config/waybar/sysconfig.d/sysconfig.jsonc",
+    "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc",
+    "~/.config/waybar/moduleconfigs/clock_cfg.jsonc"
+  ]
+}

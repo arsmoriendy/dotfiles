@@ -1,0 +1,12 @@
+#clock {
+  padding: $spacing;
+}
+
+#clock.date {
+  background-color: $s_bgrd;
+}
+
+#clocks {
+  margin: $spacing;
+  border: 1px solid $border;
+}

@@ -1,0 +1,29 @@
+@use "sass:color";
+@use "sass:string";
+@import "./colors.scss";
+@import "./vars.scss";
+
+* {
+  all: unset;
+  font-family: "CaskaydiaCove Nerd Font Propo";
+}
+
+window#waybar {
+  color: $f_text;
+  background-color: string.unquote("alpha(#{$f_bgrd}, 0.99)");
+  border-top: 1px solid $border;
+}
+
+tooltip {
+  color: $f_text;
+  background-color: color.adjust($f_bgrd, $alpha: -0.2);
+  border: 1px solid $border;
+}
+
+// Widget styles {
+@import "./modulestyles/workspaces_stl.scss";
+@import "./modulestyles/scratchpad_stl.scss";
+@import "./modulestyles/mode_stl.scss";
+@import "./modulestyles/clock_stl.scss";
+@import "./modulestyles/battery_stl.scss";
+// Widget styles }

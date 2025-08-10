@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "scripts": {
+    "dev": "sass --watch --no-source-map --style=compressed style.scss:style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  }
+}

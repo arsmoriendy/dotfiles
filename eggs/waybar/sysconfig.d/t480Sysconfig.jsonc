@@ -1,0 +1,43 @@
+{
+  "battery#bat0": {
+    "bat": "BAT0",
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "󰂎", // 0%
+      "󰁺", // 10%
+      "󰁻", // 20%
+      "󰁼", // 30%
+      "󰁽", // 40%
+      "󰁾", // 50%
+      "󰁿", // 60%
+      "󰂀", // 70%
+      "󰂁", // 80%
+      "󰂂", // 90%
+      "󰁹" // 100%
+    ]
+  },
+  "battery#bat1": {
+    "bat": "BAT1",
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "󰂎", // 0%
+      "󰁺", // 10%
+      "󰁻", // 20%
+      "󰁼", // 30%
+      "󰁽", // 40%
+      "󰁾", // 50%
+      "󰁿", // 60%
+      "󰂀", // 70%
+      "󰂁", // 80%
+      "󰂂", // 90%
+      "󰁹" // 100%
+    ]
+  },
+  "group/batteries": {
+    "orientation": "horizontal",
+    "modules": ["battery#bat0", "battery#bat1"]
+  },
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["group/batteries", "group/clocks"]
+}

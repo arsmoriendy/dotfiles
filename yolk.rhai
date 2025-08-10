@@ -60,4 +60,8 @@ export let eggs = #{
       targets: "~/.config/swaync",
       main_file: "config.json",
     },
+    waybar: #{
+      targets: "~/.config/waybar",
+      main_file: "config.json",
+    },
 };

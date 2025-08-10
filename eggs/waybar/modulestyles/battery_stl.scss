@@ -1,0 +1,30 @@
+@keyframes charging {
+  to {
+    background-position: -20% 50%;
+  }
+}
+
+#battery {
+  padding: $spacing;
+}
+
+#battery.charging {
+  background: linear-gradient(
+    100deg,
+    $s_bgrd 40%,
+    color.adjust($u_bgrd, $lightness: 30%) 50%,
+    $s_bgrd 60%
+  );
+  background-size: 200% 100%;
+  background-position: 180% 50%;
+  animation: 1s charging ease-in-out infinite;
+}
+
+#battery.discharging {
+  background-color: $s_bgrd;
+}
+
+#batteries {
+  border: 1px solid $border;
+  margin: $spacing;
+}

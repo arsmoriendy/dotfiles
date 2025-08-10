@@ -4,8 +4,8 @@ local function config()
   local lllf = require("lib.lllf")
   local lib = require("lib")
 
-  -- default server overrides [
-  local default_lspconfig_overrides = {
+  -- extend default lspconfig
+  lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
     capabilities = {
       workspace = {
         executeCommand = {
@@ -25,11 +25,7 @@ local function config()
         require("nvim-navic").attach(client, bufnr)
       end
     end,
-  }
-
-  lspconfig.util.default_config =
-    vim.tbl_deep_extend("force", lspconfig.util.default_config, default_lspconfig_overrides)
-  -- ]
+  })
 
   -- TODO: dynamic config https://www.reddit.com/r/neovim/comments/19dodgd/how_can_i_dynamicly_change_lsp_configuration/
   -- maybe pair that with lspconfig `on_new_config` key
@@ -116,6 +112,11 @@ local function config()
     },
   }
 
+  local function setup_lsp(name)
+    vim.lsp.config(name, vim.tbl_deep_extend("force", lspconfig.util.default_config, lspconfig_overrides[name] or {}))
+    vim.lsp.enable(name)
+  end
+
   local local_lsps, err = lllf.servers()
   if local_lsps == nil and err ~= nil then
     lib.error(err, "Failed getting local lsp list")
@@ -124,7 +125,7 @@ local function config()
   for _, local_lsp in
     pairs(local_lsps --[[@as string[] ]])
   do
-    lspconfig[local_lsp].setup(lspconfig_overrides[local_lsp] or {})
+    setup_lsp(local_lsp)
   end
 
   local function reg_local_lsp()
@@ -139,7 +140,7 @@ local function config()
         return
       end
 
-      lspconfig[name].setup(lspconfig_overrides[name] or {})
+      setup_lsp(name)
     end)
   end
 

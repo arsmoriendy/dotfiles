@@ -35,8 +35,9 @@ local function config()
     -- This lua_ls configuration mainly adheres to neovim's lua runtime
     lua_ls = {
       on_init = function(client)
-        local path = client.workspace_folders[1].name
-        if path == vim.fn.stdpath("config") then
+        local current_path = client.workspace_folders[1].name
+        local config_path = vim.uv.fs_realpath(vim.fn.stdpath("config"))
+        if current_path == config_path then
           client.config.settings.Lua.workspace = {
             library = vim.api.nvim_list_runtime_paths(),
           }

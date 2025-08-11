@@ -64,4 +64,8 @@ export let eggs = #{
       targets: "~/.config/waybar",
       main_file: "config.json",
     },
+    macchina: #{
+      targets: "~/.config/macchina",
+      main_file: "macchina.toml",
+    },
 };

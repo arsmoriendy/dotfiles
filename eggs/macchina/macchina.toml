@@ -1,0 +1,23 @@
+theme = "Mercury"
+show = [
+  # "Host",
+  "Machine",
+  "Kernel",
+  "Distribution",
+  "OperatingSystem",
+  "DesktopEnvironment",
+  "WindowManager",
+  # "Resolution",
+  # "Backlight",
+  "Packages",
+  # "LocalIP",
+  "Terminal",
+  "Shell",
+  "Uptime",
+  # "Processor",
+  # "ProcessorLoad",
+  # "Memory",
+  # "Battery",
+  # "GPU",
+  # "DiskSpace",
+]

@@ -1,0 +1,18 @@
+spacing = 1
+padding = 0
+separator = " "
+key_color = "Yellow"
+prefer_small_ascii = true
+
+[palette]
+type = "Light"
+glyph = "●"
+spacing = 2
+visible = true
+
+[bar]
+glyph = "●"
+symbol_open = '('
+symbol_close = ')'
+visible = false
+hide_delimiters = true

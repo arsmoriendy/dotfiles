@@ -49,7 +49,6 @@ exec "swaync"
 # xwayland indicator
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 
-default_border none
 smart_borders on
 
 output "*" {

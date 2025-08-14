@@ -1,5 +1,6 @@
 alias sctl = sudo systemctl
 alias la = ls -al
+# FIX: only works in current directory, cannot supply directory (e.g. `lam ../somedir`)
 alias lam = do {la | sort-by modified}
 alias che = chezmoi
 alias ches = do {chezmoi --path-style=absolute status . | detect columns -n}
@@ -15,3 +16,4 @@ alias subdel = sudo btrfs subvolume delete
 alias less = less -RIS
 alias lg = lazygit
 alias g = git
+alias v = nvim

@@ -9,5 +9,7 @@ return {
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
-  opts = {},
+  opts = {
+    completion = { menu = { border = "none" } },
+  },
 }

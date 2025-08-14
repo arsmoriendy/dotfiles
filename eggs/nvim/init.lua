@@ -36,6 +36,7 @@ opt.rtp:prepend(lazypath)
 opt.breakindent = true
 opt.scrolloff = 3
 opt.spelllang = "en,id"
+opt.winborder = "single"
 -- ]
 
 -- VARIABLES [
@@ -119,7 +120,7 @@ require("lazy").setup(
   "plugins", -- import plugins (:h lazy.nvim-lazy.nvim-structuring-your-plugins)
   {
     ui = {
-      border = "single",
+      border = vim.o.winborder,
       title = " Plugins ",
     },
     change_detection = {

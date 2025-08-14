@@ -13,7 +13,7 @@ return {
       separator = "",
     },
     win = {
-      border = "single",
+      border = vim.o.winborder,
     },
   },
 }

@@ -3,7 +3,7 @@ return {
   ft = "markdown",
   config = function()
     require("glow").setup({
-      border = "single",
+      border = vim.o.winborder,
     })
     vim.keymap.set("n", "<Leader>g", "<CMD>Glow<CR>")
   end,

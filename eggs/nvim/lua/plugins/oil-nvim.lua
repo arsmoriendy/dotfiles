@@ -52,7 +52,7 @@ return {
         ["~"] = false,
       },
       float = {
-        border = "single",
+        border = vim.o.winborder,
         max_width = 80,
       },
       view_options = {

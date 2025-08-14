@@ -260,7 +260,6 @@ function lib.float_prompt(opts)
     height = height,
     style = "minimal",
     title = (" %s "):format(opts.title),
-    border = "single",
     focusable = false,
     footer = footers,
   })

@@ -6,7 +6,7 @@ return {
       point_char = "⠶",
       point_color = "#7C6F64",
       win_opts = {
-        border = "single",
+        border = vim.o.winborder,
         title = "Color Picker",
       },
     })

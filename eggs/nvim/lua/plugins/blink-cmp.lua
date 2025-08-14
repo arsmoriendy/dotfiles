@@ -1,3 +1,9 @@
+vim.cmd([[
+highlight link BlinkCmpSignatureHelpBorder FloatBorder
+highlight link BlinkCmpDocBorder FloatBorder
+highlight link BlinkCmpDocSeparator FloatBorder
+]])
+
 return {
   "saghen/blink.cmp",
   event = "VeryLazy",

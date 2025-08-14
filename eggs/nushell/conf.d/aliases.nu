@@ -13,3 +13,5 @@ alias ip = ip -c=always
 alias snaproot = sudo btrfs subvolume snapshot -r / $"/.btrfs-snapshots/@_$(^date -Iseconds)"
 alias subdel = sudo btrfs subvolume delete
 alias less = less -RIS
+alias lg = lazygit
+alias g = git

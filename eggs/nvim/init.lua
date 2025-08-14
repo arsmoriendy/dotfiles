@@ -101,6 +101,10 @@ fthook({ "typst" }, function()
   vim.opt_local.spell = true
 end)
 
+fthook({ "markdown" }, function()
+  vim.opt_local.spell = true
+end)
+
 -- ]
 
 vim.diagnostic.config({

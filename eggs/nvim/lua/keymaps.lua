@@ -26,7 +26,7 @@ kms({ "n", "i", "x" }, "<C-M-r>", "<CMD>later 1f<CR>", { desc = "Redo to next sa
 -- ]
 
 -- quit
-kms("n", "<C-S-q>", function()
+local function quit()
   -- get modified files
   local modified_files = {}
   local bufs = vim.api.nvim_list_bufs()
@@ -50,7 +50,8 @@ kms("n", "<C-S-q>", function()
       { name = "[C]ancel", shortcut = "c", callback = "<C-w>q" },
     },
   })
-end, { desc = "Quit neovim" })
+end
+kms("n", "<Leader><Leader>", quit, { desc = "Quit neovim" })
 
 -- save / write file [
 kms({ "n", "v", "o" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })

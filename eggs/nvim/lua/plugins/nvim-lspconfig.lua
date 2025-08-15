@@ -115,6 +115,10 @@ local function config()
 
   local function setup_lsp(name)
     vim.lsp.config(name, vim.tbl_deep_extend("force", lspconfig.util.default_config, lspconfig_overrides[name] or {}))
+    -- disable lsp on diff mode
+    if vim.wo[vim.api.nvim_get_current_win()].diff then
+      return
+    end
     vim.lsp.enable(name)
   end
 
@@ -166,12 +170,6 @@ local function config()
 
   lib.kms("n", "<Leader>mr", reg_local_lsp, "Register local lsp")
   lib.kms("n", "<Leader>mu", unreg_local_lsp, "Unregister local lsp")
-
-  -- Return on diffmode, thus stops lsp from starting
-  -- TODO: turn this to an autocmd
-  if vim.wo[vim.api.nvim_get_current_win()].diff then
-    return
-  end
 end
 
 return {

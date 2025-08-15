@@ -26,5 +26,6 @@ end
 
 return {
   "lewis6991/gitsigns.nvim", -- git signs (next to number column) and git mappings
+  event = "VeryLazy",
   config = config,
 }

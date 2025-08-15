@@ -20,7 +20,7 @@ end
 
 return {
   "kevinhwang91/nvim-ufo", -- fold handling
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   dependencies = {
     "neovim/nvim-lspconfig",
     "kevinhwang91/promise-async",

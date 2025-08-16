@@ -68,4 +68,13 @@ export let eggs = #{
       targets: "~/.config/macchina",
       main_file: "macchina.toml",
     },
+    tmux: #{
+      targets: "~",
+      main_file: ".tmux.conf",
+      strategy: "merge",
+    },
+    alacritty: #{
+      targets: "~/.config/alacritty",
+      main_file: "alacritty.toml",
+    },
 };

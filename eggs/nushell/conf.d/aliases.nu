@@ -17,3 +17,4 @@ alias less = less -RIS
 alias lg = lazygit
 alias g = git
 alias v = nvim
+alias t = tmux

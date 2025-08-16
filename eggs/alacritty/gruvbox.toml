@@ -2,7 +2,7 @@
 cursor = '#ebdbb2'
 
 [colors.primary]
-background = '#1d2021'
+background = '#1b1b1b' # unoriginal gruvbox color, inherited from wezterm
 foreground = '#ebdbb2'
 
 [colors.normal]

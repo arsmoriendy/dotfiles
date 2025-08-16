@@ -2,7 +2,7 @@
 
 format = '''
 [┌\[ $directory \](─\[ $git_branch( $git_status)( $git_state) \])(─\[ $python \])(─\[ $nix_shell \])$fill(\[ $sudo \]─)\[ ($username$hostname )$shell $time $os\](─\[( $status)( $cmd_duration) \])
-└\[ ](bold red)
+└\[ ](bold bright-red)
 '''
 
 add_newline = false
@@ -21,7 +21,7 @@ style = "bright-cyan"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
-style = "bold blue"
+style = "bold bright-blue"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\)'
@@ -32,14 +32,14 @@ symbol = " "
 
 [nix_shell]
 format = '[$symbol$state( \($name\))]($style)'
-style = "bold cyan"
+style = "bold bright-cyan"
 symbol = "󱄅 "
 
 ##}
 
 [fill]
 symbol = "─"
-style = "bold red"
+style = "bold bright-red"
 
 ##{
 # R1 Right Modules
@@ -48,20 +48,20 @@ style = "bold red"
 [sudo]
 format = '[$symbol]($style)'
 symbol = ""
-style = "blink bold red"
+style = "blink bold bright-red"
 disabled = false
 
 [username]
-format = '([$user]($style)[@](bold cyan))'
-style_root = "blink bold yellow"
+format = '([$user]($style)[@](bold bright-cyan))'
+style_root = "blink bold bright-yellow"
 
 [hostname]
 format = '[$hostname]($style)'
-style = 'bold blue'
+style = 'bold bright-blue'
 
 [os]
 disabled = false
-style = "bold cyan"
+style = "bold bright-cyan"
 
 [os.symbols]
 NixOS = " "
@@ -72,14 +72,14 @@ Windows = " "
 [shell]
 format = '$indicator'
 disabled = false
-nu_indicator = "[ü](bold green)"
-fish_indicator = "[󰻳](bold blue)"
-bash_indicator = "[](bold green)"
+nu_indicator = "[ü](bold bright-green)"
+fish_indicator = "[󰻳](bold bright-blue)"
+bash_indicator = "[](bold bright-green)"
 
 [time]
 disabled = false
 format = "[$time]($style)"
-style = "bold purple"
+style = "bold bright-purple"
 
 [cmd_duration]
 format = '[$duration]($style)'

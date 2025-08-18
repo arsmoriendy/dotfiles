@@ -4,7 +4,10 @@ local function config()
   local b = lib.bind
   local map = vim.keymap.set
 
-  gs.setup()
+  gs.setup({
+    current_line_blame = true,
+    sign_priority = 20, -- prioritize over diagnostic signs
+  })
 
   map("n", "gn", b(gs.nav_hunk, "next"), { desc = "Go to next git hunk" })
   map("n", "gN", b(gs.nav_hunk, "prev"), { desc = "Go to previous git hunk" })
@@ -16,6 +19,7 @@ local function config()
     gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })
   end, { desc = "Stage selected line to git" })
 
+  -- TODO: fix delay
   map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
   map("x", "gr", function()
     gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })

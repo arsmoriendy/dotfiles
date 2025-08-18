@@ -37,6 +37,7 @@ opt.breakindent = true
 opt.scrolloff = 3
 opt.spelllang = "en,id"
 opt.winborder = "single"
+opt.signcolumn = "auto:2" -- allow diagnostics and gitsigns
 -- ]
 
 -- VARIABLES [
@@ -47,6 +48,7 @@ vim.g.omni_sql_no_default_maps = 1
 -- LUA APIS [
 vim.diagnostic.config({
   update_in_insert = true,
+  severity_sort = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",

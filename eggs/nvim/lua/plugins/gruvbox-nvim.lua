@@ -23,6 +23,9 @@ return {
         -- ]
       },
     })
+
+    vim.cmd("highlight link CursorLineSign CursorLine")
+
     vim.cmd("colorscheme gruvbox")
   end,
 }

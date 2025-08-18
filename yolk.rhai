@@ -32,7 +32,10 @@ export let eggs = #{
       main_file: "config.yml",
     },
     nvim: #{
-      targets: "~/.config/nvim",
+      targets: switch SYSTEM.platform {
+        "Windows" => "~/AppData/Local/nvim",
+        _ => "~/.config/nvim",
+      },
       main_file: "init.lua",
     },
     starship: #{
@@ -73,8 +76,8 @@ export let eggs = #{
       main_file: ".tmux.conf",
       strategy: "merge",
     },
-    alacritty: #{
-      targets: "~/.config/alacritty",
-      main_file: "alacritty.toml",
+    alacritty: switch SYSTEM.platform {
+      "Windows" => "~/AppData/Roaming/alacritty",
+      _ => "~/.config/alacritty",
     },
 };

@@ -47,7 +47,6 @@ vim.g.omni_sql_no_default_maps = 1
 -- LUA APIS [
 vim.diagnostic.config({
   update_in_insert = true,
-  virtual_lines = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",

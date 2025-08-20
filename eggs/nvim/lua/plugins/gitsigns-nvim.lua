@@ -19,7 +19,12 @@ local function config()
     gs.stage_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })
   end, { desc = "Stage selected line to git" })
 
-  -- TODO: fix delay
+  -- remove default neovim lsp keymaps that start with 'gr'
+  vim.keymap.del("n", "grr")
+  vim.keymap.del("n", "gri")
+  vim.keymap.del({ "n", "x" }, "gra")
+  vim.keymap.del("n", "grn")
+
   map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
   map("x", "gr", function()
     gs.reset_hunk({ vim.fn.line("'<"), vim.fn.line("'>") })

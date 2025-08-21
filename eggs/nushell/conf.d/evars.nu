@@ -5,6 +5,7 @@ load-env {
   # {% if SYSTEM.platform != "Windows" %}
   GOPATH: $"($env.HOME)/.go"
   SSH_AUTH_SOCK: $"($env.XDG_RUNTIME_DIR)/ssh-agent"
+  GPG_TTY: (tty)
   # {% end %}
   VIRTUAL_ENV_DISABLE_PROMPT: true
   PATH: ($env.PATH ++ [

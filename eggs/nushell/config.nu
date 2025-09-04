@@ -29,3 +29,6 @@ source ./conf.d/keybinds.nu
 source ./conf.d/zoxide.nu
 source ./conf.d/prompt.nu
 source ./conf.d/carapace.nu
+if ("./sysconfig.nu" | path exists) {
+  source ./sysconfig.nu
+}

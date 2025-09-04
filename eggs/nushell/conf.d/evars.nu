@@ -8,8 +8,10 @@ load-env {
   GPG_TTY: (tty)
   # {% end %}
   VIRTUAL_ENV_DISABLE_PROMPT: true
+  PNPM_HOME : ("~/.local/share/pnpm" | path expand)
   PATH: ($env.PATH ++ [
     ("~/.local/bin/" | path expand)
     ("~/.cargo/bin/" | path expand)
+    ("~/.local/share/pnpm" | path expand)
   ])
 }

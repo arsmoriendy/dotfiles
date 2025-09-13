@@ -80,6 +80,7 @@ local function config()
           includeInlayPropertyDeclarationTypeHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
           includeInlayEnumMemberValueHints = true,
+          importModuleSpecifierPreference = "non-relative",
         },
       },
     },

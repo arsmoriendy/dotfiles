@@ -37,7 +37,23 @@
     "orientation": "horizontal",
     "modules": ["battery#bat0", "battery#bat1"]
   },
+  "network#wifi-indicator": {
+    "interface": "wlp3s0",
+    "format": "󰤭",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-wifi": "{icon}"
+  },
+  "network#wifi-ssid": {
+    "interface": "wlp3s0",
+    "format": "",
+    "format-wifi": "{essid}",
+    "max-length": 24
+  },
+  "group/wifi": {
+    "orientation": "horizontal",
+    "modules": ["network#wifi-indicator", "network#wifi-ssid"]
+  },
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["group/batteries", "group/clocks"]
+  "modules-right": ["group/wifi", "group/batteries", "group/clocks"]
 }

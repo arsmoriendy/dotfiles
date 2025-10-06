@@ -1,0 +1,20 @@
+#wifi {
+  margin: $spacing;
+  border: 1px solid $border;
+}
+
+#network {
+  padding: $spacing;
+}
+
+#network.wifi-indicator {
+  background-color: $s_bgrd;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  &.disconnected {
+    background-color: $f_bgrd;
+  }
+}
+
+#network.wifi-ssid {
+}

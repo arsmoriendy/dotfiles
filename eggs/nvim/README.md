@@ -5,7 +5,6 @@ Requires neovim version >= 11
 - replace with `snacks.nvim`
   - explorer
   - git, gitbrowse
-  - indent
   - statuscolumn
   - zen
   - which-keys

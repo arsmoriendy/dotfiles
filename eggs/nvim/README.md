@@ -2,8 +2,6 @@ Requires neovim version >= 11
 
 ###### TODO
 
-- replace dressing.nvim
-  - telescope for `vim.ui.select`
 - replace with `snacks.nvim`
   - explorer
   - git, gitbrowse

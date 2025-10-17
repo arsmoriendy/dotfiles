@@ -4,6 +4,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    input = { enabled = true },
+    input = { enabled = true, win = { border = "single" }, prompt_pos = "left" },
   },
 }

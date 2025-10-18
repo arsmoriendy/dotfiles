@@ -32,6 +32,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.updatetime = 100
 opt.listchars:append("trail:•")
+opt.fillchars:append("eob: ")
 opt.rtp:prepend(lazypath)
 opt.breakindent = true
 opt.scrolloff = 3

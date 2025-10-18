@@ -106,12 +106,12 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  ---@type snacks.Config
-  opts = {
-    input = { enabled = true, win = { border = "single" }, prompt_pos = "left" },
-    indent = { enabled = true },
-  },
   config = function()
+    require("snacks").setup({
+      input = { enabled = true, win = { border = "single" }, prompt_pos = "left" },
+      indent = { enabled = true },
+    })
+
     for _, dh in ipairs(dashboard_highlights) do
       vim.api.nvim_set_hl(0, dh, { link = "NonText" })
     end

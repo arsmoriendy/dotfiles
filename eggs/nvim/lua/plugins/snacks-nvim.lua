@@ -18,36 +18,41 @@ local header = [[
                         ▜█▅██▅█▛                        ]]
 
 local subheader = function()
-  -- neovim version
-  local nvim_version_table = vim.version()
   -- if version is under 15
   -- convert version decimal to hex for 1 digit numbers
   -- else replace with "X" as placeholder
-  local parsed_major = nvim_version_table.major <= 15 and string.upper(string.format("%x ", nvim_version_table.major))
-    or " X"
-  local parsed_minor = nvim_version_table.minor <= 15 and string.upper(string.format("%x ", nvim_version_table.minor))
-    or " X"
-  local parsed_patch = nvim_version_table.patch <= 15 and string.upper(string.format("%x ", nvim_version_table.patch))
-    or " X"
+  local function parse_hex(i)
+    if i <= 15 then
+      return string.upper(string.format("%x", i))
+    end
+    return "X"
+  end
+
+  -- neovim version
+  local ver = vim.version()
+  local ver_str = string.format(" v%d.%d.%d", ver.major, ver.minor, ver.patch)
+  local hex_major = parse_hex(ver.major)
+  local hex_minor = parse_hex(ver.minor)
+  local hex_patch = parse_hex(ver.patch)
 
   local lazy_stats = require("lazy").stats()
-  local plugins = lazy_stats.loaded .. "/" .. lazy_stats.count
-  local startuptime = string.format("%.2f", lazy_stats.startuptime)
+  local plugins = string.format(" loaded %d/%d plugins", lazy_stats.loaded, lazy_stats.count)
+  local startuptime = string.format("󰀠 %.2fms startuptime", lazy_stats.startuptime)
+
+  local badge = {
+    "+ + + + +",
+    "+ N E O +",
+    "+ V I M +",
+    string.format("+ %s %s %s +", hex_major, hex_minor, hex_patch),
+    "+ + + + +",
+  }
 
   return table.concat({
-    "NEOVIM INFORMATION        + + + + +",
-    "------------------------- + N E O +",
-    string.format(
-      "%-28s",
-      " v" .. nvim_version_table.major .. "." .. nvim_version_table.minor .. "." .. nvim_version_table.patch
-    ) .. "+ V I M +",
-    string.format("%-29s", "󰒲 " .. plugins .. " plugins loaded")
-      .. "+ "
-      .. parsed_major
-      .. parsed_minor
-      .. parsed_patch
-      .. "+",
-    string.format("%-29s", "󰀠 " .. string.format("%.2f", startuptime) .. "ms startuptime") .. "+ + + + +",
+    "NEOVIM INFORMATION        " .. badge[1],
+    "------------------------- " .. badge[2],
+    string.format("%-28s", ver_str) .. badge[3],
+    string.format("%-28s", plugins) .. badge[4],
+    string.format("%-29s", startuptime) .. badge[5],
   }, "\n")
 end
 

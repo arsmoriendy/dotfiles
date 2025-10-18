@@ -89,32 +89,36 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-local dashboard_highlights = {
-  "SnacksDashboardDir",
-  "SnacksDashboardKey",
-  "SnacksDashboardDesc",
-  "SnacksDashboardFile",
-  "SnacksDashboardIcon",
-  "SnacksDashboardTitle",
-  "SnacksDashboardFooter",
-  "SnacksDashboardHeader",
-  "SnacksDashboardNormal",
-  "SnacksDashboardSpecial",
-  "SnacksDashboardTerminal",
-}
-
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   config = function()
     require("snacks").setup({
-      input = { enabled = true, win = { border = "single" }, prompt_pos = "left" },
+      input = { enabled = true, win = { border = "single" }, prompt_pos = "title" },
       indent = { enabled = true },
     })
+
+    local dashboard_highlights = {
+      "SnacksDashboardDir",
+      "SnacksDashboardKey",
+      "SnacksDashboardDesc",
+      "SnacksDashboardFile",
+      "SnacksDashboardIcon",
+      "SnacksDashboardTitle",
+      "SnacksDashboardFooter",
+      "SnacksDashboardHeader",
+      "SnacksDashboardNormal",
+      "SnacksDashboardSpecial",
+      "SnacksDashboardTerminal",
+    }
 
     for _, dh in ipairs(dashboard_highlights) do
       vim.api.nvim_set_hl(0, dh, { link = "NonText" })
     end
+
+    vim.api.nvim_set_hl(0, "SnacksInputBorder", { link = "FloatBorder" })
+    vim.api.nvim_set_hl(0, "SnacksInputNormal", { link = "NormalFloat" })
+    vim.api.nvim_set_hl(0, "SnacksInputTitle", { link = "NormalFloat" })
   end,
 }

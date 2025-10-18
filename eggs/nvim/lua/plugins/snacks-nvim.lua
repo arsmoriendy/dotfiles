@@ -60,6 +60,7 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimStarted",
   callback = function()
     Snacks.dashboard({
+      win = 1000,
       enabled = true,
       width = 35,
       preset = {

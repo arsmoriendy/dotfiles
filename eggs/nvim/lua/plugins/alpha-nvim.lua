@@ -1,5 +1,6 @@
 return {
   "goolord/alpha-nvim", -- startup splash screen
+  enabled = false,
   config = function()
     -- highlights
     vim.cmd([[

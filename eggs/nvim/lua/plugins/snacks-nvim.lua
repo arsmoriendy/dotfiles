@@ -60,11 +60,19 @@ local function key(desc, action)
   return { key = string.lower(string.sub(desc, 1, 1)), desc = desc, action = action }
 end
 
--- enable dashboard only after `LazyVimStarted`
+-- HACK: open dashboard after `LazyVimStarted`.
+-- This allows for startuptime and plugin count calculations
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimStarted",
   callback = function()
-    Snacks.dashboard({
+    -- don't open dashboard if nvim is started to open a file, e.g.:
+    -- `nvim foo.txt` -> land on foo.txt not dashboard
+    -- `nvim`         -> land dashboard
+    if vim.fn.argc() > 0 then
+      return
+    end
+
+    Snacks.dashboard.open({
       win = 1000,
       enabled = true,
       width = 35,

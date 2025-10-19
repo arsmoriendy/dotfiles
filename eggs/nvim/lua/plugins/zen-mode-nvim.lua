@@ -9,5 +9,6 @@ local opts = {
 return {
   "folke/zen-mode.nvim",
   event = "VeryLazy",
+  enabled = false,
   opts = opts,
 }

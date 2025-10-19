@@ -104,13 +104,16 @@ return {
         notification = { border = "single" },
         notification_history = { border = "single" },
         input = { border = "single" },
+        zen = { width = 80 },
       },
       input = { enabled = true, prompt_pos = "title" },
       indent = { enabled = true },
       notifier = { enabled = true },
+      zen = { enabled = true, toggles = { dim = false } },
     })
 
     vim.api.nvim_create_user_command("Notifications", Snacks.notifier.show_history, {})
+    vim.api.nvim_create_user_command("ZenMode", Snacks.zen.zen, {})
 
     -- highlights [
     local dashboard_highlights = {

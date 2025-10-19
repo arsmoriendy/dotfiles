@@ -3,6 +3,7 @@ local kms = lib.kms
 
 return {
   "rcarriga/nvim-notify", -- notification
+  enabled = false,
   config = function()
     ---@type table
     local notify = require("notify")

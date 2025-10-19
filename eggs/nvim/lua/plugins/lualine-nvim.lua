@@ -6,11 +6,11 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
-    "rcarriga/nvim-notify",
+    "folke/snacks.nvim", -- notifier
   },
   config = function()
     local navic = require("nvim-navic")
-    local notify = require("notify")
+    local ns = require("lib.notify-suspender")
     local nwd = require("nvim-web-devicons")
     local nwd_light = require("nvim-web-devicons.icons-light").icons_by_file_extension
     local nwd_dark = require("nvim-web-devicons.icons-default").icons_by_file_extension
@@ -56,7 +56,7 @@ return {
       function()
         local indicator = "󰂛"
         -- suppressed notifications count
-        local snc = #notify.supressed_notifications
+        local snc = #ns.supressed_notifications
 
         if snc > 0 then
           indicator = indicator .. " " .. snc
@@ -64,7 +64,7 @@ return {
         return indicator
       end,
       cond = function()
-        return notify.notification_is_supressed
+        return ns.notification_is_supressed
       end,
     }
 
@@ -109,6 +109,7 @@ return {
         "diff",
         {
           "diagnostics",
+          -- TODO:
           symbols = {
             error = "",
             warn = "",

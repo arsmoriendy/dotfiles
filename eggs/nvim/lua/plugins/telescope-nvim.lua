@@ -36,7 +36,6 @@ local function config()
     },
   })
   require("telescope").load_extension("ui-select")
-  require("telescope").load_extension("notify")
   if select(1, pcall(require, "fzf_lib")) == true then
     require("telescope").load_extension("fzf")
   end
@@ -76,7 +75,6 @@ return {
     },
     "nvim-tree/nvim-web-devicons",
     "nvim-telescope/telescope-ui-select.nvim",
-    "rcarriga/nvim-notify",
   },
   config = config,
 }

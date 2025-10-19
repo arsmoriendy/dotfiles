@@ -100,10 +100,19 @@ return {
   lazy = false,
   config = function()
     require("snacks").setup({
-      input = { enabled = true, win = { border = "single" }, prompt_pos = "title" },
+      styles = {
+        notification = { border = "single" },
+        notification_history = { border = "single" },
+        input = { border = "single" },
+      },
+      input = { enabled = true, prompt_pos = "title" },
       indent = { enabled = true },
+      notifier = { enabled = true },
     })
 
+    vim.api.nvim_create_user_command("Notifications", Snacks.notifier.show_history, {})
+
+    -- highlights [
     local dashboard_highlights = {
       "SnacksDashboardDir",
       "SnacksDashboardKey",
@@ -125,5 +134,7 @@ return {
     vim.api.nvim_set_hl(0, "SnacksInputBorder", { link = "FloatBorder" })
     vim.api.nvim_set_hl(0, "SnacksInputNormal", { link = "NormalFloat" })
     vim.api.nvim_set_hl(0, "SnacksInputTitle", { link = "NormalFloat" })
+    vim.api.nvim_set_hl(0, "SnacksNotifierHistory", { link = "NormalFloat" })
+    -- ]
   end,
 }

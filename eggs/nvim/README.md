@@ -10,5 +10,4 @@ Requires neovim version >= 11
   - which-keys
   - lazygit
   - scroll
-  - notify, notifier
 - integrate AI slop (codecompanion / avante)

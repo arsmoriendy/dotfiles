@@ -131,4 +131,6 @@ require("lazy").setup(
     },
   }
 )
+require("lib.notify-suspender")
+require("lib.lsp-notify")
 -- ]

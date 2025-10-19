@@ -1,5 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
+  "avante.nvim": { "branch": "main", "commit": "cc7a41262e4dc38003b7578c3553a75c0ec4b8d2" },
   "blame.nvim": { "branch": "main", "commit": "d5f4ad5c8ebca3caecc773dda5983709c5a5da8f" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "ccc.nvim": { "branch": "main", "commit": "9d1a256e006decc574789dfc7d628ca11644d4c2" },
@@ -11,6 +12,7 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },
   "neogit": { "branch": "master", "commit": "b8d840ed988ec3751ea2d9c9a66f635c3439564a" },
+  "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "16597180b4dd81fa3d23d88c4d2f1b49154f9479" },
   "nvim-dap": { "branch": "master", "commit": "a479e25ed5b5d331fb46ee4b9e160ff02ac64310" },

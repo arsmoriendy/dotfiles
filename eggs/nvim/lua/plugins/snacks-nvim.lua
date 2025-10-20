@@ -65,15 +65,7 @@ end
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimStarted",
   callback = function()
-    -- don't open dashboard if nvim is started to open a file, e.g.:
-    -- `nvim foo.txt` -> land on foo.txt not dashboard
-    if vim.fn.argc() > 0 then
-      return
-    end
-
-    -- dont dashboard when initial buffer has a name, e.g.:
-    -- `man tmux` -> land on tmux man
-    if vim.api.nvim_buf_get_name(0) ~= "" then
+    if require("lib.skip-splash").skip_splash() then
       return
     end
 

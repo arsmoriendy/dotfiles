@@ -3,6 +3,7 @@ local function config()
 
   local lllf = require("lib.lllf")
   local lib = require("lib")
+  local config_path = vim.uv.fs_realpath(vim.fn.stdpath("config"))
 
   -- extend default lspconfig
   lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
@@ -36,7 +37,6 @@ local function config()
     lua_ls = {
       on_init = function(client)
         local current_path = client.workspace_folders[1].name
-        local config_path = vim.uv.fs_realpath(vim.fn.stdpath("config"))
         if current_path == config_path then
           client.config.settings.Lua.workspace = {
             library = vim.api.nvim_list_runtime_paths(),
@@ -135,18 +135,38 @@ local function config()
   end
 
   local function reg_local_lsp()
-    vim.ui.input({ prompt = "Register local lsp:" }, function(name)
-      if name == nil then
+    local mason_registry_path = vim.fs.joinpath(config_path, "mason-registry.json")
+    local mason_registry_file = io.open(mason_registry_path)
+    if mason_registry_file == nil then
+      vim.notify("Mason registry file not found", "error")
+      return
+    end
+    local mason_registry = vim.fn.json_decode(mason_registry_file:read("*a"))
+
+    vim.ui.select(mason_registry, {
+      prompt = "Register local lsp:",
+      format_item = function(p)
+        -- return string.format("%s categories=%s", p.name, vim.inspect(p.categories))
+        return string.format("%s %s", p.name, vim.inspect(p.languages))
+      end,
+    }, function(p, _)
+      if p == nil then
         return
       end
 
-      err = lllf.register(name)
+      if p.neovim == nil or p.neovim.lspconfig == nil then
+        return
+      end
+
+      local lsp_name = p.neovim.lspconfig
+
+      err = lllf.register(lsp_name)
       if err ~= nil then
         lib.error(err, "Failed writting to local lsp list file, aborting.")
         return
       end
 
-      setup_lsp(name)
+      setup_lsp(lsp_name)
     end)
   end
 

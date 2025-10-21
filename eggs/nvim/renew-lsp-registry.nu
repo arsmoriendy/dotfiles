@@ -7,7 +7,12 @@ def pkg_url [p: string] {
   $"https://raw.githubusercontent.com/mason-org/mason-registry/main/packages/($p)/package.yaml"
 }
 
-$list | each {|package| curl (pkg_url $package) | from yaml} | to json | save tmp
+let list = $list | par-each {|package| curl (pkg_url $package) | from yaml}
 
-cp tmp mason-registry.json
+# filter lsps only
+let list = $list | where categories has "LSP"
+
+$list | to json | save tmp
+
+cp tmp lsp-registry.json
 rm tmp

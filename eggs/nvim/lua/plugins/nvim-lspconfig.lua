@@ -135,15 +135,15 @@ local function config()
   end
 
   local function reg_local_lsp()
-    local mason_registry_path = vim.fs.joinpath(config_path, "mason-registry.json")
-    local mason_registry_file = io.open(mason_registry_path)
-    if mason_registry_file == nil then
+    local lsp_registry_path = vim.fs.joinpath(config_path, "lsp-registry.json")
+    local lsp_registry_file = io.open(lsp_registry_path)
+    if lsp_registry_file == nil then
       vim.notify("Mason registry file not found", "error")
       return
     end
-    local mason_registry = vim.fn.json_decode(mason_registry_file:read("*a"))
+    local lsp_registry = vim.fn.json_decode(lsp_registry_file:read("*a"))
 
-    vim.ui.select(mason_registry, {
+    vim.ui.select(lsp_registry, {
       prompt = "Register local lsp:",
       format_item = function(p)
         -- return string.format("%s categories=%s", p.name, vim.inspect(p.categories))

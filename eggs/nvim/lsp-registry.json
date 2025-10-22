@@ -123,7 +123,8 @@
     },
     "bin": {
       "ada_language_server": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 274
   },
   {
     "name": "aiken",
@@ -165,7 +166,8 @@
     },
     "bin": {
       "aiken": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 556
   },
   {
     "name": "air",
@@ -224,7 +226,8 @@
     },
     "neovim": {
       "lspconfig": "air"
-    }
+    },
+    "github_stars": 343
   },
   {
     "name": "angular-language-server",
@@ -318,7 +321,8 @@
     },
     "neovim": {
       "lspconfig": "angularls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ansible-language-server",
@@ -341,7 +345,8 @@
     },
     "neovim": {
       "lspconfig": "ansiblels"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "antlers-language-server",
@@ -364,7 +369,8 @@
     },
     "neovim": {
       "lspconfig": "antlersls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "apex-language-server",
@@ -390,7 +396,8 @@
     },
     "share": {
       "apex-language-server/apex-jorje-lsp.jar": "extension/dist/apex-jorje-lsp.jar"
-    }
+    },
+    "github_stars": 982
   },
   {
     "name": "arduino-language-server",
@@ -448,7 +455,8 @@
     },
     "neovim": {
       "lspconfig": "arduino_language_server"
-    }
+    },
+    "github_stars": 167
   },
   {
     "name": "asm-lsp",
@@ -474,7 +482,8 @@
     },
     "neovim": {
       "lspconfig": "asm_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ast-grep",
@@ -515,7 +524,8 @@
     },
     "neovim": {
       "lspconfig": "ast_grep"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "astro-language-server",
@@ -545,7 +555,8 @@
     },
     "neovim": {
       "lspconfig": "astro"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "autotools-language-server",
@@ -566,7 +577,8 @@
     },
     "neovim": {
       "lspconfig": "autotools_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "awk-language-server",
@@ -592,7 +604,8 @@
     },
     "neovim": {
       "lspconfig": "awk_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "azure-pipelines-language-server",
@@ -615,7 +628,8 @@
     },
     "neovim": {
       "lspconfig": "azure_pipelines_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "bacon-ls",
@@ -638,7 +652,8 @@
     },
     "neovim": {
       "lspconfig": "bacon_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "basedpyright",
@@ -665,7 +680,8 @@
     },
     "neovim": {
       "lspconfig": "basedpyright"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "bash-language-server",
@@ -695,7 +711,8 @@
     },
     "neovim": {
       "lspconfig": "bashls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "basics-language-server",
@@ -716,7 +733,8 @@
     },
     "bin": {
       "basics-language-server": "npm:basics-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "bazelrc-lsp",
@@ -756,7 +774,8 @@
     },
     "neovim": {
       "lspconfig": "bazelrc_lsp"
-    }
+    },
+    "github_stars": 28
   },
   {
     "name": "beancount-language-server",
@@ -779,7 +798,8 @@
     },
     "neovim": {
       "lspconfig": "beancount"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "bicep-lsp",
@@ -805,7 +825,8 @@
     },
     "neovim": {
       "lspconfig": "bicep"
-    }
+    },
+    "github_stars": 3475
   },
   {
     "name": "biome",
@@ -835,7 +856,8 @@
     },
     "neovim": {
       "lspconfig": "biome"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "brighterscript",
@@ -859,7 +881,8 @@
     },
     "neovim": {
       "lspconfig": "bright_script"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "bsl-language-server",
@@ -886,7 +909,8 @@
     },
     "neovim": {
       "lspconfig": "bsl_ls"
-    }
+    },
+    "github_stars": 352
   },
   {
     "name": "buf-language-server",
@@ -911,7 +935,8 @@
     "bin": {
       "bufls": "golang:bufls"
     },
-    "ci_skip": true
+    "ci_skip": true,
+    "github_stars": null
   },
   {
     "name": "buf",
@@ -962,7 +987,8 @@
     },
     "neovim": {
       "lspconfig": "buf_ls"
-    }
+    },
+    "github_stars": 10401
   },
   {
     "name": "bzl",
@@ -1016,7 +1042,8 @@
     },
     "neovim": {
       "lspconfig": "bzl"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "c3-lsp",
@@ -1053,7 +1080,8 @@
     },
     "bin": {
       "c3lsp": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 135
   },
   {
     "name": "cairo-language-server",
@@ -1076,7 +1104,8 @@
     },
     "neovim": {
       "lspconfig": "cairo_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cds-lsp",
@@ -1098,7 +1127,8 @@
     "bin": {
       "cds-lsp": "npm:cds-lsp",
       "format-cds": "npm:format-cds"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "circleci-yaml-language-server",
@@ -1163,7 +1193,8 @@
     },
     "share": {
       "circleci-yaml-language-server/schema.json": "schema.json"
-    }
+    },
+    "github_stars": 27
   },
   {
     "name": "circom-lsp",
@@ -1183,7 +1214,8 @@
     },
     "bin": {
       "circom-lsp": "cargo:circom-lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "clangd",
@@ -1230,7 +1262,8 @@
     },
     "neovim": {
       "lspconfig": "clangd"
-    }
+    },
+    "github_stars": 1959
   },
   {
     "name": "clarinet",
@@ -1268,7 +1301,8 @@
     },
     "bin": {
       "clarinet": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "clarity-lsp",
@@ -1316,7 +1350,8 @@
     "ci_skip": true,
     "neovim": {
       "lspconfig": "clarity_lsp"
-    }
+    },
+    "github_stars": 5
   },
   {
     "name": "clojure-lsp",
@@ -1372,7 +1407,8 @@
     },
     "neovim": {
       "lspconfig": "clojure_lsp"
-    }
+    },
+    "github_stars": 1259
   },
   {
     "name": "cmake-language-server",
@@ -1395,7 +1431,8 @@
     },
     "neovim": {
       "lspconfig": "cmake"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cobol-language-support",
@@ -1453,7 +1490,8 @@
     },
     "neovim": {
       "lspconfig": "cobol_ls"
-    }
+    },
+    "github_stars": 101
   },
   {
     "name": "codebook",
@@ -1518,7 +1556,8 @@
     },
     "neovim": {
       "lspconfig": "codebook"
-    }
+    },
+    "github_stars": 387
   },
   {
     "name": "codeql",
@@ -1561,7 +1600,8 @@
     },
     "neovim": {
       "lspconfig": "codeqlls"
-    }
+    },
+    "github_stars": 885
   },
   {
     "name": "coffeesense-language-server",
@@ -1581,7 +1621,8 @@
     },
     "bin": {
       "coffeesense-language-server": "npm:coffeesense-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "contextive",
@@ -1631,7 +1672,8 @@
     },
     "bin": {
       "Contextive.LanguageServer": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 331
   },
   {
     "name": "copilot-language-server",
@@ -1645,14 +1687,15 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40github/copilot-language-server@1.386.0"
+      "id": "pkg:npm/%40github/copilot-language-server@1.387.0"
     },
     "bin": {
       "copilot-language-server": "npm:copilot-language-server"
     },
     "neovim": {
       "lspconfig": "copilot"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "coq-lsp",
@@ -1675,7 +1718,8 @@
     },
     "neovim": {
       "lspconfig": "coq_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cql-language-server",
@@ -1703,7 +1747,8 @@
     },
     "share": {
       "cql/cql-ls-service.jar": "cql-ls-service.jar"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "crystalline",
@@ -1743,7 +1788,8 @@
     },
     "neovim": {
       "lspconfig": "crystalline"
-    }
+    },
+    "github_stars": 498
   },
   {
     "name": "csharp-language-server",
@@ -1766,7 +1812,8 @@
     },
     "neovim": {
       "lspconfig": "csharp_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cspell-lsp",
@@ -1787,7 +1834,8 @@
     },
     "neovim": {
       "lspconfig": "cspell_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "css-lsp",
@@ -1815,7 +1863,8 @@
     },
     "neovim": {
       "lspconfig": "cssls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "css-variables-language-server",
@@ -1840,7 +1889,8 @@
     },
     "neovim": {
       "lspconfig": "css_variables"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cssmodules-language-server",
@@ -1863,7 +1913,8 @@
     },
     "neovim": {
       "lspconfig": "cssmodules_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cucumber-language-server",
@@ -1886,7 +1937,8 @@
     },
     "neovim": {
       "lspconfig": "cucumber_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cuelsp",
@@ -1909,7 +1961,8 @@
     },
     "neovim": {
       "lspconfig": "dagger"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cuepls",
@@ -1933,7 +1986,8 @@
     },
     "bin": {
       "cuepls": "golang:cuepls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "custom-elements-languageserver",
@@ -1957,7 +2011,8 @@
     },
     "neovim": {
       "lspconfig": "custom_elements_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "cypher-language-server",
@@ -1980,7 +2035,8 @@
     },
     "neovim": {
       "lspconfig": "cypher_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "dcm",
@@ -2024,7 +2080,8 @@
     },
     "bin": {
       "dcm": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 3
   },
   {
     "name": "deno",
@@ -2080,7 +2137,8 @@
     },
     "neovim": {
       "lspconfig": "denols"
-    }
+    },
+    "github_stars": 104825
   },
   {
     "name": "dhall-lsp",
@@ -2123,7 +2181,8 @@
     },
     "neovim": {
       "lspconfig": "dhall_lsp_server"
-    }
+    },
+    "github_stars": 948
   },
   {
     "name": "diagnostic-languageserver",
@@ -2144,7 +2203,8 @@
     },
     "neovim": {
       "lspconfig": "diagnosticls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "digestif",
@@ -2167,7 +2227,8 @@
     },
     "ci_skip": [
       "win_x64"
-    ]
+    ],
+    "github_stars": null
   },
   {
     "name": "django-template-lsp",
@@ -2189,7 +2250,8 @@
     },
     "bin": {
       "djlsp": "pypi:django-template-lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "docker-compose-language-service",
@@ -2212,7 +2274,8 @@
     },
     "neovim": {
       "lspconfig": "docker_compose_language_service"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "docker-language-server",
@@ -2269,7 +2332,8 @@
     },
     "neovim": {
       "lspconfig": "docker_language_server"
-    }
+    },
+    "github_stars": 105
   },
   {
     "name": "dockerfile-language-server",
@@ -2292,7 +2356,8 @@
     },
     "neovim": {
       "lspconfig": "dockerls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "dot-language-server",
@@ -2315,7 +2380,8 @@
     },
     "neovim": {
       "lspconfig": "dotls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "dprint",
@@ -2369,7 +2435,8 @@
     },
     "neovim": {
       "lspconfig": "dprint"
-    }
+    },
+    "github_stars": 3633
   },
   {
     "name": "drools-lsp",
@@ -2392,7 +2459,8 @@
     },
     "share": {
       "drools-lsp/drools-lsp-server-jar-with-dependencies.jar": "drools-lsp-server-jar-with-dependencies.jar"
-    }
+    },
+    "github_stars": 14
   },
   {
     "name": "earthlyls",
@@ -2442,7 +2510,8 @@
     },
     "neovim": {
       "lspconfig": "earthlyls"
-    }
+    },
+    "github_stars": 20
   },
   {
     "name": "efm",
@@ -2498,7 +2567,8 @@
     },
     "neovim": {
       "lspconfig": "efm"
-    }
+    },
+    "github_stars": 1491
   },
   {
     "name": "elixir-ls",
@@ -2590,7 +2660,8 @@
     },
     "neovim": {
       "lspconfig": "elixirls"
-    }
+    },
+    "github_stars": 1706
   },
   {
     "name": "elm-language-server",
@@ -2616,7 +2687,8 @@
     },
     "neovim": {
       "lspconfig": "elmls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "elp",
@@ -2633,7 +2705,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/WhatsApp/erlang-language-platform@2025-10-13",
+      "id": "pkg:github/WhatsApp/erlang-language-platform@2025-10-21",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -2665,7 +2737,8 @@
     },
     "neovim": {
       "lspconfig": "elp"
-    }
+    },
+    "github_stars": 338
   },
   {
     "name": "ember-language-server",
@@ -2688,7 +2761,8 @@
     },
     "neovim": {
       "lspconfig": "ember"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "emmet-language-server",
@@ -2711,7 +2785,8 @@
     },
     "neovim": {
       "lspconfig": "emmet_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "emmet-ls",
@@ -2734,7 +2809,8 @@
     },
     "neovim": {
       "lspconfig": "emmet_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "emmylua_ls",
@@ -2804,7 +2880,8 @@
     },
     "neovim": {
       "lspconfig": "emmylua_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "erg-language-server",
@@ -2850,7 +2927,8 @@
     },
     "neovim": {
       "lspconfig": "erg_language_server"
-    }
+    },
+    "github_stars": 8
   },
   {
     "name": "erg",
@@ -2894,7 +2972,8 @@
     },
     "bin": {
       "erg": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 2832
   },
   {
     "name": "erlang-ls",
@@ -2929,7 +3008,8 @@
     },
     "neovim": {
       "lspconfig": "erlangls"
-    }
+    },
+    "github_stars": 658
   },
   {
     "name": "esbonio",
@@ -2952,7 +3032,8 @@
     },
     "neovim": {
       "lspconfig": "esbonio"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "eslint-lsp",
@@ -2979,7 +3060,8 @@
     },
     "neovim": {
       "lspconfig": "eslint"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "expert",
@@ -3029,7 +3111,8 @@
     },
     "neovim": {
       "lspconfig": "expert"
-    }
+    },
+    "github_stars": 1589
   },
   {
     "name": "facility-language-server",
@@ -3058,7 +3141,8 @@
     },
     "neovim": {
       "lspconfig": "facility_language_server"
-    }
+    },
+    "github_stars": 0
   },
   {
     "name": "fennel-language-server",
@@ -3081,7 +3165,8 @@
     },
     "neovim": {
       "lspconfig": "fennel_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "fennel-ls",
@@ -3107,7 +3192,8 @@
     },
     "ci_skip": [
       "win_x64"
-    ]
+    ],
+    "github_stars": null
   },
   {
     "name": "fish-lsp",
@@ -3130,7 +3216,8 @@
     },
     "neovim": {
       "lspconfig": "fish_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "flux-lsp",
@@ -3156,7 +3243,8 @@
     },
     "neovim": {
       "lspconfig": "flux_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "foam-language-server",
@@ -3179,7 +3267,8 @@
     },
     "neovim": {
       "lspconfig": "foam_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "fortls",
@@ -3202,7 +3291,8 @@
     },
     "neovim": {
       "lspconfig": "fortls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "fsautocomplete",
@@ -3228,7 +3318,8 @@
     },
     "neovim": {
       "lspconfig": "fsautocomplete"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "gh-actions-language-server",
@@ -3251,7 +3342,8 @@
     },
     "neovim": {
       "lspconfig": "gh_actions_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ginko_ls",
@@ -3291,7 +3383,8 @@
     },
     "neovim": {
       "lspconfig": "ginko_ls"
-    }
+    },
+    "github_stars": 24
   },
   {
     "name": "gitlab-ci-ls",
@@ -3317,7 +3410,8 @@
     },
     "neovim": {
       "lspconfig": "gitlab_ci_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "glint",
@@ -3348,7 +3442,8 @@
     },
     "neovim": {
       "lspconfig": "glint"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "glsl_analyzer",
@@ -3403,7 +3498,8 @@
     },
     "neovim": {
       "lspconfig": "glsl_analyzer"
-    }
+    },
+    "github_stars": 306
   },
   {
     "name": "glslls",
@@ -3439,7 +3535,8 @@
     "ci_skip": true,
     "neovim": {
       "lspconfig": "glslls"
-    }
+    },
+    "github_stars": 191
   },
   {
     "name": "golangci-lint-langserver",
@@ -3462,7 +3559,8 @@
     },
     "neovim": {
       "lspconfig": "golangci_lint_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "gopls",
@@ -3485,7 +3583,8 @@
     },
     "neovim": {
       "lspconfig": "gopls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "gradle-language-server",
@@ -3514,7 +3613,8 @@
     },
     "neovim": {
       "lspconfig": "gradle_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "grammarly-languageserver",
@@ -3541,7 +3641,8 @@
     },
     "neovim": {
       "lspconfig": "grammarly"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "graphql-language-service-cli",
@@ -3564,7 +3665,8 @@
     },
     "neovim": {
       "lspconfig": "graphql"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "groovy-language-server",
@@ -3593,7 +3695,8 @@
     },
     "neovim": {
       "lspconfig": "groovyls"
-    }
+    },
+    "github_stars": 208
   },
   {
     "name": "harper-ls",
@@ -3665,7 +3768,8 @@
     },
     "neovim": {
       "lspconfig": "harper_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "haskell-language-server",
@@ -3727,7 +3831,8 @@
     },
     "neovim": {
       "lspconfig": "hls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "haxe-language-server",
@@ -3753,7 +3858,8 @@
     },
     "neovim": {
       "lspconfig": "haxe_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "hdl-checker",
@@ -3778,7 +3884,8 @@
     },
     "neovim": {
       "lspconfig": "hdl_checker"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "helm-ls",
@@ -3854,7 +3961,8 @@
     },
     "neovim": {
       "lspconfig": "helm_ls"
-    }
+    },
+    "github_stars": 355
   },
   {
     "name": "herb-language-server",
@@ -3881,7 +3989,8 @@
     },
     "neovim": {
       "lspconfig": "herb_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "hoon-language-server",
@@ -3904,7 +4013,8 @@
     },
     "neovim": {
       "lspconfig": "hoon_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "html-lsp",
@@ -3930,7 +4040,8 @@
     },
     "neovim": {
       "lspconfig": "html"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "htmx-lsp",
@@ -3953,7 +4064,8 @@
     },
     "neovim": {
       "lspconfig": "htmx"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "hydra-lsp",
@@ -3976,7 +4088,8 @@
     },
     "neovim": {
       "lspconfig": "hydra_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "hyprls",
@@ -3999,7 +4112,8 @@
     },
     "neovim": {
       "lspconfig": "hyprls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "intelephense",
@@ -4025,7 +4139,8 @@
     },
     "neovim": {
       "lspconfig": "intelephense"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "java-language-server",
@@ -4082,7 +4197,8 @@
     },
     "neovim": {
       "lspconfig": "java_language_server"
-    }
+    },
+    "github_stars": 732
   },
   {
     "name": "jayvee-language-server",
@@ -4108,7 +4224,8 @@
     },
     "bin": {
       "jayvee-language-server": "node:extension/language-server.cjs"
-    }
+    },
+    "github_stars": 183
   },
   {
     "name": "jdtls",
@@ -4169,7 +4286,8 @@
     },
     "neovim": {
       "lspconfig": "jdtls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "jedi-language-server",
@@ -4192,7 +4310,8 @@
     },
     "neovim": {
       "lspconfig": "jedi_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "jinja-lsp",
@@ -4222,7 +4341,8 @@
     },
     "neovim": {
       "lspconfig": "jinja_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "jq-lsp",
@@ -4245,7 +4365,8 @@
     },
     "neovim": {
       "lspconfig": "jqls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "json-lsp",
@@ -4271,7 +4392,8 @@
     },
     "neovim": {
       "lspconfig": "jsonls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "jsonld-lsp",
@@ -4311,7 +4433,8 @@
     },
     "bin": {
       "jsonld-language-server": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "jsonnet-language-server",
@@ -4334,7 +4457,8 @@
     },
     "neovim": {
       "lspconfig": "jsonnet_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "julia-lsp",
@@ -4372,7 +4496,8 @@
     },
     "neovim": {
       "lspconfig": "julials"
-    }
+    },
+    "github_stars": 2
   },
   {
     "name": "just-lsp",
@@ -4452,7 +4577,8 @@
     },
     "neovim": {
       "lspconfig": "just"
-    }
+    },
+    "github_stars": 127
   },
   {
     "name": "kcl",
@@ -4513,7 +4639,8 @@
     },
     "neovim": {
       "lspconfig": "kcl"
-    }
+    },
+    "github_stars": 2178
   },
   {
     "name": "kos-language-server",
@@ -4535,7 +4662,8 @@
     },
     "bin": {
       "kls": "npm:kls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "kotlin-language-server",
@@ -4573,7 +4701,8 @@
     },
     "neovim": {
       "lspconfig": "kotlin_language_server"
-    }
+    },
+    "github_stars": 1934
   },
   {
     "name": "kotlin-lsp",
@@ -4605,7 +4734,8 @@
     },
     "neovim": {
       "lspconfig": "kotlin_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "language-server-bitbake",
@@ -4625,7 +4755,8 @@
     },
     "bin": {
       "language-server-bitbake": "npm:language-server-bitbake"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "laravel-ls",
@@ -4658,7 +4789,8 @@
     },
     "neovim": {
       "lspconfig": "laravel_ls"
-    }
+    },
+    "github_stars": 203
   },
   {
     "name": "lean-language-server",
@@ -4678,7 +4810,8 @@
     },
     "bin": {
       "lean-language-server": "npm:lean-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "lelwel",
@@ -4703,7 +4836,8 @@
     },
     "neovim": {
       "lspconfig": "lelwel_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "lemminx",
@@ -4751,7 +4885,8 @@
     },
     "neovim": {
       "lspconfig": "lemminx"
-    }
+    },
+    "github_stars": 292
   },
   {
     "name": "lexical",
@@ -4781,7 +4916,8 @@
     },
     "neovim": {
       "lspconfig": "lexical"
-    }
+    },
+    "github_stars": 966
   },
   {
     "name": "llm-ls",
@@ -4836,7 +4972,8 @@
     },
     "bin": {
       "llm-ls": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 821
   },
   {
     "name": "ltex-ls-plus",
@@ -4924,7 +5061,8 @@
     },
     "neovim": {
       "lspconfig": "ltex_plus"
-    }
+    },
+    "github_stars": 173
   },
   {
     "name": "ltex-ls",
@@ -4980,7 +5118,8 @@
     },
     "neovim": {
       "lspconfig": "ltex"
-    }
+    },
+    "github_stars": 892
   },
   {
     "name": "lua-language-server",
@@ -5107,7 +5246,8 @@
     },
     "neovim": {
       "lspconfig": "lua_ls"
-    }
+    },
+    "github_stars": 3929
   },
   {
     "name": "luau-lsp",
@@ -5189,7 +5329,8 @@
     },
     "neovim": {
       "lspconfig": "luau_lsp"
-    }
+    },
+    "github_stars": 370
   },
   {
     "name": "lwc-language-server",
@@ -5213,7 +5354,8 @@
     },
     "neovim": {
       "lspconfig": "lwc_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "m68k-lsp-server",
@@ -5236,7 +5378,8 @@
     },
     "bin": {
       "m68k-lsp-server": "npm:m68k-lsp-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "markdown-oxide",
@@ -5286,7 +5429,8 @@
     },
     "neovim": {
       "lspconfig": "markdown_oxide"
-    }
+    },
+    "github_stars": 1689
   },
   {
     "name": "marksman",
@@ -5330,7 +5474,8 @@
     },
     "neovim": {
       "lspconfig": "marksman"
-    }
+    },
+    "github_stars": 2758
   },
   {
     "name": "matlab-language-server",
@@ -5356,7 +5501,8 @@
     },
     "neovim": {
       "lspconfig": "matlab_ls"
-    }
+    },
+    "github_stars": 103
   },
   {
     "name": "mdx-analyzer",
@@ -5379,7 +5525,8 @@
     },
     "neovim": {
       "lspconfig": "mdx_analyzer"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "mesonlsp",
@@ -5424,7 +5571,8 @@
     },
     "neovim": {
       "lspconfig": "mesonlsp"
-    }
+    },
+    "github_stars": 78
   },
   {
     "name": "metamath-zero-lsp",
@@ -5463,7 +5611,8 @@
     "ci_skip": true,
     "neovim": {
       "lspconfig": "mm0_ls"
-    }
+    },
+    "github_stars": 357
   },
   {
     "name": "millet",
@@ -5522,7 +5671,8 @@
     },
     "neovim": {
       "lspconfig": "millet"
-    }
+    },
+    "github_stars": 229
   },
   {
     "name": "motoko-lsp",
@@ -5551,7 +5701,8 @@
     },
     "neovim": {
       "lspconfig": "motoko_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "move-analyzer",
@@ -5574,7 +5725,8 @@
     },
     "neovim": {
       "lspconfig": "move_analyzer"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "mutt-language-server",
@@ -5597,7 +5749,8 @@
     },
     "neovim": {
       "lspconfig": "mutt_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "neocmakelsp",
@@ -5642,7 +5795,8 @@
     },
     "neovim": {
       "lspconfig": "neocmake"
-    }
+    },
+    "github_stars": 301
   },
   {
     "name": "nextflow-language-server",
@@ -5671,7 +5825,8 @@
     },
     "neovim": {
       "lspconfig": "nextflow_ls"
-    }
+    },
+    "github_stars": 24
   },
   {
     "name": "nextls",
@@ -5716,7 +5871,8 @@
     },
     "neovim": {
       "lspconfig": "nextls"
-    }
+    },
+    "github_stars": 734
   },
   {
     "name": "nginx-language-server",
@@ -5739,7 +5895,8 @@
     },
     "neovim": {
       "lspconfig": "nginx_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "nickel-lang-lsp",
@@ -5765,7 +5922,8 @@
     },
     "neovim": {
       "lspconfig": "nickel_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "nil",
@@ -5789,7 +5947,8 @@
     },
     "neovim": {
       "lspconfig": "nil_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "nimlangserver",
@@ -5882,7 +6041,8 @@
     },
     "neovim": {
       "lspconfig": "nim_langserver"
-    }
+    },
+    "github_stars": 266
   },
   {
     "name": "nimlsp",
@@ -5917,7 +6077,8 @@
     },
     "neovim": {
       "lspconfig": "nimls"
-    }
+    },
+    "github_stars": 433
   },
   {
     "name": "nomicfoundation-solidity-language-server",
@@ -5943,7 +6104,8 @@
     },
     "neovim": {
       "lspconfig": "solidity_ls_nomicfoundation"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ntt",
@@ -5991,7 +6153,8 @@
     },
     "bin": {
       "ntt": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 81
   },
   {
     "name": "nxls",
@@ -6011,7 +6174,8 @@
     },
     "bin": {
       "nxls": "npm:nxls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ocaml-lsp",
@@ -6034,7 +6198,8 @@
     },
     "neovim": {
       "lspconfig": "ocamllsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ols",
@@ -6092,7 +6257,8 @@
     },
     "neovim": {
       "lspconfig": "ols"
-    }
+    },
+    "github_stars": 781
   },
   {
     "name": "omnisharp-mono",
@@ -6145,7 +6311,8 @@
     },
     "neovim": {
       "lspconfig": "omnisharp_mono"
-    }
+    },
+    "github_stars": 1943
   },
   {
     "name": "omnisharp",
@@ -6197,7 +6364,8 @@
     },
     "neovim": {
       "lspconfig": "omnisharp"
-    }
+    },
+    "github_stars": 1943
   },
   {
     "name": "opencl-language-server",
@@ -6247,7 +6415,8 @@
     },
     "neovim": {
       "lspconfig": "opencl_ls"
-    }
+    },
+    "github_stars": 12
   },
   {
     "name": "openedge-language-server",
@@ -6274,7 +6443,8 @@
     },
     "share": {
       "openedge/abl-lsp.jar": "abl-lsp.jar"
-    }
+    },
+    "github_stars": 41
   },
   {
     "name": "openscad-language-server",
@@ -6295,7 +6465,8 @@
     },
     "bin": {
       "openscad-language-server": "cargo:openscad-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "openscad-lsp",
@@ -6318,7 +6489,8 @@
     },
     "neovim": {
       "lspconfig": "openscad_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "oxlint",
@@ -6347,7 +6519,8 @@
     },
     "neovim": {
       "lspconfig": "oxlint"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pbls",
@@ -6370,7 +6543,8 @@
     },
     "neovim": {
       "lspconfig": "pbls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "perlnavigator",
@@ -6396,7 +6570,8 @@
     },
     "neovim": {
       "lspconfig": "perlnavigator"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pest-language-server",
@@ -6422,7 +6597,8 @@
     },
     "neovim": {
       "lspconfig": "pest_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "phpactor",
@@ -6448,7 +6624,8 @@
     },
     "neovim": {
       "lspconfig": "phpactor"
-    }
+    },
+    "github_stars": 1723
   },
   {
     "name": "pico8-ls",
@@ -6477,7 +6654,8 @@
     },
     "neovim": {
       "lspconfig": "pico8_ls"
-    }
+    },
+    "github_stars": 92
   },
   {
     "name": "pkgbuild-language-server",
@@ -6505,7 +6683,8 @@
     "ci_skip": true,
     "neovim": {
       "lspconfig": "pkgbuild_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pkl-lsp",
@@ -6531,7 +6710,8 @@
     },
     "bin": {
       "pkl-lsp": "java-jar:{{source.asset.file}}"
-    }
+    },
+    "github_stars": 60
   },
   {
     "name": "postgrestools",
@@ -6582,7 +6762,8 @@
     },
     "neovim": {
       "lspconfig": "postgres_lsp"
-    }
+    },
+    "github_stars": 5071
   },
   {
     "name": "powershell-editor-services",
@@ -6608,7 +6789,8 @@
     },
     "neovim": {
       "lspconfig": "powershell_es"
-    }
+    },
+    "github_stars": 717
   },
   {
     "name": "prisma-language-server",
@@ -6634,7 +6816,8 @@
     },
     "neovim": {
       "lspconfig": "prismals"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "prosemd-lsp",
@@ -6674,7 +6857,8 @@
     },
     "neovim": {
       "lspconfig": "prosemd_lsp"
-    }
+    },
+    "github_stars": 176
   },
   {
     "name": "protols",
@@ -6697,7 +6881,8 @@
     },
     "neovim": {
       "lspconfig": "protols"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "psalm",
@@ -6730,7 +6915,8 @@
     ],
     "neovim": {
       "lspconfig": "psalm"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pug-lsp",
@@ -6777,7 +6963,8 @@
     },
     "bin": {
       "pug-lsp": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 9
   },
   {
     "name": "puppet-editor-services",
@@ -6808,7 +6995,8 @@
     },
     "neovim": {
       "lspconfig": "puppet"
-    }
+    },
+    "github_stars": 48
   },
   {
     "name": "purescript-language-server",
@@ -6834,7 +7022,8 @@
     },
     "neovim": {
       "lspconfig": "purescriptls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pylyzer",
@@ -6889,7 +7078,8 @@
     },
     "neovim": {
       "lspconfig": "pylyzer"
-    }
+    },
+    "github_stars": 2866
   },
   {
     "name": "pyre",
@@ -6913,7 +7103,8 @@
     },
     "neovim": {
       "lspconfig": "pyre"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pyrefly",
@@ -6940,7 +7131,8 @@
     },
     "neovim": {
       "lspconfig": "pyrefly"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "pyright",
@@ -6967,7 +7159,8 @@
     },
     "neovim": {
       "lspconfig": "pyright"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "python-lsp-server",
@@ -6993,7 +7186,8 @@
     },
     "neovim": {
       "lspconfig": "pylsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "qmlls",
@@ -7037,7 +7231,8 @@
     },
     "neovim": {
       "lspconfig": "qmlls"
-    }
+    },
+    "github_stars": 0
   },
   {
     "name": "quick-lint-js",
@@ -7128,7 +7323,8 @@
     },
     "neovim": {
       "lspconfig": "quick_lint_js"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "r-languageserver",
@@ -7172,7 +7368,8 @@
     },
     "neovim": {
       "lspconfig": "r_language_server"
-    }
+    },
+    "github_stars": 9
   },
   {
     "name": "raku-navigator",
@@ -7201,7 +7398,8 @@
     },
     "neovim": {
       "lspconfig": "raku_navigator"
-    }
+    },
+    "github_stars": 63
   },
   {
     "name": "reason-language-server",
@@ -7247,7 +7445,8 @@
     },
     "neovim": {
       "lspconfig": "reason_ls"
-    }
+    },
+    "github_stars": 658
   },
   {
     "name": "regal",
@@ -7293,7 +7492,8 @@
     },
     "neovim": {
       "lspconfig": "regal"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "regols",
@@ -7316,7 +7516,8 @@
     },
     "neovim": {
       "lspconfig": "regols"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "remark-language-server",
@@ -7339,7 +7540,8 @@
     },
     "neovim": {
       "lspconfig": "remark_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rescript-language-server",
@@ -7365,7 +7567,8 @@
     },
     "neovim": {
       "lspconfig": "rescriptls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rescript-lsp",
@@ -7395,7 +7598,8 @@
     },
     "bin": {
       "rescript-lsp": "node:extension/server/out/server.js"
-    }
+    },
+    "github_stars": 344
   },
   {
     "name": "rnix-lsp",
@@ -7418,7 +7622,8 @@
     },
     "neovim": {
       "lspconfig": "rnix"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "robotcode",
@@ -7442,7 +7647,8 @@
     },
     "bin": {
       "robotcode": "pypi:robotcode"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "robotframework-lsp",
@@ -7465,7 +7671,8 @@
     },
     "neovim": {
       "lspconfig": "robotframework_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rome",
@@ -7499,7 +7706,8 @@
     },
     "neovim": {
       "lspconfig": "rome"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rpm_lsp_server",
@@ -7522,7 +7730,8 @@
     },
     "neovim": {
       "lspconfig": "rpmspec"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rubocop",
@@ -7547,7 +7756,8 @@
     },
     "neovim": {
       "lspconfig": "rubocop"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ruby-lsp",
@@ -7576,7 +7786,8 @@
     },
     "neovim": {
       "lspconfig": "ruby_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ruff-lsp",
@@ -7600,7 +7811,8 @@
     },
     "bin": {
       "ruff-lsp": "pypi:ruff-lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ruff",
@@ -7625,7 +7837,8 @@
     },
     "neovim": {
       "lspconfig": "ruff"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "rust-analyzer",
@@ -7689,7 +7902,8 @@
     },
     "neovim": {
       "lspconfig": "rust_analyzer"
-    }
+    },
+    "github_stars": 15581
   },
   {
     "name": "rust_hdl",
@@ -7735,7 +7949,8 @@
     },
     "neovim": {
       "lspconfig": "vhdl_ls"
-    }
+    },
+    "github_stars": 432
   },
   {
     "name": "salt-lsp",
@@ -7758,7 +7973,8 @@
     },
     "neovim": {
       "lspconfig": "salt_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "serve-d",
@@ -7806,7 +8022,8 @@
     },
     "neovim": {
       "lspconfig": "serve_d"
-    }
+    },
+    "github_stars": 243
   },
   {
     "name": "shopify-cli",
@@ -7830,7 +8047,8 @@
     },
     "neovim": {
       "lspconfig": "shopify_theme_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "shopify-theme-check",
@@ -7858,7 +8076,8 @@
     },
     "neovim": {
       "lspconfig": "theme_check"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "sith-language-server",
@@ -7923,7 +8142,8 @@
     },
     "bin": {
       "sith-lsp": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 123
   },
   {
     "name": "slang",
@@ -7990,7 +8210,8 @@
     },
     "neovim": {
       "lspconfig": "slangd"
-    }
+    },
+    "github_stars": 4639
   },
   {
     "name": "slint-lsp",
@@ -8007,7 +8228,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/slint-ui/slint@v1.13.1",
+      "id": "pkg:github/slint-ui/slint@v1.14.0",
       "asset": [
         {
           "target": "linux_x64",
@@ -8087,7 +8308,8 @@
     },
     "neovim": {
       "lspconfig": "slint_lsp"
-    }
+    },
+    "github_stars": 20683
   },
   {
     "name": "smithy-language-server",
@@ -8137,7 +8359,8 @@
     },
     "neovim": {
       "lspconfig": "smithy_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "snakeskin-cli",
@@ -8160,7 +8383,8 @@
     },
     "neovim": {
       "lspconfig": "snakeskin_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "snyk-ls",
@@ -8213,7 +8437,8 @@
     },
     "neovim": {
       "lspconfig": "snyk_ls"
-    }
+    },
+    "github_stars": 68
   },
   {
     "name": "solang-llvm",
@@ -8256,7 +8481,8 @@
     },
     "opt": {
       "solang/llvm15.0/": "llvm15.0/"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "solang",
@@ -8310,7 +8536,8 @@
     },
     "neovim": {
       "lspconfig": "solang"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "solargraph",
@@ -8336,7 +8563,8 @@
     },
     "neovim": {
       "lspconfig": "solargraph"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "solidity-ls",
@@ -8359,7 +8587,8 @@
     },
     "neovim": {
       "lspconfig": "solidity"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "solidity",
@@ -8400,7 +8629,8 @@
     },
     "neovim": {
       "lspconfig": "solc"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "some-sass-language-server",
@@ -8426,7 +8656,8 @@
     },
     "neovim": {
       "lspconfig": "somesass_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "sorbet",
@@ -8455,7 +8686,8 @@
     },
     "neovim": {
       "lspconfig": "sorbet"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "sourcery",
@@ -8481,7 +8713,8 @@
     },
     "neovim": {
       "lspconfig": "sourcery"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "spectral-language-server",
@@ -8511,7 +8744,8 @@
     },
     "neovim": {
       "lspconfig": "spectral"
-    }
+    },
+    "github_stars": 77
   },
   {
     "name": "spyglassmc-language-server",
@@ -8534,7 +8768,8 @@
     },
     "neovim": {
       "lspconfig": "spyglassmc_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "sqlls",
@@ -8560,7 +8795,8 @@
     },
     "neovim": {
       "lspconfig": "sqlls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "sqls",
@@ -8586,7 +8822,8 @@
     },
     "neovim": {
       "lspconfig": "sqls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "starlark-rust",
@@ -8612,7 +8849,8 @@
     },
     "neovim": {
       "lspconfig": "starlark_rust"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "starpls",
@@ -8650,7 +8888,8 @@
     },
     "neovim": {
       "lspconfig": "starpls"
-    }
+    },
+    "github_stars": 182
   },
   {
     "name": "steep",
@@ -8673,7 +8912,8 @@
     },
     "neovim": {
       "lspconfig": "steep"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "stimulus-language-server",
@@ -8702,7 +8942,8 @@
     },
     "neovim": {
       "lspconfig": "stimulus_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "stree",
@@ -8722,7 +8963,8 @@
     },
     "bin": {
       "stree": "gem:stree"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "stylelint-lsp",
@@ -8748,7 +8990,8 @@
     },
     "neovim": {
       "lspconfig": "stylelint_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "stylua",
@@ -8874,7 +9117,8 @@
     },
     "neovim": {
       "lspconfig": "stylua"
-    }
+    },
+    "github_stars": 1985
   },
   {
     "name": "superhtml",
@@ -8931,7 +9175,8 @@
     },
     "neovim": {
       "lspconfig": "superhtml"
-    }
+    },
+    "github_stars": 1111
   },
   {
     "name": "svelte-language-server",
@@ -8960,7 +9205,8 @@
     },
     "neovim": {
       "lspconfig": "svelte"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "svlangserver",
@@ -8986,7 +9232,8 @@
     },
     "neovim": {
       "lspconfig": "svlangserver"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "svls",
@@ -9015,7 +9262,8 @@
     ],
     "neovim": {
       "lspconfig": "svls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "swift-mesonlsp",
@@ -9059,7 +9307,8 @@
     },
     "neovim": {
       "lspconfig": "swift_mesonls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "systemd-language-server",
@@ -9082,7 +9331,8 @@
     },
     "neovim": {
       "lspconfig": "systemd_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "tabby-agent",
@@ -9100,7 +9350,8 @@
     },
     "bin": {
       "tabby-agent": "npm:tabby-agent"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "tailwindcss-language-server",
@@ -9126,7 +9377,8 @@
     },
     "neovim": {
       "lspconfig": "tailwindcss"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "taplo",
@@ -9192,7 +9444,8 @@
     },
     "neovim": {
       "lspconfig": "taplo"
-    }
+    },
+    "github_stars": 1986
   },
   {
     "name": "teal-language-server",
@@ -9215,7 +9468,8 @@
     },
     "neovim": {
       "lspconfig": "teal_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "templ",
@@ -9281,7 +9535,8 @@
     },
     "neovim": {
       "lspconfig": "templ"
-    }
+    },
+    "github_stars": 9752
   },
   {
     "name": "termux-language-server",
@@ -9301,7 +9556,8 @@
     },
     "bin": {
       "termux-language-server": "pypi:termux-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "terraform-ls",
@@ -9392,7 +9648,8 @@
     },
     "neovim": {
       "lspconfig": "terraformls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "texlab",
@@ -9462,7 +9719,8 @@
     },
     "neovim": {
       "lspconfig": "texlab"
-    }
+    },
+    "github_stars": 1826
   },
   {
     "name": "textlsp",
@@ -9487,7 +9745,8 @@
     },
     "neovim": {
       "lspconfig": "textlsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "tflint",
@@ -9543,7 +9802,8 @@
     },
     "neovim": {
       "lspconfig": "tflint"
-    }
+    },
+    "github_stars": 5471
   },
   {
     "name": "thriftls",
@@ -9596,7 +9856,8 @@
     },
     "neovim": {
       "lspconfig": "thriftls"
-    }
+    },
+    "github_stars": 14
   },
   {
     "name": "tilt",
@@ -9659,7 +9920,8 @@
     },
     "bin": {
       "tilt": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 9086
   },
   {
     "name": "tinymist",
@@ -9716,7 +9978,8 @@
     },
     "neovim": {
       "lspconfig": "tinymist"
-    }
+    },
+    "github_stars": 2235
   },
   {
     "name": "tofu-ls",
@@ -9781,7 +10044,8 @@
     },
     "bin": {
       "tofu-ls": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 132
   },
   {
     "name": "tombi",
@@ -9806,7 +10070,8 @@
     },
     "bin": {
       "tombi": "pypi:tombi"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ts_query_ls",
@@ -9856,7 +10121,8 @@
     },
     "neovim": {
       "lspconfig": "ts_query_ls"
-    }
+    },
+    "github_stars": 117
   },
   {
     "name": "tsp-server",
@@ -9879,7 +10145,8 @@
     },
     "neovim": {
       "lspconfig": "tsp_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "turtle-language-server",
@@ -9899,7 +10166,8 @@
     },
     "bin": {
       "turtle-language-server": "npm:turtle-language-server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "twiggy-language-server",
@@ -9927,7 +10195,8 @@
     },
     "neovim": {
       "lspconfig": "twiggy_language_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "ty",
@@ -9951,7 +10220,8 @@
     },
     "neovim": {
       "lspconfig": "ty"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "typescript-language-server",
@@ -9981,7 +10251,8 @@
     },
     "neovim": {
       "lspconfig": "ts_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "typos-lsp",
@@ -10052,7 +10323,8 @@
     },
     "neovim": {
       "lspconfig": "typos_lsp"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "typst-lsp",
@@ -10138,7 +10410,8 @@
     },
     "bin": {
       "typst-lsp": "{{source.asset.file}}"
-    }
+    },
+    "github_stars": 1170
   },
   {
     "name": "unocss-language-server",
@@ -10161,7 +10434,8 @@
     },
     "neovim": {
       "lspconfig": "unocss"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "v-analyzer",
@@ -10209,7 +10483,8 @@
     },
     "neovim": {
       "lspconfig": "v_analyzer"
-    }
+    },
+    "github_stars": 172
   },
   {
     "name": "vala-language-server",
@@ -10245,7 +10520,8 @@
     "ci_skip": true,
     "neovim": {
       "lspconfig": "vala_ls"
-    }
+    },
+    "github_stars": 312
   },
   {
     "name": "vale-ls",
@@ -10296,7 +10572,8 @@
     },
     "neovim": {
       "lspconfig": "vale_ls"
-    }
+    },
+    "github_stars": 90
   },
   {
     "name": "vectorcode",
@@ -10321,7 +10598,8 @@
     },
     "neovim": {
       "lspconfig": "vectorcode_server"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "verible",
@@ -10422,7 +10700,8 @@
     },
     "neovim": {
       "lspconfig": "verible"
-    }
+    },
+    "github_stars": 1657
   },
   {
     "name": "veryl-ls",
@@ -10471,7 +10750,8 @@
     },
     "neovim": {
       "lspconfig": "veryl_ls"
-    }
+    },
+    "github_stars": 809
   },
   {
     "name": "vetur-vls",
@@ -10497,7 +10777,8 @@
     },
     "neovim": {
       "lspconfig": "vuels"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "vim-language-server",
@@ -10520,7 +10801,8 @@
     },
     "neovim": {
       "lspconfig": "vimls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "visualforce-language-server",
@@ -10549,7 +10831,8 @@
     },
     "neovim": {
       "lspconfig": "visualforce_ls"
-    }
+    },
+    "github_stars": 982
   },
   {
     "name": "vls",
@@ -10589,7 +10872,8 @@
     },
     "neovim": {
       "lspconfig": "vls"
-    }
+    },
+    "github_stars": 345
   },
   {
     "name": "vscode-solidity-server",
@@ -10612,7 +10896,8 @@
     },
     "neovim": {
       "lspconfig": "solidity_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "vscode-spring-boot-tools",
@@ -10639,7 +10924,8 @@
     "share": {
       "vscode-spring-boot-tools/jdtls/": "extension/jars/",
       "vscode-spring-boot-tools/language-server.jar": "extension/language-server/spring-boot-language-server-{{version}}-SNAPSHOT-exec.jar"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "vtsls",
@@ -10666,7 +10952,8 @@
     },
     "neovim": {
       "lspconfig": "vtsls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "vue-language-server",
@@ -10695,7 +10982,8 @@
     },
     "neovim": {
       "lspconfig": "vue_ls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "wasm-language-tools",
@@ -10739,7 +11027,8 @@
     },
     "bin": {
       "wat_server": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 43
   },
   {
     "name": "wgsl-analyzer",
@@ -10829,7 +11118,8 @@
     },
     "neovim": {
       "lspconfig": "wgsl_analyzer"
-    }
+    },
+    "github_stars": 564
   },
   {
     "name": "wing",
@@ -10855,7 +11145,8 @@
     },
     "bin": {
       "wing": "npm:wing"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "yaml-language-server",
@@ -10881,7 +11172,8 @@
     },
     "neovim": {
       "lspconfig": "yamlls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "yls-yara",
@@ -10908,7 +11200,8 @@
     },
     "bin": {
       "yls": "pypi:yls"
-    }
+    },
+    "github_stars": null
   },
   {
     "name": "zeek-language-server",
@@ -10966,7 +11259,8 @@
     },
     "bin": {
       "zeek-language-server": "{{source.asset.bin}}"
-    }
+    },
+    "github_stars": 17
   },
   {
     "name": "zk",
@@ -11011,7 +11305,8 @@
     },
     "neovim": {
       "lspconfig": "zk"
-    }
+    },
+    "github_stars": 2256
   },
   {
     "name": "zls",
@@ -11153,7 +11448,8 @@
     },
     "neovim": {
       "lspconfig": "zls"
-    }
+    },
+    "github_stars": 4258
   },
   {
     "name": "zuban",
@@ -11177,6 +11473,7 @@
     },
     "neovim": {
       "lspconfig": "zuban"
-    }
+    },
+    "github_stars": null
   }
 ]

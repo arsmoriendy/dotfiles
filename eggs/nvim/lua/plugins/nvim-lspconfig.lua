@@ -141,20 +141,18 @@ local function config()
       vim.notify("Mason registry file not found", "error")
       return
     end
-    local lsp_registry = vim.fn.json_decode(lsp_registry_file:read("*a"))
+    local lsp_registry = vim.json.decode(lsp_registry_file:read("*a"))
 
     vim.ui.select(lsp_registry, {
       prompt = "Register local lsp:",
       format_item = function(p)
-        -- return string.format("%s categories=%s", p.name, vim.inspect(p.categories))
-        return string.format("%s %s", p.name, vim.inspect(p.languages))
+        local name = p.name
+        local github_stars = p.github_stars ~= vim.NIL and "" .. vim.inspect(p.github_stars) or ""
+        local languages = vim.inspect(p.languages)
+        return string.format("%s: %s %s", name, languages, github_stars)
       end,
     }, function(p, _)
       if p == nil then
-        return
-      end
-
-      if p.neovim == nil or p.neovim.lspconfig == nil then
         return
       end
 

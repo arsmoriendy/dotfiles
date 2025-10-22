@@ -23,6 +23,7 @@ local function config()
   vim.keymap.del("n", "gri")
   vim.keymap.del({ "n", "x" }, "gra")
   vim.keymap.del("n", "grn")
+  vim.keymap.del("n", "grt")
 
   map("n", "gr", gs.reset_hunk, { desc = "Reset git hunk under cursor" })
   map("x", "gr", function() -- reset selected lines

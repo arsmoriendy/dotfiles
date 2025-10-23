@@ -4,4 +4,3 @@ Requires neovim version >= 11
 
 - replace with `snacks.nvim`
   - lazygit
-- integrate AI slop (codecompanion / avante)

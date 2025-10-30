@@ -53,6 +53,13 @@ local function config()
       },
     },
 
+    harper_ls = {
+      filetypes = {
+        "markdown",
+        "typst",
+      },
+    },
+
     emmet_language_server = {
       filetypes = {
         "html",

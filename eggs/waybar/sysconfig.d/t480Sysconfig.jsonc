@@ -57,6 +57,7 @@
   "modules-center": ["sway/window"],
   "modules-right": [
     "group/cpu-group",
+    "group/ram",
     "group/wifi",
     "group/batteries",
     "group/clocks"

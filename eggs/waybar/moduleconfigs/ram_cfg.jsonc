@@ -1,0 +1,9 @@
+{
+  "custom/ram-indicator": {
+    "format": ""
+  },
+  "group/ram": {
+    "orientation": "horizontal",
+    "modules": ["custom/ram-indicator", "memory"]
+  }
+}

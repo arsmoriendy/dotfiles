@@ -1,0 +1,15 @@
+#ram {
+  border: 1px solid $border;
+  margin: $spacing;
+}
+
+#memory {
+  padding: $spacing;
+}
+
+#custom-ram-indicator {
+  background-color: $s_bgrd;
+  padding: $spacing;
+  min-height: 1.5em;
+  min-width: 1.5em;
+}

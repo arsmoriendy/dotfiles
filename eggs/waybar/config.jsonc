@@ -9,6 +9,7 @@
     "~/.config/waybar/sysconfig.d/sysconfig.jsonc",
     "~/.config/waybar/moduleconfigs/scratchpad_cfg.jsonc",
     "~/.config/waybar/moduleconfigs/clock_cfg.jsonc",
-    "~/.config/waybar/moduleconfigs/cpu_cfg.jsonc"
+    "~/.config/waybar/moduleconfigs/cpu_cfg.jsonc",
+    "~/.config/waybar/moduleconfigs/ram_cfg.jsonc"
   ]
 }

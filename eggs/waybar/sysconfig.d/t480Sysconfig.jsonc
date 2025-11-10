@@ -55,5 +55,10 @@
   },
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["group/wifi", "group/batteries", "group/clocks"]
+  "modules-right": [
+    "group/cpu-group",
+    "group/wifi",
+    "group/batteries",
+    "group/clocks"
+  ]
 }

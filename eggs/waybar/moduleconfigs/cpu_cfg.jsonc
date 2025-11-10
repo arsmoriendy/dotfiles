@@ -1,0 +1,9 @@
+{
+  "custom/cpu-indicator": {
+    "format": ""
+  },
+  "group/cpu-group": {
+    "orientation": "horizontal",
+    "modules": ["custom/cpu-indicator", "cpu"]
+  }
+}

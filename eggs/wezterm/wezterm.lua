@@ -4,6 +4,7 @@ local lib = require("lib")
 local wezterm = require("wezterm")
 
 local config = {
+  harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- disable ligatures
   automatically_reload_config = false,
   -- set TERM environment variable
   -- download wezterm's terminfo file from https://github.com/wez/wezterm/termwiz/data/wezterm

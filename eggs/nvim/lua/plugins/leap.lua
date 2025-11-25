@@ -1,4 +1,4 @@
-vim.keymap.set({ "n", "x", "o" }, "<Tab>", "<Plug>(leap-anywhere)")
+vim.keymap.set({ "n", "x", "o" }, "<Tab>", "<Plug>(leap)")
 vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
 
 local function config()

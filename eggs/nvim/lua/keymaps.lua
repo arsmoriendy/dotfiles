@@ -13,13 +13,6 @@ kms({ "n", "x" }, "gl", "$")
 -- turn off search highlight until next search action (i.e. new search, next search, prev search)
 kms({ "n", "i", "x" }, "<C-M-f>", vim.cmd.nohlsearch, { desc = "Temporarily disable search highlights" })
 
--- window resize [
-kms("n", "<C-w>h", "<CMD>vertical resize -5<CR>", { desc = "Reduce window size vertically" })
-kms("n", "<C-w>j", "<CMD>resize +5<CR>", { desc = "Add window size horizontally" })
-kms("n", "<C-w>k", "<CMD>resize -5<CR>", { desc = "Reduce window size horizontally" })
-kms("n", "<C-w>l", "<CMD>vertical resize +5<CR>", { desc = "Add window size vertically" })
--- ]
-
 -- navigate saves [
 kms({ "n", "i", "x" }, "<C-M-u>", "<CMD>earlier 1f<CR>", { desc = "Undo to last save" })
 kms({ "n", "i", "x" }, "<C-M-r>", "<CMD>later 1f<CR>", { desc = "Redo to next save" })
@@ -75,12 +68,6 @@ kms("n", "dD", '<CMD>let @" .= getline(\'.\') . "\\n" | d _<CR>', {
 })
 
 -- windows [
--- navigate windows [
-kms("n", "<C-h>", "<C-w>h", { remap = false, desc = "Go to left window" })
-kms("n", "<C-j>", "<C-w>j", { remap = false, desc = "Go to down window" })
-kms("n", "<C-k>", "<C-w>k", { remap = false, desc = "Go to up window" })
-kms("n", "<C-l>", "<C-w>l", { remap = false, desc = "Go to right window" })
--- ]
 -- close window
 kms({ "n", "v", "o" }, "<C-q>", "<C-w>q", { desc = "Close window" })
 -- ]

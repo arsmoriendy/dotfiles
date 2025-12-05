@@ -1,13 +1,10 @@
 {
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode",
-    "sway/scratchpad"
-  ],
-  "modules-center": [
-    "sway/window"
-  ],
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+  "modules-center": ["sway/window"],
   "modules-right": [
-    "clock"
+    "group/cpu-group",
+    "group/ram",
+    "group/batteries",
+    "group/clocks"
   ]
 }

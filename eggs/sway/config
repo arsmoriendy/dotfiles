@@ -38,6 +38,9 @@ exec $polkitgnomeexec
 # eww
 exec "eww daemon"
 
+# vicinae
+exec "vicinae server"
+
 # swaync
 exec "swaync"
 

@@ -145,16 +145,7 @@
 # Media controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
-# app launcher {
-  mode "run" {
-    # exit
-    bindsym Escape mode "default"; exec "eww close launcher"
-    bindsym $mod+d mode "default"; exec "eww close launcher"
-  }
-
-  bindsym --no-repeat $mod+d mode "run"; exec \
-    "eww open launcher --screen $ewwoutput"
-# app launcher }
+bindsym --no-repeat $mod+d exec "vicinae toggle"
 
 # volume slider {
   set $opnvolwincmd eww open volume_win --screen $ewwoutput # $ewwoutput is an environment variable

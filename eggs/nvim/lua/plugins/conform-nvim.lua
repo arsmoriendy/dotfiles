@@ -90,6 +90,11 @@ local function config()
     default_format_opts = {
       lsp_format = "fallback",
     },
+    formatters = {
+      typstyle = {
+        args = { "-l", "80", "--wrap-text" },
+      },
+    },
   })
 
   -- TODO: buffer follows global (i.e. remove buffer option) function and keymap

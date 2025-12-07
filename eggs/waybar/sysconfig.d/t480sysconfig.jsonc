@@ -54,7 +54,7 @@
     "modules": ["network#wifi-indicator", "network#wifi-ssid"]
   },
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-  "modules-center": ["sway/window"],
+  "modules-center": ["custom/sway-windows"],
   "modules-right": [
     "group/cpu-group",
     "group/ram",

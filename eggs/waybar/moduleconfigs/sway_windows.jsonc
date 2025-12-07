@@ -1,0 +1,7 @@
+{
+  "custom/sway-windows": {
+    "format": "{text}",
+    "exec": "~/.config/waybar/scripts/sway-windows.nu",
+    "interval": 1
+  }
+}

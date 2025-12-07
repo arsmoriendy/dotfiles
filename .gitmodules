@@ -1,0 +1,3 @@
+[submodule "eggs/waybar/scripts/sway-windows"]
+	path = eggs/waybar/scripts/sway-windows
+	url = github:arsmoriendy/sway-windows

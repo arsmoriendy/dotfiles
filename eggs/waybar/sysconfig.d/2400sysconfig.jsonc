@@ -1,5 +1,5 @@
 {
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-  "modules-center": ["custom/sway-widows"],
+  "modules-center": ["custom/sway-windows"],
   "modules-right": ["group/cpu-group", "group/ram", "group/clocks"]
 }

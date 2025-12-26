@@ -18,3 +18,5 @@ alias lg = lazygit
 alias g = git
 alias v = nvim
 alias t = tmux
+alias pn = pnpm
+alias j = just

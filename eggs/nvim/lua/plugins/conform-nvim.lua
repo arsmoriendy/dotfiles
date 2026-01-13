@@ -5,6 +5,8 @@ local bind = lib.bind
 
 local ft_by_formatters = {
   prettierd = {
+    "php", -- @prettier/plugin-php
+    "blade", -- @shufo/prettier-plugin-blade
     "html",
     "javascript",
     "javascriptreact",

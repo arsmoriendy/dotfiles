@@ -32,6 +32,7 @@ local ft_by_formatters = {
   sqlfluff = { "sql", "mysql" },
   ["tex-fmt"] = { "tex" },
   typstyle = { "typst" },
+  just = { "just" },
 }
 
 local formatters_by_ft = {}

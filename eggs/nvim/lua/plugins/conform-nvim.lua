@@ -33,6 +33,7 @@ local ft_by_formatters = {
   ["tex-fmt"] = { "tex" },
   typstyle = { "typst" },
   just = { "just" },
+  csharpier = { "cs" },
 }
 
 local formatters_by_ft = {}

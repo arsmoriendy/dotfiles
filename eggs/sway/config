@@ -44,6 +44,9 @@ exec "vicinae server"
 # swaync
 exec "swaync"
 
+# batsignal
+exec "batsignal -W 'Low battery' -C 'Critical battery' -b"
+
 # Focus options {
   focus_wrapping workspace
   focus_follows_mouse no

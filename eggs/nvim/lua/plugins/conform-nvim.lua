@@ -34,6 +34,7 @@ local ft_by_formatters = {
   typstyle = { "typst" },
   just = { "just" },
   csharpier = { "cs" },
+  qmlformat = { "qml" },
 }
 
 local formatters_by_ft = {}

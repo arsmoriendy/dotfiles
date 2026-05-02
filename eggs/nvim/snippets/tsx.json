@@ -1,0 +1,23 @@
+{
+  "function": {
+    "prefix": "f",
+    "body": ["function ${1:name}(${2:parameters}) {", " ${3:body}", "}"]
+  },
+  "state": {
+    "prefix": "s",
+    "body": ["const [${1:state}, set${1:state}] = useState(${initialValue})"]
+  },
+  "createContext": {
+    "prefix": "cc",
+    "body": ["const ${name}Ctx = createContext(${initialValue})"]
+  },
+  "contextProvider": {
+    "prefix": "cp",
+    "body": [
+      "function ${1:context}Provider({ initialValue, children }: { initialValue: ${type}, children: ReactNode }) {",
+      " $0",
+      " return <${1:context}.Provider value={initialValue}>{children}</${1:context}.Provider>",
+      "}"
+    ]
+  }
+}

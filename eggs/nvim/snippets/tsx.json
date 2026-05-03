@@ -14,9 +14,9 @@
   "contextProvider": {
     "prefix": "cp",
     "body": [
-      "function ${1:context}Provider({ initialValue, children }: { initialValue: ${type}, children: ReactNode }) {",
+      "function ${1:contextName}Provider({ initialValue, children }: { initialValue: ${2:type}, children: ReactNode }) {",
       " $0",
-      " return <${1:context}.Provider value={initialValue}>{children}</${1:context}.Provider>",
+      " return <${3:context}.Provider value={initialValue}>{children}</${3:context}.Provider>",
       "}"
     ]
   }

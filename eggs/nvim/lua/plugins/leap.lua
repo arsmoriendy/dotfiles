@@ -8,7 +8,7 @@ local function config()
 end
 
 return {
-  "ggandor/leap.nvim",
+  url = "https://codeberg.org/andyg/leap.nvim",
   config = config,
   event = "VeryLazy",
 }

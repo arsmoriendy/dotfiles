@@ -91,6 +91,15 @@ local function config()
         },
       },
     },
+    vtsls = {
+      settings = {
+        typescript = {
+          preferences = {
+            importModuleSpecifier = "non-relative",
+          },
+        },
+      },
+    },
     gopls = {
       settings = {
         gopls = {

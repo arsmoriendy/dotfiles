@@ -1,9 +1,5 @@
 # Required Variables {
 
-# Run the following command to lookup available outputs
-# swaymsg -t get_outputs | jq '.[].model'
-set $ewwoutput "0x103D"
-
 # - On arch: "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 # - On nix: "polkit-gnome-authentication-agent-1"
 set $polkitgnomeexec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"

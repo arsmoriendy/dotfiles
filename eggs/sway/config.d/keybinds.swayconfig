@@ -148,13 +148,11 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym --no-repeat $mod+d exec "vicinae toggle"
 
 # volume slider {
-  set $opnvolwincmd eww open volume_win --screen $ewwoutput # $ewwoutput is an environment variable
+  set $opnvolwincmd QT_QPA_PLATFORMTHEME=gtk3 quickshell -p ~/.config/quickshell/VolumeControl.qml
   set $volinterval  10
   set $voldncmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%-
   set $volupcmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%+
   set $volmtcmd     wpctl set-mute   @DEFAULT_SINK@ toggle
-  set $updewwvolcmd eww update volume_poll=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $2 * 100}')
-  set $updewwmutcmd eww update   mute_poll=$(wpctl get-volume @DEFAULT_SINK@ | awk '{ if ($3 == "[MUTED]") print "true"; else print "false"; }')
 
   bindsym XF86AudioLowerVolume exec $voldncmd; mode "volume"; exec $opnvolwincmd
   bindsym XF86AudioRaiseVolume exec $volupcmd; mode "volume"; exec $opnvolwincmd
@@ -162,7 +160,7 @@ bindsym --no-repeat $mod+d exec "vicinae toggle"
 
   mode "volume" {
     # exit
-    set $exitcmd "eww close volume_win"
+    set $exitcmd "quickshell kill -p ~/.config/quickshell/VolumeControl.qml"
     bindsym Escape  mode "default"; exec $exitcmd
     bindsym q       mode "default"; exec $exitcmd
     bindsym $mod+g  mode "default"; exec $exitcmd
@@ -170,22 +168,22 @@ bindsym --no-repeat $mod+d exec "vicinae toggle"
     bindsym --whole-window --border button2 mode "default" ; exec $exitcmd
 
     # volume down
-    bindsym j                     exec $voldncmd; exec $updewwvolcmd
-    bindsym down                  exec $voldncmd; exec $updewwvolcmd
-    bindsym Shift+j               exec $voldncmd; exec $updewwvolcmd
-    bindsym Shift+down            exec $voldncmd; exec $updewwvolcmd
-    bindsym XF86AudioLowerVolume  exec $voldncmd; exec $updewwvolcmd
+    bindsym j                     exec $voldncmd;
+    bindsym down                  exec $voldncmd;
+    bindsym Shift+j               exec $voldncmd;
+    bindsym Shift+down            exec $voldncmd;
+    bindsym XF86AudioLowerVolume  exec $voldncmd;
 
     # volume up
-    bindsym k                     exec $volupcmd; exec $updewwvolcmd
-    bindsym up                    exec $volupcmd; exec $updewwvolcmd
-    bindsym Shift+k               exec $volupcmd; exec $updewwvolcmd
-    bindsym Shift+up              exec $volupcmd; exec $updewwvolcmd
-    bindsym XF86AudioRaiseVolume  exec $volupcmd; exec $updewwvolcmd
+    bindsym k                     exec $volupcmd;
+    bindsym up                    exec $volupcmd;
+    bindsym Shift+k               exec $volupcmd;
+    bindsym Shift+up              exec $volupcmd;
+    bindsym XF86AudioRaiseVolume  exec $volupcmd;
 
     # toggle mute
-    bindsym m             exec $volmtcmd; exec $updewwmutcmd
-    bindsym XF86AudioMute exec $volmtcmd; exec $updewwmutcmd
+    bindsym m             exec $volmtcmd;
+    bindsym XF86AudioMute exec $volmtcmd;
   }
 
   bindsym --no-repeat $mod+g mode "volume"; exec $opnvolwincmd

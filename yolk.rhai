@@ -80,4 +80,5 @@ export let eggs = #{
       "Windows" => "~/AppData/Roaming/alacritty",
       _ => "~/.config/alacritty",
     },
+    quickshell: "~/.config/quickshell",
 };

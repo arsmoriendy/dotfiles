@@ -2,10 +2,12 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Io
 import Quickshell.Services.Pipewire
 
 ShellRoot {
     PanelWindow {
+        id: window
         implicitWidth: row.width
         implicitHeight: row.height
         exclusiveZone: 0
@@ -40,6 +42,14 @@ ShellRoot {
                 Layout.alignment: Qt.AlignTop
                 node: Pipewire.defaultAudioSink
             }
+        }
+    }
+
+    IpcHandler {
+        target: "window"
+
+        function toggle(show: bool): void {
+            window.visible = show;
         }
     }
 }

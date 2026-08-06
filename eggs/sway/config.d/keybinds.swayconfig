@@ -148,11 +148,11 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym --no-repeat $mod+d exec "vicinae toggle"
 
 # volume slider {
-  set $opnvolwincmd QT_QPA_PLATFORMTHEME=gtk3 quickshell -p ~/.config/quickshell/VolumeControl.qml
+  set $opnvolwincmd "qs -p ~/.config/quickshell/VolumeControl.qml ipc call window toggle true"
   set $volinterval  10
-  set $voldncmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%-
-  set $volupcmd     wpctl set-volume @DEFAULT_SINK@ $volinterval%+
-  set $volmtcmd     wpctl set-mute   @DEFAULT_SINK@ toggle
+  set $voldncmd     "wpctl set-volume @DEFAULT_SINK@ $volinterval%-"
+  set $volupcmd     "wpctl set-volume @DEFAULT_SINK@ $volinterval%+"
+  set $volmtcmd     "wpctl set-mute   @DEFAULT_SINK@ toggle"
 
   bindsym XF86AudioLowerVolume exec $voldncmd; mode "volume"; exec $opnvolwincmd
   bindsym XF86AudioRaiseVolume exec $volupcmd; mode "volume"; exec $opnvolwincmd
@@ -160,7 +160,7 @@ bindsym --no-repeat $mod+d exec "vicinae toggle"
 
   mode "volume" {
     # exit
-    set $exitcmd "quickshell kill -p ~/.config/quickshell/VolumeControl.qml"
+    set $exitcmd "qs -p ~/.config/quickshell/VolumeControl.qml ipc call window toggle false"
     bindsym Escape  mode "default"; exec $exitcmd
     bindsym q       mode "default"; exec $exitcmd
     bindsym $mod+g  mode "default"; exec $exitcmd

@@ -14,4 +14,5 @@ load-env {
     ("~/.cargo/bin/" | path expand)
     ("~/.local/share/pnpm" | path expand)
   ] | uniq)
+  QT_QPA_PLATFORMTHEME: "gtk3"
 }

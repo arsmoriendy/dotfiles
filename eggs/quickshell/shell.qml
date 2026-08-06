@@ -34,6 +34,7 @@ ShellRoot {
 
         BrightnessControl {
             id: brightnessControl
+            visible: brightnessWindow.visible
         }
     }
 

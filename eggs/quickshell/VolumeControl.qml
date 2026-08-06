@@ -11,6 +11,7 @@ ShellRoot {
         implicitWidth: row.width
         implicitHeight: row.height
         exclusiveZone: 0
+        visible: false
         color: "transparent"
 
         anchors {

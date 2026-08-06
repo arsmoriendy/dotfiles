@@ -6,9 +6,11 @@ import Quickshell.Io
 
 ShellRoot {
     PanelWindow {
+        id: window
         implicitWidth: wrapper.width
         implicitHeight: wrapper.height
         exclusiveZone: 0
+        visible: false
 
         anchors {
             right: true
@@ -59,7 +61,8 @@ ShellRoot {
                 }
 
                 Timer {
-                    running: true
+                    id: timer
+                    running: false
                     repeat: true
                     interval: 60
                     onTriggered: poll.running = true
@@ -94,6 +97,15 @@ ShellRoot {
                         setter.running = true;
                     }
                 }
+            }
+        }
+
+        IpcHandler {
+            target: "window"
+
+            function toggle(show: bool): void {
+                window.visible = show;
+                timer.running = show;
             }
         }
     }

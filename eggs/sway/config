@@ -42,7 +42,7 @@ exec "vicinae server"
 exec "swaync"
 
 # quickshell
-exec "qs -p ~/.config/quickshell/VolumeControl.qml"
+exec quickshell
 
 # batsignal
 exec "batsignal -W 'Low battery' -C 'Critical battery' -b"

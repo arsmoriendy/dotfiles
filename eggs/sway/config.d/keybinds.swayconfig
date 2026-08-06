@@ -148,7 +148,7 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym --no-repeat $mod+d exec "vicinae toggle"
 
 # volume slider {
-  set $opnvolwincmd "qs -p ~/.config/quickshell/VolumeControl.qml ipc call window toggle true"
+  set $opnvolwincmd "qs ipc call windows showVolume true"
   set $volinterval  10
   set $voldncmd     "wpctl set-volume @DEFAULT_SINK@ $volinterval%-"
   set $volupcmd     "wpctl set-volume @DEFAULT_SINK@ $volinterval%+"
@@ -160,7 +160,7 @@ bindsym --no-repeat $mod+d exec "vicinae toggle"
 
   mode "volume" {
     # exit
-    set $exitcmd "qs -p ~/.config/quickshell/VolumeControl.qml ipc call window toggle false"
+    set $exitcmd "qs ipc call windows showVolume false"
     bindsym Escape  mode "default"; exec $exitcmd
     bindsym q       mode "default"; exec $exitcmd
     bindsym $mod+g  mode "default"; exec $exitcmd

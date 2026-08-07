@@ -9,7 +9,7 @@
   set $up k
   set $right l
 
-  set $term "wezterm"
+  set $term "alacritty"
   set $browser "firefox"
   set $filemanager "thunar"
 # Variables }

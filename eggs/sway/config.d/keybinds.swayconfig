@@ -191,7 +191,7 @@ bindsym --no-repeat $mod+d exec "vicinae toggle"
 
 bindsym XF86AudioMicMute exec "wpctl set-mute @DEFAULT_SOURCE@ toggle"
 
-bindsym $mod+s exec grim -g "$(slurp)"
+bindsym $mod+s exec FILENAME="$HOME/$(date "+%Y-%m-%dT%Hh%Mm%Ss").png" && grim -g "$(slurp)" - | tee "$FILENAME" | wl-copy && notify-send "Screenshot saved and sent clipboard" "$FILENAME"
 
 # lock session
 bindsym $mod+Alt+l exec swaylock
